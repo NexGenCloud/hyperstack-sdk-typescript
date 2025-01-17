@@ -1,0 +1,33 @@
+{
+  "name": "@nexgencloud/hyperstack-sdk-typescript",
+  "version": "v1.25.0-alpha",
+  "description": "Leverage the Infrahub API and Hyperstack platform to easily create, manage, and scale powerful GPU virtual machines and their associated resources.   Access this SDK to automate the deployment of your workloads and streamline your infrastructure management.  To contribute, please raise an issue with a bug report, feature request, feedback, or general inquiry.",
+  "author": "OpenAPI-Generator Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NexGenCloud/hyperstack-sdk-typescript.git"
+  },
+  "keywords": [
+    "axios",
+    "typescript",
+    "openapi-client",
+    "openapi-generator",
+    "@nexgencloud/hyperstack-sdk-typescript"
+  ],
+  "license": "MIT License",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "axios": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "12.11.5 - 12.20.42",
+    "typescript": "^4.0 || ^5.0"
+  }
+}
