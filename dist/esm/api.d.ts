@@ -16,87 +16,15 @@ import { BaseAPI } from './base';
 /**
  *
  * @export
- * @interface AddUpdateFlavorOrganizationPayload
+ * @interface AccessTokenField
  */
-export interface AddUpdateFlavorOrganizationPayload {
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'cpu': number;
+export interface AccessTokenField {
     /**
      *
      * @type {string}
-     * @memberof AddUpdateFlavorOrganizationPayload
+     * @memberof AccessTokenField
      */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'disk': number;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'ephemeral'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'gpu_count': number;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'gpu_id': number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'is_public': boolean;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'labels'?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'openstack_id': string;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'organizations': Array<number>;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'ram': number;
-    /**
-     *
-     * @type {number}
-     * @memberof AddUpdateFlavorOrganizationPayload
-     */
-    'region_id': number;
+    'access_token'?: string;
 }
 /**
  *
@@ -178,37 +106,6 @@ export interface ApiKeyFields {
      * @memberof ApiKeyFields
      */
     'name'?: string;
-}
-/**
- *
- * @export
- * @interface ApiKeyVerifyFields
- */
-export interface ApiKeyVerifyFields {
-    /**
-     *
-     * @type {number}
-     * @memberof ApiKeyVerifyFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ApiKeyVerifyFields
-     */
-    'sub'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ApiKeyVerifyFields
-     */
-    'user_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ApiKeyVerifyFields
-     */
-    'user_role'?: string;
 }
 /**
  *
@@ -301,6 +198,12 @@ export interface AttachVolumeFields {
     'created_at'?: string;
     /**
      *
+     * @type {string}
+     * @memberof AttachVolumeFields
+     */
+    'device'?: string;
+    /**
+     *
      * @type {number}
      * @memberof AttachVolumeFields
      */
@@ -311,6 +214,12 @@ export interface AttachVolumeFields {
      * @memberof AttachVolumeFields
      */
     'instance_id'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AttachVolumeFields
+     */
+    'protected'?: boolean;
     /**
      *
      * @type {string}
@@ -357,10 +266,96 @@ export interface AttachVolumes {
 export interface AttachVolumesPayload {
     /**
      *
+     * @type {boolean}
+     * @memberof AttachVolumesPayload
+     */
+    'protected'?: boolean;
+    /**
+     *
      * @type {Array<number>}
      * @memberof AttachVolumesPayload
      */
     'volume_ids'?: Array<number>;
+}
+/**
+ *
+ * @export
+ * @interface AttachmentsFieldsForVolume
+ */
+export interface AttachmentsFieldsForVolume {
+    /**
+     *
+     * @type {string}
+     * @memberof AttachmentsFieldsForVolume
+     */
+    'device'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof AttachmentsFieldsForVolume
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof AttachmentsFieldsForVolume
+     */
+    'instance_id'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AttachmentsFieldsForVolume
+     */
+    'protected'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof AttachmentsFieldsForVolume
+     */
+    'status'?: string;
+}
+/**
+ *
+ * @export
+ * @interface Attributes
+ */
+export interface Attributes {
+    /**
+     *
+     * @type {string}
+     * @memberof Attributes
+     */
+    'base_model'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Attributes
+     */
+    'base_model_display_name'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Attributes
+     */
+    'infrahub_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Attributes
+     */
+    'lora_adapter'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Attributes
+     */
+    'resource_name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Attributes
+     */
+    'status'?: string;
 }
 /**
  *
@@ -370,12 +365,6 @@ export interface AttachVolumesPayload {
 export interface AuthGetTokenResponseModel {
     /**
      *
-     * @type {boolean}
-     * @memberof AuthGetTokenResponseModel
-     */
-    'first_login'?: boolean;
-    /**
-     *
      * @type {string}
      * @memberof AuthGetTokenResponseModel
      */
@@ -388,54 +377,10 @@ export interface AuthGetTokenResponseModel {
     'status'?: boolean;
     /**
      *
-     * @type {TokenFields}
+     * @type {AccessTokenField}
      * @memberof AuthGetTokenResponseModel
      */
-    'token'?: TokenFields;
-}
-/**
- *
- * @export
- * @interface AuthRequestLoginFields
- */
-export interface AuthRequestLoginFields {
-    /**
-     *
-     * @type {string}
-     * @memberof AuthRequestLoginFields
-     */
-    'authorization_url'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthRequestLoginFields
-     */
-    'session_id'?: string;
-}
-/**
- *
- * @export
- * @interface AuthRequestLoginResponseModel
- */
-export interface AuthRequestLoginResponseModel {
-    /**
-     *
-     * @type {AuthRequestLoginFields}
-     * @memberof AuthRequestLoginResponseModel
-     */
-    'data'?: AuthRequestLoginFields;
-    /**
-     *
-     * @type {string}
-     * @memberof AuthRequestLoginResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof AuthRequestLoginResponseModel
-     */
-    'status'?: boolean;
+    'token'?: AccessTokenField;
 }
 /**
  *
@@ -496,136 +441,423 @@ export interface AuthUserInfoResponseModel {
 /**
  *
  * @export
- * @interface BillingImmuneResourcesResponse
+ * @interface BetaAccessRequestFields
  */
-export interface BillingImmuneResourcesResponse {
+export interface BetaAccessRequestFields {
     /**
-     *
-     * @type {Array<Data>}
-     * @memberof BillingImmuneResourcesResponse
+     * When the request was made
+     * @type {string}
+     * @memberof BetaAccessRequestFields
      */
-    'data'?: Array<Data>;
+    'created_at'?: string;
+    /**
+     * Unique identifier for the request
+     * @type {number}
+     * @memberof BetaAccessRequestFields
+     */
+    'id'?: number;
+    /**
+     * ID of the beta program
+     * @type {number}
+     * @memberof BetaAccessRequestFields
+     */
+    'program_id'?: number;
+    /**
+     * Name of the beta program
+     * @type {string}
+     * @memberof BetaAccessRequestFields
+     */
+    'program_name'?: string;
+    /**
+     * Status of the request
+     * @type {string}
+     * @memberof BetaAccessRequestFields
+     */
+    'status'?: BetaAccessRequestFieldsStatusEnum;
+    /**
+     * ID of the user who made the request
+     * @type {number}
+     * @memberof BetaAccessRequestFields
+     */
+    'user_id'?: number;
+}
+export declare const BetaAccessRequestFieldsStatusEnum: {
+    readonly Requested: "requested";
+    readonly Approved: "approved";
+    readonly Denied: "denied";
+    readonly Revoked: "revoked";
+};
+export type BetaAccessRequestFieldsStatusEnum = typeof BetaAccessRequestFieldsStatusEnum[keyof typeof BetaAccessRequestFieldsStatusEnum];
+/**
+ *
+ * @export
+ * @interface BetaAccessRequestPayload
+ */
+export interface BetaAccessRequestPayload {
+    /**
+     * Optional metadata for the request
+     * @type {object}
+     * @memberof BetaAccessRequestPayload
+     */
+    'metadata'?: object;
+    /**
+     * Name of the beta program
+     * @type {string}
+     * @memberof BetaAccessRequestPayload
+     */
+    'program': string;
 }
 /**
  *
  * @export
- * @interface BillingResponse
+ * @interface BetaAccessRequestResponseModel
  */
-export interface BillingResponse {
+export interface BetaAccessRequestResponseModel {
     /**
      *
-     * @type {Array<OrganizationObjectResponse>}
-     * @memberof BillingResponse
+     * @type {BetaAccessRequestFields}
+     * @memberof BetaAccessRequestResponseModel
      */
-    'calculated_bills'?: Array<OrganizationObjectResponse>;
+    'beta_access_request'?: BetaAccessRequestFields;
     /**
      *
      * @type {string}
-     * @memberof BillingResponse
+     * @memberof BetaAccessRequestResponseModel
      */
-    'calculation_time'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof BillingResponse
-     */
-    'type'?: string;
-}
-/**
- *
- * @export
- * @interface Billingmetricesfields
- */
-export interface Billingmetricesfields {
+    'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof Billingmetricesfields
+     * @memberof BetaAccessRequestResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface BetaAccessStatusItem
+ */
+export interface BetaAccessStatusItem {
+    /**
+     * Name of the beta program
+     * @type {string}
+     * @memberof BetaAccessStatusItem
+     */
+    'program_name'?: string;
+    /**
+     * When the request was made
+     * @type {string}
+     * @memberof BetaAccessStatusItem
+     */
+    'request_date'?: string;
+    /**
+     * Status of the request (requested, approved, denied, revoked)
+     * @type {string}
+     * @memberof BetaAccessStatusItem
+     */
+    'status'?: BetaAccessStatusItemStatusEnum;
+}
+export declare const BetaAccessStatusItemStatusEnum: {
+    readonly Requested: "requested";
+    readonly Approved: "approved";
+    readonly Denied: "denied";
+    readonly Revoked: "revoked";
+};
+export type BetaAccessStatusItemStatusEnum = typeof BetaAccessStatusItemStatusEnum[keyof typeof BetaAccessStatusItemStatusEnum];
+/**
+ *
+ * @export
+ * @interface BetaAccessStatusResponseModel
+ */
+export interface BetaAccessStatusResponseModel {
+    /**
+     * List of beta access requests
+     * @type {Array<BetaAccessStatusItem>}
+     * @memberof BetaAccessStatusResponseModel
+     */
+    'beta_access_requests'?: Array<BetaAccessStatusItem>;
+    /**
+     *
+     * @type {string}
+     * @memberof BetaAccessStatusResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof BetaAccessStatusResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistory
+ */
+export interface BillingHistory {
+    /**
+     *
+     * @type {Attributes}
+     * @memberof BillingHistory
+     */
+    'attributes'?: Attributes;
+    /**
+     *
+     * @type {object}
+     * @memberof BillingHistory
+     */
+    'metrics'?: object;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryDataSynthesisDetails
+ */
+export interface BillingHistoryDataSynthesisDetails {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryDataSynthesisDetails
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryDataSynthesisDetails
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryDataSynthesisDetails
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryDataSynthesisDetails
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryFineTuning
+ */
+export interface BillingHistoryFineTuning {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryFineTuning
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryFineTuning
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryFineTuning
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryFineTuning
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryModelEvalutationDetails
+ */
+export interface BillingHistoryModelEvalutationDetails {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryModelEvalutationDetails
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryModelEvalutationDetails
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryModelEvalutationDetails
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryModelEvalutationDetails
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryServerlessInference
+ */
+export interface BillingHistoryServerlessInference {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryServerlessInference
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryServerlessInference
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryServerlessInference
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryServerlessInference
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryServerlessInferenceDetails
+ */
+export interface BillingHistoryServerlessInferenceDetails {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryServerlessInferenceDetails
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryServerlessInferenceDetails
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryServerlessInferenceDetails
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryServerlessInferenceDetails
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingMetricesFields
+ */
+export interface BillingMetricesFields {
+    /**
+     *
+     * @type {boolean}
+     * @memberof BillingMetricesFields
      */
     'active'?: boolean;
     /**
      *
      * @type {number}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'bill_per_minute'?: number;
     /**
      *
      * @type {string}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'create_time'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'exclude_billing'?: boolean;
     /**
      *
      * @type {string}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'name'?: string;
     /**
      *
      * @type {number}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'organization_id'?: number;
     /**
      *
      * @type {number}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'resource_id'?: number;
     /**
      *
      * @type {string}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'resource_type'?: string;
     /**
      *
      * @type {string}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'terminate_time'?: string;
     /**
      *
      * @type {number}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'total_bill'?: number;
     /**
      *
      * @type {number}
-     * @memberof Billingmetricesfields
+     * @memberof BillingMetricesFields
      */
     'total_up_time'?: number;
 }
 /**
  *
  * @export
- * @interface Billingmetricesresponse
+ * @interface BillingMetricesResponse
  */
-export interface Billingmetricesresponse {
+export interface BillingMetricesResponse {
     /**
      *
-     * @type {Array<Billingmetricesfields>}
-     * @memberof Billingmetricesresponse
+     * @type {Array<BillingMetricesFields>}
+     * @memberof BillingMetricesResponse
      */
-    'data'?: Array<Billingmetricesfields>;
+    'data'?: Array<BillingMetricesFields>;
     /**
      *
      * @type {string}
-     * @memberof Billingmetricesresponse
+     * @memberof BillingMetricesResponse
      */
     'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof Billingmetricesresponse
+     * @memberof BillingMetricesResponse
      */
     'status'?: boolean;
 }
@@ -765,22 +997,28 @@ export interface ClusterFields {
     'kubernetes_version'?: string;
     /**
      *
+     * @type {ClusterFlavorFields}
+     * @memberof ClusterFields
+     */
+    'master_flavor'?: ClusterFlavorFields;
+    /**
+     *
      * @type {string}
      * @memberof ClusterFields
      */
     'name'?: string;
     /**
      *
-     * @type {number}
+     * @type {Array<ClusterNodeGroupFields>}
      * @memberof ClusterFields
      */
-    'node_count'?: number;
+    'node_groups'?: Array<ClusterNodeGroupFields>;
     /**
      *
-     * @type {InstanceFlavorFields}
+     * @type {Array<ClusterNodeFields>}
      * @memberof ClusterFields
      */
-    'node_flavor'?: InstanceFlavorFields;
+    'nodes'?: Array<ClusterNodeFields>;
     /**
      *
      * @type {string}
@@ -793,6 +1031,73 @@ export interface ClusterFields {
      * @memberof ClusterFields
      */
     'status_reason'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ClusterFlavorFields
+ */
+export interface ClusterFlavorFields {
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'cpu'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'disk'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'ephemeral'?: number;
+    /**
+     *
+     * @type {object}
+     * @memberof ClusterFlavorFields
+     */
+    'features'?: object;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterFlavorFields
+     */
+    'gpu'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'gpu_count'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {Array<LableResonse>}
+     * @memberof ClusterFlavorFields
+     */
+    'labels'?: Array<LableResonse>;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterFlavorFields
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterFlavorFields
+     */
+    'ram'?: number;
 }
 /**
  *
@@ -816,6 +1121,289 @@ export interface ClusterListResponse {
      *
      * @type {boolean}
      * @memberof ClusterListResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeFields
+ */
+export interface ClusterNodeFields {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {ClusterNodeInstanceFields}
+     * @memberof ClusterNodeFields
+     */
+    'instance'?: ClusterNodeInstanceFields;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodeFields
+     */
+    'is_bastion'?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeFields
+     */
+    'node_group_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'node_group_name'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodeFields
+     */
+    'requires_public_ip'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'role'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'status'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'status_reason'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeFields
+     */
+    'updated_at'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeGroupFields
+ */
+export interface ClusterNodeGroupFields {
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'count'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupFields
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {ClusterFlavorFields}
+     * @memberof ClusterNodeGroupFields
+     */
+    'flavor'?: ClusterFlavorFields;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupFields
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupFields
+     */
+    'role'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupFields
+     */
+    'updated_at'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeGroupsCreateResponse
+ */
+export interface ClusterNodeGroupsCreateResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupsCreateResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {ClusterNodeGroupFields}
+     * @memberof ClusterNodeGroupsCreateResponse
+     */
+    'node_group'?: ClusterNodeGroupFields;
+    /**
+     *
+     * @type {Array<ClusterNodeFields>}
+     * @memberof ClusterNodeGroupsCreateResponse
+     */
+    'nodes'?: Array<ClusterNodeFields>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodeGroupsCreateResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeGroupsGetResponse
+ */
+export interface ClusterNodeGroupsGetResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupsGetResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {ClusterNodeGroupFields}
+     * @memberof ClusterNodeGroupsGetResponse
+     */
+    'node_group'?: ClusterNodeGroupFields;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodeGroupsGetResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeGroupsListResponse
+ */
+export interface ClusterNodeGroupsListResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeGroupsListResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {Array<ClusterNodeGroupFields>}
+     * @memberof ClusterNodeGroupsListResponse
+     */
+    'node_groups'?: Array<ClusterNodeGroupFields>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodeGroupsListResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodeInstanceFields
+ */
+export interface ClusterNodeInstanceFields {
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'contract_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'fixed_ip'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'floating_ip'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'floating_ip_status'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'image_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodeInstanceFields
+     */
+    'status'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ClusterNodesListResponse
+ */
+export interface ClusterNodesListResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterNodesListResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {Array<ClusterNodeFields>}
+     * @memberof ClusterNodesListResponse
+     */
+    'nodes'?: Array<ClusterNodeFields>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterNodesListResponse
      */
     'status'?: boolean;
 }
@@ -847,6 +1435,49 @@ export interface ClusterResponse {
 /**
  *
  * @export
+ * @interface ClusterVersion
+ */
+export interface ClusterVersion {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterVersion
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterVersion
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {object}
+     * @memberof ClusterVersion
+     */
+    'image'?: object;
+    /**
+     *
+     * @type {object}
+     * @memberof ClusterVersion
+     */
+    'region'?: object;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterVersion
+     */
+    'updated_at'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterVersion
+     */
+    'version'?: string;
+}
+/**
+ *
+ * @export
  * @interface ClusterVersions
  */
 export interface ClusterVersions {
@@ -864,10 +1495,29 @@ export interface ClusterVersions {
     'status'?: boolean;
     /**
      *
-     * @type {Array<string>}
+     * @type {Array<ClusterVersion>}
      * @memberof ClusterVersions
      */
-    'versions'?: Array<string>;
+    'versions'?: Array<ClusterVersion>;
+}
+/**
+ *
+ * @export
+ * @interface Colors
+ */
+export interface Colors {
+    /**
+     *
+     * @type {PrimaryColor}
+     * @memberof Colors
+     */
+    'primary'?: PrimaryColor;
+    /**
+     *
+     * @type {SecondaryColor}
+     * @memberof Colors
+     */
+    'secondary'?: SecondaryColor;
 }
 /**
  *
@@ -1119,130 +1769,6 @@ export interface Contract {
 /**
  *
  * @export
- * @interface ContractBillingHistory
- */
-export interface ContractBillingHistory {
-    /**
-     *
-     * @type {ContractBillingHistoryResponseAttributes}
-     * @memberof ContractBillingHistory
-     */
-    'attributes'?: ContractBillingHistoryResponseAttributes;
-    /**
-     *
-     * @type {ContractlBillingHistoryResponseMetrics}
-     * @memberof ContractBillingHistory
-     */
-    'metrics'?: ContractlBillingHistoryResponseMetrics;
-}
-/**
- *
- * @export
- * @interface ContractBillingHistoryResponseAttributes
- */
-export interface ContractBillingHistoryResponseAttributes {
-    /**
-     *
-     * @type {string}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'gpu_count'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'gpu_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'id'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'infrahub_id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractBillingHistoryResponseAttributes
-     */
-    'price_per_hour'?: number;
-}
-/**
- *
- * @export
- * @interface ContractBillingHistoryResponseModel
- */
-export interface ContractBillingHistoryResponseModel {
-    /**
-     *
-     * @type {ContractBillingHistory}
-     * @memberof ContractBillingHistoryResponseModel
-     */
-    'billing_history_contract'?: ContractBillingHistory;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractBillingHistoryResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof ContractBillingHistoryResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface ContractChangePayload
- */
-export interface ContractChangePayload {
-    /**
-     * List of field changes for \'updated\' type
-     * @type {Array<FieldChange>}
-     * @memberof ContractChangePayload
-     */
-    'changes'?: Array<FieldChange>;
-    /**
-     * The ID of the contract
-     * @type {number}
-     * @memberof ContractChangePayload
-     */
-    'id': number;
-    /**
-     * The ORG ID of the contract
-     * @type {number}
-     * @memberof ContractChangePayload
-     */
-    'org_id': number;
-    /**
-     * Purpose of the change: created, deleted, expired, or updated
-     * @type {string}
-     * @memberof ContractChangePayload
-     */
-    'type': string;
-}
-/**
- *
- * @export
  * @interface ContractDiscountPlanFields
  */
 export interface ContractDiscountPlanFields {
@@ -1287,6 +1813,12 @@ export interface ContractDiscountPlanFields {
      * @type {number}
      * @memberof ContractDiscountPlanFields
      */
+    'remaining_count'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ContractDiscountPlanFields
+     */
     'resource_count'?: number;
     /**
      *
@@ -1300,111 +1832,6 @@ export interface ContractDiscountPlanFields {
      * @memberof ContractDiscountPlanFields
      */
     'resource_name'?: string;
-}
-/**
- *
- * @export
- * @interface ContractEligibleInstanceFields
- */
-export interface ContractEligibleInstanceFields {
-    /**
-     *
-     * @type {number}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'contract_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'host'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'openstack_id'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'public_ip'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstanceFields
-     */
-    'status'?: string;
-}
-/**
- *
- * @export
- * @interface ContractEligibleInstancesResponse
- */
-export interface ContractEligibleInstancesResponse {
-    /**
-     *
-     * @type {number}
-     * @memberof ContractEligibleInstancesResponse
-     */
-    'instance_count'?: number;
-    /**
-     *
-     * @type {Array<ContractEligibleInstanceFields>}
-     * @memberof ContractEligibleInstancesResponse
-     */
-    'instances'?: Array<ContractEligibleInstanceFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof ContractEligibleInstancesResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof ContractEligibleInstancesResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface ContractEventCreateModel
- */
-export interface ContractEventCreateModel {
-    /**
-     * Message for the event
-     * @type {string}
-     * @memberof ContractEventCreateModel
-     */
-    'message': string;
-    /**
-     * Reason for the event
-     * @type {string}
-     * @memberof ContractEventCreateModel
-     */
-    'reason': string;
-    /**
-     * Event type
-     * @type {string}
-     * @memberof ContractEventCreateModel
-     */
-    'type': string;
 }
 /**
  *
@@ -1437,6 +1864,12 @@ export interface ContractGPUAllocationGraphResponse {
  * @interface ContractInstanceFields
  */
 export interface ContractInstanceFields {
+    /**
+     *
+     * @type {ClusterFields}
+     * @memberof ContractInstanceFields
+     */
+    'cluster'?: ClusterFields;
     /**
      *
      * @type {string}
@@ -1514,52 +1947,57 @@ export interface ContractInstancesResponse {
 /**
  *
  * @export
- * @interface ContractResourcePayload
+ * @interface CreateClusterNodeFields
  */
-export interface ContractResourcePayload {
+export interface CreateClusterNodeFields {
     /**
      *
      * @type {number}
-     * @memberof ContractResourcePayload
+     * @memberof CreateClusterNodeFields
      */
-    'discount_amount'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractResourcePayload
-     */
-    'discount_percent'?: number;
+    'count'?: number;
     /**
      *
      * @type {string}
-     * @memberof ContractResourcePayload
+     * @memberof CreateClusterNodeFields
      */
-    'discount_type': string;
+    'node_group'?: string;
     /**
      *
-     * @type {number}
-     * @memberof ContractResourcePayload
+     * @type {string}
+     * @memberof CreateClusterNodeFields
      */
-    'resource_count'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContractResourcePayload
-     */
-    'resource_id': number;
+    'role'?: CreateClusterNodeFieldsRoleEnum;
 }
+export declare const CreateClusterNodeFieldsRoleEnum: {
+    readonly Worker: "worker";
+    readonly Master: "master";
+};
+export type CreateClusterNodeFieldsRoleEnum = typeof CreateClusterNodeFieldsRoleEnum[keyof typeof CreateClusterNodeFieldsRoleEnum];
 /**
  *
  * @export
- * @interface ContractlBillingHistoryResponseMetrics
+ * @interface CreateClusterNodeGroupPayload
  */
-export interface ContractlBillingHistoryResponseMetrics {
+export interface CreateClusterNodeGroupPayload {
     /**
      *
      * @type {number}
-     * @memberof ContractlBillingHistoryResponseMetrics
+     * @memberof CreateClusterNodeGroupPayload
      */
-    'incurred_bill'?: number;
+    'count'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'flavor_name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'name': string;
 }
 /**
  *
@@ -1572,13 +2010,13 @@ export interface CreateClusterPayload {
      * @type {string}
      * @memberof CreateClusterPayload
      */
-    'environment_name': string;
+    'deployment_mode'?: CreateClusterPayloadDeploymentModeEnum;
     /**
      *
      * @type {string}
      * @memberof CreateClusterPayload
      */
-    'image_name': string;
+    'environment_name': string;
     /**
      *
      * @type {string}
@@ -1591,6 +2029,12 @@ export interface CreateClusterPayload {
      * @memberof CreateClusterPayload
      */
     'kubernetes_version': string;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateClusterPayload
+     */
+    'master_count'?: number;
     /**
      *
      * @type {string}
@@ -1608,174 +2052,25 @@ export interface CreateClusterPayload {
      * @type {number}
      * @memberof CreateClusterPayload
      */
-    'node_count': number;
+    'node_count'?: number;
     /**
      *
      * @type {string}
      * @memberof CreateClusterPayload
      */
-    'node_flavor_name': string;
+    'node_flavor_name'?: string;
+    /**
+     *
+     * @type {Array<CreateClusterNodeGroupPayload>}
+     * @memberof CreateClusterPayload
+     */
+    'node_groups'?: Array<CreateClusterNodeGroupPayload>;
 }
-/**
- *
- * @export
- * @interface CreateContractFields
- */
-export interface CreateContractFields {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractFields
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {Array<ContractDiscountPlanFields>}
-     * @memberof CreateContractFields
-     */
-    'discount_plans'?: Array<ContractDiscountPlanFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateContractFields
-     */
-    'expiration_policy'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateContractFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateContractFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractFields
-     */
-    'start_date'?: string;
-}
-/**
- *
- * @export
- * @interface CreateContractPayload
- */
-export interface CreateContractPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractPayload
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {Array<ContractResourcePayload>}
-     * @memberof CreateContractPayload
-     */
-    'discount_resources': Array<ContractResourcePayload>;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractPayload
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateContractPayload
-     */
-    'expiration_policy': number;
-    /**
-     *
-     * @type {number}
-     * @memberof CreateContractPayload
-     */
-    'org_id': number;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateContractPayload
-     */
-    'start_date'?: string;
-}
-/**
- *
- * @export
- * @interface CreateDiscountResponse
- */
-export interface CreateDiscountResponse {
-    /**
-     *
-     * @type {InsertDiscountPlanFields}
-     * @memberof CreateDiscountResponse
-     */
-    'discount_plan'?: InsertDiscountPlanFields;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateDiscountResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof CreateDiscountResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface CreateDiscountsPayload
- */
-export interface CreateDiscountsPayload {
-    /**
-     *
-     * @type {Array<CustomerPayload>}
-     * @memberof CreateDiscountsPayload
-     */
-    'customers': Array<CustomerPayload>;
-    /**
-     *
-     * @type {Array<DiscountResourcePayload>}
-     * @memberof CreateDiscountsPayload
-     */
-    'discount_resources': Array<DiscountResourcePayload>;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateDiscountsPayload
-     */
-    'discount_status': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateDiscountsPayload
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateDiscountsPayload
-     */
-    'start_date'?: string;
-}
+export declare const CreateClusterPayloadDeploymentModeEnum: {
+    readonly Full: "full";
+    readonly Standard: "standard";
+};
+export type CreateClusterPayloadDeploymentModeEnum = typeof CreateClusterPayloadDeploymentModeEnum[keyof typeof CreateClusterPayloadDeploymentModeEnum];
 /**
  *
  * @export
@@ -1789,7 +2084,7 @@ export interface CreateEnvironment {
      */
     'name': string;
     /**
-     * The geographic location of the data center where the environment is being created. To learn more about regions, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/regions).
+     * The geographic location of the data center where the environment is being created. To learn more about regions, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/features/regions).
      * @type {string}
      * @memberof CreateEnvironment
      */
@@ -1895,31 +2190,6 @@ export type CreateFirewallRulePayloadProtocolEnum = typeof CreateFirewallRulePay
 /**
  *
  * @export
- * @interface CreateGPU
- */
-export interface CreateGPU {
-    /**
-     * A valid JSON string.
-     * @type {string}
-     * @memberof CreateGPU
-     */
-    'example_metadata'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateGPU
-     */
-    'name': string;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof CreateGPU
-     */
-    'regions'?: Array<string>;
-}
-/**
- *
- * @export
  * @interface CreateImage
  */
 export interface CreateImage {
@@ -1968,13 +2238,13 @@ export interface CreateImagePayload {
  */
 export interface CreateInstancesPayload {
     /**
-     * When this field is set to `true`, it attaches a [public IP address](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip)to the virtual machine, enabling internet accessibility.
+     * When this field is set to `true`, it attaches a [public IP address](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/floating-ip/) to the virtual machine, enabling internet accessibility.
      * @type {boolean}
      * @memberof CreateInstancesPayload
      */
     'assign_floating_ip'?: boolean;
     /**
-     * An optional URL where actions performed on the virtual machine will be sent. For additional information on event callbacks, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * An optional URL where actions performed on the virtual machine will be sent. For additional information on event callbacks, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/).
      * @type {string}
      * @memberof CreateInstancesPayload
      */
@@ -1998,7 +2268,7 @@ export interface CreateInstancesPayload {
      */
     'enable_port_randomization'?: boolean;
     /**
-     * The name of the [environment](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features) in which the virtual machine is to be created.
+     * The name of the [environment](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/) in which the virtual machine is to be created.
      * @type {string}
      * @memberof CreateInstancesPayload
      */
@@ -2010,19 +2280,19 @@ export interface CreateInstancesPayload {
      */
     'flavor'?: FlavorObjectFields;
     /**
-     * The name of the GPU hardware configuration ([flavor](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors)) for the virtual machines being created.
+     * The name of the GPU hardware configuration ([flavor](https://docs.hyperstack.cloud/docs/hardware/flavors)) for the virtual machines being created.
      * @type {string}
      * @memberof CreateInstancesPayload
      */
     'flavor_name': string;
     /**
-     * The [operating system (OS) image](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/images) name designated for installation on the virtual machine.It also accepts custom, private images, created from [existing snapshots](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/custom-images).
+     * The [operating system (OS) image](https://docs.hyperstack.cloud/docs/virtual-machines/images) name designated for installation on the virtual machine.It also accepts custom, private images, created from [existing snapshots](https://docs.hyperstack.cloud/docs/virtual-machines/custom-images).
      * @type {string}
      * @memberof CreateInstancesPayload
      */
     'image_name'?: string;
     /**
-     * The name of the existing SSH key pair to be used for secure access to the virtual machine. For additional information on SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/getting-started/create-keypair).
+     * The name of the existing SSH key pair to be used for secure access to the virtual machine. For additional information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @type {string}
      * @memberof CreateInstancesPayload
      */
@@ -2052,7 +2322,7 @@ export interface CreateInstancesPayload {
      */
     'security_rules'?: Array<CreateSecurityRulePayload>;
     /**
-     * Optional initialization configuration commands to manage the configuration of a virtual machine at launch using cloud-init scripts. For more information about custom VM configuration using cloud-init, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/initialization-configuration).
+     * Optional initialization configuration commands to manage the configuration of a virtual machine at launch using cloud-init scripts. For more information about custom VM configuration using cloud-init, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/initialization-configuration).
      * @type {string}
      * @memberof CreateInstancesPayload
      */
@@ -2096,7 +2366,7 @@ export interface CreateInstancesResponse {
  */
 export interface CreateProfilePayload {
     /**
-     * The data object which contains the configuration of the virtual machine profile being created.
+     * The data object containing the configuration details of the virtual machine profile being created.
      * @type {{ [key: string]: string; }}
      * @memberof CreateProfilePayload
      */
@@ -2226,12 +2496,6 @@ export interface CreateSnapshotPayload {
      */
     'description': string;
     /**
-     * Indicates if the snapshot is an image
-     * @type {boolean}
-     * @memberof CreateSnapshotPayload
-     */
-    'is_image': boolean;
-    /**
      * Labels associated with snapshot
      * @type {Array<string>}
      * @memberof CreateSnapshotPayload
@@ -2297,118 +2561,6 @@ export interface CreateUpdateComplianceResponse {
 /**
  *
  * @export
- * @interface CreateUpdatePermissionPayload
- */
-export interface CreateUpdatePermissionPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePermissionPayload
-     */
-    'endpoint': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePermissionPayload
-     */
-    'method': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePermissionPayload
-     */
-    'permission': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePermissionPayload
-     */
-    'resource': string;
-}
-/**
- *
- * @export
- * @interface CreateUpdatePermissionResponseModel
- */
-export interface CreateUpdatePermissionResponseModel {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePermissionResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {PermissionFields}
-     * @memberof CreateUpdatePermissionResponseModel
-     */
-    'permission'?: PermissionFields;
-    /**
-     *
-     * @type {boolean}
-     * @memberof CreateUpdatePermissionResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface CreateUpdatePolicyPayload
- */
-export interface CreateUpdatePolicyPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePolicyPayload
-     */
-    'description': string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof CreateUpdatePolicyPayload
-     */
-    'is_public': boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePolicyPayload
-     */
-    'name': string;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof CreateUpdatePolicyPayload
-     */
-    'permissions': Array<number>;
-}
-/**
- *
- * @export
- * @interface CreateUpdatePolicyResponseModel
- */
-export interface CreateUpdatePolicyResponseModel {
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdatePolicyResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {PolicyFields}
-     * @memberof CreateUpdatePolicyResponseModel
-     */
-    'policy'?: PolicyFields;
-    /**
-     *
-     * @type {boolean}
-     * @memberof CreateUpdatePolicyResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
  * @interface CreateUpdateRbacRolePayload
  */
 export interface CreateUpdateRbacRolePayload {
@@ -2456,7 +2608,7 @@ export interface CreateVolumePayload {
      */
     'description'?: string;
     /**
-     * The name of the [environment](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features) within which the volume is being created.
+     * The name of the [environment](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/) within which the volume is being created.
      * @type {string}
      * @memberof CreateVolumePayload
      */
@@ -2485,124 +2637,6 @@ export interface CreateVolumePayload {
      * @memberof CreateVolumePayload
      */
     'volume_type': string;
-}
-/**
- *
- * @export
- * @interface Creditrechargelimitfield
- */
-export interface Creditrechargelimitfield {
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrechargelimitfield
-     */
-    'credit_granted'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrechargelimitfield
-     */
-    'credit_limit'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrechargelimitfield
-     */
-    'organization_id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrechargelimitfield
-     */
-    'user_id'?: number;
-}
-/**
- *
- * @export
- * @interface Creditrechargelimitresponse
- */
-export interface Creditrechargelimitresponse {
-    /**
-     *
-     * @type {Array<Creditrechargelimitfield>}
-     * @memberof Creditrechargelimitresponse
-     */
-    'data'?: Array<Creditrechargelimitfield>;
-    /**
-     *
-     * @type {string}
-     * @memberof Creditrechargelimitresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Creditrechargelimitresponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface Creditrequestresponse
- */
-export interface Creditrequestresponse {
-    /**
-     *
-     * @type {Array<Creditrequests>}
-     * @memberof Creditrequestresponse
-     */
-    'data'?: Array<Creditrequests>;
-    /**
-     *
-     * @type {string}
-     * @memberof Creditrequestresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Creditrequestresponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface Creditrequests
- */
-export interface Creditrequests {
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrequests
-     */
-    'admin_user_id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof Creditrequests
-     */
-    'amount'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof Creditrequests
-     */
-    'reason'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Creditrequests
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Creditrequests
-     */
-    'updated_at'?: string;
 }
 /**
  *
@@ -2693,44 +2727,6 @@ export interface CustomerContractFields {
 /**
  *
  * @export
- * @interface CustomerFields
- */
-export interface CustomerFields {
-    /**
-     *
-     * @type {number}
-     * @memberof CustomerFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerFields
-     */
-    'plan_type'?: string;
-}
-/**
- *
- * @export
- * @interface CustomerPayload
- */
-export interface CustomerPayload {
-    /**
-     *
-     * @type {number}
-     * @memberof CustomerPayload
-     */
-    'id': number;
-    /**
-     *
-     * @type {string}
-     * @memberof CustomerPayload
-     */
-    'plan_type': string;
-}
-/**
- *
- * @export
  * @interface DashboardInfoResponse
  */
 export interface DashboardInfoResponse {
@@ -2756,27 +2752,27 @@ export interface DashboardInfoResponse {
 /**
  *
  * @export
- * @interface Data
+ * @interface DataSynthesisBillingHistoryDetailsResponseSchema
  */
-export interface Data {
+export interface DataSynthesisBillingHistoryDetailsResponseSchema {
     /**
-     * Organization ID associated with the resource.
-     * @type {number}
-     * @memberof Data
+     *
+     * @type {BillingHistoryDataSynthesisDetails}
+     * @memberof DataSynthesisBillingHistoryDetailsResponseSchema
      */
-    'organization_id'?: number;
+    'billing_history_data_synthesis_details'?: BillingHistoryDataSynthesisDetails;
     /**
-     * ID of the resource.
-     * @type {number}
-     * @memberof Data
-     */
-    'resource_id'?: number;
-    /**
-     * Type of the resource.
+     *
      * @type {string}
-     * @memberof Data
+     * @memberof DataSynthesisBillingHistoryDetailsResponseSchema
      */
-    'resource_type'?: string;
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DataSynthesisBillingHistoryDetailsResponseSchema
+     */
+    'status'?: boolean;
 }
 /**
  *
@@ -2824,49 +2820,49 @@ export interface DeploymentFields {
 /**
  *
  * @export
- * @interface DeploymentFieldsforstartdeployments
+ * @interface DeploymentFieldsForStartDeployments
  */
-export interface DeploymentFieldsforstartdeployments {
+export interface DeploymentFieldsForStartDeployments {
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'created_at'?: string;
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'description'?: string;
     /**
      *
      * @type {number}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'id'?: number;
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'name'?: string;
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'status'?: string;
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'template'?: string;
     /**
      *
      * @type {string}
-     * @memberof DeploymentFieldsforstartdeployments
+     * @memberof DeploymentFieldsForStartDeployments
      */
     'variables'?: string;
 }
@@ -2936,216 +2932,13 @@ export interface DetachVolumesPayload {
 /**
  *
  * @export
- * @interface DiscountEntityModel
+ * @interface EditLabelOfAnExistingVMPayload
  */
-export interface DiscountEntityModel {
-    /**
-     *
-     * @type {Array<DiscountPlanFields>}
-     * @memberof DiscountEntityModel
-     */
-    'data'?: Array<DiscountPlanFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountEntityModel
-     */
-    'entity'?: string;
-}
-/**
- *
- * @export
- * @interface DiscountFields
- */
-export interface DiscountFields {
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountFields
-     */
-    'discount_status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountFields
-     */
-    'org_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountFields
-     */
-    'plan_type'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountFields
-     */
-    'vm_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountFields
-     */
-    'vm_name'?: string;
-}
-/**
- *
- * @export
- * @interface DiscountPlanFields
- */
-export interface DiscountPlanFields {
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountPlanFields
-     */
-    'discount_amount'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'discount_code'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountPlanFields
-     */
-    'discount_percent'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'discount_status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'discount_type'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountPlanFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'resource'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountPlanFields
-     */
-    'start_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountPlanFields
-     */
-    'validity_days'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountPlanFields
-     */
-    'vm_id'?: number;
-}
-/**
- *
- * @export
- * @interface DiscountResourceFields
- */
-export interface DiscountResourceFields {
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourceFields
-     */
-    'discount_amount'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourceFields
-     */
-    'discount_percent'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountResourceFields
-     */
-    'discount_type'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourceFields
-     */
-    'resource_id'?: number;
-}
-/**
- *
- * @export
- * @interface DiscountResourcePayload
- */
-export interface DiscountResourcePayload {
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourcePayload
-     */
-    'discount_amount': number;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourcePayload
-     */
-    'discount_percent': number;
-    /**
-     *
-     * @type {string}
-     * @memberof DiscountResourcePayload
-     */
-    'discount_type': string;
-    /**
-     *
-     * @type {number}
-     * @memberof DiscountResourcePayload
-     */
-    'resource_id': number;
-}
-/**
- *
- * @export
- * @interface EditlabelofanexistingVMPayload
- */
-export interface EditlabelofanexistingVMPayload {
+export interface EditLabelOfAnExistingVMPayload {
     /**
      * Multiple labels can be added by separating with spaces
      * @type {Array<string>}
-     * @memberof EditlabelofanexistingVMPayload
+     * @memberof EditLabelOfAnExistingVMPayload
      */
     'labels'?: Array<string>;
 }
@@ -3182,11 +2975,23 @@ export interface Environment {
 export interface EnvironmentFeatures {
     /**
      *
+     * @type {string}
+     * @memberof EnvironmentFeatures
+     */
+    'green_status'?: EnvironmentFeaturesGreenStatusEnum;
+    /**
+     *
      * @type {boolean}
      * @memberof EnvironmentFeatures
      */
     'network_optimised'?: boolean;
 }
+export declare const EnvironmentFeaturesGreenStatusEnum: {
+    readonly Green: "GREEN";
+    readonly PartiallyGreen: "PARTIALLY_GREEN";
+    readonly NotGreen: "NOT_GREEN";
+};
+export type EnvironmentFeaturesGreenStatusEnum = typeof EnvironmentFeaturesGreenStatusEnum[keyof typeof EnvironmentFeaturesGreenStatusEnum];
 /**
  *
  * @export
@@ -3227,15 +3032,27 @@ export interface EnvironmentFields {
 /**
  *
  * @export
- * @interface EnvironmentFieldsforVolume
+ * @interface EnvironmentFieldsForVolume
  */
-export interface EnvironmentFieldsforVolume {
+export interface EnvironmentFieldsForVolume {
+    /**
+     *
+     * @type {object}
+     * @memberof EnvironmentFieldsForVolume
+     */
+    'features'?: object;
     /**
      *
      * @type {string}
-     * @memberof EnvironmentFieldsforVolume
+     * @memberof EnvironmentFieldsForVolume
      */
     'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EnvironmentFieldsForVolume
+     */
+    'region'?: string;
 }
 /**
  *
@@ -3304,136 +3121,6 @@ export interface ErrorResponseModel {
      * @memberof ErrorResponseModel
      */
     'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface ExcludeBillingPostPayload
- */
-export interface ExcludeBillingPostPayload {
-    /**
-     * `true` excludes the resource from billing while `false` does not.
-     * @type {boolean}
-     * @memberof ExcludeBillingPostPayload
-     */
-    'exclude': boolean;
-    /**
-     * The ID of the resource which is being excluded from billing.
-     * @type {number}
-     * @memberof ExcludeBillingPostPayload
-     */
-    'resource_id': number;
-    /**
-     * The type of the resource which is being excluded from billing.
-     * @type {string}
-     * @memberof ExcludeBillingPostPayload
-     */
-    'resource_type': string;
-}
-/**
- *
- * @export
- * @interface ExcludeBillingPostResponse
- */
-export interface ExcludeBillingPostResponse {
-    /**
-     *
-     * @type {Data}
-     * @memberof ExcludeBillingPostResponse
-     */
-    'data'?: Data;
-}
-/**
- *
- * @export
- * @interface ExportBillingDataRequest
- */
-export interface ExportBillingDataRequest {
-    /**
-     *
-     * @type {string}
-     * @memberof ExportBillingDataRequest
-     */
-    'end_date': string;
-    /**
-     *
-     * @type {number}
-     * @memberof ExportBillingDataRequest
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof ExportBillingDataRequest
-     */
-    'required_attributes': Array<string>;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof ExportBillingDataRequest
-     */
-    'required_metrics': Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof ExportBillingDataRequest
-     */
-    'resource_type': ExportBillingDataRequestResourceTypeEnum;
-    /**
-     *
-     * @type {string}
-     * @memberof ExportBillingDataRequest
-     */
-    'start_date': string;
-}
-export declare const ExportBillingDataRequestResourceTypeEnum: {
-    readonly VirtualMachine: "virtual_machine";
-    readonly Volume: "volume";
-};
-export type ExportBillingDataRequestResourceTypeEnum = typeof ExportBillingDataRequestResourceTypeEnum[keyof typeof ExportBillingDataRequestResourceTypeEnum];
-/**
- *
- * @export
- * @interface ExportBillingDataResponse
- */
-export interface ExportBillingDataResponse {
-    /**
-     *
-     * @type {Array<object>}
-     * @memberof ExportBillingDataResponse
-     */
-    'measures'?: Array<object>;
-    /**
-     *
-     * @type {string}
-     * @memberof ExportBillingDataResponse
-     */
-    'message'?: string;
-}
-/**
- *
- * @export
- * @interface FieldChange
- */
-export interface FieldChange {
-    /**
-     * The name of the field that was changed
-     * @type {string}
-     * @memberof FieldChange
-     */
-    'field_name'?: string;
-    /**
-     * The new value of the field
-     * @type {string}
-     * @memberof FieldChange
-     */
-    'new_value'?: string;
-    /**
-     * The old value of the field
-     * @type {string}
-     * @memberof FieldChange
-     */
-    'old_value'?: string;
 }
 /**
  *
@@ -3788,6 +3475,12 @@ export interface FlavorFields {
     'ephemeral'?: number;
     /**
      *
+     * @type {object}
+     * @memberof FlavorFields
+     */
+    'features'?: object;
+    /**
+     *
      * @type {string}
      * @memberof FlavorFields
      */
@@ -3863,6 +3556,25 @@ export interface FlavorItemGetResponse {
 /**
  *
  * @export
+ * @interface FlavorLabelFields
+ */
+export interface FlavorLabelFields {
+    /**
+     *
+     * @type {number}
+     * @memberof FlavorLabelFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof FlavorLabelFields
+     */
+    'label'?: string;
+}
+/**
+ *
+ * @export
  * @interface FlavorListResponse
  */
 export interface FlavorListResponse {
@@ -3921,316 +3633,6 @@ export interface FlavorObjectFields {
      * @memberof FlavorObjectFields
      */
     'ram'?: number;
-}
-/**
- *
- * @export
- * @interface FlavorPayload
- */
-export interface FlavorPayload {
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorPayload
-     */
-    'cpu': number;
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorPayload
-     */
-    'disk': number;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorPayload
-     */
-    'gpu': string;
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorPayload
-     */
-    'gpu_count': number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof FlavorPayload
-     */
-    'is_public': boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorPayload
-     */
-    'name': string;
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorPayload
-     */
-    'ram': number;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorPayload
-     */
-    'region_name': string;
-}
-/**
- *
- * @export
- * @interface FlavorResponse
- */
-export interface FlavorResponse {
-    /**
-     *
-     * @type {FlavorFields}
-     * @memberof FlavorResponse
-     */
-    'flavor'?: FlavorFields;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof FlavorResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface FlavorVMFields
- */
-export interface FlavorVMFields {
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMFields
-     */
-    'host'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorVMFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMFields
-     */
-    'openstack_id'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof FlavorVMFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMFields
-     */
-    'status'?: string;
-}
-/**
- *
- * @export
- * @interface FlavorVMsResponse
- */
-export interface FlavorVMsResponse {
-    /**
-     *
-     * @type {Array<FlavorVMFields>}
-     * @memberof FlavorVMsResponse
-     */
-    'flavor_vms'?: Array<FlavorVMFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof FlavorVMsResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof FlavorVMsResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface FutureNodeModel
- */
-export interface FutureNodeModel {
-    /**
-     * Date and time in the format YYYY-MM-DD HH:mm:ss
-     * @type {string}
-     * @memberof FutureNodeModel
-     */
-    'expected_provision_date': string;
-    /**
-     *
-     * @type {number}
-     * @memberof FutureNodeModel
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeModel
-     */
-    'nexgen_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeModel
-     */
-    'openstack_name'?: string;
-    /**
-     *
-     * @type {Array<FutureNodeStockModel>}
-     * @memberof FutureNodeModel
-     */
-    'stocks'?: Array<FutureNodeStockModel>;
-}
-/**
- *
- * @export
- * @interface FutureNodeResponseModel
- */
-export interface FutureNodeResponseModel {
-    /**
-     *
-     * @type {Array<FutureNodeModel>}
-     * @memberof FutureNodeResponseModel
-     */
-    'nodes'?: Array<FutureNodeModel>;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeResponseModel
-     */
-    'region'?: string;
-}
-/**
- *
- * @export
- * @interface FutureNodeStockModel
- */
-export interface FutureNodeStockModel {
-    /**
-     *
-     * @type {number}
-     * @memberof FutureNodeStockModel
-     */
-    'expected_amount': number;
-    /**
-     *
-     * @type {number}
-     * @memberof FutureNodeStockModel
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeStockModel
-     */
-    'name'?: string;
-}
-/**
- *
- * @export
- * @interface FutureNodeUpdateModel
- */
-export interface FutureNodeUpdateModel {
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeUpdateModel
-     */
-    'expected_provision_date': string;
-    /**
-     *
-     * @type {number}
-     * @memberof FutureNodeUpdateModel
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeUpdateModel
-     */
-    'nexgen_name': string;
-    /**
-     *
-     * @type {string}
-     * @memberof FutureNodeUpdateModel
-     */
-    'openstack_name': string;
-    /**
-     *
-     * @type {number}
-     * @memberof FutureNodeUpdateModel
-     */
-    'region_id'?: number;
-}
-/**
- *
- * @export
- * @interface FutureNodesStockModel
- */
-export interface FutureNodesStockModel {
-    /**
-     *
-     * @type {Array<FutureNodeResponseModel>}
-     * @memberof FutureNodesStockModel
-     */
-    'future_stocks'?: Array<FutureNodeResponseModel>;
-}
-/**
- *
- * @export
- * @interface GPU
- */
-export interface GPU {
-    /**
-     *
-     * @type {GPUFields}
-     * @memberof GPU
-     */
-    'gpu'?: GPUFields;
-    /**
-     *
-     * @type {string}
-     * @memberof GPU
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GPU
-     */
-    'status'?: boolean;
 }
 /**
  *
@@ -4366,148 +3768,6 @@ export interface GenerateUpdateApiKeyResponseModel {
 /**
  *
  * @export
- * @interface GetAllContractFields
- */
-export interface GetAllContractFields {
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllContractFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllContractFields
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllContractFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof GetAllContractFields
-     */
-    'expiration_policy'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof GetAllContractFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof GetAllContractFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllContractFields
-     */
-    'start_date'?: string;
-}
-/**
- *
- * @export
- * @interface GetAllContractsResponseModel
- */
-export interface GetAllContractsResponseModel {
-    /**
-     *
-     * @type {Array<GetAllContractFields>}
-     * @memberof GetAllContractsResponseModel
-     */
-    'contracts'?: Array<GetAllContractFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllContractsResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetAllContractsResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface GetAllDiscountForAllOrganizationResponse
- */
-export interface GetAllDiscountForAllOrganizationResponse {
-    /**
-     *
-     * @type {Array<GetAllDiscountsFields>}
-     * @memberof GetAllDiscountForAllOrganizationResponse
-     */
-    'discount_plans'?: Array<GetAllDiscountsFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllDiscountForAllOrganizationResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetAllDiscountForAllOrganizationResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface GetAllDiscountsFields
- */
-export interface GetAllDiscountsFields {
-    /**
-     *
-     * @type {Array<DiscountResourceFields>}
-     * @memberof GetAllDiscountsFields
-     */
-    'discount_resources'?: Array<DiscountResourceFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllDiscountsFields
-     */
-    'discount_status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllDiscountsFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof GetAllDiscountsFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllDiscountsFields
-     */
-    'org_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof GetAllDiscountsFields
-     */
-    'start_date'?: string;
-}
-/**
- *
- * @export
  * @interface GetApiKeysResponseModel
  */
 export interface GetApiKeysResponseModel {
@@ -4527,6 +3787,56 @@ export interface GetApiKeysResponseModel {
      *
      * @type {boolean}
      * @memberof GetApiKeysResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface GetCreditAndThresholdInfo
+ */
+export interface GetCreditAndThresholdInfo {
+    /**
+     *
+     * @type {boolean}
+     * @memberof GetCreditAndThresholdInfo
+     */
+    'can_create_instance'?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof GetCreditAndThresholdInfo
+     */
+    'credit'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof GetCreditAndThresholdInfo
+     */
+    'threshold'?: number;
+}
+/**
+ *
+ * @export
+ * @interface GetCreditAndThresholdInfoInResponse
+ */
+export interface GetCreditAndThresholdInfoInResponse {
+    /**
+     *
+     * @type {GetCreditAndThresholdInfo}
+     * @memberof GetCreditAndThresholdInfoInResponse
+     */
+    'data'?: GetCreditAndThresholdInfo;
+    /**
+     *
+     * @type {string}
+     * @memberof GetCreditAndThresholdInfoInResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof GetCreditAndThresholdInfoInResponse
      */
     'status'?: boolean;
 }
@@ -4564,83 +3874,15 @@ export interface GetCustomerContractsListResponseModel {
 /**
  *
  * @export
- * @interface GetDiscountDetailResponse
+ * @interface GetInstanceLogsResponse
  */
-export interface GetDiscountDetailResponse {
-    /**
-     *
-     * @type {DiscountEntityModel}
-     * @memberof GetDiscountDetailResponse
-     */
-    'discounts_entity'?: DiscountEntityModel;
+export interface GetInstanceLogsResponse {
     /**
      *
      * @type {string}
-     * @memberof GetDiscountDetailResponse
+     * @memberof GetInstanceLogsResponse
      */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetDiscountDetailResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface GetDiscountResponse
- */
-export interface GetDiscountResponse {
-    /**
-     *
-     * @type {Array<DiscountFields>}
-     * @memberof GetDiscountResponse
-     */
-    'discount_entites'?: Array<DiscountFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof GetDiscountResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetDiscountResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface GetEntityDiscountDetailResponse
- */
-export interface GetEntityDiscountDetailResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof GetEntityDiscountDetailResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {Array<DiscountPlanFields>}
-     * @memberof GetEntityDiscountDetailResponse
-     */
-    'organization'?: Array<DiscountPlanFields>;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetEntityDiscountDetailResponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<DiscountPlanFields>}
-     * @memberof GetEntityDiscountDetailResponse
-     */
-    'virtual-machine'?: Array<DiscountPlanFields>;
+    'logs'?: string;
 }
 /**
  *
@@ -4770,25 +4012,6 @@ export interface GetRbacRolesResponseModel {
 /**
  *
  * @export
- * @interface GetTokenPayload
- */
-export interface GetTokenPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof GetTokenPayload
-     */
-    'callback_code': string;
-    /**
-     *
-     * @type {string}
-     * @memberof GetTokenPayload
-     */
-    'session_id': string;
-}
-/**
- *
- * @export
  * @interface GetUserPermissionsResponseModel
  */
 export interface GetUserPermissionsResponseModel {
@@ -4814,81 +4037,6 @@ export interface GetUserPermissionsResponseModel {
 /**
  *
  * @export
- * @interface GetVersionResponse
- */
-export interface GetVersionResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof GetVersionResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof GetVersionResponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof GetVersionResponse
-     */
-    'version'?: string;
-}
-/**
- *
- * @export
- * @interface Getcreditandthresholdinfo
- */
-export interface Getcreditandthresholdinfo {
-    /**
-     *
-     * @type {boolean}
-     * @memberof Getcreditandthresholdinfo
-     */
-    'can_create_instance'?: boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof Getcreditandthresholdinfo
-     */
-    'credit'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof Getcreditandthresholdinfo
-     */
-    'threshold'?: number;
-}
-/**
- *
- * @export
- * @interface Getcreditandthresholdinfoinresponse
- */
-export interface Getcreditandthresholdinfoinresponse {
-    /**
-     *
-     * @type {Getcreditandthresholdinfo}
-     * @memberof Getcreditandthresholdinfoinresponse
-     */
-    'data'?: Getcreditandthresholdinfo;
-    /**
-     *
-     * @type {string}
-     * @memberof Getcreditandthresholdinfoinresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Getcreditandthresholdinfoinresponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
  * @interface GraphDatetimeValueModel
  */
 export interface GraphDatetimeValueModel {
@@ -4904,116 +4052,6 @@ export interface GraphDatetimeValueModel {
      * @memberof GraphDatetimeValueModel
      */
     'value'?: number;
-}
-/**
- *
- * @export
- * @interface HistoricalInstance
- */
-export interface HistoricalInstance {
-    /**
-     *
-     * @type {number}
-     * @memberof HistoricalInstance
-     */
-    'instance_count'?: number;
-    /**
-     *
-     * @type {Array<HistoricalInstancesFields>}
-     * @memberof HistoricalInstance
-     */
-    'instances'?: Array<HistoricalInstancesFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstance
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof HistoricalInstance
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface HistoricalInstancesFields
- */
-export interface HistoricalInstancesFields {
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'environment'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof HistoricalInstancesFields
-     */
-    'environment_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'flavor'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof HistoricalInstancesFields
-     */
-    'flavor_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'floating_ip'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'host'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof HistoricalInstancesFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'openstack_id'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof HistoricalInstancesFields
-     */
-    'updated_at'?: string;
 }
 /**
  *
@@ -5129,31 +4167,6 @@ export interface ImageGetResponse {
 /**
  *
  * @export
- * @interface ImageLogos
- */
-export interface ImageLogos {
-    /**
-     *
-     * @type {Array<LogoGetResponse>}
-     * @memberof ImageLogos
-     */
-    'logos'?: Array<LogoGetResponse>;
-    /**
-     *
-     * @type {string}
-     * @memberof ImageLogos
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof ImageLogos
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
  * @interface Images
  */
 export interface Images {
@@ -5229,91 +4242,6 @@ export interface ImportKeypairResponse {
 /**
  *
  * @export
- * @interface InfrahubResourceObjectResponse
- */
-export interface InfrahubResourceObjectResponse {
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'actual_host_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'actual_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'contract_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'host'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'host_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'infrahub_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'nexgen_actual_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'nexgen_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'price'?: number;
-    /**
-     *
-     * @type {Array<PricebookResourceObjectResponse>}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'resources'?: Array<PricebookResourceObjectResponse>;
-    /**
-     *
-     * @type {string}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InfrahubResourceObjectResponse
-     */
-    'type'?: string;
-}
-/**
- *
- * @export
  * @interface InfrahubResourceObjectResponseForCustomer
  */
 export interface InfrahubResourceObjectResponseForCustomer {
@@ -5365,43 +4293,6 @@ export interface InfrahubResourceObjectResponseForCustomer {
      * @memberof InfrahubResourceObjectResponseForCustomer
      */
     'type'?: string;
-}
-/**
- *
- * @export
- * @interface InsertDiscountPlanFields
- */
-export interface InsertDiscountPlanFields {
-    /**
-     *
-     * @type {Array<CustomerFields>}
-     * @memberof InsertDiscountPlanFields
-     */
-    'customers'?: Array<CustomerFields>;
-    /**
-     *
-     * @type {Array<DiscountResourceFields>}
-     * @memberof InsertDiscountPlanFields
-     */
-    'discount_resources'?: Array<DiscountResourceFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof InsertDiscountPlanFields
-     */
-    'discount_status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InsertDiscountPlanFields
-     */
-    'end_date'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InsertDiscountPlanFields
-     */
-    'start_date'?: string;
 }
 /**
  *
@@ -5577,6 +4468,12 @@ export interface InstanceFields {
     'environment'?: InstanceEnvironmentFields;
     /**
      *
+     * @type {object}
+     * @memberof InstanceFields
+     */
+    'features'?: object;
+    /**
+     *
      * @type {string}
      * @memberof InstanceFields
      */
@@ -5661,10 +4558,16 @@ export interface InstanceFields {
     'power_state'?: string;
     /**
      *
-     * @type {Array<SecurityRulesFieldsforInstance>}
+     * @type {boolean}
      * @memberof InstanceFields
      */
-    'security_rules'?: Array<SecurityRulesFieldsforInstance>;
+    'requires_public_ip'?: boolean;
+    /**
+     *
+     * @type {Array<SecurityRulesFieldsForInstance>}
+     * @memberof InstanceFields
+     */
+    'security_rules'?: Array<SecurityRulesFieldsForInstance>;
     /**
      *
      * @type {string}
@@ -5710,6 +4613,12 @@ export interface InstanceFlavorFields {
     'ephemeral'?: number;
     /**
      *
+     * @type {object}
+     * @memberof InstanceFlavorFields
+     */
+    'features'?: object;
+    /**
+     *
      * @type {string}
      * @memberof InstanceFlavorFields
      */
@@ -5726,6 +4635,12 @@ export interface InstanceFlavorFields {
      * @memberof InstanceFlavorFields
      */
     'id'?: number;
+    /**
+     *
+     * @type {Array<FlavorLabelFields>}
+     * @memberof InstanceFlavorFields
+     */
+    'labels'?: Array<FlavorLabelFields>;
     /**
      *
      * @type {string}
@@ -5867,587 +4782,6 @@ export interface Instances {
 /**
  *
  * @export
- * @interface InstancesSummaryFields
- */
-export interface InstancesSummaryFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'environment'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'environment_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'fixed_ip'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'flavor'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'flavor_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'floating_ip'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'floating_ip_status'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'image'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'image_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'keypair'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'keypair_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InstancesSummaryFields
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InstancesSummaryFields
-     */
-    'updated_at'?: string;
-}
-/**
- *
- * @export
- * @interface InternalEnvironmentFields
- */
-export interface InternalEnvironmentFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalEnvironmentFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalEnvironmentFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalEnvironmentFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalEnvironmentFields
-     */
-    'region'?: string;
-}
-/**
- *
- * @export
- * @interface InternalInstanceFields
- */
-export interface InternalInstanceFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'boot_source'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'callback_url'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {InternalEnvironmentFields}
-     * @memberof InternalInstanceFields
-     */
-    'environment'?: InternalEnvironmentFields;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'fixed_ip'?: string;
-    /**
-     *
-     * @type {InternalInstanceFlavorFields}
-     * @memberof InternalInstanceFields
-     */
-    'flavor'?: InternalInstanceFlavorFields;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'floating_ip'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'floating_ip_status'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {InternalInstanceImageFields}
-     * @memberof InternalInstanceFields
-     */
-    'image'?: InternalInstanceImageFields;
-    /**
-     *
-     * @type {InternalInstanceKeypairFields}
-     * @memberof InternalInstanceFields
-     */
-    'keypair'?: InternalInstanceKeypairFields;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'openstack_id'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'power_state'?: string;
-    /**
-     *
-     * @type {Array<InternalSecurityRulesFieldsForInstance>}
-     * @memberof InternalInstanceFields
-     */
-    'security_rules'?: Array<InternalSecurityRulesFieldsForInstance>;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'user_data'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFields
-     */
-    'vm_state'?: string;
-    /**
-     *
-     * @type {Array<InternalVolumeAttachmentFields>}
-     * @memberof InternalInstanceFields
-     */
-    'volume_attachments'?: Array<InternalVolumeAttachmentFields>;
-}
-/**
- *
- * @export
- * @interface InternalInstanceFlavorFields
- */
-export interface InternalInstanceFlavorFields {
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'cpu'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'disk'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'gpu'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'gpu_count'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'ram'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceFlavorFields
-     */
-    'region_name'?: string;
-}
-/**
- *
- * @export
- * @interface InternalInstanceImageFields
- */
-export interface InternalInstanceImageFields {
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceImageFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceImageFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceImageFields
-     */
-    'region_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceImageFields
-     */
-    'type'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceImageFields
-     */
-    'version'?: string;
-}
-/**
- *
- * @export
- * @interface InternalInstanceKeypairFields
- */
-export interface InternalInstanceKeypairFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'environment'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'fingerprint'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstanceKeypairFields
-     */
-    'public_key'?: string;
-}
-/**
- *
- * @export
- * @interface InternalInstancesResponse
- */
-export interface InternalInstancesResponse {
-    /**
-     *
-     * @type {Array<InternalInstanceFields>}
-     * @memberof InternalInstancesResponse
-     */
-    'instances'?: Array<InternalInstanceFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalInstancesResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof InternalInstancesResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface InternalSecurityRulesFieldsForInstance
- */
-export interface InternalSecurityRulesFieldsForInstance {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'direction'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'ethertype'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'port_range_max'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'port_range_min'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'protocol'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'remote_ip_prefix'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalSecurityRulesFieldsForInstance
-     */
-    'status'?: string;
-}
-/**
- *
- * @export
- * @interface InternalVolumeAttachmentFields
- */
-export interface InternalVolumeAttachmentFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeAttachmentFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeAttachmentFields
-     */
-    'device'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeAttachmentFields
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {InternalVolumeFields}
-     * @memberof InternalVolumeAttachmentFields
-     */
-    'volume'?: InternalVolumeFields;
-}
-/**
- *
- * @export
- * @interface InternalVolumeFields
- */
-export interface InternalVolumeFields {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeFields
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalVolumeFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof InternalVolumeFields
-     */
-    'size'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumeFields
-     */
-    'volume_type'?: string;
-}
-/**
- *
- * @export
- * @interface InternalVolumesResponse
- */
-export interface InternalVolumesResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof InternalVolumesResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof InternalVolumesResponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<InternalVolumeFields>}
-     * @memberof InternalVolumesResponse
-     */
-    'volumes'?: Array<InternalVolumeFields>;
-}
-/**
- *
- * @export
  * @interface InviteFields
  */
 export interface InviteFields {
@@ -6517,6 +4851,68 @@ export interface InviteUserResponseModel {
 /**
  *
  * @export
+ * @interface KeypairEnvironmentFeatures
+ */
+export interface KeypairEnvironmentFeatures {
+    /**
+     *
+     * @type {string}
+     * @memberof KeypairEnvironmentFeatures
+     */
+    'green_status'?: KeypairEnvironmentFeaturesGreenStatusEnum;
+    /**
+     *
+     * @type {boolean}
+     * @memberof KeypairEnvironmentFeatures
+     */
+    'network_optimised'?: boolean;
+}
+export declare const KeypairEnvironmentFeaturesGreenStatusEnum: {
+    readonly Green: "GREEN";
+    readonly PartiallyGreen: "PARTIALLY_GREEN";
+    readonly NotGreen: "NOT_GREEN";
+};
+export type KeypairEnvironmentFeaturesGreenStatusEnum = typeof KeypairEnvironmentFeaturesGreenStatusEnum[keyof typeof KeypairEnvironmentFeaturesGreenStatusEnum];
+/**
+ *
+ * @export
+ * @interface KeypairEnvironmentFields
+ */
+export interface KeypairEnvironmentFields {
+    /**
+     *
+     * @type {string}
+     * @memberof KeypairEnvironmentFields
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {KeypairEnvironmentFeatures}
+     * @memberof KeypairEnvironmentFields
+     */
+    'features'?: KeypairEnvironmentFeatures;
+    /**
+     *
+     * @type {number}
+     * @memberof KeypairEnvironmentFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof KeypairEnvironmentFields
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof KeypairEnvironmentFields
+     */
+    'region'?: string;
+}
+/**
+ *
+ * @export
  * @interface KeypairFields
  */
 export interface KeypairFields {
@@ -6528,10 +4924,10 @@ export interface KeypairFields {
     'created_at'?: string;
     /**
      *
-     * @type {string}
+     * @type {KeypairEnvironmentFields}
      * @memberof KeypairFields
      */
-    'environment'?: string;
+    'environment'?: KeypairEnvironmentFields;
     /**
      *
      * @type {string}
@@ -6622,96 +5018,152 @@ export interface LableResonse {
 /**
  *
  * @export
- * @interface Lastdaycostfields
+ * @interface LastDayCostFields
  */
-export interface Lastdaycostfields {
+export interface LastDayCostFields {
     /**
      *
      * @type {number}
-     * @memberof Lastdaycostfields
+     * @memberof LastDayCostFields
      */
     'clusters_cost'?: number;
     /**
      *
      * @type {number}
-     * @memberof Lastdaycostfields
+     * @memberof LastDayCostFields
      */
     'instances_cost'?: number;
     /**
      *
      * @type {number}
-     * @memberof Lastdaycostfields
+     * @memberof LastDayCostFields
      */
     'total_cost'?: number;
     /**
      *
      * @type {number}
-     * @memberof Lastdaycostfields
+     * @memberof LastDayCostFields
      */
     'volumes_cost'?: number;
 }
 /**
  *
  * @export
- * @interface Lastdaycostresponse
+ * @interface LastDayCostResponse
  */
-export interface Lastdaycostresponse {
+export interface LastDayCostResponse {
     /**
      *
-     * @type {Lastdaycostfields}
-     * @memberof Lastdaycostresponse
+     * @type {LastDayCostFields}
+     * @memberof LastDayCostResponse
      */
-    'data'?: Lastdaycostfields;
+    'data'?: LastDayCostFields;
     /**
      *
      * @type {string}
-     * @memberof Lastdaycostresponse
+     * @memberof LastDayCostResponse
      */
     'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof Lastdaycostresponse
+     * @memberof LastDayCostResponse
      */
     'status'?: boolean;
 }
 /**
  *
  * @export
- * @interface LogoGetResponse
+ * @interface Logos
  */
-export interface LogoGetResponse {
-    /**
-     *
-     * @type {number}
-     * @memberof LogoGetResponse
-     */
-    'id'?: number;
+export interface Logos {
     /**
      *
      * @type {string}
-     * @memberof LogoGetResponse
+     * @memberof Logos
      */
-    'type'?: string;
+    'dark'?: string;
     /**
      *
      * @type {string}
-     * @memberof LogoGetResponse
+     * @memberof Logos
      */
-    'url'?: string;
+    'email'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Logos
+     */
+    'favicon'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Logos
+     */
+    'light'?: string;
 }
 /**
  *
  * @export
- * @interface LogoutPayload
+ * @interface MFAStatusFields
  */
-export interface LogoutPayload {
+export interface MFAStatusFields {
+    /**
+     * Whether MFA is enabled for the user
+     * @type {boolean}
+     * @memberof MFAStatusFields
+     */
+    'mfa_enabled': boolean;
+}
+/**
+ *
+ * @export
+ * @interface MFAStatusResponse
+ */
+export interface MFAStatusResponse {
     /**
      *
      * @type {string}
-     * @memberof LogoutPayload
+     * @memberof MFAStatusResponse
      */
-    'refresh_token': string;
+    'message'?: string;
+    /**
+     *
+     * @type {MFAStatusFields}
+     * @memberof MFAStatusResponse
+     */
+    'mfa'?: MFAStatusFields;
+    /**
+     *
+     * @type {boolean}
+     * @memberof MFAStatusResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface MasterFlavorsResponse
+ */
+export interface MasterFlavorsResponse {
+    /**
+     *
+     * @type {Array<ClusterFlavorFields>}
+     * @memberof MasterFlavorsResponse
+     */
+    'flavors'?: Array<ClusterFlavorFields>;
+    /**
+     *
+     * @type {string}
+     * @memberof MasterFlavorsResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof MasterFlavorsResponse
+     */
+    'status'?: boolean;
 }
 /**
  *
@@ -6780,6 +5232,31 @@ export interface MetricsFields {
      * @memberof MetricsFields
      */
     'network.out'?: MetricItemFields;
+}
+/**
+ *
+ * @export
+ * @interface ModelEvaluationBillingHistoryDetailsResponseSchema
+ */
+export interface ModelEvaluationBillingHistoryDetailsResponseSchema {
+    /**
+     *
+     * @type {BillingHistoryModelEvalutationDetails}
+     * @memberof ModelEvaluationBillingHistoryDetailsResponseSchema
+     */
+    'billing_history_model_evalutation_details'?: BillingHistoryModelEvalutationDetails;
+    /**
+     *
+     * @type {string}
+     * @memberof ModelEvaluationBillingHistoryDetailsResponseSchema
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ModelEvaluationBillingHistoryDetailsResponseSchema
+     */
+    'status'?: boolean;
 }
 /**
  *
@@ -6923,260 +5400,6 @@ export interface NewStockRetriveResponse {
      * @memberof NewStockRetriveResponse
      */
     'stocks'?: Array<NewStockResponse>;
-}
-/**
- *
- * @export
- * @interface NewStockUpdateResponseModel
- */
-export interface NewStockUpdateResponseModel {
-    /**
-     *
-     * @type {string}
-     * @memberof NewStockUpdateResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof NewStockUpdateResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface NodeModel
- */
-export interface NodeModel {
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof NodeModel
-     */
-    'flavors'?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'nexgen_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'openstack_id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'openstack_name'?: string;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof NodeModel
-     */
-    'organizations'?: Array<number>;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof NodeModel
-     */
-    'projects'?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'provision_date'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {Array<NodeStocksPayload>}
-     * @memberof NodeModel
-     */
-    'stocks'?: Array<NodeStocksPayload>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeModel
-     */
-    'sunset_date'?: string;
-}
-/**
- *
- * @export
- * @interface NodePayloadModel
- */
-export interface NodePayloadModel {
-    /**
-     *
-     * @type {Array<NodePowerUsageModel>}
-     * @memberof NodePayloadModel
-     */
-    'nodes'?: Array<NodePowerUsageModel>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePayloadModel
-     */
-    'region'?: string;
-}
-/**
- *
- * @export
- * @interface NodePowerUsageModel
- */
-export interface NodePowerUsageModel {
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof NodePowerUsageModel
-     */
-    'flavors'?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'nexgen_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'openstack_id': string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'openstack_name'?: string;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof NodePowerUsageModel
-     */
-    'organizations'?: Array<number>;
-    /**
-     *
-     * @type {PowerUsageModel}
-     * @memberof NodePowerUsageModel
-     */
-    'power_usages'?: PowerUsageModel;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof NodePowerUsageModel
-     */
-    'projects'?: Array<string>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'provision_date'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {Array<NodeStocksPayload>}
-     * @memberof NodePowerUsageModel
-     */
-    'stocks'?: Array<NodeStocksPayload>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodePowerUsageModel
-     */
-    'sunset_date'?: string;
-}
-/**
- *
- * @export
- * @interface NodeResponseModel
- */
-export interface NodeResponseModel {
-    /**
-     *
-     * @type {Array<NodeModel>}
-     * @memberof NodeResponseModel
-     */
-    'nodes'?: Array<NodeModel>;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeResponseModel
-     */
-    'region'?: string;
-}
-/**
- *
- * @export
- * @interface NodeStockPayloadModel
- */
-export interface NodeStockPayloadModel {
-    /**
-     *
-     * @type {Array<NodePayloadModel>}
-     * @memberof NodeStockPayloadModel
-     */
-    'stocks'?: Array<NodePayloadModel>;
-}
-/**
- *
- * @export
- * @interface NodeStockResponseModel
- */
-export interface NodeStockResponseModel {
-    /**
-     *
-     * @type {Array<NodeResponseModel>}
-     * @memberof NodeStockResponseModel
-     */
-    'stocks'?: Array<NodeResponseModel>;
-}
-/**
- *
- * @export
- * @interface NodeStocksPayload
- */
-export interface NodeStocksPayload {
-    /**
-     *
-     * @type {number}
-     * @memberof NodeStocksPayload
-     */
-    'in_use': number;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeStocksPayload
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof NodeStocksPayload
-     */
-    'total': number;
-    /**
-     *
-     * @type {string}
-     * @memberof NodeStocksPayload
-     */
-    'type': string;
 }
 /**
  *
@@ -7373,58 +5596,89 @@ export interface OrganizationLevelBillingHistoryResponseModel {
 /**
  *
  * @export
- * @interface OrganizationObjectResponse
+ * @interface OrganizationThresholdFields
  */
-export interface OrganizationObjectResponse {
+export interface OrganizationThresholdFields {
     /**
      *
      * @type {number}
-     * @memberof OrganizationObjectResponse
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {Array<InfrahubResourceObjectResponse>}
-     * @memberof OrganizationObjectResponse
-     */
-    'resources'?: Array<InfrahubResourceObjectResponse>;
-}
-/**
- *
- * @export
- * @interface OrganizationThresholdfields
- */
-export interface OrganizationThresholdfields {
-    /**
-     *
-     * @type {number}
-     * @memberof OrganizationThresholdfields
+     * @memberof OrganizationThresholdFields
      */
     'id'?: number;
     /**
      *
      * @type {string}
-     * @memberof OrganizationThresholdfields
+     * @memberof OrganizationThresholdFields
      */
     'interface_title'?: string;
     /**
      *
      * @type {string}
-     * @memberof OrganizationThresholdfields
+     * @memberof OrganizationThresholdFields
      */
     'interface_tooltip'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof OrganizationThresholdfields
+     * @memberof OrganizationThresholdFields
      */
     'subscribed'?: boolean;
     /**
      *
      * @type {number}
-     * @memberof OrganizationThresholdfields
+     * @memberof OrganizationThresholdFields
      */
     'threshold'?: number;
+}
+/**
+ *
+ * @export
+ * @interface OrganizationThresholdUpdateResponse
+ */
+export interface OrganizationThresholdUpdateResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof OrganizationThresholdUpdateResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof OrganizationThresholdUpdateResponse
+     */
+    'status'?: boolean;
+    /**
+     *
+     * @type {OrganizationThresholdFields}
+     * @memberof OrganizationThresholdUpdateResponse
+     */
+    'threshold'?: OrganizationThresholdFields;
+}
+/**
+ *
+ * @export
+ * @interface OrganizationThresholdsResponse
+ */
+export interface OrganizationThresholdsResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof OrganizationThresholdsResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof OrganizationThresholdsResponse
+     */
+    'status'?: boolean;
+    /**
+     *
+     * @type {Array<OrganizationThresholdFields>}
+     * @memberof OrganizationThresholdsResponse
+     */
+    'thresholds'?: Array<OrganizationThresholdFields>;
 }
 /**
  *
@@ -7490,81 +5744,6 @@ export interface OrganizationUserResponseModel {
 /**
  *
  * @export
- * @interface Organizationcreditrechargelimitresponse
- */
-export interface Organizationcreditrechargelimitresponse {
-    /**
-     *
-     * @type {Creditrechargelimitfield}
-     * @memberof Organizationcreditrechargelimitresponse
-     */
-    'data'?: Creditrechargelimitfield;
-    /**
-     *
-     * @type {string}
-     * @memberof Organizationcreditrechargelimitresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Organizationcreditrechargelimitresponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface Organizationthresholdsresponse
- */
-export interface Organizationthresholdsresponse {
-    /**
-     *
-     * @type {string}
-     * @memberof Organizationthresholdsresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Organizationthresholdsresponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<OrganizationThresholdfields>}
-     * @memberof Organizationthresholdsresponse
-     */
-    'thresholds'?: Array<OrganizationThresholdfields>;
-}
-/**
- *
- * @export
- * @interface Organizationthresholdupdateresponse
- */
-export interface Organizationthresholdupdateresponse {
-    /**
-     *
-     * @type {string}
-     * @memberof Organizationthresholdupdateresponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Organizationthresholdupdateresponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {OrganizationThresholdfields}
-     * @memberof Organizationthresholdupdateresponse
-     */
-    'threshold'?: OrganizationThresholdfields;
-}
-/**
- *
- * @export
  * @interface OverviewInfo
  */
 export interface OverviewInfo {
@@ -7590,6 +5769,31 @@ export interface OverviewInfo {
 /**
  *
  * @export
+ * @interface Pagination
+ */
+export interface Pagination {
+    /**
+     *
+     * @type {number}
+     * @memberof Pagination
+     */
+    'page'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Pagination
+     */
+    'pages'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Pagination
+     */
+    'per_page'?: number;
+}
+/**
+ *
+ * @export
  * @interface PaginationData
  */
 export interface PaginationData {
@@ -7611,6 +5815,55 @@ export interface PaginationData {
      * @memberof PaginationData
      */
     'per_page'?: number;
+}
+/**
+ *
+ * @export
+ * @interface PartnerConfig
+ */
+export interface PartnerConfig {
+    /**
+     *
+     * @type {string}
+     * @memberof PartnerConfig
+     */
+    'background_image_url'?: string;
+    /**
+     *
+     * @type {Colors}
+     * @memberof PartnerConfig
+     */
+    'colors'?: Colors;
+    /**
+     *
+     * @type {Logos}
+     * @memberof PartnerConfig
+     */
+    'logos'?: Logos;
+    /**
+     *
+     * @type {string}
+     * @memberof PartnerConfig
+     */
+    'name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof PartnerConfig
+     */
+    'support_email'?: string;
+    /**
+     *
+     * @type {URIs}
+     * @memberof PartnerConfig
+     */
+    'uris'?: URIs;
+    /**
+     *
+     * @type {string}
+     * @memberof PartnerConfig
+     */
+    'user_type': string;
 }
 /**
  *
@@ -7653,6 +5906,12 @@ export interface PaymentDetailsFields {
      * @type {string}
      * @memberof PaymentDetailsFields
      */
+    'invoice'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentDetailsFields
+     */
     'paid_from'?: string;
     /**
      *
@@ -7666,6 +5925,12 @@ export interface PaymentDetailsFields {
      * @memberof PaymentDetailsFields
      */
     'status'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof PaymentDetailsFields
+     */
+    'tax_amount'?: number;
     /**
      *
      * @type {string}
@@ -7863,25 +6128,6 @@ export interface PolicyPermissionFields {
 /**
  *
  * @export
- * @interface PowerUsageModel
- */
-export interface PowerUsageModel {
-    /**
-     *
-     * @type {string}
-     * @memberof PowerUsageModel
-     */
-    'unit': string;
-    /**
-     *
-     * @type {number}
-     * @memberof PowerUsageModel
-     */
-    'value': number;
-}
-/**
- *
- * @export
  * @interface PricebookModel
  */
 export interface PricebookModel {
@@ -7931,79 +6177,6 @@ export interface PricebookModel {
 /**
  *
  * @export
- * @interface PricebookResourceObjectResponse
- */
-export interface PricebookResourceObjectResponse {
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'actual_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'amount'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'discounted_rate'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'host_original_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'host_price'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'nexgen_original_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'nexgen_price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'price'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'rate'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof PricebookResourceObjectResponse
-     */
-    'type'?: string;
-}
-/**
- *
- * @export
  * @interface PricebookResourceObjectResponseForCustomer
  */
 export interface PricebookResourceObjectResponseForCustomer {
@@ -8049,6 +6222,25 @@ export interface PricebookResourceObjectResponseForCustomer {
      * @memberof PricebookResourceObjectResponseForCustomer
      */
     'type'?: string;
+}
+/**
+ *
+ * @export
+ * @interface PrimaryColor
+ */
+export interface PrimaryColor {
+    /**
+     *
+     * @type {string}
+     * @memberof PrimaryColor
+     */
+    'dark'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PrimaryColor
+     */
+    'light'?: string;
 }
 /**
  *
@@ -8240,25 +6432,6 @@ export interface RbacRoleFields {
 /**
  *
  * @export
- * @interface RefreshTokenPayload
- */
-export interface RefreshTokenPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof RefreshTokenPayload
-     */
-    'id_token': string;
-    /**
-     *
-     * @type {string}
-     * @memberof RefreshTokenPayload
-     */
-    'refresh_token': string;
-}
-/**
- *
- * @export
  * @interface RegionFields
  */
 export interface RegionFields {
@@ -8267,7 +6440,19 @@ export interface RegionFields {
      * @type {string}
      * @memberof RegionFields
      */
+    'country'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof RegionFields
+     */
     'description'?: string;
+    /**
+     * Green status
+     * @type {string}
+     * @memberof RegionFields
+     */
+    'green_status'?: RegionFieldsGreenStatusEnum;
     /**
      *
      * @type {number}
@@ -8281,50 +6466,12 @@ export interface RegionFields {
      */
     'name'?: string;
 }
-/**
- *
- * @export
- * @interface RegionPayload
- */
-export interface RegionPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof RegionPayload
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof RegionPayload
-     */
-    'name': string;
-}
-/**
- *
- * @export
- * @interface RegionResponse
- */
-export interface RegionResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof RegionResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {RegionFields}
-     * @memberof RegionResponse
-     */
-    'region'?: RegionFields;
-    /**
-     *
-     * @type {boolean}
-     * @memberof RegionResponse
-     */
-    'status'?: boolean;
-}
+export declare const RegionFieldsGreenStatusEnum: {
+    readonly Green: "GREEN";
+    readonly PartiallyGreen: "PARTIALLY_GREEN";
+    readonly NotGreen: "NOT_GREEN";
+};
+export type RegionFieldsGreenStatusEnum = typeof RegionFieldsGreenStatusEnum[keyof typeof RegionFieldsGreenStatusEnum];
 /**
  *
  * @export
@@ -8406,6 +6553,32 @@ export interface RequestConsole {
      * @memberof RequestConsole
      */
     'url'?: string;
+}
+/**
+ *
+ * @export
+ * @interface RequestInstanceLogsPayload
+ */
+export interface RequestInstanceLogsPayload {
+    /**
+     * The amount of lines to fetch
+     * @type {number}
+     * @memberof RequestInstanceLogsPayload
+     */
+    'length'?: number;
+}
+/**
+ *
+ * @export
+ * @interface RequestInstanceLogsResponse
+ */
+export interface RequestInstanceLogsResponse {
+    /**
+     *
+     * @type {number}
+     * @memberof RequestInstanceLogsResponse
+     */
+    'request_id'?: number;
 }
 /**
  *
@@ -8493,6 +6666,25 @@ export interface ResourceBillingResponseForCustomer {
      * @memberof ResourceBillingResponseForCustomer
      */
     'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelBillingBucketDetailsResources
+ */
+export interface ResourceLevelBillingBucketDetailsResources {
+    /**
+     *
+     * @type {ResourceLevelBillingDetailsAttributes}
+     * @memberof ResourceLevelBillingBucketDetailsResources
+     */
+    'attributes'?: ResourceLevelBillingDetailsAttributes;
+    /**
+     *
+     * @type {ResourceLevelBillingDetailsMetrics}
+     * @memberof ResourceLevelBillingBucketDetailsResources
+     */
+    'metrics'?: ResourceLevelBillingDetailsMetrics;
 }
 /**
  *
@@ -8751,9 +6943,40 @@ export interface ResourceLevelBillingHistoryResources {
 /**
  *
  * @export
+ * @interface ResourceLevelBillingHistoryResourcesCluster
+ */
+export interface ResourceLevelBillingHistoryResourcesCluster {
+    /**
+     *
+     * @type {ResourceLevelBillingHistoryResponseAttributes}
+     * @memberof ResourceLevelBillingHistoryResourcesCluster
+     */
+    'attributes'?: ResourceLevelBillingHistoryResponseAttributes;
+    /**
+     *
+     * @type {ResourceLevelBillingHistoryResponseMetrics}
+     * @memberof ResourceLevelBillingHistoryResourcesCluster
+     */
+    'metrics'?: ResourceLevelBillingHistoryResponseMetrics;
+    /**
+     *
+     * @type {Array<ResourceLevelBillingHistoryResources>}
+     * @memberof ResourceLevelBillingHistoryResourcesCluster
+     */
+    'nodes'?: Array<ResourceLevelBillingHistoryResources>;
+}
+/**
+ *
+ * @export
  * @interface ResourceLevelBillingHistoryResponseAttributes
  */
 export interface ResourceLevelBillingHistoryResponseAttributes {
+    /**
+     *
+     * @type {number}
+     * @memberof ResourceLevelBillingHistoryResponseAttributes
+     */
+    'contract_id'?: number;
     /**
      *
      * @type {string}
@@ -8845,6 +7068,131 @@ export interface ResourceLevelBillingVolumeDetailsResources {
 /**
  *
  * @export
+ * @interface ResourceLevelBucketBillingDetailsResponseModel
+ */
+export interface ResourceLevelBucketBillingDetailsResponseModel {
+    /**
+     *
+     * @type {ResourceLevelBillingBucketDetailsResources}
+     * @memberof ResourceLevelBucketBillingDetailsResponseModel
+     */
+    'billing_history_bucket_details'?: ResourceLevelBillingBucketDetailsResources;
+    /**
+     *
+     * @type {string}
+     * @memberof ResourceLevelBucketBillingDetailsResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResourceLevelBucketBillingDetailsResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelBucketBillingHistoryResponseModel
+ */
+export interface ResourceLevelBucketBillingHistoryResponseModel {
+    /**
+     *
+     * @type {ResourceLevelBillingHistory}
+     * @memberof ResourceLevelBucketBillingHistoryResponseModel
+     */
+    'billing_history_bucket'?: ResourceLevelBillingHistory;
+    /**
+     *
+     * @type {string}
+     * @memberof ResourceLevelBucketBillingHistoryResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResourceLevelBucketBillingHistoryResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelClusterBillingDetailsResponseModel
+ */
+export interface ResourceLevelClusterBillingDetailsResponseModel {
+    /**
+     *
+     * @type {ResourceLevelBillingHistoryResourcesCluster}
+     * @memberof ResourceLevelClusterBillingDetailsResponseModel
+     */
+    'billing_history_cluster_details'?: ResourceLevelBillingHistoryResourcesCluster;
+    /**
+     *
+     * @type {string}
+     * @memberof ResourceLevelClusterBillingDetailsResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResourceLevelClusterBillingDetailsResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelClusterBillingHistoryResponseModel
+ */
+export interface ResourceLevelClusterBillingHistoryResponseModel {
+    /**
+     *
+     * @type {ResourceLevelBillingHistory}
+     * @memberof ResourceLevelClusterBillingHistoryResponseModel
+     */
+    'billing_history_cluster'?: ResourceLevelBillingHistory;
+    /**
+     *
+     * @type {string}
+     * @memberof ResourceLevelClusterBillingHistoryResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResourceLevelClusterBillingHistoryResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelClusterGraphBillingDetailsResponseModel
+ */
+export interface ResourceLevelClusterGraphBillingDetailsResponseModel {
+    /**
+     *
+     * @type {ResourceLevelGraphBillingDetailVolume}
+     * @memberof ResourceLevelClusterGraphBillingDetailsResponseModel
+     */
+    'billing_history_cluster_details'?: ResourceLevelGraphBillingDetailVolume;
+    /**
+     *
+     * @type {string}
+     * @memberof ResourceLevelClusterGraphBillingDetailsResponseModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ResourceLevelClusterGraphBillingDetailsResponseModel
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface ResourceLevelGraphBillingDetailVolume
  */
 export interface ResourceLevelGraphBillingDetailVolume {
@@ -8897,6 +7245,37 @@ export interface ResourceLevelGraphBillingDetailsAttributes {
      * @memberof ResourceLevelGraphBillingDetailsAttributes
      */
     'resource_name'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ResourceLevelGraphBillingDetailsBucket
+ */
+export interface ResourceLevelGraphBillingDetailsBucket {
+    /**
+     *
+     * @type {Array<ResourceLevelBillingBucketDetailsResources>}
+     * @memberof ResourceLevelGraphBillingDetailsBucket
+     */
+    'billing_history'?: Array<ResourceLevelBillingBucketDetailsResources>;
+    /**
+     *
+     * @type {number}
+     * @memberof ResourceLevelGraphBillingDetailsBucket
+     */
+    'granularity'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ResourceLevelGraphBillingDetailsBucket
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ResourceLevelGraphBillingDetailsBucket
+     */
+    'total_count'?: number;
 }
 /**
  *
@@ -9227,6 +7606,25 @@ export interface RolePolicyFields {
 /**
  *
  * @export
+ * @interface SecondaryColor
+ */
+export interface SecondaryColor {
+    /**
+     *
+     * @type {string}
+     * @memberof SecondaryColor
+     */
+    'dark'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SecondaryColor
+     */
+    'light'?: string;
+}
+/**
+ *
+ * @export
  * @interface SecurityGroupRule
  */
 export interface SecurityGroupRule {
@@ -9313,61 +7711,61 @@ export interface SecurityGroupRuleFields {
 /**
  *
  * @export
- * @interface SecurityRulesFieldsforInstance
+ * @interface SecurityRulesFieldsForInstance
  */
-export interface SecurityRulesFieldsforInstance {
+export interface SecurityRulesFieldsForInstance {
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'created_at'?: string;
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'direction'?: string;
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'ethertype'?: string;
     /**
      *
      * @type {number}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'id'?: number;
     /**
      *
      * @type {number}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'port_range_max'?: number;
     /**
      *
      * @type {number}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'port_range_min'?: number;
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'protocol'?: string;
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'remote_ip_prefix'?: string;
     /**
      *
      * @type {string}
-     * @memberof SecurityRulesFieldsforInstance
+     * @memberof SecurityRulesFieldsForInstance
      */
     'status'?: string;
 }
@@ -9399,46 +7797,27 @@ export interface SecurityRulesProtocolFields {
 /**
  *
  * @export
- * @interface SetDefaultsPayload
+ * @interface ServerlessInferencedBillingHistoryDetailsResponseSchema
  */
-export interface SetDefaultsPayload {
+export interface ServerlessInferencedBillingHistoryDetailsResponseSchema {
     /**
      *
-     * @type {Array<number>}
-     * @memberof SetDefaultsPayload
+     * @type {BillingHistoryServerlessInferenceDetails}
+     * @memberof ServerlessInferencedBillingHistoryDetailsResponseSchema
      */
-    'flavors': Array<number>;
+    'billing_history_serverless_inference_details'?: BillingHistoryServerlessInferenceDetails;
     /**
      *
-     * @type {Array<number>}
-     * @memberof SetDefaultsPayload
+     * @type {string}
+     * @memberof ServerlessInferencedBillingHistoryDetailsResponseSchema
      */
-    'images': Array<number>;
-}
-/**
- *
- * @export
- * @interface SingleVisibilityUserResponse
- */
-export interface SingleVisibilityUserResponse {
-    /**
-     *
-     * @type {number}
-     * @memberof SingleVisibilityUserResponse
-     */
-    'id': number;
+    'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof SingleVisibilityUserResponse
+     * @memberof ServerlessInferencedBillingHistoryDetailsResponseSchema
      */
-    'stock_visible': boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof SingleVisibilityUserResponse
-     */
-    'user_id': number;
+    'status'?: boolean;
 }
 /**
  *
@@ -9446,6 +7825,12 @@ export interface SingleVisibilityUserResponse {
  * @interface SnapshotFields
  */
 export interface SnapshotFields {
+    /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof SnapshotFields
+     */
+    'created_at': string;
     /**
      * Description of the snapshot
      * @type {string}
@@ -9500,6 +7885,12 @@ export interface SnapshotFields {
      * @memberof SnapshotFields
      */
     'status': string;
+    /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof SnapshotFields
+     */
+    'updated_at': string;
     /**
      * ID of the VM from which the snapshot is created
      * @type {number}
@@ -9558,6 +7949,18 @@ export interface SnapshotRetrieve {
  */
 export interface SnapshotRetrieveFields {
     /**
+     * Creation timestamp
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'created_at': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'custom_image'?: string;
+    /**
      * Description of the snapshot
      * @type {string}
      * @memberof SnapshotRetrieveFields
@@ -9582,11 +7985,23 @@ export interface SnapshotRetrieveFields {
      */
     'is_image': boolean;
     /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'labels'?: string;
+    /**
      * Snapshot name
      * @type {string}
      * @memberof SnapshotRetrieveFields
      */
     'name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'region'?: string;
     /**
      * Region where the snapshot will be available
      * @type {number}
@@ -9606,11 +8021,65 @@ export interface SnapshotRetrieveFields {
      */
     'status': string;
     /**
+     * Last update timestamp
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'updated_at': string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_environment'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_flavor'?: string;
+    /**
      * ID of the VM from which the snapshot is created
      * @type {number}
      * @memberof SnapshotRetrieveFields
      */
     'vm_id': number;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_image'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_keypair'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'vm_status'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'volume_id'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SnapshotRetrieveFields
+     */
+    'volume_name'?: string;
 }
 /**
  *
@@ -9663,10 +8132,10 @@ export interface Snapshots {
 export interface StartDeployment {
     /**
      *
-     * @type {DeploymentFieldsforstartdeployments}
+     * @type {DeploymentFieldsForStartDeployments}
      * @memberof StartDeployment
      */
-    'deployment'?: DeploymentFieldsforstartdeployments;
+    'deployment'?: DeploymentFieldsForStartDeployments;
     /**
      *
      * @type {string}
@@ -9712,44 +8181,6 @@ export interface StartDeploymentPayload {
     'variables'?: {
         [key: string]: string;
     };
-}
-/**
- *
- * @export
- * @interface StockVisibilityUserListResponse
- */
-export interface StockVisibilityUserListResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof StockVisibilityUserListResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof StockVisibilityUserListResponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<SingleVisibilityUserResponse>}
-     * @memberof StockVisibilityUserListResponse
-     */
-    'users'?: Array<SingleVisibilityUserResponse>;
-}
-/**
- *
- * @export
- * @interface StockVisibilityUserPayload
- */
-export interface StockVisibilityUserPayload {
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof StockVisibilityUserPayload
-     */
-    'user_ids': Array<number>;
 }
 /**
  *
@@ -9908,34 +8339,15 @@ export interface SubResourcesGraphResponseModel {
 /**
  *
  * @export
- * @interface Subscribeorunsubscribeupdatepayload
+ * @interface SubscribeOrUnsubscribeUpdatePayload
  */
-export interface Subscribeorunsubscribeupdatepayload {
+export interface SubscribeOrUnsubscribeUpdatePayload {
     /**
      * `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @type {boolean}
-     * @memberof Subscribeorunsubscribeupdatepayload
+     * @memberof SubscribeOrUnsubscribeUpdatePayload
      */
     'subscribe': boolean;
-}
-/**
- *
- * @export
- * @interface SuccessResponseModel
- */
-export interface SuccessResponseModel {
-    /**
-     *
-     * @type {string}
-     * @memberof SuccessResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof SuccessResponseModel
-     */
-    'status'?: boolean;
 }
 /**
  *
@@ -10033,108 +8445,76 @@ export interface Templates {
 /**
  *
  * @export
- * @interface TokenFields
+ * @interface TokenBasedBillingHistoryResponse
  */
-export interface TokenFields {
+export interface TokenBasedBillingHistoryResponse {
+    /**
+     *
+     * @type {BillingHistoryServerlessInference}
+     * @memberof TokenBasedBillingHistoryResponse
+     */
+    'billing_history_serverless_inference'?: BillingHistoryServerlessInference;
     /**
      *
      * @type {string}
-     * @memberof TokenFields
+     * @memberof TokenBasedBillingHistoryResponse
      */
-    'access_token'?: string;
+    'message'?: string;
     /**
      *
-     * @type {string}
-     * @memberof TokenFields
+     * @type {boolean}
+     * @memberof TokenBasedBillingHistoryResponse
      */
-    'id_token'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof TokenFields
-     */
-    'refresh_token'?: string;
+    'success'?: boolean;
 }
 /**
  *
  * @export
- * @interface UpdateContractPayload
+ * @interface URIs
  */
-export interface UpdateContractPayload {
+export interface URIs {
     /**
      *
      * @type {string}
-     * @memberof UpdateContractPayload
+     * @memberof URIs
      */
-    'description'?: string;
-    /**
-     *
-     * @type {Array<ContractResourcePayload>}
-     * @memberof UpdateContractPayload
-     */
-    'discount_resources': Array<ContractResourcePayload>;
+    'api_doc'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateContractPayload
+     * @memberof URIs
      */
-    'end_date'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof UpdateContractPayload
-     */
-    'expiration_policy': number;
+    'api_uri'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateContractPayload
+     * @memberof URIs
      */
-    'start_date'?: string;
-}
-/**
- *
- * @export
- * @interface UpdateDiscountsPayload
- */
-export interface UpdateDiscountsPayload {
-    /**
-     *
-     * @type {Array<DiscountResourcePayload>}
-     * @memberof UpdateDiscountsPayload
-     */
-    'discount_resources': Array<DiscountResourcePayload>;
+    'auth'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateDiscountsPayload
+     * @memberof URIs
      */
-    'discount_status': string;
+    'console'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateDiscountsPayload
+     * @memberof URIs
      */
-    'end_date'?: string;
+    'contact_us'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateDiscountsPayload
+     * @memberof URIs
      */
-    'start_date'?: string;
-}
-/**
- *
- * @export
- * @interface UpdateDiscountsStatusPayload
- */
-export interface UpdateDiscountsStatusPayload {
+    'doc'?: string;
     /**
      *
      * @type {string}
-     * @memberof UpdateDiscountsStatusPayload
+     * @memberof URIs
      */
-    'discount_status': string;
+    'landing_page'?: string;
 }
 /**
  *
@@ -10152,31 +8532,6 @@ export interface UpdateEnvironment {
 /**
  *
  * @export
- * @interface UpdateGPU
- */
-export interface UpdateGPU {
-    /**
-     * A valid JSON string.
-     * @type {string}
-     * @memberof UpdateGPU
-     */
-    'example_metadata'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateGPU
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof UpdateGPU
-     */
-    'regions'?: Array<string>;
-}
-/**
- *
- * @export
  * @interface UpdateKeypairName
  */
 export interface UpdateKeypairName {
@@ -10190,25 +8545,25 @@ export interface UpdateKeypairName {
 /**
  *
  * @export
- * @interface UpdateKeypairnameresponse
+ * @interface UpdateKeypairNameResponse
  */
-export interface UpdateKeypairnameresponse {
+export interface UpdateKeypairNameResponse {
     /**
      *
      * @type {KeypairFields}
-     * @memberof UpdateKeypairnameresponse
+     * @memberof UpdateKeypairNameResponse
      */
     'keypair'?: KeypairFields;
     /**
      *
      * @type {string}
-     * @memberof UpdateKeypairnameresponse
+     * @memberof UpdateKeypairNameResponse
      */
     'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof UpdateKeypairnameresponse
+     * @memberof UpdateKeypairNameResponse
      */
     'status'?: boolean;
 }
@@ -10272,6 +8627,63 @@ export interface UpdateTemplate {
 /**
  *
  * @export
+ * @interface UpdateVolumeAttachmentPayload
+ */
+export interface UpdateVolumeAttachmentPayload {
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateVolumeAttachmentPayload
+     */
+    'protected'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface UpdateVolumePayload
+ */
+export interface UpdateVolumePayload {
+    /**
+     * The name of the target environment to move the volume to. The target environment must be in the same region as the current environment.
+     * @type {string}
+     * @memberof UpdateVolumePayload
+     */
+    'environment_name': string;
+}
+/**
+ *
+ * @export
+ * @interface UpdateVolumeResponse
+ */
+export interface UpdateVolumeResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateVolumeResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateVolumeResponse
+     */
+    'status'?: boolean;
+    /**
+     * Summary of fields that were updated
+     * @type {object}
+     * @memberof UpdateVolumeResponse
+     */
+    'updates'?: object;
+    /**
+     *
+     * @type {VolumeFields}
+     * @memberof UpdateVolumeResponse
+     */
+    'volume'?: VolumeFields;
+}
+/**
+ *
+ * @export
  * @interface UserDefaultChoiceForUserFields
  */
 export interface UserDefaultChoiceForUserFields {
@@ -10322,6 +8734,92 @@ export interface UserDefaultChoicesForUserResponse {
 /**
  *
  * @export
+ * @interface UserInfoPostPayload
+ */
+export interface UserInfoPostPayload {
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'billing_address1'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'billing_address2'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UserInfoPostPayload
+     */
+    'business': boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'company_name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'country': string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'email'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'phone'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'state'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'vat_number'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
+    'zip_code': string;
+}
+/**
+ *
+ * @export
+ * @interface UserOrganizationsResponse
+ */
+export interface UserOrganizationsResponse {
+    /**
+     *
+     * @type {Array<OrganizationFields>}
+     * @memberof UserOrganizationsResponse
+     */
+    'organizations'?: Array<OrganizationFields>;
+}
+/**
+ *
+ * @export
  * @interface UserPermissionFields
  */
 export interface UserPermissionFields {
@@ -10343,98 +8841,6 @@ export interface UserPermissionFields {
      * @memberof UserPermissionFields
      */
     'resource'?: string;
-}
-/**
- *
- * @export
- * @interface UserTransferPayload
- */
-export interface UserTransferPayload {
-    /**
-     *
-     * @type {number}
-     * @memberof UserTransferPayload
-     */
-    'org_id': number;
-    /**
-     *
-     * @type {string}
-     * @memberof UserTransferPayload
-     */
-    'role': string;
-}
-/**
- *
- * @export
- * @interface Userinfopostpayload
- */
-export interface Userinfopostpayload {
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'billing_address1'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'billing_address2'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Userinfopostpayload
-     */
-    'business': boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'company_name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'country': string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'email'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'phone'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'state'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'vat_number'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Userinfopostpayload
-     */
-    'zip_code': string;
 }
 /**
  *
@@ -10519,6 +8925,12 @@ export interface UsersInfoFields {
      * @type {string}
      * @memberof UsersInfoFields
      */
+    'stripe_user_id'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UsersInfoFields
+     */
     'vat_number'?: string;
     /**
      *
@@ -10551,50 +8963,6 @@ export interface UsersInfoListResponse {
      * @memberof UsersInfoListResponse
      */
     'users_info'?: UsersInfoFields;
-}
-/**
- *
- * @export
- * @interface VMUsageRequestPayload
- */
-export interface VMUsageRequestPayload {
-    /**
-     * List of virtual machine IDs
-     * @type {Array<number>}
-     * @memberof VMUsageRequestPayload
-     */
-    'vm_ids': Array<number>;
-}
-/**
- *
- * @export
- * @interface VMUsageResponse
- */
-export interface VMUsageResponse {
-    /**
-     *
-     * @type {string}
-     * @memberof VMUsageResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof VMUsageResponse
-     */
-    'org_id'?: number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof VMUsageResponse
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<VirtualMachineUsage>}
-     * @memberof VMUsageResponse
-     */
-    'virtual_machines'?: Array<VirtualMachineUsage>;
 }
 /**
  *
@@ -10643,75 +9011,6 @@ export interface VNCURLFields {
 /**
  *
  * @export
- * @interface VerifyApiKeyPayload
- */
-export interface VerifyApiKeyPayload {
-    /**
-     * The direction of traffic that the firewall rule applies to.
-     * @type {string}
-     * @memberof VerifyApiKeyPayload
-     */
-    'api_key': string;
-}
-/**
- *
- * @export
- * @interface VerifyApiKeyResponseModel
- */
-export interface VerifyApiKeyResponseModel {
-    /**
-     *
-     * @type {ApiKeyVerifyFields}
-     * @memberof VerifyApiKeyResponseModel
-     */
-    'api_key'?: ApiKeyVerifyFields;
-    /**
-     *
-     * @type {string}
-     * @memberof VerifyApiKeyResponseModel
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof VerifyApiKeyResponseModel
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface VirtualMachineUsage
- */
-export interface VirtualMachineUsage {
-    /**
-     *
-     * @type {number}
-     * @memberof VirtualMachineUsage
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof VirtualMachineUsage
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof VirtualMachineUsage
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof VirtualMachineUsage
-     */
-    'total_usage_time'?: number;
-}
-/**
- *
- * @export
  * @interface Volume
  */
 export interface Volume {
@@ -10754,16 +9053,28 @@ export interface VolumeAttachmentFields {
     'device'?: string;
     /**
      *
+     * @type {number}
+     * @memberof VolumeAttachmentFields
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof VolumeAttachmentFields
+     */
+    'protected'?: boolean;
+    /**
+     *
      * @type {string}
      * @memberof VolumeAttachmentFields
      */
     'status'?: string;
     /**
      *
-     * @type {VolumeFieldsforInstance}
+     * @type {VolumeFieldsForInstance}
      * @memberof VolumeAttachmentFields
      */
-    'volume'?: VolumeFieldsforInstance;
+    'volume'?: VolumeFieldsForInstance;
 }
 /**
  *
@@ -10771,6 +9082,12 @@ export interface VolumeAttachmentFields {
  * @interface VolumeFields
  */
 export interface VolumeFields {
+    /**
+     *
+     * @type {Array<AttachmentsFieldsForVolume>}
+     * @memberof VolumeFields
+     */
+    'attachments'?: Array<AttachmentsFieldsForVolume>;
     /**
      *
      * @type {boolean}
@@ -10797,10 +9114,10 @@ export interface VolumeFields {
     'description'?: string;
     /**
      *
-     * @type {EnvironmentFieldsforVolume}
+     * @type {EnvironmentFieldsForVolume}
      * @memberof VolumeFields
      */
-    'environment'?: EnvironmentFieldsforVolume;
+    'environment'?: EnvironmentFieldsForVolume;
     /**
      *
      * @type {number}
@@ -10853,43 +9170,43 @@ export interface VolumeFields {
 /**
  *
  * @export
- * @interface VolumeFieldsforInstance
+ * @interface VolumeFieldsForInstance
  */
-export interface VolumeFieldsforInstance {
+export interface VolumeFieldsForInstance {
     /**
      *
      * @type {boolean}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'bootable'?: boolean;
     /**
      *
      * @type {string}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'description'?: string;
     /**
      *
      * @type {number}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'id'?: number;
     /**
      *
      * @type {string}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'name'?: string;
     /**
      *
      * @type {number}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'size'?: number;
     /**
      *
      * @type {string}
-     * @memberof VolumeFieldsforInstance
+     * @memberof VolumeFieldsForInstance
      */
     'volume_type'?: string;
 }
@@ -10917,43 +9234,6 @@ export interface VolumeOverviewFields {
      * @memberof VolumeOverviewFields
      */
     'using'?: number;
-}
-/**
- *
- * @export
- * @interface VolumeStatusChangeFields
- */
-export interface VolumeStatusChangeFields {
-    /**
-     *
-     * @type {string}
-     * @memberof VolumeStatusChangeFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof VolumeStatusChangeFields
-     */
-    'current_status'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof VolumeStatusChangeFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof VolumeStatusChangeFields
-     */
-    'previous_status'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof VolumeStatusChangeFields
-     */
-    'volume_id'?: number;
 }
 /**
  *
@@ -10988,10 +9268,28 @@ export interface VolumeTypes {
 export interface Volumes {
     /**
      *
+     * @type {number}
+     * @memberof Volumes
+     */
+    'count'?: number;
+    /**
+     *
      * @type {string}
      * @memberof Volumes
      */
     'message'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Volumes
+     */
+    'page'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Volumes
+     */
+    'page_size'?: number;
     /**
      *
      * @type {boolean}
@@ -11000,115 +9298,120 @@ export interface Volumes {
     'status'?: boolean;
     /**
      *
-     * @type {Array<VolumeFields>}
+     * @type {Array<VolumesFields>}
      * @memberof Volumes
      */
-    'volume'?: Array<VolumeFields>;
+    'volumes'?: Array<VolumesFields>;
 }
 /**
  *
  * @export
- * @interface VolumesLastStatusChangeResponse
+ * @interface VolumesFields
  */
-export interface VolumesLastStatusChangeResponse {
+export interface VolumesFields {
     /**
      *
-     * @type {string}
-     * @memberof VolumesLastStatusChangeResponse
+     * @type {Array<AttachmentsFieldsForVolume>}
+     * @memberof VolumesFields
      */
-    'message'?: string;
+    'attachments'?: Array<AttachmentsFieldsForVolume>;
     /**
      *
      * @type {boolean}
-     * @memberof VolumesLastStatusChangeResponse
+     * @memberof VolumesFields
      */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<VolumeStatusChangeFields>}
-     * @memberof VolumesLastStatusChangeResponse
-     */
-    'volume_status_list'?: Array<VolumeStatusChangeFields>;
-}
-/**
- *
- * @export
- * @interface WarningMailLogFields
- */
-export interface WarningMailLogFields {
+    'bootable'?: boolean;
     /**
      *
      * @type {string}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
-    'content'?: string;
+    'callback_url'?: string;
     /**
      *
      * @type {string}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
     'created_at'?: string;
     /**
      *
+     * @type {string}
+     * @memberof VolumesFields
+     */
+    'description'?: string;
+    /**
+     *
+     * @type {EnvironmentFieldsForVolume}
+     * @memberof VolumesFields
+     */
+    'environment'?: EnvironmentFieldsForVolume;
+    /**
+     *
      * @type {number}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
     'id'?: number;
     /**
      *
      * @type {number}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
-    'organization_id'?: number;
+    'image_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof VolumesFields
+     */
+    'name'?: string;
     /**
      *
      * @type {number}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
-    'threshold'?: number;
+    'size'?: number;
     /**
      *
      * @type {string}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
-    'topic'?: string;
+    'status'?: string;
     /**
      *
      * @type {string}
-     * @memberof WarningMailLogFields
+     * @memberof VolumesFields
      */
     'updated_at'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof VolumesFields
+     */
+    'volume_type'?: string;
 }
 /**
  *
  * @export
- * @interface WarningMailLogResponse
+ * @interface WorkloadBillingHistoryResponse
  */
-export interface WarningMailLogResponse {
+export interface WorkloadBillingHistoryResponse {
     /**
      *
-     * @type {Array<WarningMailLogFields>}
-     * @memberof WarningMailLogResponse
+     * @type {BillingHistoryFineTuning}
+     * @memberof WorkloadBillingHistoryResponse
      */
-    'data'?: Array<WarningMailLogFields>;
+    'billing_history_fine_tuning'?: BillingHistoryFineTuning;
     /**
      *
      * @type {string}
-     * @memberof WarningMailLogResponse
+     * @memberof WorkloadBillingHistoryResponse
      */
     'message'?: string;
     /**
      *
      * @type {boolean}
-     * @memberof WarningMailLogResponse
+     * @memberof WorkloadBillingHistoryResponse
      */
-    'status'?: boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof WarningMailLogResponse
-     */
-    'total'?: number;
+    'success'?: boolean;
 }
 /**
  * AliveApi - axios parameter creator
@@ -11116,12 +9419,18 @@ export interface WarningMailLogResponse {
  */
 export declare const AliveApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAlive: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDoc: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AliveApi - functional programming interface
@@ -11129,12 +9438,18 @@ export declare const AliveApiAxiosParamCreator: (configuration?: Configuration) 
  */
 export declare const AliveApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAlive(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDoc(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
 };
 /**
  * AliveApi - factory interface
@@ -11142,12 +9457,18 @@ export declare const AliveApiFp: (configuration?: Configuration) => {
  */
 export declare const AliveApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getAlive(options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDoc(options?: RawAxiosRequestConfig): AxiosPromise<void>;
 };
 /**
  * AliveApi - object-oriented interface
@@ -11157,13 +9478,20 @@ export declare const AliveApiFactory: (configuration?: Configuration, basePath?:
  */
 export declare class AliveApi extends BaseAPI {
     /**
-     *
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AliveApi
      */
-    getAlive(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    getAlive(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AliveApi
+     */
+    getDoc(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * ApiKeyApi - axios parameter creator
@@ -11177,22 +9505,22 @@ export declare const ApiKeyApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteApiKey: (apiKeyId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteAPIKey: (apiKeyId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/generate-api-key).
+     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/generate-api-key).
      * @summary Generate API Key
      * @param {GenerateUpdateApiKeyPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    generateApiKey: (payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    generateAPIKey: (payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/retrieve-api-key).
+     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/retrieve-api-key).
      * @summary Retrieve API Keys
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveApiKeys: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    retrieveAPIKey: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
      * @summary Update API Key
@@ -11201,7 +9529,7 @@ export declare const ApiKeyApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateApiKey: (apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateAPIKey: (apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ApiKeyApi - functional programming interface
@@ -11215,22 +9543,22 @@ export declare const ApiKeyApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteApiKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+    deleteAPIKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
     /**
-     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/generate-api-key).
+     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/generate-api-key).
      * @summary Generate API Key
      * @param {GenerateUpdateApiKeyPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    generateApiKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenerateUpdateApiKeyResponseModel>>;
+    generateAPIKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenerateUpdateApiKeyResponseModel>>;
     /**
-     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/retrieve-api-key).
+     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/retrieve-api-key).
      * @summary Retrieve API Keys
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveApiKeys(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetApiKeysResponseModel>>;
+    retrieveAPIKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetApiKeysResponseModel>>;
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
      * @summary Update API Key
@@ -11239,7 +9567,7 @@ export declare const ApiKeyApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateApiKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenerateUpdateApiKeyResponseModel>>;
+    updateAPIKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenerateUpdateApiKeyResponseModel>>;
 };
 /**
  * ApiKeyApi - factory interface
@@ -11253,22 +9581,22 @@ export declare const ApiKeyApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteApiKey(apiKeyId: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+    deleteAPIKey(apiKeyId: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
     /**
-     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/generate-api-key).
+     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/generate-api-key).
      * @summary Generate API Key
      * @param {GenerateUpdateApiKeyPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    generateApiKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): AxiosPromise<GenerateUpdateApiKeyResponseModel>;
+    generateAPIKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): AxiosPromise<GenerateUpdateApiKeyResponseModel>;
     /**
-     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/retrieve-api-key).
+     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/retrieve-api-key).
      * @summary Retrieve API Keys
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveApiKeys(options?: RawAxiosRequestConfig): AxiosPromise<GetApiKeysResponseModel>;
+    retrieveAPIKey(options?: RawAxiosRequestConfig): AxiosPromise<GetApiKeysResponseModel>;
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
      * @summary Update API Key
@@ -11277,7 +9605,7 @@ export declare const ApiKeyApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateApiKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): AxiosPromise<GenerateUpdateApiKeyResponseModel>;
+    updateAPIKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): AxiosPromise<GenerateUpdateApiKeyResponseModel>;
 };
 /**
  * ApiKeyApi - object-oriented interface
@@ -11294,24 +9622,24 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    deleteApiKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any>>;
+    deleteAPIKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
     /**
-     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/generate-api-key).
+     * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/generate-api-key).
      * @summary Generate API Key
      * @param {GenerateUpdateApiKeyPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    generateApiKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any>>;
+    generateAPIKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}>>;
     /**
-     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/api-key/retrieve-api-key).
+     * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/retrieve-api-key).
      * @summary Retrieve API Keys
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    retrieveApiKeys(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetApiKeysResponseModel, any>>;
+    retrieveAPIKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetApiKeysResponseModel, any, {}>>;
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
      * @summary Update API Key
@@ -11321,7 +9649,7 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    updateApiKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any>>;
+    updateAPIKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}>>;
 }
 /**
  * AssigningMemberRoleApi - axios parameter creator
@@ -11329,22 +9657,22 @@ export declare class ApiKeyApi extends BaseAPI {
  */
 export declare const AssigningMemberRoleApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
+     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
      * @summary Assign RBAC Role
      * @param {number} userId
      * @param {AssignRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignRbacRole: (userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    assignRBACRoleToUser: (userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
+     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
      * @summary Remove RBAC Role From User
      * @param {number} userId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeRbacRoleFromUser: (userId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    removeRBACRoleFromUser: (userId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AssigningMemberRoleApi - functional programming interface
@@ -11352,22 +9680,22 @@ export declare const AssigningMemberRoleApiAxiosParamCreator: (configuration?: C
  */
 export declare const AssigningMemberRoleApiFp: (configuration?: Configuration) => {
     /**
-     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
+     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
      * @summary Assign RBAC Role
      * @param {number} userId
      * @param {AssignRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignRbacRole(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
+    assignRBACRoleToUser(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
     /**
-     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
+     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
      * @summary Remove RBAC Role From User
      * @param {number} userId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeRbacRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+    removeRBACRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
 };
 /**
  * AssigningMemberRoleApi - factory interface
@@ -11375,22 +9703,22 @@ export declare const AssigningMemberRoleApiFp: (configuration?: Configuration) =
  */
 export declare const AssigningMemberRoleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
+     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
      * @summary Assign RBAC Role
      * @param {number} userId
      * @param {AssignRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    assignRbacRole(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
+    assignRBACRoleToUser(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
     /**
-     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
+     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
      * @summary Remove RBAC Role From User
      * @param {number} userId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    removeRbacRoleFromUser(userId: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+    removeRBACRoleFromUser(userId: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
 };
 /**
  * AssigningMemberRoleApi - object-oriented interface
@@ -11400,7 +9728,7 @@ export declare const AssigningMemberRoleApiFactory: (configuration?: Configurati
  */
 export declare class AssigningMemberRoleApi extends BaseAPI {
     /**
-     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
+     * Assigns a specific RBAC role to a user within your organization, granting them access to the resource actions permitted by the role. Provide the user ID in the path and the role ID in the request body. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/assign-rbac-role).
      * @summary Assign RBAC Role
      * @param {number} userId
      * @param {AssignRbacRolePayload} payload
@@ -11408,16 +9736,16 @@ export declare class AssigningMemberRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AssigningMemberRoleApi
      */
-    assignRbacRole(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any>>;
+    assignRBACRoleToUser(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
     /**
-     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
+     * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
      * @summary Remove RBAC Role From User
      * @param {number} userId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AssigningMemberRoleApi
      */
-    removeRbacRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any>>;
+    removeRBACRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
 }
 /**
  * AuthApi - axios parameter creator
@@ -11425,7 +9753,34 @@ export declare class AssigningMemberRoleApi extends BaseAPI {
  */
 export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/auth).
+     * Change the organization associated with the current token. This is useful for users who have access to multiple organizations.
+     * @param {number} orgId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeOrganizationForToken: (orgId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableMFA: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
+     * @summary Get MFA status for authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserMFAStatus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve the organizations associated with a user by their user ID. This endpoint is useful for understanding the user\'s organizational affiliations.
+     * @summary Get User Organizations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserOrganizations: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
      * @summary Retrieve Authenticated User Details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11438,7 +9793,34 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
  */
 export declare const AuthApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/auth).
+     * Change the organization associated with the current token. This is useful for users who have access to multiple organizations.
+     * @param {number} orgId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthGetTokenResponseModel>>;
+    /**
+     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableMFA(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+    /**
+     * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
+     * @summary Get MFA status for authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserMFAStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MFAStatusResponse>>;
+    /**
+     * Retrieve the organizations associated with a user by their user ID. This endpoint is useful for understanding the user\'s organizational affiliations.
+     * @summary Get User Organizations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserOrganizations(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserOrganizationsResponse>>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
      * @summary Retrieve Authenticated User Details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11451,7 +9833,34 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
  */
 export declare const AuthApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/auth).
+     * Change the organization associated with the current token. This is useful for users who have access to multiple organizations.
+     * @param {number} orgId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): AxiosPromise<AuthGetTokenResponseModel>;
+    /**
+     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableMFA(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+    /**
+     * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
+     * @summary Get MFA status for authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserMFAStatus(options?: RawAxiosRequestConfig): AxiosPromise<MFAStatusResponse>;
+    /**
+     * Retrieve the organizations associated with a user by their user ID. This endpoint is useful for understanding the user\'s organizational affiliations.
+     * @summary Get User Organizations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserOrganizations(options?: RawAxiosRequestConfig): AxiosPromise<UserOrganizationsResponse>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
      * @summary Retrieve Authenticated User Details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11466,13 +9875,165 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
  */
 export declare class AuthApi extends BaseAPI {
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/auth).
+     * Change the organization associated with the current token. This is useful for users who have access to multiple organizations.
+     * @param {number} orgId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthGetTokenResponseModel, any, {}>>;
+    /**
+     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    disableMFA(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    /**
+     * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
+     * @summary Get MFA status for authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    getUserMFAStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MFAStatusResponse, any, {}>>;
+    /**
+     * Retrieve the organizations associated with a user by their user ID. This endpoint is useful for understanding the user\'s organizational affiliations.
+     * @summary Get User Organizations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    getUserOrganizations(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserOrganizationsResponse, any, {}>>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
      * @summary Retrieve Authenticated User Details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any>>;
+    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}>>;
+}
+/**
+ * BetaAccessApi - axios parameter creator
+ * @export
+ */
+export declare const BetaAccessApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Creates a new beta access request for the current user
+     * @summary Create a new beta access request
+     * @param {BetaAccessRequestPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createABetaAccessRequest: (payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Check the status of all beta access requests.
+     * @summary Check the status of all beta access requests
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus2: (program: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * BetaAccessApi - functional programming interface
+ * @export
+ */
+export declare const BetaAccessApiFp: (configuration?: Configuration) => {
+    /**
+     * Creates a new beta access request for the current user
+     * @summary Create a new beta access request
+     * @param {BetaAccessRequestPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessRequestResponseModel>>;
+    /**
+     * Check the status of all beta access requests.
+     * @summary Check the status of all beta access requests
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessStatusResponseModel>>;
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessStatusResponseModel>>;
+};
+/**
+ * BetaAccessApi - factory interface
+ * @export
+ */
+export declare const BetaAccessApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Creates a new beta access request for the current user
+     * @summary Create a new beta access request
+     * @param {BetaAccessRequestPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessRequestResponseModel>;
+    /**
+     * Check the status of all beta access requests.
+     * @summary Check the status of all beta access requests
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus(options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessStatusResponseModel>;
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessStatusResponseModel>;
+};
+/**
+ * BetaAccessApi - object-oriented interface
+ * @export
+ * @class BetaAccessApi
+ * @extends {BaseAPI}
+ */
+export declare class BetaAccessApi extends BaseAPI {
+    /**
+     * Creates a new beta access request for the current user
+     * @summary Create a new beta access request
+     * @param {BetaAccessRequestPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BetaAccessApi
+     */
+    createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessRequestResponseModel, any, {}>>;
+    /**
+     * Check the status of all beta access requests.
+     * @summary Check the status of all beta access requests
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BetaAccessApi
+     */
+    getBetaAccessStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}>>;
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BetaAccessApi
+     */
+    getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}>>;
 }
 /**
  * BillingApi - axios parameter creator
@@ -11480,28 +10041,68 @@ export declare class AuthApi extends BaseAPI {
  */
 export declare const BillingApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLastDayCost: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Retrieve all the notification thresholds for an organization.
      * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllThresholdsForOrganization: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getOrganizationThreshold: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/billing-features#view-usage-costs-for-all-resources)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBillingUsage: (deleted?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUsage2: (deleted?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
+     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+     * @param {number} bucketId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLastDayCost: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingBucketDetailsGraph: (bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingClusterDetailsGraph: (clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingDataSynthesisDetailsGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingFineTuningDetailsGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
      * @summary Retrieve Billing History for a specific Billing Cycle
@@ -11511,37 +10112,51 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryForASpecificBillingCycle: (startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistory2: (startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryBucket2: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId
+     * @param {number} bucketId
      * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificSnapshotForASpecificBillingCycle: (snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryBucketDetails: (bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId
+     * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryCluster: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificVirtualMachineForASpecificBillingCycle: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfASpecificVolumeForASpecificBillingCycle: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryClusterDetails: (clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
      * @summary Retrieve Billing History of Contract for a specific Billing Cycle
@@ -11551,73 +10166,136 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfContractForASpecificBillingCycle: (startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryContract: (startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesis: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesisDetails: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuning: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuningDetails: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluation: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluationDetails: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInference: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInferenceDetails: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [page] Page number
-     * @param {string} [perPage] Number of items to return per page
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfSnapshotForASpecificBillingCycle: (startDate?: string, endDate?: string, search?: string, page?: string, perPage?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistorySnapshot: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistorySnapshotDetails: (snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Virtual Machine \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfVirtualMachineForASpecificBillingCycle: (startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryVm2: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfVolumeForASpecificBillingCycle: (startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificSnapshotForASpecificBillingCycle: (snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
      * @param {number} vmId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveHourlyCostDatapointsOfASpecificVirtualMachineForASpecificBillingCycle: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificVolumeForASpecificBillingCycle: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryVmDetails2: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
      * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
@@ -11627,7 +10305,7 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveSubResourcesHistoricalCostDatapointsOfAVirtual: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryVmSubResourceGraph2: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
      * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
@@ -11637,7 +10315,79 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveTotalCostsAndNonDiscountCostsForSubResources: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserBillingHistoryVmTotalCosts: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolume2: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolumeDetails2: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingModelEvaluationDetailsGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingServerlessInferenceDetailsGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingSnapshotDetailsGraph: (snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVmDetailsGraph2: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVolumeDetailsGraph: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will receive vm billing events history
      * @summary Retrieve VM billing events history
@@ -11647,7 +10397,7 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVmBillingEventsHistory: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserVmBillingEvents: (vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * User will receive volume billing events history
      * @summary Retrieve Volume billing events history
@@ -11657,16 +10407,16 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVolumeBillingEventsHistory: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUserVolumeBillingEvents: (volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @summary Update: Subscribe or Unsubscribe Notification Threshold
      * @param {number} thresholdId
-     * @param {Subscribeorunsubscribeupdatepayload} payload
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateSubscribeOrUnsubscribeNotificationThreshold: (thresholdId: number, payload: Subscribeorunsubscribeupdatepayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    putOrganizationThreshold: (thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * BillingApi - functional programming interface
@@ -11674,28 +10424,68 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const BillingApiFp: (configuration?: Configuration) => {
     /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLastDayCost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LastDayCostResponse>>;
+    /**
      * Retrieve all the notification thresholds for an organization.
      * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllThresholdsForOrganization(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organizationthresholdsresponse>>;
+    getOrganizationThreshold(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdsResponse>>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/billing-features#view-usage-costs-for-all-resources)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBillingUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Billingmetricesresponse>>;
+    getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BillingMetricesResponse>>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
+     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+     * @param {number} bucketId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLastDayCost(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Lastdaycostresponse>>;
+    getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelGraphBillingDetailsBucket>>;
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel>>;
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>>;
+    /**
+     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
     /**
      * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
      * @summary Retrieve Billing History for a specific Billing Cycle
@@ -11705,37 +10495,51 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryForASpecificBillingCycle(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationLevelBillingHistoryResponseModel>>;
+    getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationLevelBillingHistoryResponseModel>>;
     /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel>>;
+    /**
+     * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId
+     * @param {number} bucketId
      * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>>;
+    getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel>>;
     /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId
+     * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel>>;
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>>;
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>>;
+    getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel>>;
     /**
      * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
      * @summary Retrieve Billing History of Contract for a specific Billing Cycle
@@ -11745,73 +10549,136 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfContractForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     * User will recieve billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>>;
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>>;
+    /**
+     * User will recieve billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkloadBillingHistoryResponse>>;
+    /**
+     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>>;
+    /**
+     * User will recieve billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>>;
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>>;
+    /**
+     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>>;
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>>;
     /**
      * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [page] Page number
-     * @param {string} [perPage] Number of items to return per page
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfSnapshotForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, page?: string, perPage?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>>;
+    getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>>;
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>>;
     /**
      * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Virtual Machine \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfVirtualMachineForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>>;
+    getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>>;
     /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfVolumeForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>>;
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
      * @param {number} vmId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveHourlyCostDatapointsOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>>;
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
+    getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>>;
     /**
      * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
      * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
@@ -11821,7 +10688,7 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveSubResourcesHistoricalCostDatapointsOfAVirtual(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesGraphResponseModel>>;
+    getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesGraphResponseModel>>;
     /**
      * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
      * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
@@ -11831,7 +10698,79 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveTotalCostsAndNonDiscountCostsForSubResources(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesCostsResponseModel>>;
+    getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesCostsResponseModel>>;
+    /**
+     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>>;
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>>;
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>>;
+    /**
+     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>>;
+    /**
+     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
+    /**
+     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>>;
+    /**
+     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
     /**
      * User will receive vm billing events history
      * @summary Retrieve VM billing events history
@@ -11841,7 +10780,7 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVmBillingEventsHistory(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>>;
+    getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>>;
     /**
      * User will receive volume billing events history
      * @summary Retrieve Volume billing events history
@@ -11851,16 +10790,16 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVolumeBillingEventsHistory(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>>;
+    getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>>;
     /**
      * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @summary Update: Subscribe or Unsubscribe Notification Threshold
      * @param {number} thresholdId
-     * @param {Subscribeorunsubscribeupdatepayload} payload
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateSubscribeOrUnsubscribeNotificationThreshold(thresholdId: number, payload: Subscribeorunsubscribeupdatepayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Organizationthresholdupdateresponse>>;
+    putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdUpdateResponse>>;
 };
 /**
  * BillingApi - factory interface
@@ -11868,28 +10807,68 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
  */
 export declare const BillingApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLastDayCost(options?: RawAxiosRequestConfig): AxiosPromise<LastDayCostResponse>;
+    /**
      * Retrieve all the notification thresholds for an organization.
      * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getAllThresholdsForOrganization(options?: RawAxiosRequestConfig): AxiosPromise<Organizationthresholdsresponse>;
+    getOrganizationThreshold(options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdsResponse>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/billing-features#view-usage-costs-for-all-resources)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getBillingUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<Billingmetricesresponse>;
+    getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<BillingMetricesResponse>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
+     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+     * @param {number} bucketId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLastDayCost(options?: RawAxiosRequestConfig): AxiosPromise<Lastdaycostresponse>;
+    getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelGraphBillingDetailsBucket>;
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel>;
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>;
+    /**
+     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
     /**
      * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
      * @summary Retrieve Billing History for a specific Billing Cycle
@@ -11899,37 +10878,51 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryForASpecificBillingCycle(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationLevelBillingHistoryResponseModel>;
+    getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationLevelBillingHistoryResponseModel>;
     /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel>;
+    /**
+     * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId
+     * @param {number} bucketId
      * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>;
+    getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel>;
     /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId
+     * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel>;
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>;
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>;
+    getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel>;
     /**
      * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
      * @summary Retrieve Billing History of Contract for a specific Billing Cycle
@@ -11939,73 +10932,136 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfContractForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     * User will recieve billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse>;
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>;
+    /**
+     * User will recieve billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkloadBillingHistoryResponse>;
+    /**
+     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>;
+    /**
+     * User will recieve billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse>;
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>;
+    /**
+     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse>;
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>;
     /**
      * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [page] Page number
-     * @param {string} [perPage] Number of items to return per page
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfSnapshotForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, page?: string, perPage?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>;
+    getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>;
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>;
     /**
      * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Virtual Machine \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingHistoryOfVirtualMachineForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>;
+    getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>;
     /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveBillingHistoryOfVolumeForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>;
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
      * @param {number} vmId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveHourlyCostDatapointsOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>;
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveHourlyCostDatapointsOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
+    getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>;
     /**
      * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
      * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
@@ -12015,7 +11071,7 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveSubResourcesHistoricalCostDatapointsOfAVirtual(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesGraphResponseModel>;
+    getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesGraphResponseModel>;
     /**
      * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
      * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
@@ -12025,7 +11081,79 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveTotalCostsAndNonDiscountCostsForSubResources(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesCostsResponseModel>;
+    getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesCostsResponseModel>;
+    /**
+     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>;
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>;
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>;
+    /**
+     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>;
+    /**
+     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
+    /**
+     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>;
+    /**
+     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
     /**
      * User will receive vm billing events history
      * @summary Retrieve VM billing events history
@@ -12035,7 +11163,7 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVmBillingEventsHistory(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse>;
+    getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse>;
     /**
      * User will receive volume billing events history
      * @summary Retrieve Volume billing events history
@@ -12045,16 +11173,16 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVolumeBillingEventsHistory(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse>;
+    getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse>;
     /**
      * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @summary Update: Subscribe or Unsubscribe Notification Threshold
      * @param {number} thresholdId
-     * @param {Subscribeorunsubscribeupdatepayload} payload
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateSubscribeOrUnsubscribeNotificationThreshold(thresholdId: number, payload: Subscribeorunsubscribeupdatepayload, options?: RawAxiosRequestConfig): AxiosPromise<Organizationthresholdupdateresponse>;
+    putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdUpdateResponse>;
 };
 /**
  * BillingApi - object-oriented interface
@@ -12064,15 +11192,23 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
  */
 export declare class BillingApi extends BaseAPI {
     /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getLastDayCost(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<LastDayCostResponse, any, {}>>;
+    /**
      * Retrieve all the notification thresholds for an organization.
      * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getAllThresholdsForOrganization(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Organizationthresholdsresponse, any>>;
+    getOrganizationThreshold(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdsResponse, any, {}>>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/billing-features#view-usage-costs-for-all-resources)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
@@ -12080,15 +11216,51 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getBillingUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Billingmetricesresponse, any>>;
+    getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BillingMetricesResponse, any, {}>>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
+     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+     * @param {number} bucketId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getLastDayCost(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Lastdaycostresponse, any>>;
+    getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelGraphBillingDetailsBucket, any, {}>>;
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterGraphBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
     /**
      * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
      * @summary Retrieve Billing History for a specific Billing Cycle
@@ -12099,40 +11271,55 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryForASpecificBillingCycle(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationLevelBillingHistoryResponseModel, any>>;
+    getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationLevelBillingHistoryResponseModel, any, {}>>;
     /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingHistoryResponseModel, any, {}>>;
+    /**
+     * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId
+     * @param {number} bucketId
      * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any>>;
+    getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingDetailsResponseModel, any, {}>>;
     /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId
+     * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingHistoryResponseModel, any, {}>>;
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVMBillingDetailsResponseModel, any>>;
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    retrieveBillingHistoryOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any>>;
+    getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingDetailsResponseModel, any, {}>>;
     /**
      * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
      * @summary Retrieve Billing History of Contract for a specific Billing Cycle
@@ -12143,60 +11330,140 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryOfContractForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     * User will recieve billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * User will recieve billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WorkloadBillingHistoryResponse, any, {}>>;
+    /**
+     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will recieve billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}>>;
     /**
      * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [page] Page number
-     * @param {string} [perPage] Number of items to return per page
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryOfSnapshotForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, page?: string, perPage?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any>>;
+    getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}>>;
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
     /**
      * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Virtual Machine \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveBillingHistoryOfVirtualMachineForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmBillingHistoryResponseModel, any>>;
+    getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmBillingHistoryResponseModel, any, {}>>;
     /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Volume \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {string} [perPage] Number of items to return per page
-     * @param {string} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    retrieveBillingHistoryOfVolumeForASpecificBillingCycle(startDate?: string, endDate?: string, search?: string, perPage?: string, page?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any>>;
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    retrieveHourlyCostDatapointsOfASpecificSnapshotForASpecificBillingCycle(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any>>;
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
      * @param {number} vmId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12204,18 +11471,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveHourlyCostDatapointsOfASpecificVirtualMachineForASpecificBillingCycle(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmGraphBillingDetailsResponseModel, any>>;
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    retrieveHourlyCostDatapointsOfASpecificVolumeForASpecificBillingCycle(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any>>;
+    getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVMBillingDetailsResponseModel, any, {}>>;
     /**
      * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
      * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
@@ -12226,7 +11482,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveSubResourcesHistoricalCostDatapointsOfAVirtual(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesGraphResponseModel, any>>;
+    getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesGraphResponseModel, any, {}>>;
     /**
      * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
      * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
@@ -12237,7 +11493,86 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveTotalCostsAndNonDiscountCostsForSubResources(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesCostsResponseModel, any>>;
+    getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesCostsResponseModel, any, {}>>;
+    /**
+     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}>>;
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmGraphBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
     /**
      * User will receive vm billing events history
      * @summary Retrieve VM billing events history
@@ -12248,7 +11583,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveVmBillingEventsHistory(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any>>;
+    getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}>>;
     /**
      * User will receive volume billing events history
      * @summary Retrieve Volume billing events history
@@ -12259,17 +11594,17 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    retrieveVolumeBillingEventsHistory(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any>>;
+    getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}>>;
     /**
      * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @summary Update: Subscribe or Unsubscribe Notification Threshold
      * @param {number} thresholdId
-     * @param {Subscribeorunsubscribeupdatepayload} payload
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    updateSubscribeOrUnsubscribeNotificationThreshold(thresholdId: number, payload: Subscribeorunsubscribeupdatepayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Organizationthresholdupdateresponse, any>>;
+    putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdUpdateResponse, any, {}>>;
 }
 /**
  * CalculateApi - axios parameter creator
@@ -12284,7 +11619,7 @@ export declare const CalculateApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingRateForResource: (resourceType: string, id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCalculate2: (resourceType: string, id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CalculateApi - functional programming interface
@@ -12299,7 +11634,7 @@ export declare const CalculateApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingRateForResource(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingResponseForCustomer>>;
+    getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingResponseForCustomer>>;
 };
 /**
  * CalculateApi - factory interface
@@ -12314,7 +11649,7 @@ export declare const CalculateApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveBillingRateForResource(resourceType: string, id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingResponseForCustomer>;
+    getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingResponseForCustomer>;
 };
 /**
  * CalculateApi - object-oriented interface
@@ -12332,7 +11667,7 @@ export declare class CalculateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CalculateApi
      */
-    retrieveBillingRateForResource(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingResponseForCustomer, any>>;
+    getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingResponseForCustomer, any, {}>>;
 }
 /**
  * CallbacksApi - axios parameter creator
@@ -12340,57 +11675,57 @@ export declare class CalculateApi extends BaseAPI {
  */
 export declare const CallbacksApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks#attach-a-callback-url-to-an-existing-virtual-machine).
+     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/attach-callback-vm).
      * @summary Attach callback to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVirtualMachine: (id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachCallbackToVirtualMachine: (vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
      * @summary Attach callback to volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVolume: (id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachCallbackToVolume: (volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/delete-callback-vm).
      * @summary Delete virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVirtualMachineCallback: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteVirtualMachineCallback: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
      * @summary Delete volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolumeCallback: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteVolumeCallback: (volumeId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms).
      * @summary Update virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVirtualMachineCallback: (id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateVirtualMachineCallback: (vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
      * @summary Update volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVolumeCallback: (id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateVolumeCallback: (volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CallbacksApi - functional programming interface
@@ -12398,57 +11733,57 @@ export declare const CallbacksApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const CallbacksApiFp: (configuration?: Configuration) => {
     /**
-     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks#attach-a-callback-url-to-an-existing-virtual-machine).
+     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/attach-callback-vm).
      * @summary Attach callback to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVirtualMachine(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
+    attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
     /**
-     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
      * @summary Attach callback to volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVolume(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
+    attachCallbackToVolume(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
     /**
-     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/delete-callback-vm).
      * @summary Delete virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVirtualMachineCallback(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
      * @summary Delete volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolumeCallback(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteVolumeCallback(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms).
      * @summary Update virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVirtualMachineCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
+    updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
     /**
-     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
      * @summary Update volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVolumeCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
+    updateVolumeCallback(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>>;
 };
 /**
  * CallbacksApi - factory interface
@@ -12456,57 +11791,57 @@ export declare const CallbacksApiFp: (configuration?: Configuration) => {
  */
 export declare const CallbacksApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks#attach-a-callback-url-to-an-existing-virtual-machine).
+     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/attach-callback-vm).
      * @summary Attach callback to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVirtualMachine(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
+    attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
     /**
-     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
      * @summary Attach callback to volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachCallbackToVolume(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
+    attachCallbackToVolume(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
     /**
-     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/delete-callback-vm).
      * @summary Delete virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVirtualMachineCallback(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
      * @summary Delete volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolumeCallback(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteVolumeCallback(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms).
      * @summary Update virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVirtualMachineCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
+    updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
     /**
-     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
      * @summary Update volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateVolumeCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
+    updateVolumeCallback(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse>;
 };
 /**
  * CallbacksApi - object-oriented interface
@@ -12516,63 +11851,63 @@ export declare const CallbacksApiFactory: (configuration?: Configuration, basePa
  */
 export declare class CallbacksApi extends BaseAPI {
     /**
-     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks#attach-a-callback-url-to-an-existing-virtual-machine).
+     * Creates a callback URL for a specified virtual machine, enabling the posting of action events executed on the virtual machine to the specified URL. Provide the callback URL in the request body and the ID of the virtual machine to which it is being attached in the path. For more details on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/attach-callback-vm).
      * @summary Attach callback to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    attachCallbackToVirtualMachine(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any>>;
+    attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
     /**
-     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
      * @summary Attach callback to volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    attachCallbackToVolume(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any>>;
+    attachCallbackToVolume(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
     /**
-     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/delete-callback-vm).
      * @summary Delete virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    deleteVirtualMachineCallback(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
      * @summary Delete volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    deleteVolumeCallback(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteVolumeCallback(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms).
      * @summary Update virtual machine callback
-     * @param {number} id
+     * @param {number} vmId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    updateVirtualMachineCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any>>;
+    updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
     /**
-     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/webhooks-callbacks).
+     * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
      * @summary Update volume callback
-     * @param {number} id
+     * @param {number} volumeId
      * @param {AttachCallbackPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    updateVolumeCallback(id: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any>>;
+    updateVolumeCallback(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
 }
 /**
  * ClusterEventsApi - axios parameter creator
@@ -12631,7 +11966,7 @@ export declare class ClusterEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClusterEventsApi
      */
-    fetchAllOfAClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterEvents, any>>;
+    fetchAllOfAClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterEvents, any, {}>>;
 }
 /**
  * ClustersApi - axios parameter creator
@@ -12648,12 +11983,48 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
     createCluster: (payload: CreateClusterPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Create Node
+     * @param {number} clusterId
+     * @param {CreateClusterNodeFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNode: (clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Create a node group in a cluster
+     * @param {number} clusterId
+     * @param {CreateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNodeGroup: (clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Delete a cluster
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteACluster: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete a node group
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteANodeGroup: (clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Delete Cluster Node
+     * @param {number} clusterId
+     * @param {number} nodeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNode: (clusterId: number, nodeId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -12664,11 +12035,27 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
     fetchClusterNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary GET Cluster Versions
+     * @summary Get Cluster Master Flavors
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getClusterVersions: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getClusterMasterFlavors: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get Cluster Nodes
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterNodes: (clusterId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Lists available Kubernetes versions, optionally filtered by region.
+     * @summary List Cluster Versions
+     * @param {string} [region] Filter versions by region name (optional)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterVersions: (region?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Getting Cluster Detail
@@ -12680,10 +12067,31 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
     /**
      *
      * @summary List Clusters
+     * @param {number} [page] Page number for pagination
+     * @param {number} [pageSize] Number of items per page
+     * @param {string} [environment] Environment Filter
+     * @param {string} [search] Search query to filter cluster by name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listClusters: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listClusters: (page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List node groups for a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listNodeGroups: (clusterId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveANodeGroup: (clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ClustersApi - functional programming interface
@@ -12700,12 +12108,48 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
     createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterResponse>>;
     /**
      *
+     * @summary Create Node
+     * @param {number} clusterId
+     * @param {CreateClusterNodeFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNode(clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodesListResponse>>;
+    /**
+     *
+     * @summary Create a node group in a cluster
+     * @param {number} clusterId
+     * @param {CreateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNodeGroup(clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsCreateResponse>>;
+    /**
+     *
      * @summary Delete a cluster
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteACluster(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     *
+     * @summary Delete a node group
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     *
+     * @summary Delete Cluster Node
+     * @param {number} clusterId
+     * @param {number} nodeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -12716,11 +12160,27 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
     fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
      *
-     * @summary GET Cluster Versions
+     * @summary Get Cluster Master Flavors
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getClusterVersions(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterVersions>>;
+    getClusterMasterFlavors(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MasterFlavorsResponse>>;
+    /**
+     *
+     * @summary Get Cluster Nodes
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterNodes(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodesListResponse>>;
+    /**
+     * Lists available Kubernetes versions, optionally filtered by region.
+     * @summary List Cluster Versions
+     * @param {string} [region] Filter versions by region name (optional)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterVersions(region?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterVersions>>;
     /**
      *
      * @summary Getting Cluster Detail
@@ -12732,10 +12192,31 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary List Clusters
+     * @param {number} [page] Page number for pagination
+     * @param {number} [pageSize] Number of items per page
+     * @param {string} [environment] Environment Filter
+     * @param {string} [search] Search query to filter cluster by name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listClusters(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterListResponse>>;
+    listClusters(page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterListResponse>>;
+    /**
+     *
+     * @summary List node groups for a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listNodeGroups(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsListResponse>>;
+    /**
+     *
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsGetResponse>>;
 };
 /**
  * ClustersApi - factory interface
@@ -12752,12 +12233,48 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
     createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterResponse>;
     /**
      *
+     * @summary Create Node
+     * @param {number} clusterId
+     * @param {CreateClusterNodeFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNode(clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodesListResponse>;
+    /**
+     *
+     * @summary Create a node group in a cluster
+     * @param {number} clusterId
+     * @param {CreateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNodeGroup(clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsCreateResponse>;
+    /**
+     *
      * @summary Delete a cluster
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteACluster(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     *
+     * @summary Delete a node group
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     *
+     * @summary Delete Cluster Node
+     * @param {number} clusterId
+     * @param {number} nodeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -12768,11 +12285,27 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
     fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
      *
-     * @summary GET Cluster Versions
+     * @summary Get Cluster Master Flavors
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getClusterVersions(options?: RawAxiosRequestConfig): AxiosPromise<ClusterVersions>;
+    getClusterMasterFlavors(options?: RawAxiosRequestConfig): AxiosPromise<MasterFlavorsResponse>;
+    /**
+     *
+     * @summary Get Cluster Nodes
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterNodes(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodesListResponse>;
+    /**
+     * Lists available Kubernetes versions, optionally filtered by region.
+     * @summary List Cluster Versions
+     * @param {string} [region] Filter versions by region name (optional)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClusterVersions(region?: string, options?: RawAxiosRequestConfig): AxiosPromise<ClusterVersions>;
     /**
      *
      * @summary Getting Cluster Detail
@@ -12784,10 +12317,31 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
     /**
      *
      * @summary List Clusters
+     * @param {number} [page] Page number for pagination
+     * @param {number} [pageSize] Number of items per page
+     * @param {string} [environment] Environment Filter
+     * @param {string} [search] Search query to filter cluster by name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listClusters(options?: RawAxiosRequestConfig): AxiosPromise<ClusterListResponse>;
+    listClusters(page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ClusterListResponse>;
+    /**
+     *
+     * @summary List node groups for a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listNodeGroups(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsListResponse>;
+    /**
+     *
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsGetResponse>;
 };
 /**
  * ClustersApi - object-oriented interface
@@ -12804,7 +12358,27 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any>>;
+    createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}>>;
+    /**
+     *
+     * @summary Create Node
+     * @param {number} clusterId
+     * @param {CreateClusterNodeFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    createNode(clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}>>;
+    /**
+     *
+     * @summary Create a node group in a cluster
+     * @param {number} clusterId
+     * @param {CreateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    createNodeGroup(clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}>>;
     /**
      *
      * @summary Delete a cluster
@@ -12813,7 +12387,27 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteACluster(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteACluster(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     *
+     * @summary Delete a node group
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     *
+     * @summary Delete Cluster Node
+     * @param {number} clusterId
+     * @param {number} nodeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -12822,15 +12416,33 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any>>;
+    fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
      *
-     * @summary GET Cluster Versions
+     * @summary Get Cluster Master Flavors
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    getClusterVersions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterVersions, any>>;
+    getClusterMasterFlavors(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MasterFlavorsResponse, any, {}>>;
+    /**
+     *
+     * @summary Get Cluster Nodes
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    getClusterNodes(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}>>;
+    /**
+     * Lists available Kubernetes versions, optionally filtered by region.
+     * @summary List Cluster Versions
+     * @param {string} [region] Filter versions by region name (optional)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    getClusterVersions(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterVersions, any, {}>>;
     /**
      *
      * @summary Getting Cluster Detail
@@ -12839,15 +12451,38 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    gettingClusterDetail(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any>>;
+    gettingClusterDetail(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}>>;
     /**
      *
      * @summary List Clusters
+     * @param {number} [page] Page number for pagination
+     * @param {number} [pageSize] Number of items per page
+     * @param {string} [environment] Environment Filter
+     * @param {string} [search] Search query to filter cluster by name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    listClusters(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterListResponse, any>>;
+    listClusters(page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterListResponse, any, {}>>;
+    /**
+     *
+     * @summary List node groups for a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    listNodeGroups(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsListResponse, any, {}>>;
+    /**
+     *
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsGetResponse, any, {}>>;
 }
 /**
  * ComplianceApi - axios parameter creator
@@ -12871,13 +12506,13 @@ export declare const ComplianceApiAxiosParamCreator: (configuration?: Configurat
      */
     deleteACompliance: (gpuModel: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#adhering-to-gpu-compliance).
+     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
      * @summary Retrieve GPU compliance
      * @param {string} [gpu] This is for gpu model
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuCompliance: (gpu?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    retrieveCompliance: (gpu?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update a compliance
@@ -12909,13 +12544,13 @@ export declare const ComplianceApiFp: (configuration?: Configuration) => {
      */
     deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#adhering-to-gpu-compliance).
+     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
      * @summary Retrieve GPU compliance
      * @param {string} [gpu] This is for gpu model
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ComplianceResponse>>;
+    retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ComplianceResponse>>;
     /**
      *
      * @summary Update a compliance
@@ -12947,13 +12582,13 @@ export declare const ComplianceApiFactory: (configuration?: Configuration, baseP
      */
     deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#adhering-to-gpu-compliance).
+     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
      * @summary Retrieve GPU compliance
      * @param {string} [gpu] This is for gpu model
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuCompliance(gpu?: string, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceResponse>;
+    retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceResponse>;
     /**
      *
      * @summary Update a compliance
@@ -12978,7 +12613,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any>>;
+    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}>>;
     /**
      *
      * @summary Delete a compliance
@@ -12987,16 +12622,16 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#adhering-to-gpu-compliance).
+     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
      * @summary Retrieve GPU compliance
      * @param {string} [gpu] This is for gpu model
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    retrieveGpuCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ComplianceResponse, any>>;
+    retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ComplianceResponse, any, {}>>;
     /**
      *
      * @summary Update a compliance
@@ -13005,7 +12640,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    updateACompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any>>;
+    updateACompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}>>;
 }
 /**
  * CreditApi - axios parameter creator
@@ -13013,12 +12648,12 @@ export declare class ComplianceApi extends BaseAPI {
  */
 export declare const CreditApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewCreditAndThreshold: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCredit2: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CreditApi - functional programming interface
@@ -13026,12 +12661,12 @@ export declare const CreditApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const CreditApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewCreditAndThreshold(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Getcreditandthresholdinfoinresponse>>;
+    getCredit2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCreditAndThresholdInfoInResponse>>;
 };
 /**
  * CreditApi - factory interface
@@ -13039,12 +12674,12 @@ export declare const CreditApiFp: (configuration?: Configuration) => {
  */
 export declare const CreditApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewCreditAndThreshold(options?: RawAxiosRequestConfig): AxiosPromise<Getcreditandthresholdinfoinresponse>;
+    getCredit2(options?: RawAxiosRequestConfig): AxiosPromise<GetCreditAndThresholdInfoInResponse>;
 };
 /**
  * CreditApi - object-oriented interface
@@ -13054,13 +12689,13 @@ export declare const CreditApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class CreditApi extends BaseAPI {
     /**
-     *
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CreditApi
      */
-    getViewCreditAndThreshold(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Getcreditandthresholdinfoinresponse, any>>;
+    getCredit2(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCreditAndThresholdInfoInResponse, any, {}>>;
 }
 /**
  * CustomerContractApi - axios parameter creator
@@ -13068,22 +12703,22 @@ export declare class CreditApi extends BaseAPI {
  */
 export declare const CustomerContractApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/contracts).
+     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
      * @param {number} [page]
      * @param {number} [perPage]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listContracts: (page?: number, perPage?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCustomerContract: (page?: number, perPage?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/pricebook-resources/retrieve-contract-details).
+     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
      * @summary Retrieve Contract Details
      * @param {number} contractId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveContractDetails: (contractId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCustomerContractDetails: (contractId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
      * @summary Retrieve GPU Allocation Graph for Contract
@@ -13093,7 +12728,7 @@ export declare const CustomerContractApiAxiosParamCreator: (configuration?: Conf
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuAllocationGraphForContract: (contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getCustomerContractGpuAllocationGraph: (contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CustomerContractApi - functional programming interface
@@ -13101,22 +12736,22 @@ export declare const CustomerContractApiAxiosParamCreator: (configuration?: Conf
  */
 export declare const CustomerContractApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/contracts).
+     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
      * @param {number} [page]
      * @param {number} [perPage]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCustomerContractsListResponseModel>>;
+    getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCustomerContractsListResponseModel>>;
     /**
-     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/pricebook-resources/retrieve-contract-details).
+     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
      * @summary Retrieve Contract Details
      * @param {number} contractId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveContractDetails(contractId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerContractDetailResponseModel>>;
+    getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerContractDetailResponseModel>>;
     /**
      * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
      * @summary Retrieve GPU Allocation Graph for Contract
@@ -13126,7 +12761,7 @@ export declare const CustomerContractApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuAllocationGraphForContract(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractGPUAllocationGraphResponse>>;
+    getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractGPUAllocationGraphResponse>>;
 };
 /**
  * CustomerContractApi - factory interface
@@ -13134,22 +12769,22 @@ export declare const CustomerContractApiFp: (configuration?: Configuration) => {
  */
 export declare const CustomerContractApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/contracts).
+     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
      * @param {number} [page]
      * @param {number} [perPage]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<GetCustomerContractsListResponseModel>;
+    getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<GetCustomerContractsListResponseModel>;
     /**
-     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/pricebook-resources/retrieve-contract-details).
+     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
      * @summary Retrieve Contract Details
      * @param {number} contractId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveContractDetails(contractId: number, options?: RawAxiosRequestConfig): AxiosPromise<CustomerContractDetailResponseModel>;
+    getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig): AxiosPromise<CustomerContractDetailResponseModel>;
     /**
      * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
      * @summary Retrieve GPU Allocation Graph for Contract
@@ -13159,7 +12794,7 @@ export declare const CustomerContractApiFactory: (configuration?: Configuration,
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuAllocationGraphForContract(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractGPUAllocationGraphResponse>;
+    getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractGPUAllocationGraphResponse>;
 };
 /**
  * CustomerContractApi - object-oriented interface
@@ -13169,7 +12804,7 @@ export declare const CustomerContractApiFactory: (configuration?: Configuration,
  */
 export declare class CustomerContractApi extends BaseAPI {
     /**
-     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](https://infrahub-doc.nexgencloud.com/docs/billing-and-payment/contracts).
+     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
      * @param {number} [page]
      * @param {number} [perPage]
@@ -13177,16 +12812,16 @@ export declare class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    listContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCustomerContractsListResponseModel, any>>;
+    getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCustomerContractsListResponseModel, any, {}>>;
     /**
-     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/pricebook-resources/retrieve-contract-details).
+     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
      * @summary Retrieve Contract Details
      * @param {number} contractId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    retrieveContractDetails(contractId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CustomerContractDetailResponseModel, any>>;
+    getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CustomerContractDetailResponseModel, any, {}>>;
     /**
      * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
      * @summary Retrieve GPU Allocation Graph for Contract
@@ -13197,7 +12832,7 @@ export declare class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    retrieveGpuAllocationGraphForContract(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractGPUAllocationGraphResponse, any>>;
+    getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractGPUAllocationGraphResponse, any, {}>>;
 }
 /**
  * DashboardApi - axios parameter creator
@@ -13205,7 +12840,7 @@ export declare class CustomerContractApi extends BaseAPI {
  */
 export declare const DashboardApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns hardware and pricing overview for your active resources, including virtual machines, containers, and volumes. For additional information on the Dashboard feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/dashboard).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13218,7 +12853,7 @@ export declare const DashboardApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const DashboardApiFp: (configuration?: Configuration) => {
     /**
-     * Returns hardware and pricing overview for your active resources, including virtual machines, containers, and volumes. For additional information on the Dashboard feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/dashboard).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13231,7 +12866,7 @@ export declare const DashboardApiFp: (configuration?: Configuration) => {
  */
 export declare const DashboardApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Returns hardware and pricing overview for your active resources, including virtual machines, containers, and volumes. For additional information on the Dashboard feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/dashboard).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13246,13 +12881,13 @@ export declare const DashboardApiFactory: (configuration?: Configuration, basePa
  */
 export declare class DashboardApi extends BaseAPI {
     /**
-     * Returns hardware and pricing overview for your active resources, including virtual machines, containers, and volumes. For additional information on the Dashboard feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/dashboard).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    retrieveDashboard(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DashboardInfoResponse, any>>;
+    retrieveDashboard(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DashboardInfoResponse, any, {}>>;
 }
 /**
  * DeploymentApi - axios parameter creator
@@ -13274,7 +12909,7 @@ export declare const DeploymentApiAxiosParamCreator: (configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailsOfDeploymentById: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    detailsOfDeploymentByID: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary List Deployments
@@ -13311,7 +12946,7 @@ export declare const DeploymentApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailsOfDeploymentById(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>>;
+    detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>>;
     /**
      *
      * @summary List Deployments
@@ -13348,7 +12983,7 @@ export declare const DeploymentApiFactory: (configuration?: Configuration, baseP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detailsOfDeploymentById(id: number, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment>;
+    detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment>;
     /**
      *
      * @summary List Deployments
@@ -13380,7 +13015,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      *
      * @summary Details of Deployment by ID
@@ -13389,7 +13024,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    detailsOfDeploymentById(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any>>;
+    detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}>>;
     /**
      *
      * @summary List Deployments
@@ -13397,7 +13032,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    listDeployments(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Deployments, any>>;
+    listDeployments(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Deployments, any, {}>>;
     /**
      *
      * @summary Start Deployment
@@ -13406,7 +13041,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any>>;
+    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}>>;
 }
 /**
  * EnvironmentApi - axios parameter creator
@@ -13414,7 +13049,7 @@ export declare class DeploymentApi extends BaseAPI {
  */
 export declare const EnvironmentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions) in the request body.
+     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://docs.hyperstack.cloud/docs/resource-management/regions/) in the request body.
      * @summary Create environment
      * @param {CreateEnvironment} payload
      * @param {*} [options] Override http request option.
@@ -13430,7 +13065,15 @@ export declare const EnvironmentApiAxiosParamCreator: (configuration?: Configura
      */
     deleteEnvironment: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions), and the date and time of creation. For more information on environments, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features).
+     * Check if a Environment name is available
+     * @summary Fetch environment name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchEnvironmentNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -13463,7 +13106,7 @@ export declare const EnvironmentApiAxiosParamCreator: (configuration?: Configura
  */
 export declare const EnvironmentApiFp: (configuration?: Configuration) => {
     /**
-     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions) in the request body.
+     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://docs.hyperstack.cloud/docs/resource-management/regions/) in the request body.
      * @summary Create environment
      * @param {CreateEnvironment} payload
      * @param {*} [options] Override http request option.
@@ -13479,7 +13122,15 @@ export declare const EnvironmentApiFp: (configuration?: Configuration) => {
      */
     deleteEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions), and the date and time of creation. For more information on environments, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features).
+     * Check if a Environment name is available
+     * @summary Fetch environment name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchEnvironmentNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
+    /**
+     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -13512,7 +13163,7 @@ export declare const EnvironmentApiFp: (configuration?: Configuration) => {
  */
 export declare const EnvironmentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions) in the request body.
+     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://docs.hyperstack.cloud/docs/resource-management/regions/) in the request body.
      * @summary Create environment
      * @param {CreateEnvironment} payload
      * @param {*} [options] Override http request option.
@@ -13528,7 +13179,15 @@ export declare const EnvironmentApiFactory: (configuration?: Configuration, base
      */
     deleteEnvironment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions), and the date and time of creation. For more information on environments, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features).
+     * Check if a Environment name is available
+     * @summary Fetch environment name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchEnvironmentNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
+    /**
+     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -13563,14 +13222,14 @@ export declare const EnvironmentApiFactory: (configuration?: Configuration, base
  */
 export declare class EnvironmentApi extends BaseAPI {
     /**
-     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions) in the request body.
+     * Creates an environment—a container to organize your resources, including SSH key pairs, virtual machines, and volumes. To create your environment, provide your desired environment name, and [**region**](https://docs.hyperstack.cloud/docs/resource-management/regions/) in the request body.
      * @summary Create environment
      * @param {CreateEnvironment} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    createEnvironment(payload: CreateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any>>;
+    createEnvironment(payload: CreateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
     /**
      * Deletes an environment permanently. Provide the environment ID in the path to remove the specified environment.
      * @summary Delete environment
@@ -13579,9 +13238,18 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    deleteEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://infrahub-doc.nexgencloud.com/docs/features/regions), and the date and time of creation. For more information on environments, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/environments-available-features).
+     * Check if a Environment name is available
+     * @summary Fetch environment name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnvironmentApi
+     */
+    fetchEnvironmentNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    /**
+     * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -13590,7 +13258,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environments, any>>;
+    listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environments, any, {}>>;
     /**
      * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
      * @summary Retrieve environment
@@ -13599,7 +13267,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    retrieveEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any>>;
+    retrieveEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
     /**
      * Updates the name of an existing environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
      * @summary Update environment
@@ -13609,7 +13277,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    updateEnvironment(id: number, payload: UpdateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any>>;
+    updateEnvironment(id: number, payload: UpdateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
 }
 /**
  * FirewallAttachmentApi - axios parameter creator
@@ -13617,14 +13285,14 @@ export declare class EnvironmentApi extends BaseAPI {
  */
 export declare const FirewallAttachmentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Attach a firewall to one or more virtual machines by providing the virtual machine IDs in the request body and the firewall ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/attach-firewall-to-vms).
      * @summary Attach Firewalls to VMs
      * @param {number} firewallId
      * @param {AttachFirewallWithVM} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToVms: (firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    postAttachSecurityGroups: (firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FirewallAttachmentApi - functional programming interface
@@ -13632,14 +13300,14 @@ export declare const FirewallAttachmentApiAxiosParamCreator: (configuration?: Co
  */
 export declare const FirewallAttachmentApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Attach a firewall to one or more virtual machines by providing the virtual machine IDs in the request body and the firewall ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/attach-firewall-to-vms).
      * @summary Attach Firewalls to VMs
      * @param {number} firewallId
      * @param {AttachFirewallWithVM} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToVms(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
 };
 /**
  * FirewallAttachmentApi - factory interface
@@ -13647,14 +13315,14 @@ export declare const FirewallAttachmentApiFp: (configuration?: Configuration) =>
  */
 export declare const FirewallAttachmentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Attach a firewall to one or more virtual machines by providing the virtual machine IDs in the request body and the firewall ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/attach-firewall-to-vms).
      * @summary Attach Firewalls to VMs
      * @param {number} firewallId
      * @param {AttachFirewallWithVM} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToVms(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
 };
 /**
  * FirewallAttachmentApi - object-oriented interface
@@ -13664,7 +13332,7 @@ export declare const FirewallAttachmentApiFactory: (configuration?: Configuratio
  */
 export declare class FirewallAttachmentApi extends BaseAPI {
     /**
-     *
+     * Attach a firewall to one or more virtual machines by providing the virtual machine IDs in the request body and the firewall ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/attach-firewall-to-vms).
      * @summary Attach Firewalls to VMs
      * @param {number} firewallId
      * @param {AttachFirewallWithVM} payload
@@ -13672,7 +13340,7 @@ export declare class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    attachFirewallsToVms(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
 }
 /**
  * FirewallsApi - axios parameter creator
@@ -13680,41 +13348,24 @@ export declare class FirewallAttachmentApi extends BaseAPI {
  */
 export declare const FirewallsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates a [**firewall rule**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    addFirewallRuleToFirewall: (firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createFirewall: (payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/delete-firewall).
+     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewall: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteSecurityGroupDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
+     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
      * @param {number} firewallId
      * @param {number} firewallRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRulesFromFirewall: (firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteSecurityGroupRuleDelete: (firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-groups).
+     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
      * @param {number} [page]
      * @param {number} [pageSize]
@@ -13723,7 +13374,7 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listFirewalls: (page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getSecurityGroup: (page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13731,7 +13382,24 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveFirewallDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getSecurityGroupDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroup: (payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroupRules: (firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FirewallsApi - functional programming interface
@@ -13739,41 +13407,24 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const FirewallsApiFp: (configuration?: Configuration) => {
     /**
-     * Creates a [**firewall rule**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    addFirewallRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>>;
-    /**
-     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/delete-firewall).
+     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewall(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
+     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
      * @param {number} firewallId
      * @param {number} firewallRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-groups).
+     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
      * @param {number} [page]
      * @param {number} [pageSize]
@@ -13782,7 +13433,7 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallsListResponse>>;
+    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallsListResponse>>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13790,7 +13441,24 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveFirewallDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>>;
+    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>>;
+    /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>>;
 };
 /**
  * FirewallsApi - factory interface
@@ -13798,41 +13466,24 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
  */
 export declare const FirewallsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates a [**firewall rule**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    addFirewallRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse>;
-    /**
-     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/delete-firewall).
+     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewall(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
+     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
      * @param {number} firewallId
      * @param {number} firewallRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-groups).
+     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
      * @param {number} [page]
      * @param {number} [pageSize]
@@ -13841,7 +13492,7 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<FirewallsListResponse>;
+    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<FirewallsListResponse>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13849,7 +13500,24 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveFirewallDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse>;
+    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse>;
+    /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule>;
 };
 /**
  * FirewallsApi - object-oriented interface
@@ -13859,35 +13527,16 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
  */
 export declare class FirewallsApi extends BaseAPI {
     /**
-     * Creates a [**firewall rule**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    addFirewallRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any>>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any>>;
-    /**
-     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/delete-firewall).
+     * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
+     * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
      * @param {number} firewallId
      * @param {number} firewallRuleId
@@ -13895,9 +13544,9 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/network-security/security-groups).
+     * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
      * @param {number} [page]
      * @param {number} [pageSize]
@@ -13907,7 +13556,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    listFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any>>;
+    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any, {}>>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13916,7 +13565,26 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    retrieveFirewallDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any>>;
+    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any, {}>>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any, {}>>;
+    /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any, {}>>;
 }
 /**
  * FlavorApi - axios parameter creator
@@ -13924,7 +13592,7 @@ export declare class FirewallsApi extends BaseAPI {
  */
 export declare const FlavorApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns a list of available virtual machine hardware configurations, known as             **flavors**. You can specify a `region_name` in the query string of the request to             retrieve flavors available only in the specified region; by default, it returns flavors              available in all regions. For more details on flavors,              [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors).
+     * Returns a list of available virtual machine hardware configurations, known as**flavors**. You can specify a `region_name` in the query string of the request toretrieve flavors available only in the specified region; by default, it returnsflavors available in all regions. For more details on flavors,[**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors).
      * @summary List Flavors
      * @param {string} [region] Region Name
      * @param {*} [options] Override http request option.
@@ -13938,7 +13606,7 @@ export declare const FlavorApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const FlavorApiFp: (configuration?: Configuration) => {
     /**
-     * Returns a list of available virtual machine hardware configurations, known as             **flavors**. You can specify a `region_name` in the query string of the request to             retrieve flavors available only in the specified region; by default, it returns flavors              available in all regions. For more details on flavors,              [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors).
+     * Returns a list of available virtual machine hardware configurations, known as**flavors**. You can specify a `region_name` in the query string of the request toretrieve flavors available only in the specified region; by default, it returnsflavors available in all regions. For more details on flavors,[**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors).
      * @summary List Flavors
      * @param {string} [region] Region Name
      * @param {*} [options] Override http request option.
@@ -13952,7 +13620,7 @@ export declare const FlavorApiFp: (configuration?: Configuration) => {
  */
 export declare const FlavorApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Returns a list of available virtual machine hardware configurations, known as             **flavors**. You can specify a `region_name` in the query string of the request to             retrieve flavors available only in the specified region; by default, it returns flavors              available in all regions. For more details on flavors,              [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors).
+     * Returns a list of available virtual machine hardware configurations, known as**flavors**. You can specify a `region_name` in the query string of the request toretrieve flavors available only in the specified region; by default, it returnsflavors available in all regions. For more details on flavors,[**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors).
      * @summary List Flavors
      * @param {string} [region] Region Name
      * @param {*} [options] Override http request option.
@@ -13968,14 +13636,14 @@ export declare const FlavorApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class FlavorApi extends BaseAPI {
     /**
-     * Returns a list of available virtual machine hardware configurations, known as             **flavors**. You can specify a `region_name` in the query string of the request to             retrieve flavors available only in the specified region; by default, it returns flavors              available in all regions. For more details on flavors,              [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors).
+     * Returns a list of available virtual machine hardware configurations, known as**flavors**. You can specify a `region_name` in the query string of the request toretrieve flavors available only in the specified region; by default, it returnsflavors available in all regions. For more details on flavors,[**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors).
      * @summary List Flavors
      * @param {string} [region] Region Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FlavorApi
      */
-    listFlavors(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FlavorListResponse, any>>;
+    listFlavors(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FlavorListResponse, any, {}>>;
 }
 /**
  * FloatingIpApi - axios parameter creator
@@ -13983,21 +13651,21 @@ export declare class FlavorApi extends BaseAPI {
  */
 export declare const FloatingIpApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/floating-ip/attach-floating-ip/).
      * @summary Attach public IP to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachPublicIpToVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachPublicIPToVirtualMachine: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
      * @summary Detach public IP from virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachPublicIpFromVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    detachPublicIPFromVirtualMachine: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FloatingIpApi - functional programming interface
@@ -14005,21 +13673,21 @@ export declare const FloatingIpApiAxiosParamCreator: (configuration?: Configurat
  */
 export declare const FloatingIpApiFp: (configuration?: Configuration) => {
     /**
-     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/floating-ip/attach-floating-ip/).
      * @summary Attach public IP to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachPublicIpToVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
      * @summary Detach public IP from virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachPublicIpFromVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
 };
 /**
  * FloatingIpApi - factory interface
@@ -14027,21 +13695,21 @@ export declare const FloatingIpApiFp: (configuration?: Configuration) => {
  */
 export declare const FloatingIpApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/floating-ip/attach-floating-ip/).
      * @summary Attach public IP to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachPublicIpToVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
      * @summary Detach public IP from virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachPublicIpFromVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
 };
 /**
  * FloatingIpApi - object-oriented interface
@@ -14051,23 +13719,23 @@ export declare const FloatingIpApiFactory: (configuration?: Configuration, baseP
  */
 export declare class FloatingIpApi extends BaseAPI {
     /**
-     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Initiates the creation of a public IP address and attaches it to an existing virtual machine, making it accessible through the internet. Include the virtual machine ID in the path to attach a public IP to the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/floating-ip/attach-floating-ip/).
      * @summary Attach public IP to virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    attachPublicIpToVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/public-ip).
+     * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
      * @summary Detach public IP from virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    detachPublicIpFromVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
 }
 /**
  * GpuApi - axios parameter creator
@@ -14080,7 +13748,7 @@ export declare const GpuApiAxiosParamCreator: (configuration?: Configuration) =>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listGpus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listGPUs: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * GpuApi - functional programming interface
@@ -14093,7 +13761,7 @@ export declare const GpuApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listGpus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GPUList>>;
+    listGPUs(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GPUList>>;
 };
 /**
  * GpuApi - factory interface
@@ -14106,7 +13774,7 @@ export declare const GpuApiFactory: (configuration?: Configuration, basePath?: s
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listGpus(options?: RawAxiosRequestConfig): AxiosPromise<GPUList>;
+    listGPUs(options?: RawAxiosRequestConfig): AxiosPromise<GPUList>;
 };
 /**
  * GpuApi - object-oriented interface
@@ -14122,7 +13790,7 @@ export declare class GpuApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GpuApi
      */
-    listGpus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GPUList, any>>;
+    listGPUs(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GPUList, any, {}>>;
 }
 /**
  * ImageApi - axios parameter creator
@@ -14136,7 +13804,7 @@ export declare const ImageApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteAnImage: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteImage: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Check if an Image name is available
      * @summary Fetch name availability for Images
@@ -14144,7 +13812,7 @@ export declare const ImageApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    fetchNameAvailabilityForImages: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    fetchImageNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieve details of a specific image by providing the image ID.
      * @summary Get Private Image Details
@@ -14153,9 +13821,9 @@ export declare const ImageApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPrivateImageDetails: (id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getImageDetails: (id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/images).
+     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
      * @summary List Images
      * @param {string} [region] Region Name
      * @param {boolean} [includePublic] Flag to include public images in the response (true/false). Default is true.
@@ -14165,7 +13833,7 @@ export declare const ImageApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listImages: (region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listImages2: (region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ImageApi - functional programming interface
@@ -14179,7 +13847,7 @@ export declare const ImageApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteAnImage(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteImage(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Check if an Image name is available
      * @summary Fetch name availability for Images
@@ -14187,7 +13855,7 @@ export declare const ImageApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    fetchNameAvailabilityForImages(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
+    fetchImageNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
      * Retrieve details of a specific image by providing the image ID.
      * @summary Get Private Image Details
@@ -14196,9 +13864,9 @@ export declare const ImageApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPrivateImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Image>>;
+    getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Image>>;
     /**
-     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/images).
+     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
      * @summary List Images
      * @param {string} [region] Region Name
      * @param {boolean} [includePublic] Flag to include public images in the response (true/false). Default is true.
@@ -14208,7 +13876,7 @@ export declare const ImageApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Images>>;
+    listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Images>>;
 };
 /**
  * ImageApi - factory interface
@@ -14222,7 +13890,7 @@ export declare const ImageApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteAnImage(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteImage(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Check if an Image name is available
      * @summary Fetch name availability for Images
@@ -14230,7 +13898,7 @@ export declare const ImageApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    fetchNameAvailabilityForImages(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
+    fetchImageNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
      * Retrieve details of a specific image by providing the image ID.
      * @summary Get Private Image Details
@@ -14239,9 +13907,9 @@ export declare const ImageApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPrivateImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Image>;
+    getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Image>;
     /**
-     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/images).
+     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
      * @summary List Images
      * @param {string} [region] Region Name
      * @param {boolean} [includePublic] Flag to include public images in the response (true/false). Default is true.
@@ -14251,7 +13919,7 @@ export declare const ImageApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<Images>;
+    listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<Images>;
 };
 /**
  * ImageApi - object-oriented interface
@@ -14268,7 +13936,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    deleteAnImage(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteImage(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if an Image name is available
      * @summary Fetch name availability for Images
@@ -14277,7 +13945,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    fetchNameAvailabilityForImages(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any>>;
+    fetchImageNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
      * Retrieve details of a specific image by providing the image ID.
      * @summary Get Private Image Details
@@ -14287,9 +13955,9 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    getPrivateImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Image, any>>;
+    getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Image, any, {}>>;
     /**
-     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/images).
+     * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
      * @summary List Images
      * @param {string} [region] Region Name
      * @param {boolean} [includePublic] Flag to include public images in the response (true/false). Default is true.
@@ -14300,7 +13968,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Images, any>>;
+    listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Images, any, {}>>;
 }
 /**
  * InviteApi - axios parameter creator
@@ -14308,15 +13976,23 @@ export declare class ImageApi extends BaseAPI {
  */
 export declare const InviteApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/delete-invite).
-     * @summary Delete Invite
+     * Accept an invitation for a user to join your organization.
+     * @summary Accept Invite
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/delete-invite).
+     * @summary Accept Invite
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteInvite: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/invite-member).
+     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/invite-member).
      * @summary Invite User to Organization
      * @param {InviteUserPayload} payload
      * @param {*} [options] Override http request option.
@@ -14324,7 +14000,7 @@ export declare const InviteApiAxiosParamCreator: (configuration?: Configuration)
      */
     inviteUserToOrganization: (payload: InviteUserPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/list-invites).
+     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/list-invites).
      * @summary List Invites
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14337,15 +14013,23 @@ export declare const InviteApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const InviteApiFp: (configuration?: Configuration) => {
     /**
-     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/delete-invite).
-     * @summary Delete Invite
+     * Accept an invitation for a user to join your organization.
+     * @summary Accept Invite
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+    /**
+     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/delete-invite).
+     * @summary Accept Invite
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteInvite(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
     /**
-     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/invite-member).
+     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/invite-member).
      * @summary Invite User to Organization
      * @param {InviteUserPayload} payload
      * @param {*} [options] Override http request option.
@@ -14353,7 +14037,7 @@ export declare const InviteApiFp: (configuration?: Configuration) => {
      */
     inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InviteUserResponseModel>>;
     /**
-     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/list-invites).
+     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/list-invites).
      * @summary List Invites
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14366,15 +14050,23 @@ export declare const InviteApiFp: (configuration?: Configuration) => {
  */
 export declare const InviteApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/delete-invite).
-     * @summary Delete Invite
+     * Accept an invitation for a user to join your organization.
+     * @summary Accept Invite
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+    /**
+     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/delete-invite).
+     * @summary Accept Invite
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deleteInvite(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
     /**
-     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/invite-member).
+     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/invite-member).
      * @summary Invite User to Organization
      * @param {InviteUserPayload} payload
      * @param {*} [options] Override http request option.
@@ -14382,7 +14074,7 @@ export declare const InviteApiFactory: (configuration?: Configuration, basePath?
      */
     inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): AxiosPromise<InviteUserResponseModel>;
     /**
-     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/list-invites).
+     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/list-invites).
      * @summary List Invites
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14397,31 +14089,40 @@ export declare const InviteApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class InviteApi extends BaseAPI {
     /**
-     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/delete-invite).
-     * @summary Delete Invite
+     * Accept an invitation for a user to join your organization.
+     * @summary Accept Invite
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    deleteInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any>>;
+    acceptInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
     /**
-     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/invite-member).
+     * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/delete-invite).
+     * @summary Accept Invite
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InviteApi
+     */
+    deleteInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    /**
+     * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/invite-member).
      * @summary Invite User to Organization
      * @param {InviteUserPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InviteUserResponseModel, any>>;
+    inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InviteUserResponseModel, any, {}>>;
     /**
-     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/invites/list-invites).
+     * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/list-invites).
      * @summary List Invites
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    listInvites(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInvitesResponseModel, any>>;
+    listInvites(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInvitesResponseModel, any, {}>>;
 }
 /**
  * KeypairApi - axios parameter creator
@@ -14429,7 +14130,7 @@ export declare class InviteApi extends BaseAPI {
  */
 export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Permanently deletes a specified key pair. Include the key pair ID in the request path to remove the designated key pair.
+     * Permanently deletes a specified key pair. Provide the key pair ID in the path to remove the designated key pair.
      * @summary Delete key pair
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -14437,7 +14138,7 @@ export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration
      */
     deleteKeyPair: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Imports a new key pair for secure shell (SSH) access to your resources. To import a new key pair, include the key name, environment name, and public key in the request body. For additional information on importing SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/getting-started/create-keypair#importing-an-ssh-key).
+     * Imports a new key pair for secure shell (SSH) access to your resources. Provide the key name, environment name, and public key in the request body. For more details on importing SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/import-keypair).
      * @summary Import key pair
      * @param {ImportKeypairPayload} payload
      * @param {*} [options] Override http request option.
@@ -14445,7 +14146,7 @@ export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration
      */
     importKeyPair: (payload: ImportKeypairPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of your existing SSH key pairs, providing details for each. For additional information on SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/keypairs-available-features).
+     * Retrieves a list of your existing SSH key pairs, providing details for each. For more information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @summary List key pairs
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -14455,7 +14156,7 @@ export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration
      */
     listKeyPairs: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates the name of a specified key pair. Include the key pair ID in the request path and the new `name` of the key pair in the request body.
+     * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
      * @param {UpdateKeypairName} payload
@@ -14470,7 +14171,7 @@ export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const KeypairApiFp: (configuration?: Configuration) => {
     /**
-     * Permanently deletes a specified key pair. Include the key pair ID in the request path to remove the designated key pair.
+     * Permanently deletes a specified key pair. Provide the key pair ID in the path to remove the designated key pair.
      * @summary Delete key pair
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -14478,7 +14179,7 @@ export declare const KeypairApiFp: (configuration?: Configuration) => {
      */
     deleteKeyPair(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Imports a new key pair for secure shell (SSH) access to your resources. To import a new key pair, include the key name, environment name, and public key in the request body. For additional information on importing SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/getting-started/create-keypair#importing-an-ssh-key).
+     * Imports a new key pair for secure shell (SSH) access to your resources. Provide the key name, environment name, and public key in the request body. For more details on importing SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/import-keypair).
      * @summary Import key pair
      * @param {ImportKeypairPayload} payload
      * @param {*} [options] Override http request option.
@@ -14486,7 +14187,7 @@ export declare const KeypairApiFp: (configuration?: Configuration) => {
      */
     importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImportKeypairResponse>>;
     /**
-     * Retrieves a list of your existing SSH key pairs, providing details for each. For additional information on SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/keypairs-available-features).
+     * Retrieves a list of your existing SSH key pairs, providing details for each. For more information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @summary List key pairs
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -14496,14 +14197,14 @@ export declare const KeypairApiFp: (configuration?: Configuration) => {
      */
     listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Keypairs>>;
     /**
-     * Updates the name of a specified key pair. Include the key pair ID in the request path and the new `name` of the key pair in the request body.
+     * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
      * @param {UpdateKeypairName} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeypairnameresponse>>;
+    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateKeypairNameResponse>>;
 };
 /**
  * KeypairApi - factory interface
@@ -14511,7 +14212,7 @@ export declare const KeypairApiFp: (configuration?: Configuration) => {
  */
 export declare const KeypairApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Permanently deletes a specified key pair. Include the key pair ID in the request path to remove the designated key pair.
+     * Permanently deletes a specified key pair. Provide the key pair ID in the path to remove the designated key pair.
      * @summary Delete key pair
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -14519,7 +14220,7 @@ export declare const KeypairApiFactory: (configuration?: Configuration, basePath
      */
     deleteKeyPair(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Imports a new key pair for secure shell (SSH) access to your resources. To import a new key pair, include the key name, environment name, and public key in the request body. For additional information on importing SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/getting-started/create-keypair#importing-an-ssh-key).
+     * Imports a new key pair for secure shell (SSH) access to your resources. Provide the key name, environment name, and public key in the request body. For more details on importing SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/import-keypair).
      * @summary Import key pair
      * @param {ImportKeypairPayload} payload
      * @param {*} [options] Override http request option.
@@ -14527,7 +14228,7 @@ export declare const KeypairApiFactory: (configuration?: Configuration, basePath
      */
     importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): AxiosPromise<ImportKeypairResponse>;
     /**
-     * Retrieves a list of your existing SSH key pairs, providing details for each. For additional information on SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/keypairs-available-features).
+     * Retrieves a list of your existing SSH key pairs, providing details for each. For more information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @summary List key pairs
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -14537,14 +14238,14 @@ export declare const KeypairApiFactory: (configuration?: Configuration, basePath
      */
     listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Keypairs>;
     /**
-     * Updates the name of a specified key pair. Include the key pair ID in the request path and the new `name` of the key pair in the request body.
+     * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
      * @param {UpdateKeypairName} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): AxiosPromise<UpdateKeypairnameresponse>;
+    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): AxiosPromise<UpdateKeypairNameResponse>;
 };
 /**
  * KeypairApi - object-oriented interface
@@ -14554,25 +14255,25 @@ export declare const KeypairApiFactory: (configuration?: Configuration, basePath
  */
 export declare class KeypairApi extends BaseAPI {
     /**
-     * Permanently deletes a specified key pair. Include the key pair ID in the request path to remove the designated key pair.
+     * Permanently deletes a specified key pair. Provide the key pair ID in the path to remove the designated key pair.
      * @summary Delete key pair
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    deleteKeyPair(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteKeyPair(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Imports a new key pair for secure shell (SSH) access to your resources. To import a new key pair, include the key name, environment name, and public key in the request body. For additional information on importing SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/getting-started/create-keypair#importing-an-ssh-key).
+     * Imports a new key pair for secure shell (SSH) access to your resources. Provide the key name, environment name, and public key in the request body. For more details on importing SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/import-keypair).
      * @summary Import key pair
      * @param {ImportKeypairPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImportKeypairResponse, any>>;
+    importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImportKeypairResponse, any, {}>>;
     /**
-     * Retrieves a list of your existing SSH key pairs, providing details for each. For additional information on SSH key pairs, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/keypairs-available-features).
+     * Retrieves a list of your existing SSH key pairs, providing details for each. For more information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @summary List key pairs
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -14581,9 +14282,9 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Keypairs, any>>;
+    listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Keypairs, any, {}>>;
     /**
-     * Updates the name of a specified key pair. Include the key pair ID in the request path and the new `name` of the key pair in the request body.
+     * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
      * @param {UpdateKeypairName} payload
@@ -14591,7 +14292,7 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeypairnameresponse, any>>;
+    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeypairNameResponse, any, {}>>;
 }
 /**
  * OrganizationApi - axios parameter creator
@@ -14599,7 +14300,7 @@ export declare class KeypairApi extends BaseAPI {
  */
 export declare const OrganizationApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Removes a member from your organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/remove-member).
+     * Removes a member from your organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/remove-member).
      * @summary Remove Organization Member
      * @param {RemoveMemberPayload} payload
      * @param {*} [options] Override http request option.
@@ -14607,14 +14308,14 @@ export declare const OrganizationApiAxiosParamCreator: (configuration?: Configur
      */
     removeOrganizationMember: (payload: RemoveMemberPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/retrieve-org-details).
+     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/retrieve-org-details).
      * @summary Retrieve Organization Information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     retrieveOrganizationInformation: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates the name of the organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/update-org-name).
+     * Updates the name of the organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/update-org-name).
      * @summary Update Organization Information
      * @param {UpdateOrganizationPayload} payload
      * @param {*} [options] Override http request option.
@@ -14628,7 +14329,7 @@ export declare const OrganizationApiAxiosParamCreator: (configuration?: Configur
  */
 export declare const OrganizationApiFp: (configuration?: Configuration) => {
     /**
-     * Removes a member from your organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/remove-member).
+     * Removes a member from your organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/remove-member).
      * @summary Remove Organization Member
      * @param {RemoveMemberPayload} payload
      * @param {*} [options] Override http request option.
@@ -14636,14 +14337,14 @@ export declare const OrganizationApiFp: (configuration?: Configuration) => {
      */
     removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RemoveMemberFromOrganizationResponseModel>>;
     /**
-     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/retrieve-org-details).
+     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/retrieve-org-details).
      * @summary Retrieve Organization Information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     retrieveOrganizationInformation(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetOrganizationResponseModel>>;
     /**
-     * Updates the name of the organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/update-org-name).
+     * Updates the name of the organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/update-org-name).
      * @summary Update Organization Information
      * @param {UpdateOrganizationPayload} payload
      * @param {*} [options] Override http request option.
@@ -14657,7 +14358,7 @@ export declare const OrganizationApiFp: (configuration?: Configuration) => {
  */
 export declare const OrganizationApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Removes a member from your organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/remove-member).
+     * Removes a member from your organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/remove-member).
      * @summary Remove Organization Member
      * @param {RemoveMemberPayload} payload
      * @param {*} [options] Override http request option.
@@ -14665,14 +14366,14 @@ export declare const OrganizationApiFactory: (configuration?: Configuration, bas
      */
     removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): AxiosPromise<RemoveMemberFromOrganizationResponseModel>;
     /**
-     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/retrieve-org-details).
+     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/retrieve-org-details).
      * @summary Retrieve Organization Information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     retrieveOrganizationInformation(options?: RawAxiosRequestConfig): AxiosPromise<GetOrganizationResponseModel>;
     /**
-     * Updates the name of the organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/update-org-name).
+     * Updates the name of the organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/update-org-name).
      * @summary Update Organization Information
      * @param {UpdateOrganizationPayload} payload
      * @param {*} [options] Override http request option.
@@ -14688,31 +14389,115 @@ export declare const OrganizationApiFactory: (configuration?: Configuration, bas
  */
 export declare class OrganizationApi extends BaseAPI {
     /**
-     * Removes a member from your organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/remove-member).
+     * Removes a member from your organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/remove-member).
      * @summary Remove Organization Member
      * @param {RemoveMemberPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RemoveMemberFromOrganizationResponseModel, any>>;
+    removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RemoveMemberFromOrganizationResponseModel, any, {}>>;
     /**
-     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/retrieve-org-details).
+     * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/retrieve-org-details).
      * @summary Retrieve Organization Information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    retrieveOrganizationInformation(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetOrganizationResponseModel, any>>;
+    retrieveOrganizationInformation(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetOrganizationResponseModel, any, {}>>;
     /**
-     * Updates the name of the organization. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/organization/update-org-name).
+     * Updates the name of the organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/update-org-name).
      * @summary Update Organization Information
      * @param {UpdateOrganizationPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    updateOrganizationInformation(payload: UpdateOrganizationPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateOrganizationResponseModel, any>>;
+    updateOrganizationInformation(payload: UpdateOrganizationPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateOrganizationResponseModel, any, {}>>;
+}
+/**
+ * PartnerConfigApi - axios parameter creator
+ * @export
+ */
+export declare const PartnerConfigApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Fetch the customised customer configuration for Hyperstack.
+     * @summary Get partner config
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfig: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Fetch the partner config for a given domain.
+     * @param {string} [domain] The domain to look up the partner config for.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfigByDomain: (domain?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * PartnerConfigApi - functional programming interface
+ * @export
+ */
+export declare const PartnerConfigApiFp: (configuration?: Configuration) => {
+    /**
+     * Fetch the customised customer configuration for Hyperstack.
+     * @summary Get partner config
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfig(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PartnerConfig>>;
+    /**
+     * Fetch the partner config for a given domain.
+     * @param {string} [domain] The domain to look up the partner config for.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfigByDomain(domain?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PartnerConfig>>;
+};
+/**
+ * PartnerConfigApi - factory interface
+ * @export
+ */
+export declare const PartnerConfigApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Fetch the customised customer configuration for Hyperstack.
+     * @summary Get partner config
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfig(options?: RawAxiosRequestConfig): AxiosPromise<PartnerConfig>;
+    /**
+     * Fetch the partner config for a given domain.
+     * @param {string} [domain] The domain to look up the partner config for.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPartnerConfigByDomain(domain?: string, options?: RawAxiosRequestConfig): AxiosPromise<PartnerConfig>;
+};
+/**
+ * PartnerConfigApi - object-oriented interface
+ * @export
+ * @class PartnerConfigApi
+ * @extends {BaseAPI}
+ */
+export declare class PartnerConfigApi extends BaseAPI {
+    /**
+     * Fetch the customised customer configuration for Hyperstack.
+     * @summary Get partner config
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PartnerConfigApi
+     */
+    getPartnerConfig(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}>>;
+    /**
+     * Fetch the partner config for a given domain.
+     * @param {string} [domain] The domain to look up the partner config for.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PartnerConfigApi
+     */
+    getPartnerConfigByDomain(domain?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}>>;
 }
 /**
  * PaymentApi - axios parameter creator
@@ -14720,20 +14505,28 @@ export declare class OrganizationApi extends BaseAPI {
  */
 export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewPaymentDetails: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getDetails: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Retrieve the payment receipt from Stripe for a specific payment
+     * @summary Retrieve Payment Receipt
+     * @param {string} paymentId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPaymentReceipt2: (paymentId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInitiatePayment: (payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    postPayment: (payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PaymentApi - functional programming interface
@@ -14741,20 +14534,28 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const PaymentApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewPaymentDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDetailsResponse>>;
+    getDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDetailsResponse>>;
     /**
-     *
+     * Retrieve the payment receipt from Stripe for a specific payment
+     * @summary Retrieve Payment Receipt
+     * @param {string} paymentId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInitiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentInitiateResponse>>;
+    postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentInitiateResponse>>;
 };
 /**
  * PaymentApi - factory interface
@@ -14762,20 +14563,28 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
  */
 export declare const PaymentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getViewPaymentDetails(options?: RawAxiosRequestConfig): AxiosPromise<PaymentDetailsResponse>;
+    getDetails(options?: RawAxiosRequestConfig): AxiosPromise<PaymentDetailsResponse>;
     /**
-     *
+     * Retrieve the payment receipt from Stripe for a specific payment
+     * @summary Retrieve Payment Receipt
+     * @param {string} paymentId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInitiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): AxiosPromise<PaymentInitiateResponse>;
+    postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): AxiosPromise<PaymentInitiateResponse>;
 };
 /**
  * PaymentApi - object-oriented interface
@@ -14785,22 +14594,31 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
  */
 export declare class PaymentApi extends BaseAPI {
     /**
-     *
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    getViewPaymentDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentDetailsResponse, any>>;
+    getDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentDetailsResponse, any, {}>>;
     /**
-     *
+     * Retrieve the payment receipt from Stripe for a specific payment
+     * @summary Retrieve Payment Receipt
+     * @param {string} paymentId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentApi
+     */
+    getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    /**
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    postInitiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentInitiateResponse, any>>;
+    postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentInitiateResponse, any, {}>>;
 }
 /**
  * PermissionApi - axios parameter creator
@@ -14808,7 +14626,7 @@ export declare class PaymentApi extends BaseAPI {
  */
 export declare const PermissionApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/permissions).
+     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/permissions).
      * @summary List Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14821,7 +14639,7 @@ export declare const PermissionApiAxiosParamCreator: (configuration?: Configurat
  */
 export declare const PermissionApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/permissions).
+     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/permissions).
      * @summary List Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14834,7 +14652,7 @@ export declare const PermissionApiFp: (configuration?: Configuration) => {
  */
 export declare const PermissionApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/permissions).
+     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/permissions).
      * @summary List Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14849,13 +14667,13 @@ export declare const PermissionApiFactory: (configuration?: Configuration, baseP
  */
 export declare class PermissionApi extends BaseAPI {
     /**
-     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/permissions).
+     * Retrieves a list of permissions that users can be granted to access a particular resource action. For additional information on permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/permissions).
      * @summary List Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PermissionApi
      */
-    listPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPermissionsResponseModel, any>>;
+    listPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPermissionsResponseModel, any, {}>>;
 }
 /**
  * PolicyApi - axios parameter creator
@@ -14863,7 +14681,7 @@ export declare class PermissionApi extends BaseAPI {
  */
 export declare const PolicyApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/policies).
+     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/policies).
      * @summary List Policies
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14876,7 +14694,7 @@ export declare const PolicyApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const PolicyApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/policies).
+     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/policies).
      * @summary List Policies
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14889,7 +14707,7 @@ export declare const PolicyApiFp: (configuration?: Configuration) => {
  */
 export declare const PolicyApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/policies).
+     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/policies).
      * @summary List Policies
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14904,13 +14722,13 @@ export declare const PolicyApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class PolicyApi extends BaseAPI {
     /**
-     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/policies).
+     * Retrieves a list of policies available for addition to RBAC roles. For additional information on policies, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/policies).
      * @summary List Policies
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PolicyApi
      */
-    listPolicies(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPoliciesResponseModel, any>>;
+    listPolicies(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPoliciesResponseModel, any, {}>>;
 }
 /**
  * PricebookApi - axios parameter creator
@@ -14918,11 +14736,11 @@ export declare class PolicyApi extends BaseAPI {
  */
 export declare const PricebookApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the Infrahub Pricebook, detailing hourly running costs for all resources offered by Infrahub. For more information on Pricebook [**click here**](None/docs/api-reference/pricebook-resources/pricebook/).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrivePricebook: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getPricebook: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PricebookApi - functional programming interface
@@ -14930,11 +14748,11 @@ export declare const PricebookApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const PricebookApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the Infrahub Pricebook, detailing hourly running costs for all resources offered by Infrahub. For more information on Pricebook [**click here**](None/docs/api-reference/pricebook-resources/pricebook/).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrivePricebook(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PricebookModel>>>;
+    getPricebook(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PricebookModel>>>;
 };
 /**
  * PricebookApi - factory interface
@@ -14942,11 +14760,11 @@ export declare const PricebookApiFp: (configuration?: Configuration) => {
  */
 export declare const PricebookApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Retrieves the Infrahub Pricebook, detailing hourly running costs for all resources offered by Infrahub. For more information on Pricebook [**click here**](None/docs/api-reference/pricebook-resources/pricebook/).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrivePricebook(options?: RawAxiosRequestConfig): AxiosPromise<Array<PricebookModel>>;
+    getPricebook(options?: RawAxiosRequestConfig): AxiosPromise<Array<PricebookModel>>;
 };
 /**
  * PricebookApi - object-oriented interface
@@ -14956,12 +14774,12 @@ export declare const PricebookApiFactory: (configuration?: Configuration, basePa
  */
 export declare class PricebookApi extends BaseAPI {
     /**
-     *
+     * Retrieves the Infrahub Pricebook, detailing hourly running costs for all resources offered by Infrahub. For more information on Pricebook [**click here**](None/docs/api-reference/pricebook-resources/pricebook/).
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PricebookApi
      */
-    retrivePricebook(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PricebookModel[], any>>;
+    getPricebook(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PricebookModel[], any, {}>>;
 }
 /**
  * ProfileApi - axios parameter creator
@@ -14969,7 +14787,7 @@ export declare class PricebookApi extends BaseAPI {
  */
 export declare const ProfileApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates a provisioning profile to save the configuration of a virtual machine for future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Creates a provisioning profile to save the configuration of a virtual machinefor future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Create profile
      * @param {CreateProfilePayload} payload
      * @param {*} [options] Override http request option.
@@ -14985,14 +14803,14 @@ export declare const ProfileApiAxiosParamCreator: (configuration?: Configuration
      */
     deleteProfile: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles#retrieve-a-list-of-profiles).
+     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listProfiles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Retrieve profile details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15006,7 +14824,7 @@ export declare const ProfileApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const ProfileApiFp: (configuration?: Configuration) => {
     /**
-     * Creates a provisioning profile to save the configuration of a virtual machine for future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Creates a provisioning profile to save the configuration of a virtual machinefor future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Create profile
      * @param {CreateProfilePayload} payload
      * @param {*} [options] Override http request option.
@@ -15022,14 +14840,14 @@ export declare const ProfileApiFp: (configuration?: Configuration) => {
      */
     deleteProfile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles#retrieve-a-list-of-profiles).
+     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listProfiles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProfileListResponse>>;
     /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Retrieve profile details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15043,7 +14861,7 @@ export declare const ProfileApiFp: (configuration?: Configuration) => {
  */
 export declare const ProfileApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates a provisioning profile to save the configuration of a virtual machine for future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Creates a provisioning profile to save the configuration of a virtual machinefor future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Create profile
      * @param {CreateProfilePayload} payload
      * @param {*} [options] Override http request option.
@@ -15059,14 +14877,14 @@ export declare const ProfileApiFactory: (configuration?: Configuration, basePath
      */
     deleteProfile(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles#retrieve-a-list-of-profiles).
+     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listProfiles(options?: RawAxiosRequestConfig): AxiosPromise<ProfileListResponse>;
     /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Retrieve profile details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15082,14 +14900,14 @@ export declare const ProfileApiFactory: (configuration?: Configuration, basePath
  */
 export declare class ProfileApi extends BaseAPI {
     /**
-     * Creates a provisioning profile to save the configuration of a virtual machine for future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Creates a provisioning profile to save the configuration of a virtual machinefor future use. Include the profile name, description, and virtual machine configuration details in the request body. For more information about virtual machine profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Create profile
      * @param {CreateProfilePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    createProfile(payload: CreateProfilePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any>>;
+    createProfile(payload: CreateProfilePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}>>;
     /**
      * Permanently deletes a provisioning profile. Supply the profile ID in the path to delete the specified profile.
      * @summary Delete profile
@@ -15098,24 +14916,24 @@ export declare class ProfileApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    deleteProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles#retrieve-a-list-of-profiles).
+     * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    listProfiles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProfileListResponse, any>>;
+    listProfiles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProfileListResponse, any, {}>>;
     /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/provisioning-profiles).
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Retrieve profile details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    retrieveProfileDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any>>;
+    retrieveProfileDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}>>;
 }
 /**
  * RbacRoleApi - axios parameter creator
@@ -15123,45 +14941,45 @@ export declare class ProfileApi extends BaseAPI {
  */
 export declare const RbacRoleApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/create-rbac-role).
+     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/create-rbac-role).
      * @summary Create RBAC Role
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createRbacRole: (payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createRBACRole: (payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/delete-rbac-role).
+     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/delete-rbac-role).
      * @summary Delete RBAC Role
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteRbacRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteRBACRole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/list-rbac-roles).
+     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/list-rbac-roles).
      * @summary List RBAC Roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listRbacRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listRBACRoles: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
+     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
      * @summary Retrieve RBAC Role Details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveRbacRoleDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    retrieveRBACRoleDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/update-rbac-role).
+     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/update-rbac-role).
      * @summary Update RBAC Role
      * @param {number} id
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRbacRole: (id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateRBACRole: (id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RbacRoleApi - functional programming interface
@@ -15169,45 +14987,45 @@ export declare const RbacRoleApiAxiosParamCreator: (configuration?: Configuratio
  */
 export declare const RbacRoleApiFp: (configuration?: Configuration) => {
     /**
-     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/create-rbac-role).
+     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/create-rbac-role).
      * @summary Create RBAC Role
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createRbacRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
+    createRBACRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
     /**
-     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/delete-rbac-role).
+     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/delete-rbac-role).
      * @summary Delete RBAC Role
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteRbacRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+    deleteRBACRole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
     /**
-     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/list-rbac-roles).
+     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/list-rbac-roles).
      * @summary List RBAC Roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listRbacRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetRbacRolesResponseModel>>;
+    listRBACRoles(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetRbacRolesResponseModel>>;
     /**
-     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
+     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
      * @summary Retrieve RBAC Role Details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveRbacRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModelFixed>>;
+    retrieveRBACRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModelFixed>>;
     /**
-     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/update-rbac-role).
+     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/update-rbac-role).
      * @summary Update RBAC Role
      * @param {number} id
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRbacRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
+    updateRBACRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RbacRoleDetailResponseModel>>;
 };
 /**
  * RbacRoleApi - factory interface
@@ -15215,45 +15033,45 @@ export declare const RbacRoleApiFp: (configuration?: Configuration) => {
  */
 export declare const RbacRoleApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/create-rbac-role).
+     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/create-rbac-role).
      * @summary Create RBAC Role
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createRbacRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
+    createRBACRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
     /**
-     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/delete-rbac-role).
+     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/delete-rbac-role).
      * @summary Delete RBAC Role
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteRbacRole(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+    deleteRBACRole(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
     /**
-     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/list-rbac-roles).
+     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/list-rbac-roles).
      * @summary List RBAC Roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listRbacRoles(options?: RawAxiosRequestConfig): AxiosPromise<GetRbacRolesResponseModel>;
+    listRBACRoles(options?: RawAxiosRequestConfig): AxiosPromise<GetRbacRolesResponseModel>;
     /**
-     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
+     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
      * @summary Retrieve RBAC Role Details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveRbacRoleDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModelFixed>;
+    retrieveRBACRoleDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModelFixed>;
     /**
-     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/update-rbac-role).
+     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/update-rbac-role).
      * @summary Update RBAC Role
      * @param {number} id
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateRbacRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
+    updateRBACRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): AxiosPromise<RbacRoleDetailResponseModel>;
 };
 /**
  * RbacRoleApi - object-oriented interface
@@ -15263,42 +15081,42 @@ export declare const RbacRoleApiFactory: (configuration?: Configuration, basePat
  */
 export declare class RbacRoleApi extends BaseAPI {
     /**
-     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/create-rbac-role).
+     * Creates an RBAC role that can be assigned to users, granting them access to specific resource actions. Provide the configuration of the RBAC role, including its name, description, and list of permissions and policy IDs in the request body. For additional information on creating RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/create-rbac-role).
      * @summary Create RBAC Role
      * @param {CreateUpdateRbacRolePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    createRbacRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any>>;
+    createRBACRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
     /**
-     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/delete-rbac-role).
+     * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/delete-rbac-role).
      * @summary Delete RBAC Role
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    deleteRbacRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any>>;
+    deleteRBACRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
     /**
-     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/list-rbac-roles).
+     * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/list-rbac-roles).
      * @summary List RBAC Roles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    listRbacRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetRbacRolesResponseModel, any>>;
+    listRBACRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetRbacRolesResponseModel, any, {}>>;
     /**
-     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
+     * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
      * @summary Retrieve RBAC Role Details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    retrieveRbacRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModelFixed, any>>;
+    retrieveRBACRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModelFixed, any, {}>>;
     /**
-     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/rbac/update-rbac-role).
+     * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/update-rbac-role).
      * @summary Update RBAC Role
      * @param {number} id
      * @param {CreateUpdateRbacRolePayload} payload
@@ -15306,7 +15124,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    updateRbacRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any>>;
+    updateRBACRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
 }
 /**
  * RegionApi - axios parameter creator
@@ -15314,8 +15132,8 @@ export declare class RbacRoleApi extends BaseAPI {
  */
 export declare const RegionApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Lists the currently available regions, each representing a distinct geographic location housing a data center. For additional information on regions, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/regions).
-     * @summary List regions
+     * Lists the currently available regions, each representing a distinct geographic  location housing a data center. For additional information on regions, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/regions).
+     * @summary List Regions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -15327,8 +15145,8 @@ export declare const RegionApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const RegionApiFp: (configuration?: Configuration) => {
     /**
-     * Lists the currently available regions, each representing a distinct geographic location housing a data center. For additional information on regions, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/regions).
-     * @summary List regions
+     * Lists the currently available regions, each representing a distinct geographic  location housing a data center. For additional information on regions, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/regions).
+     * @summary List Regions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -15340,8 +15158,8 @@ export declare const RegionApiFp: (configuration?: Configuration) => {
  */
 export declare const RegionApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Lists the currently available regions, each representing a distinct geographic location housing a data center. For additional information on regions, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/regions).
-     * @summary List regions
+     * Lists the currently available regions, each representing a distinct geographic  location housing a data center. For additional information on regions, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/regions).
+     * @summary List Regions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -15355,13 +15173,13 @@ export declare const RegionApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class RegionApi extends BaseAPI {
     /**
-     * Lists the currently available regions, each representing a distinct geographic location housing a data center. For additional information on regions, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/regions).
-     * @summary List regions
+     * Lists the currently available regions, each representing a distinct geographic  location housing a data center. For additional information on regions, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/regions).
+     * @summary List Regions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegionApi
      */
-    listRegions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Regions, any>>;
+    listRegions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Regions, any, {}>>;
 }
 /**
  * SecurityRulesApi - axios parameter creator
@@ -15416,7 +15234,7 @@ export declare class SecurityRulesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SecurityRulesApi
      */
-    listFirewallRuleProtocols(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityRulesProtocolFields, any>>;
+    listFirewallRuleProtocols(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityRulesProtocolFields, any, {}>>;
 }
 /**
  * SnapshotEventsApi - axios parameter creator
@@ -15475,7 +15293,7 @@ export declare class SnapshotEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotEventsApi
      */
-    fetchAllEventsForASnapshot(snapshotId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    fetchAllEventsForASnapshot(snapshotId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
 }
 /**
  * SnapshotsApi - axios parameter creator
@@ -15490,7 +15308,7 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createAnImageFromASnapshot: (snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    createANewCustomImage: (snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
      * @summary Delete snapshot
@@ -15508,22 +15326,13 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      */
     fetchSnapshotNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id
-     * @param {SnapshotRestoreRequest} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreASnapshot: (id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveASnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getSnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
      * @summary Retrieve list of snapshots with pagination
@@ -15533,7 +15342,16 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveListOfSnapshotsWithPagination: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getSnapshots: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id
+     * @param {SnapshotRestoreRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSnapshotRestore: (id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SnapshotsApi - functional programming interface
@@ -15548,7 +15366,7 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createAnImageFromASnapshot(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateImage>>;
+    createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateImage>>;
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
      * @summary Delete snapshot
@@ -15566,22 +15384,13 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      */
     fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id
-     * @param {SnapshotRestoreRequest} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
-    /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveASnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>>;
+    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>>;
     /**
      * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
      * @summary Retrieve list of snapshots with pagination
@@ -15591,7 +15400,16 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveListOfSnapshotsWithPagination(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>>;
+    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>>;
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id
+     * @param {SnapshotRestoreRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
 };
 /**
  * SnapshotsApi - factory interface
@@ -15606,7 +15424,7 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createAnImageFromASnapshot(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateImage>;
+    createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateImage>;
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
      * @summary Delete snapshot
@@ -15624,22 +15442,13 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      */
     fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id
-     * @param {SnapshotRestoreRequest} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
-    /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveASnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve>;
+    getSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve>;
     /**
      * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
      * @summary Retrieve list of snapshots with pagination
@@ -15649,7 +15458,16 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveListOfSnapshotsWithPagination(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots>;
+    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots>;
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id
+     * @param {SnapshotRestoreRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
 };
 /**
  * SnapshotsApi - object-oriented interface
@@ -15667,7 +15485,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    createAnImageFromASnapshot(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateImage, any>>;
+    createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateImage, any, {}>>;
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
      * @summary Delete snapshot
@@ -15676,7 +15494,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -15685,17 +15503,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any>>;
-    /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id
-     * @param {SnapshotRestoreRequest} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any>>;
+    fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
@@ -15704,7 +15512,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    retrieveASnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any>>;
+    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any, {}>>;
     /**
      * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
      * @summary Retrieve list of snapshots with pagination
@@ -15715,7 +15523,17 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    retrieveListOfSnapshotsWithPagination(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any>>;
+    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any, {}>>;
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id
+     * @param {SnapshotRestoreRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
 }
 /**
  * StockApi - axios parameter creator
@@ -15723,12 +15541,12 @@ export declare class SnapshotsApi extends BaseAPI {
  */
 export declare const StockApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns information on current and upcoming GPU availability, organized by region and GPU model. For additional information on GPU stocks, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/gpu-stock-information).
+     * Returns information on current and upcoming GPU availability, organized byregion and GPU model. For additional information on GPU stocks,[**click here**](https://docs.hyperstack.cloud/docs/hardware/gpu-stock-information).
      * @summary Retrieve GPU stocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuStocks: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    retrieveGPUStocks: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * StockApi - functional programming interface
@@ -15736,12 +15554,12 @@ export declare const StockApiAxiosParamCreator: (configuration?: Configuration) 
  */
 export declare const StockApiFp: (configuration?: Configuration) => {
     /**
-     * Returns information on current and upcoming GPU availability, organized by region and GPU model. For additional information on GPU stocks, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/gpu-stock-information).
+     * Returns information on current and upcoming GPU availability, organized byregion and GPU model. For additional information on GPU stocks,[**click here**](https://docs.hyperstack.cloud/docs/hardware/gpu-stock-information).
      * @summary Retrieve GPU stocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuStocks(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NewStockRetriveResponse>>;
+    retrieveGPUStocks(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NewStockRetriveResponse>>;
 };
 /**
  * StockApi - factory interface
@@ -15749,12 +15567,12 @@ export declare const StockApiFp: (configuration?: Configuration) => {
  */
 export declare const StockApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Returns information on current and upcoming GPU availability, organized by region and GPU model. For additional information on GPU stocks, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/gpu-stock-information).
+     * Returns information on current and upcoming GPU availability, organized byregion and GPU model. For additional information on GPU stocks,[**click here**](https://docs.hyperstack.cloud/docs/hardware/gpu-stock-information).
      * @summary Retrieve GPU stocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveGpuStocks(options?: RawAxiosRequestConfig): AxiosPromise<NewStockRetriveResponse>;
+    retrieveGPUStocks(options?: RawAxiosRequestConfig): AxiosPromise<NewStockRetriveResponse>;
 };
 /**
  * StockApi - object-oriented interface
@@ -15764,13 +15582,13 @@ export declare const StockApiFactory: (configuration?: Configuration, basePath?:
  */
 export declare class StockApi extends BaseAPI {
     /**
-     * Returns information on current and upcoming GPU availability, organized by region and GPU model. For additional information on GPU stocks, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/gpu-stock-information).
+     * Returns information on current and upcoming GPU availability, organized byregion and GPU model. For additional information on GPU stocks,[**click here**](https://docs.hyperstack.cloud/docs/hardware/gpu-stock-information).
      * @summary Retrieve GPU stocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StockApi
      */
-    retrieveGpuStocks(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NewStockRetriveResponse, any>>;
+    retrieveGPUStocks(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NewStockRetriveResponse, any, {}>>;
 }
 /**
  * TemplateApi - axios parameter creator
@@ -15797,7 +15615,7 @@ export declare const TemplateApiAxiosParamCreator: (configuration?: Configuratio
      */
     deleteTemplate: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#view-a-list-of-templates).
+     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
      * @param {*} [options] Override http request option.
@@ -15805,7 +15623,7 @@ export declare const TemplateApiAxiosParamCreator: (configuration?: Configuratio
      */
     listTemplates: (visibility?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves the resource configuration details for a specified template. Provide the template ID in the path to retrieve details for the specified template. For additional information on template configuration details, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#retrieve-the-details-for-a-template).
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
      * @summary Retrieve template details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15813,7 +15631,7 @@ export declare const TemplateApiAxiosParamCreator: (configuration?: Configuratio
      */
     retrieveTemplateDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Updates the details of a template. Modify the template name, description and/or `is_public` status to change the public/private visibility of the template.
+     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
      * @summary Update template
      * @param {number} id
      * @param {UpdateTemplate} payload
@@ -15847,7 +15665,7 @@ export declare const TemplateApiFp: (configuration?: Configuration) => {
      */
     deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#view-a-list-of-templates).
+     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
      * @param {*} [options] Override http request option.
@@ -15855,7 +15673,7 @@ export declare const TemplateApiFp: (configuration?: Configuration) => {
      */
     listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Templates>>;
     /**
-     * Retrieves the resource configuration details for a specified template. Provide the template ID in the path to retrieve details for the specified template. For additional information on template configuration details, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#retrieve-the-details-for-a-template).
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
      * @summary Retrieve template details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15863,7 +15681,7 @@ export declare const TemplateApiFp: (configuration?: Configuration) => {
      */
     retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>>;
     /**
-     * Updates the details of a template. Modify the template name, description and/or `is_public` status to change the public/private visibility of the template.
+     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
      * @summary Update template
      * @param {number} id
      * @param {UpdateTemplate} payload
@@ -15897,7 +15715,7 @@ export declare const TemplateApiFactory: (configuration?: Configuration, basePat
      */
     deleteTemplate(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#view-a-list-of-templates).
+     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
      * @param {*} [options] Override http request option.
@@ -15905,7 +15723,7 @@ export declare const TemplateApiFactory: (configuration?: Configuration, basePat
      */
     listTemplates(visibility?: string, options?: RawAxiosRequestConfig): AxiosPromise<Templates>;
     /**
-     * Retrieves the resource configuration details for a specified template. Provide the template ID in the path to retrieve details for the specified template. For additional information on template configuration details, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#retrieve-the-details-for-a-template).
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
      * @summary Retrieve template details
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -15913,7 +15731,7 @@ export declare const TemplateApiFactory: (configuration?: Configuration, basePat
      */
     retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Template>;
     /**
-     * Updates the details of a template. Modify the template name, description and/or `is_public` status to change the public/private visibility of the template.
+     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
      * @summary Update template
      * @param {number} id
      * @param {UpdateTemplate} payload
@@ -15940,7 +15758,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any>>;
+    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
     /**
      * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
      * @summary Delete template
@@ -15949,27 +15767,27 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#view-a-list-of-templates).
+     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Templates, any>>;
+    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Templates, any, {}>>;
     /**
-     * Retrieves the resource configuration details for a specified template. Provide the template ID in the path to retrieve details for the specified template. For additional information on template configuration details, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/templates#retrieve-the-details-for-a-template).
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
      * @summary Retrieve template details
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any>>;
+    retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
     /**
-     * Updates the details of a template. Modify the template name, description and/or `is_public` status to change the public/private visibility of the template.
+     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
      * @summary Update template
      * @param {number} id
      * @param {UpdateTemplate} payload
@@ -15977,7 +15795,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any>>;
+    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
 }
 /**
  * UserApi - axios parameter creator
@@ -15985,28 +15803,28 @@ export declare class TemplateApi extends BaseAPI {
  */
 export declare const UserApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
-     * @summary GET: Fetch User Info
+     * Retrieve the billing details associated with your organization.
+     * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFetchUserInfo: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getUser: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary POST: Insert user info
-     * @param {Userinfopostpayload} payload
+     * Add billing details associated with your organization in the request body.
+     * @summary POST: Insert billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInsertUserInfo: (payload: Userinfopostpayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    postUser: (payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
-     * @summary PUT: Update user info
-     * @param {Userinfopostpayload} payload
+     * Update the billing information for your organization in the request body.
+     * @summary PUT: Update billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    putUpdateUserInfo: (payload: Userinfopostpayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    putUser: (payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UserApi - functional programming interface
@@ -16014,28 +15832,28 @@ export declare const UserApiAxiosParamCreator: (configuration?: Configuration) =
  */
 export declare const UserApiFp: (configuration?: Configuration) => {
     /**
-     *
-     * @summary GET: Fetch User Info
+     * Retrieve the billing details associated with your organization.
+     * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFetchUserInfo(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersInfoListResponse>>;
+    getUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersInfoListResponse>>;
     /**
-     *
-     * @summary POST: Insert user info
-     * @param {Userinfopostpayload} payload
+     * Add billing details associated with your organization in the request body.
+     * @summary POST: Insert billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInsertUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>>;
+    postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>>;
     /**
-     *
-     * @summary PUT: Update user info
-     * @param {Userinfopostpayload} payload
+     * Update the billing information for your organization in the request body.
+     * @summary PUT: Update billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    putUpdateUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>>;
+    putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>>;
 };
 /**
  * UserApi - factory interface
@@ -16043,28 +15861,28 @@ export declare const UserApiFp: (configuration?: Configuration) => {
  */
 export declare const UserApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
-     * @summary GET: Fetch User Info
+     * Retrieve the billing details associated with your organization.
+     * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getFetchUserInfo(options?: RawAxiosRequestConfig): AxiosPromise<UsersInfoListResponse>;
+    getUser(options?: RawAxiosRequestConfig): AxiosPromise<UsersInfoListResponse>;
     /**
-     *
-     * @summary POST: Insert user info
-     * @param {Userinfopostpayload} payload
+     * Add billing details associated with your organization in the request body.
+     * @summary POST: Insert billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInsertUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel>;
+    postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel>;
     /**
-     *
-     * @summary PUT: Update user info
-     * @param {Userinfopostpayload} payload
+     * Update the billing information for your organization in the request body.
+     * @summary PUT: Update billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    putUpdateUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel>;
+    putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel>;
 };
 /**
  * UserApi - object-oriented interface
@@ -16074,31 +15892,31 @@ export declare const UserApiFactory: (configuration?: Configuration, basePath?: 
  */
 export declare class UserApi extends BaseAPI {
     /**
-     *
-     * @summary GET: Fetch User Info
+     * Retrieve the billing details associated with your organization.
+     * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    getFetchUserInfo(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UsersInfoListResponse, any>>;
+    getUser(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UsersInfoListResponse, any, {}>>;
     /**
-     *
-     * @summary POST: Insert user info
-     * @param {Userinfopostpayload} payload
+     * Add billing details associated with your organization in the request body.
+     * @summary POST: Insert billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    postInsertUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any>>;
+    postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
     /**
-     *
-     * @summary PUT: Update user info
-     * @param {Userinfopostpayload} payload
+     * Update the billing information for your organization in the request body.
+     * @summary PUT: Update billing info
+     * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    putUpdateUserInfo(payload: Userinfopostpayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any>>;
+    putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
 }
 /**
  * UserDetailChoiceApi - axios parameter creator
@@ -16153,7 +15971,7 @@ export declare class UserDetailChoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserDetailChoiceApi
      */
-    retrieveDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserDefaultChoicesForUserResponse, any>>;
+    retrieveDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserDefaultChoicesForUserResponse, any, {}>>;
 }
 /**
  * UserPermissionApi - axios parameter creator
@@ -16161,14 +15979,14 @@ export declare class UserDetailChoiceApi extends BaseAPI {
  */
 export declare const UserPermissionApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-my-permissions).
+     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-my-permissions).
      * @summary List My User Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listMyUserPermissions: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-user-permissions).
+     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-user-permissions).
      * @summary List User Permissions
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -16182,14 +16000,14 @@ export declare const UserPermissionApiAxiosParamCreator: (configuration?: Config
  */
 export declare const UserPermissionApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-my-permissions).
+     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-my-permissions).
      * @summary List My User Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listMyUserPermissions(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserPermissionsResponseModel>>;
     /**
-     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-user-permissions).
+     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-user-permissions).
      * @summary List User Permissions
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -16203,14 +16021,14 @@ export declare const UserPermissionApiFp: (configuration?: Configuration) => {
  */
 export declare const UserPermissionApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-my-permissions).
+     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-my-permissions).
      * @summary List My User Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listMyUserPermissions(options?: RawAxiosRequestConfig): AxiosPromise<GetUserPermissionsResponseModel>;
     /**
-     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-user-permissions).
+     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-user-permissions).
      * @summary List User Permissions
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -16226,22 +16044,22 @@ export declare const UserPermissionApiFactory: (configuration?: Configuration, b
  */
 export declare class UserPermissionApi extends BaseAPI {
     /**
-     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-my-permissions).
+     * Retrieves a list of permissions granted to your account. For additional information on your permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-my-permissions).
      * @summary List My User Permissions
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserPermissionApi
      */
-    listMyUserPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any>>;
+    listMyUserPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}>>;
     /**
-     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://infrahub-doc.nexgencloud.com/docs/api-reference/auth-resources/permission/list-user-permissions).
+     * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-user-permissions).
      * @summary List User Permissions
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserPermissionApi
      */
-    listUserPermissions(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any>>;
+    listUserPermissions(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}>>;
 }
 /**
  * VirtualMachineApi - axios parameter creator
@@ -16249,66 +16067,22 @@ export declare class UserPermissionApi extends BaseAPI {
  */
 export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} id
-     * @param {CreateSecurityRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    addFirewallRuleToVirtualMachine: (id: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToAVirtualMachine: (vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-     * @summary Create snapshot from a virtual machine
-     * @param {number} vmId
-     * @param {CreateSnapshotPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createSnapshotFromAVirtualMachine: (vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createVirtualMachines: (payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteInstance: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} sgRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRuleFromVirtualMachine: (virtualMachineId: number, sgRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} virtualMachineId
-     * @param {EditlabelofanexistingVMPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    editVirtualMachineLabels: (virtualMachineId: number, payload: EditlabelofanexistingVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteSecurityRule: (vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
@@ -16318,67 +16092,6 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      */
     fetchVirtualMachineNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hardRebootVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hibernateVirtualMachine: (virtualMachineId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search]
-     * @param {string} [environment] Filter Environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listVirtualMachines: (page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
-     * @summary Resize virtual machine
-     * @param {number} virtualMachineId
-     * @param {InstanceResizePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    resizeVirtualMachine: (virtualMachineId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreVirtualMachineFromHibernation: (virtualMachineId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachineDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
-     * @summary Retrieve virtual machine performance metrics
-     * @param {number} virtualMachineId
-     * @param {RetrieveVirtualMachinePerformanceMetricsDurationEnum} [duration]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachinePerformanceMetrics: (virtualMachineId: number, duration?: RetrieveVirtualMachinePerformanceMetricsDurationEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
      * @param {number} contractId
@@ -16388,38 +16101,93 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVirtualMachinesAssociatedWithAContract: (contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getContractInstances: (contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance: (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance2: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance3: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
      * @summary Start virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    startVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getInstance4: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
      * @summary Stop virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    stopVirtualMachine: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * VirtualMachineApi - functional programming interface
- * @export
- */
-export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
+    getInstance5: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} id
-     * @param {CreateSecurityRulePayload} payload
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addFirewallRuleToVirtualMachine(id: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecurityGroupRule>>;
+    getInstanceHibernate: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * @summary Restore virtual machine from hibernation
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceHibernateRestore: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve console logs for a virtual machine
+     * @summary Get virtual machine logs
+     * @param {number} vmId
+     * @param {number} requestId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceLogs: (vmId: number, requestId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
+     * @summary Retrieve virtual machine performance metrics
+     * @param {number} vmId
+     * @param {GetInstanceMetricsDurationEnum} [duration]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceMetrics: (vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstance: (payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
      * @summary Attach firewalls to a virtual machine
@@ -16428,7 +16196,34 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    postInstanceAttachFirewalls: (vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Request console logs for a virtual machine
+     * @summary Request virtual machine logs
+     * @param {number} vmId
+     * @param {RequestInstanceLogsPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceLogs: (vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
+     * @summary Resize virtual machine
+     * @param {number} vmId
+     * @param {InstanceResizePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceResize: (vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId
+     * @param {CreateSecurityRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityRule: (vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Create snapshots of a virtual machine by providing the virtual machine ID in the path
      * @summary Create snapshot from a virtual machine
@@ -16437,41 +16232,39 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createSnapshotFromAVirtualMachine(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSnapshotResponse>>;
+    postSnapshots: (vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId
+     * @param {EditLabelOfAnExistingVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>>;
+    putLabels: (vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * VirtualMachineApi - functional programming interface
+ * @export
+ */
+export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
+    /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} sgRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRuleFromVirtualMachine(virtualMachineId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} virtualMachineId
-     * @param {EditlabelofanexistingVMPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    editVirtualMachineLabels(virtualMachineId: number, payload: EditlabelofanexistingVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
@@ -16481,67 +16274,6 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      */
     fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hardRebootVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hibernateVirtualMachine(virtualMachineId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search]
-     * @param {string} [environment] Filter Environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listVirtualMachines(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
-    /**
-     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
-     * @summary Resize virtual machine
-     * @param {number} virtualMachineId
-     * @param {InstanceResizePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    resizeVirtualMachine(virtualMachineId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreVirtualMachineFromHibernation(virtualMachineId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachineDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
-    /**
-     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
-     * @summary Retrieve virtual machine performance metrics
-     * @param {number} virtualMachineId
-     * @param {RetrieveVirtualMachinePerformanceMetricsDurationEnum} [duration]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachinePerformanceMetrics(virtualMachineId: number, duration?: RetrieveVirtualMachinePerformanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsFields>>;
-    /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
      * @param {number} contractId
@@ -16551,38 +16283,93 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>>;
+    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance2(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
+    /**
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance3(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
      * @summary Start virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    startVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    getInstance4(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
      * @summary Stop virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    stopVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-};
-/**
- * VirtualMachineApi - factory interface
- * @export
- */
-export declare const VirtualMachineApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    getInstance5(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} id
-     * @param {CreateSecurityRulePayload} payload
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addFirewallRuleToVirtualMachine(id: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<SecurityGroupRule>;
+    getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * @summary Restore virtual machine from hibernation
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Retrieve console logs for a virtual machine
+     * @summary Get virtual machine logs
+     * @param {number} vmId
+     * @param {number} requestId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetInstanceLogsResponse>>;
+    /**
+     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
+     * @summary Retrieve virtual machine performance metrics
+     * @param {number} vmId
+     * @param {GetInstanceMetricsDurationEnum} [duration]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsFields>>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>>;
     /**
      * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
      * @summary Attach firewalls to a virtual machine
@@ -16591,7 +16378,34 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Request console logs for a virtual machine
+     * @summary Request virtual machine logs
+     * @param {number} vmId
+     * @param {RequestInstanceLogsPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestInstanceLogsResponse>>;
+    /**
+     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
+     * @summary Resize virtual machine
+     * @param {number} vmId
+     * @param {InstanceResizePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId
+     * @param {CreateSecurityRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecurityGroupRule>>;
     /**
      * Create snapshots of a virtual machine by providing the virtual machine ID in the path
      * @summary Create snapshot from a virtual machine
@@ -16600,41 +16414,39 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createSnapshotFromAVirtualMachine(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateSnapshotResponse>;
+    postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSnapshotResponse>>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId
+     * @param {EditLabelOfAnExistingVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse>;
+    putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+};
+/**
+ * VirtualMachineApi - factory interface
+ * @export
+ */
+export declare const VirtualMachineApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} sgRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteFirewallRuleFromVirtualMachine(virtualMachineId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} virtualMachineId
-     * @param {EditlabelofanexistingVMPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    editVirtualMachineLabels(virtualMachineId: number, payload: EditlabelofanexistingVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
@@ -16644,67 +16456,6 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      */
     fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hardRebootVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hibernateVirtualMachine(virtualMachineId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search]
-     * @param {string} [environment] Filter Environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listVirtualMachines(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
-    /**
-     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
-     * @summary Resize virtual machine
-     * @param {number} virtualMachineId
-     * @param {InstanceResizePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    resizeVirtualMachine(virtualMachineId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    restoreVirtualMachineFromHibernation(virtualMachineId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachineDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
-    /**
-     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
-     * @summary Retrieve virtual machine performance metrics
-     * @param {number} virtualMachineId
-     * @param {RetrieveVirtualMachinePerformanceMetricsDurationEnum} [duration]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    retrieveVirtualMachinePerformanceMetrics(virtualMachineId: number, duration?: RetrieveVirtualMachinePerformanceMetricsDurationEnum, options?: RawAxiosRequestConfig): AxiosPromise<MetricsFields>;
-    /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
      * @param {number} contractId
@@ -16714,23 +16465,147 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse>;
+    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance2(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
+    /**
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstance3(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
      * @summary Start virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    startVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    getInstance4(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
      * @summary Stop virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    stopVirtualMachine(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    getInstance5(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * @summary Restore virtual machine from hibernation
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Retrieve console logs for a virtual machine
+     * @summary Get virtual machine logs
+     * @param {number} vmId
+     * @param {number} requestId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): AxiosPromise<GetInstanceLogsResponse>;
+    /**
+     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
+     * @summary Retrieve virtual machine performance metrics
+     * @param {number} vmId
+     * @param {GetInstanceMetricsDurationEnum} [duration]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): AxiosPromise<MetricsFields>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse>;
+    /**
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
+     * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Request console logs for a virtual machine
+     * @summary Request virtual machine logs
+     * @param {number} vmId
+     * @param {RequestInstanceLogsPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): AxiosPromise<RequestInstanceLogsResponse>;
+    /**
+     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
+     * @summary Resize virtual machine
+     * @param {number} vmId
+     * @param {InstanceResizePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId
+     * @param {CreateSecurityRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<SecurityGroupRule>;
+    /**
+     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+     * @summary Create snapshot from a virtual machine
+     * @param {number} vmId
+     * @param {CreateSnapshotPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateSnapshotResponse>;
+    /**
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId
+     * @param {EditLabelOfAnExistingVMPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
 };
 /**
  * VirtualMachineApi - object-oriented interface
@@ -16740,73 +16615,24 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
  */
 export declare class VirtualMachineApi extends BaseAPI {
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://infrahub-doc.nexgencloud.com/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} id
-     * @param {CreateSecurityRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    addFirewallRuleToVirtualMachine(id: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityGroupRule, any>>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-     * @summary Create snapshot from a virtual machine
-     * @param {number} vmId
-     * @param {CreateSnapshotPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    createSnapshotFromAVirtualMachine(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateSnapshotResponse, any>>;
-    /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    createVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any>>;
+    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} sgRuleId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteFirewallRuleFromVirtualMachine(virtualMachineId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    deleteVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} virtualMachineId
-     * @param {EditlabelofanexistingVMPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    editVirtualMachineLabels(virtualMachineId: number, payload: EditlabelofanexistingVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
@@ -16815,75 +16641,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any>>;
-    /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    hardRebootVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    hibernateVirtualMachine(virtualMachineId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search]
-     * @param {string} [environment] Filter Environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    listVirtualMachines(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any>>;
-    /**
-     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://infrahub-doc.nexgencloud.com/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
-     * @summary Resize virtual machine
-     * @param {number} virtualMachineId
-     * @param {InstanceResizePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    resizeVirtualMachine(virtualMachineId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} virtualMachineId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    restoreVirtualMachineFromHibernation(virtualMachineId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    retrieveVirtualMachineDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any>>;
-    /**
-     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
-     * @summary Retrieve virtual machine performance metrics
-     * @param {number} virtualMachineId
-     * @param {RetrieveVirtualMachinePerformanceMetricsDurationEnum} [duration]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    retrieveVirtualMachinePerformanceMetrics(virtualMachineId: number, duration?: RetrieveVirtualMachinePerformanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MetricsFields, any>>;
+    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
@@ -16895,30 +16653,168 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any>>;
+    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any, {}>>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstance2(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    /**
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstance3(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
      * @summary Start virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    startVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    getInstance4(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
      * @summary Stop virtual machine
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    stopVirtualMachine(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    getInstance5(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * @summary Restore virtual machine from hibernation
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Retrieve console logs for a virtual machine
+     * @summary Get virtual machine logs
+     * @param {number} vmId
+     * @param {number} requestId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInstanceLogsResponse, any, {}>>;
+    /**
+     * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
+     * @summary Retrieve virtual machine performance metrics
+     * @param {number} vmId
+     * @param {GetInstanceMetricsDurationEnum} [duration]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MetricsFields, any, {}>>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any, {}>>;
+    /**
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
+     * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Request console logs for a virtual machine
+     * @summary Request virtual machine logs
+     * @param {number} vmId
+     * @param {RequestInstanceLogsPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestInstanceLogsResponse, any, {}>>;
+    /**
+     * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
+     * @summary Resize virtual machine
+     * @param {number} vmId
+     * @param {InstanceResizePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId
+     * @param {CreateSecurityRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityGroupRule, any, {}>>;
+    /**
+     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+     * @summary Create snapshot from a virtual machine
+     * @param {number} vmId
+     * @param {CreateSnapshotPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateSnapshotResponse, any, {}>>;
+    /**
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId
+     * @param {EditLabelOfAnExistingVMPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
 }
 /**
  * @export
  */
-export declare const RetrieveVirtualMachinePerformanceMetricsDurationEnum: {
+export declare const GetInstanceMetricsDurationEnum: {
     readonly _1h: "1h";
     readonly _2h: "2h";
     readonly _4h: "4h";
@@ -16930,20 +16826,20 @@ export declare const RetrieveVirtualMachinePerformanceMetricsDurationEnum: {
     readonly _15d: "15d";
     readonly _30d: "30d";
 };
-export type RetrieveVirtualMachinePerformanceMetricsDurationEnum = typeof RetrieveVirtualMachinePerformanceMetricsDurationEnum[keyof typeof RetrieveVirtualMachinePerformanceMetricsDurationEnum];
+export type GetInstanceMetricsDurationEnum = typeof GetInstanceMetricsDurationEnum[keyof typeof GetInstanceMetricsDurationEnum];
 /**
  * VirtualMachineEventsApi - axios parameter creator
  * @export
  */
 export declare const VirtualMachineEventsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
+     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
      * @summary List virtual machine events
-     * @param {string} virtualMachineId
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVirtualMachineEvents: (virtualMachineId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listVirtualMachineEvents: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VirtualMachineEventsApi - functional programming interface
@@ -16951,13 +16847,13 @@ export declare const VirtualMachineEventsApiAxiosParamCreator: (configuration?: 
  */
 export declare const VirtualMachineEventsApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
+     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
      * @summary List virtual machine events
-     * @param {string} virtualMachineId
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVirtualMachineEvents(virtualMachineId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstanceEvents>>;
+    listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstanceEvents>>;
 };
 /**
  * VirtualMachineEventsApi - factory interface
@@ -16965,13 +16861,13 @@ export declare const VirtualMachineEventsApiFp: (configuration?: Configuration) 
  */
 export declare const VirtualMachineEventsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
+     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
      * @summary List virtual machine events
-     * @param {string} virtualMachineId
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVirtualMachineEvents(virtualMachineId: string, options?: RawAxiosRequestConfig): AxiosPromise<InstanceEvents>;
+    listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<InstanceEvents>;
 };
 /**
  * VirtualMachineEventsApi - object-oriented interface
@@ -16981,14 +16877,14 @@ export declare const VirtualMachineEventsApiFactory: (configuration?: Configurat
  */
 export declare class VirtualMachineEventsApi extends BaseAPI {
     /**
-     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://infrahub-doc.nexgencloud.com/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
+     * Retrieves a list of all events in a virtual machine\'s history, which records actions performed on the specified virtual machine. Include the virtual machine ID in the path to retrieve the history of events. For more details on virtual machine events history, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#events-history).
      * @summary List virtual machine events
-     * @param {string} virtualMachineId
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineEventsApi
      */
-    listVirtualMachineEvents(virtualMachineId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InstanceEvents, any>>;
+    listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InstanceEvents, any, {}>>;
 }
 /**
  * VncUrlApi - axios parameter creator
@@ -16996,22 +16892,22 @@ export declare class VirtualMachineEventsApi extends BaseAPI {
  */
 export declare const VncUrlApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the URL to access the VNC console for a specified virtual machine by providing the virtual machine ID and the job ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-vnc-url).
      * @summary Get VNC Console Link
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} jobId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncConsoleLink: (virtualMachineId: number, jobId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getVncUrl: (vmId: number, jobId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     *
+     * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    requestInstanceConsole: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getVncUrl2: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VncUrlApi - functional programming interface
@@ -17019,22 +16915,22 @@ export declare const VncUrlApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const VncUrlApiFp: (configuration?: Configuration) => {
     /**
-     *
+     * Retrieves the URL to access the VNC console for a specified virtual machine by providing the virtual machine ID and the job ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-vnc-url).
      * @summary Get VNC Console Link
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} jobId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncConsoleLink(virtualMachineId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VNCURL>>;
+    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VNCURL>>;
     /**
-     *
+     * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    requestInstanceConsole(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>>;
+    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>>;
 };
 /**
  * VncUrlApi - factory interface
@@ -17042,22 +16938,22 @@ export declare const VncUrlApiFp: (configuration?: Configuration) => {
  */
 export declare const VncUrlApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     *
+     * Retrieves the URL to access the VNC console for a specified virtual machine by providing the virtual machine ID and the job ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-vnc-url).
      * @summary Get VNC Console Link
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} jobId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncConsoleLink(virtualMachineId: number, jobId: number, options?: RawAxiosRequestConfig): AxiosPromise<VNCURL>;
+    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): AxiosPromise<VNCURL>;
     /**
-     *
+     * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    requestInstanceConsole(id: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole>;
+    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole>;
 };
 /**
  * VncUrlApi - object-oriented interface
@@ -17067,24 +16963,24 @@ export declare const VncUrlApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class VncUrlApi extends BaseAPI {
     /**
-     *
+     * Retrieves the URL to access the VNC console for a specified virtual machine by providing the virtual machine ID and the job ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-vnc-url).
      * @summary Get VNC Console Link
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {number} jobId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncConsoleLink(virtualMachineId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any>>;
+    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any, {}>>;
     /**
-     *
+     * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
-     * @param {number} id
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    requestInstanceConsole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any>>;
+    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any, {}>>;
 }
 /**
  * VolumeApi - axios parameter creator
@@ -17092,7 +16988,7 @@ export declare class VncUrlApi extends BaseAPI {
  */
 export declare const VolumeApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/create-volume).
      * @summary Create volume
      * @param {CreateVolumePayload} payload
      * @param {*} [options] Override http request option.
@@ -17102,11 +16998,11 @@ export declare const VolumeApiAxiosParamCreator: (configuration?: Configuration)
     /**
      * Deletes a volume permanently. Provide the volume ID in the path to specify the volume to be deleted.
      * @summary Delete volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolume: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteVolume: (volumeId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
      * @summary Fetch Volume Details
@@ -17131,7 +17027,7 @@ export declare const VolumeApiAxiosParamCreator: (configuration?: Configuration)
      */
     listVolumeTypes: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/).
      * @summary List volumes
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -17141,6 +17037,15 @@ export declare const VolumeApiAxiosParamCreator: (configuration?: Configuration)
      * @throws {RequiredError}
      */
     listVolumes: (page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Update volume properties. Currently supports updating the environment by providing \'environment_name\'. The volume must not be attached to any instance when changing environments, and the target environment must be in the same region.
+     * @summary Update volume fields
+     * @param {number} volumeId
+     * @param {UpdateVolumePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateVolume: (volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VolumeApi - functional programming interface
@@ -17148,7 +17053,7 @@ export declare const VolumeApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const VolumeApiFp: (configuration?: Configuration) => {
     /**
-     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/create-volume).
      * @summary Create volume
      * @param {CreateVolumePayload} payload
      * @param {*} [options] Override http request option.
@@ -17158,11 +17063,11 @@ export declare const VolumeApiFp: (configuration?: Configuration) => {
     /**
      * Deletes a volume permanently. Provide the volume ID in the path to specify the volume to be deleted.
      * @summary Delete volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolume(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
      * @summary Fetch Volume Details
@@ -17170,7 +17075,7 @@ export declare const VolumeApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Volumes>>;
+    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Volume>>;
     /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
@@ -17187,7 +17092,7 @@ export declare const VolumeApiFp: (configuration?: Configuration) => {
      */
     listVolumeTypes(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VolumeTypes>>;
     /**
-     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/).
      * @summary List volumes
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -17197,6 +17102,15 @@ export declare const VolumeApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Volumes>>;
+    /**
+     * Update volume properties. Currently supports updating the environment by providing \'environment_name\'. The volume must not be attached to any instance when changing environments, and the target environment must be in the same region.
+     * @summary Update volume fields
+     * @param {number} volumeId
+     * @param {UpdateVolumePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateVolume(volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateVolumeResponse>>;
 };
 /**
  * VolumeApi - factory interface
@@ -17204,7 +17118,7 @@ export declare const VolumeApiFp: (configuration?: Configuration) => {
  */
 export declare const VolumeApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/create-volume).
      * @summary Create volume
      * @param {CreateVolumePayload} payload
      * @param {*} [options] Override http request option.
@@ -17214,11 +17128,11 @@ export declare const VolumeApiFactory: (configuration?: Configuration, basePath?
     /**
      * Deletes a volume permanently. Provide the volume ID in the path to specify the volume to be deleted.
      * @summary Delete volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteVolume(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteVolume(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
      * @summary Fetch Volume Details
@@ -17226,7 +17140,7 @@ export declare const VolumeApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<Volumes>;
+    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<Volume>;
     /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
@@ -17243,7 +17157,7 @@ export declare const VolumeApiFactory: (configuration?: Configuration, basePath?
      */
     listVolumeTypes(options?: RawAxiosRequestConfig): AxiosPromise<VolumeTypes>;
     /**
-     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/).
      * @summary List volumes
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -17253,6 +17167,15 @@ export declare const VolumeApiFactory: (configuration?: Configuration, basePath?
      * @throws {RequiredError}
      */
     listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<Volumes>;
+    /**
+     * Update volume properties. Currently supports updating the environment by providing \'environment_name\'. The volume must not be attached to any instance when changing environments, and the target environment must be in the same region.
+     * @summary Update volume fields
+     * @param {number} volumeId
+     * @param {UpdateVolumePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateVolume(volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig): AxiosPromise<UpdateVolumeResponse>;
 };
 /**
  * VolumeApi - object-oriented interface
@@ -17262,23 +17185,23 @@ export declare const VolumeApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class VolumeApi extends BaseAPI {
     /**
-     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Creates a volume that can be attached to a virtual machine, expanding its storage capacity. Specify the volume type and custom configuration in the request body. For additional details on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/create-volume).
      * @summary Create volume
      * @param {CreateVolumePayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    createVolume(payload: CreateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any>>;
+    createVolume(payload: CreateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}>>;
     /**
      * Deletes a volume permanently. Provide the volume ID in the path to specify the volume to be deleted.
      * @summary Delete volume
-     * @param {number} id
+     * @param {number} volumeId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    deleteVolume(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any>>;
+    deleteVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
      * @summary Fetch Volume Details
@@ -17287,7 +17210,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volumes, any>>;
+    fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}>>;
     /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
@@ -17296,7 +17219,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any>>;
+    fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
      * Retrieves a list of available volume types that can be used in the creation of a new volume.
      * @summary List volume types
@@ -17304,9 +17227,9 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    listVolumeTypes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VolumeTypes, any>>;
+    listVolumeTypes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VolumeTypes, any, {}>>;
     /**
-     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features).
+     * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/).
      * @summary List volumes
      * @param {string} [page] Page Number
      * @param {string} [pageSize] Data Per Page
@@ -17316,7 +17239,17 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volumes, any>>;
+    listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volumes, any, {}>>;
+    /**
+     * Update volume properties. Currently supports updating the environment by providing \'environment_name\'. The volume must not be attached to any instance when changing environments, and the target environment must be in the same region.
+     * @summary Update volume fields
+     * @param {number} volumeId
+     * @param {UpdateVolumePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VolumeApi
+     */
+    updateVolume(volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateVolumeResponse, any, {}>>;
 }
 /**
  * VolumeAttachmentApi - axios parameter creator
@@ -17324,23 +17257,32 @@ export declare class VolumeApi extends BaseAPI {
  */
 export declare const VolumeAttachmentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the virtual machine ID in the path and the volume IDs in the request body to attach the specified volumes to the designated virtual machine. For additional details on volume attachment, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features#attach-a-volume-to-a-virtual-machine-1).
+     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the VM ID in the path and the volume IDs in the request body to attach the specified volumes. For more detailson volume attachment, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-attachment/attach-volumes/).
      * @summary Attach volumes to virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {AttachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachVolumesToVirtualMachine: (virtualMachineId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachVolumesToVirtualMachine: (vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Detaches one or more volumes currently attached to an existing virtual machine. Include the virtual machine ID in the path and the volume IDs in the request body to detach the specified volumes from the designated virtual machine.
+     * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
      * @summary Detach volumes from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {DetachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachVolumesFromVirtualMachine: (virtualMachineId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    detachVolumesFromVirtualMachine: (vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update a volume attachment
+     * @param {number} volumeAttachmentId
+     * @param {UpdateVolumeAttachmentPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAVolumeAttachment: (volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VolumeAttachmentApi - functional programming interface
@@ -17348,23 +17290,32 @@ export declare const VolumeAttachmentApiAxiosParamCreator: (configuration?: Conf
  */
 export declare const VolumeAttachmentApiFp: (configuration?: Configuration) => {
     /**
-     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the virtual machine ID in the path and the volume IDs in the request body to attach the specified volumes to the designated virtual machine. For additional details on volume attachment, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features#attach-a-volume-to-a-virtual-machine-1).
+     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the VM ID in the path and the volume IDs in the request body to attach the specified volumes. For more detailson volume attachment, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-attachment/attach-volumes/).
      * @summary Attach volumes to virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {AttachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachVolumesToVirtualMachine(virtualMachineId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>>;
+    attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>>;
     /**
-     * Detaches one or more volumes currently attached to an existing virtual machine. Include the virtual machine ID in the path and the volume IDs in the request body to detach the specified volumes from the designated virtual machine.
+     * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
      * @summary Detach volumes from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {DetachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachVolumesFromVirtualMachine(virtualMachineId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetachVolumes>>;
+    detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetachVolumes>>;
+    /**
+     *
+     * @summary Update a volume attachment
+     * @param {number} volumeAttachmentId
+     * @param {UpdateVolumeAttachmentPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>>;
 };
 /**
  * VolumeAttachmentApi - factory interface
@@ -17372,23 +17323,32 @@ export declare const VolumeAttachmentApiFp: (configuration?: Configuration) => {
  */
 export declare const VolumeAttachmentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the virtual machine ID in the path and the volume IDs in the request body to attach the specified volumes to the designated virtual machine. For additional details on volume attachment, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features#attach-a-volume-to-a-virtual-machine-1).
+     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the VM ID in the path and the volume IDs in the request body to attach the specified volumes. For more detailson volume attachment, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-attachment/attach-volumes/).
      * @summary Attach volumes to virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {AttachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    attachVolumesToVirtualMachine(virtualMachineId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes>;
+    attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes>;
     /**
-     * Detaches one or more volumes currently attached to an existing virtual machine. Include the virtual machine ID in the path and the volume IDs in the request body to detach the specified volumes from the designated virtual machine.
+     * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
      * @summary Detach volumes from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {DetachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    detachVolumesFromVirtualMachine(virtualMachineId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<DetachVolumes>;
+    detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<DetachVolumes>;
+    /**
+     *
+     * @summary Update a volume attachment
+     * @param {number} volumeAttachmentId
+     * @param {UpdateVolumeAttachmentPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes>;
 };
 /**
  * VolumeAttachmentApi - object-oriented interface
@@ -17398,23 +17358,33 @@ export declare const VolumeAttachmentApiFactory: (configuration?: Configuration,
  */
 export declare class VolumeAttachmentApi extends BaseAPI {
     /**
-     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the virtual machine ID in the path and the volume IDs in the request body to attach the specified volumes to the designated virtual machine. For additional details on volume attachment, [**click here**](https://infrahub-doc.nexgencloud.com/docs/features/volumes-available-features#attach-a-volume-to-a-virtual-machine-1).
+     * Attaches one or more volumes to an existing virtual machine, expanding its storage capacity by 2PB per attached volume. Include the VM ID in the path and the volume IDs in the request body to attach the specified volumes. For more detailson volume attachment, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-attachment/attach-volumes/).
      * @summary Attach volumes to virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {AttachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    attachVolumesToVirtualMachine(virtualMachineId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any>>;
+    attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}>>;
     /**
-     * Detaches one or more volumes currently attached to an existing virtual machine. Include the virtual machine ID in the path and the volume IDs in the request body to detach the specified volumes from the designated virtual machine.
+     * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
      * @summary Detach volumes from virtual machine
-     * @param {number} virtualMachineId
+     * @param {number} vmId
      * @param {DetachVolumesPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    detachVolumesFromVirtualMachine(virtualMachineId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DetachVolumes, any>>;
+    detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DetachVolumes, any, {}>>;
+    /**
+     *
+     * @summary Update a volume attachment
+     * @param {number} volumeAttachmentId
+     * @param {UpdateVolumeAttachmentPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VolumeAttachmentApi
+     */
+    updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}>>;
 }
