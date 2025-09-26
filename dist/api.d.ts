@@ -5143,6 +5143,31 @@ export interface MFAStatusResponse {
 /**
  *
  * @export
+ * @interface ManualReconciliationModel
+ */
+export interface ManualReconciliationModel {
+    /**
+     *
+     * @type {ClusterFields}
+     * @memberof ManualReconciliationModel
+     */
+    'cluster'?: ClusterFields;
+    /**
+     *
+     * @type {string}
+     * @memberof ManualReconciliationModel
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof ManualReconciliationModel
+     */
+    'status'?: string;
+}
+/**
+ *
+ * @export
  * @interface MasterFlavorsResponse
  */
 export interface MasterFlavorsResponse {
@@ -11975,6 +12000,14 @@ export declare class ClusterEventsApi extends BaseAPI {
 export declare const ClustersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Reconcile a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    attemptToManuallyReconcileACluster: (clusterId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Create Cluster
      * @param {CreateClusterPayload} payload
      * @param {*} [options] Override http request option.
@@ -12098,6 +12131,14 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
  * @export
  */
 export declare const ClustersApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Reconcile a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualReconciliationModel>>;
     /**
      *
      * @summary Create Cluster
@@ -12225,6 +12266,14 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
 export declare const ClustersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Reconcile a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ManualReconciliationModel>;
+    /**
+     *
      * @summary Create Cluster
      * @param {CreateClusterPayload} payload
      * @param {*} [options] Override http request option.
@@ -12350,6 +12399,15 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export declare class ClustersApi extends BaseAPI {
+    /**
+     *
+     * @summary Reconcile a cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ManualReconciliationModel, any, {}>>;
     /**
      *
      * @summary Create Cluster

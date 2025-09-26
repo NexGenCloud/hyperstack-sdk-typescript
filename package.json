@@ -1,6 +1,6 @@
 {
   "name": "@nexgencloud/hyperstack-sdk-typescript",
-  "version": "v1.41.0-alpha",
+  "version": "v1.41.2-alpha",
   "description": "Leverage the Infrahub API and Hyperstack platform to easily create, manage, and scale powerful GPU virtual machines and their associated resources.   Access this SDK to automate the deployment of your workloads and streamline your infrastructure management.  To contribute, please raise an issue with a bug report, feature request, feedback, or general inquiry.",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
@@ -24,7 +24,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "axios": "^1.12.2"
+    "axios": "^1.6.1"
   },
   "devDependencies": {
     "@types/node": "12.11.5 - 12.20.42",

@@ -5175,6 +5175,31 @@ export interface MFAStatusResponse {
 /**
  * 
  * @export
+ * @interface ManualReconciliationModel
+ */
+export interface ManualReconciliationModel {
+    /**
+     * 
+     * @type {ClusterFields}
+     * @memberof ManualReconciliationModel
+     */
+    'cluster'?: ClusterFields;
+    /**
+     * 
+     * @type {string}
+     * @memberof ManualReconciliationModel
+     */
+    'message'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ManualReconciliationModel
+     */
+    'status'?: string;
+}
+/**
+ * 
+ * @export
  * @interface MasterFlavorsResponse
  */
 export interface MasterFlavorsResponse {
@@ -14867,6 +14892,43 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @summary Reconcile a cluster
+         * @param {number} clusterId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attemptToManuallyReconcileACluster: async (clusterId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('attemptToManuallyReconcileACluster', 'clusterId', clusterId)
+            const localVarPath = `/core/clusters/{cluster_id}/reconcile`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Create Cluster
          * @param {CreateClusterPayload} payload 
          * @param {*} [options] Override http request option.
@@ -15434,6 +15496,19 @@ export const ClustersApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Reconcile a cluster
+         * @param {number} clusterId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualReconciliationModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attemptToManuallyReconcileACluster(clusterId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.attemptToManuallyReconcileACluster']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Create Cluster
          * @param {CreateClusterPayload} payload 
          * @param {*} [options] Override http request option.
@@ -15633,6 +15708,16 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @summary Reconcile a cluster
+         * @param {number} clusterId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ManualReconciliationModel> {
+            return localVarFp.attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Create Cluster
          * @param {CreateClusterPayload} payload 
          * @param {*} [options] Override http request option.
@@ -15788,6 +15873,18 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export class ClustersApi extends BaseAPI {
+    /**
+     * 
+     * @summary Reconcile a cluster
+     * @param {number} clusterId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    public attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Create Cluster
