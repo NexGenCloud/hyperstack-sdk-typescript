@@ -9439,6 +9439,61 @@ export interface WorkloadBillingHistoryResponse {
     'success'?: boolean;
 }
 /**
+ * AdminApi - axios parameter creator
+ * @export
+ */
+export declare const AdminApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Send a password change notification email to a user
+     * @summary Send Password Change Notification Email
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendPasswordChangeNotificationEmail: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * AdminApi - functional programming interface
+ * @export
+ */
+export declare const AdminApiFp: (configuration?: Configuration) => {
+    /**
+     * Send a password change notification email to a user
+     * @summary Send Password Change Notification Email
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
+};
+/**
+ * AdminApi - factory interface
+ * @export
+ */
+export declare const AdminApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Send a password change notification email to a user
+     * @summary Send Password Change Notification Email
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
+};
+/**
+ * AdminApi - object-oriented interface
+ * @export
+ * @class AdminApi
+ * @extends {BaseAPI}
+ */
+export declare class AdminApi extends BaseAPI {
+    /**
+     * Send a password change notification email to a user
+     * @summary Send Password Change Notification Email
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AdminApi
+     */
+    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+}
+/**
  * AliveApi - axios parameter creator
  * @export
  */
@@ -13350,7 +13405,7 @@ export declare const FirewallAttachmentApiAxiosParamCreator: (configuration?: Co
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postAttachSecurityGroups: (firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachFirewallToVirtualMachines: (firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FirewallAttachmentApi - functional programming interface
@@ -13365,7 +13420,7 @@ export declare const FirewallAttachmentApiFp: (configuration?: Configuration) =>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
 };
 /**
  * FirewallAttachmentApi - factory interface
@@ -13380,7 +13435,7 @@ export declare const FirewallAttachmentApiFactory: (configuration?: Configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
 };
 /**
  * FirewallAttachmentApi - object-oriented interface
@@ -13398,7 +13453,7 @@ export declare class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    postAttachSecurityGroups(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
 }
 /**
  * FirewallsApi - axios parameter creator
@@ -13406,13 +13461,30 @@ export declare class FirewallAttachmentApi extends BaseAPI {
  */
 export declare const FirewallsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addFirewallRuleToAnExistingFirewall: (firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createANewFirewall: (payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteExistingFirewall: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
@@ -13421,7 +13493,7 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupRuleDelete: (firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteFirewallRulesFromFirewall: (firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
@@ -13432,7 +13504,7 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroup: (page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listExistingFirewalls: (page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13440,24 +13512,7 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroupDetails: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroup: (payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroupRules: (firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    retrieveTheDetailsOfAnExistingFirewall: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * FirewallsApi - functional programming interface
@@ -13465,13 +13520,30 @@ export declare const FirewallsApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const FirewallsApiFp: (configuration?: Configuration) => {
     /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>>;
+    /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
@@ -13480,7 +13552,7 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
@@ -13491,7 +13563,7 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallsListResponse>>;
+    listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallsListResponse>>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13499,24 +13571,7 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>>;
-    /**
-     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>>;
+    retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>>;
 };
 /**
  * FirewallsApi - factory interface
@@ -13524,13 +13579,30 @@ export declare const FirewallsApiFp: (configuration?: Configuration) => {
  */
 export declare const FirewallsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse>;
+    /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteExistingFirewall(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
@@ -13539,7 +13611,7 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
@@ -13550,7 +13622,7 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<FirewallsListResponse>;
+    listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<FirewallsListResponse>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13558,24 +13630,7 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse>;
-    /**
-     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule>;
+    retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse>;
 };
 /**
  * FirewallsApi - object-oriented interface
@@ -13585,6 +13640,25 @@ export declare const FirewallsApiFactory: (configuration?: Configuration, basePa
  */
 export declare class FirewallsApi extends BaseAPI {
     /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any, {}>>;
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any, {}>>;
+    /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
@@ -13592,7 +13666,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
@@ -13602,7 +13676,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteSecurityGroupRuleDelete(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
@@ -13614,7 +13688,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    getSecurityGroup(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any, {}>>;
+    listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any, {}>>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -13623,26 +13697,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    getSecurityGroupDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any, {}>>;
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    postSecurityGroup(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any, {}>>;
-    /**
-     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    postSecurityGroupRules(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any, {}>>;
+    retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any, {}>>;
 }
 /**
  * FlavorApi - axios parameter creator
@@ -15374,7 +15429,7 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    deleteAnExistingSnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -15384,24 +15439,6 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      */
     fetchSnapshotNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve a snapshot.
-     * @summary Retrieve a snapshot
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-     * @summary Retrieve list of snapshots with pagination
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Snapshot ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshots: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Restore a snapshot.
      * @summary Restore a snapshot
      * @param {number} id
@@ -15409,7 +15446,25 @@ export declare const SnapshotsApiAxiosParamCreator: (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postSnapshotRestore: (id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    restoreASnapshot: (id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve a snapshot.
+     * @summary Retrieve a snapshot
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAnExistingSnapshot: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+     * @summary Retrieve list of snapshots with pagination
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Snapshot ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrievesAListOfSnapshots: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SnapshotsApi - functional programming interface
@@ -15432,7 +15487,7 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -15442,24 +15497,6 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      */
     fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
-     * Retrieve a snapshot.
-     * @summary Retrieve a snapshot
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>>;
-    /**
-     * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-     * @summary Retrieve list of snapshots with pagination
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Snapshot ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>>;
-    /**
      * Restore a snapshot.
      * @summary Restore a snapshot
      * @param {number} id
@@ -15467,7 +15504,25 @@ export declare const SnapshotsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
+    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
+    /**
+     * Retrieve a snapshot.
+     * @summary Retrieve a snapshot
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>>;
+    /**
+     * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+     * @summary Retrieve list of snapshots with pagination
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Snapshot ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>>;
 };
 /**
  * SnapshotsApi - factory interface
@@ -15490,7 +15545,7 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -15500,24 +15555,6 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      */
     fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
-     * Retrieve a snapshot.
-     * @summary Retrieve a snapshot
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve>;
-    /**
-     * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-     * @summary Retrieve list of snapshots with pagination
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Snapshot ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots>;
-    /**
      * Restore a snapshot.
      * @summary Restore a snapshot
      * @param {number} id
@@ -15525,7 +15562,25 @@ export declare const SnapshotsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
+    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
+    /**
+     * Retrieve a snapshot.
+     * @summary Retrieve a snapshot
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve>;
+    /**
+     * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+     * @summary Retrieve list of snapshots with pagination
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Snapshot ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots>;
 };
 /**
  * SnapshotsApi - object-oriented interface
@@ -15552,7 +15607,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -15563,26 +15618,6 @@ export declare class SnapshotsApi extends BaseAPI {
      */
     fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
-     * Retrieve a snapshot.
-     * @summary Retrieve a snapshot
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any, {}>>;
-    /**
-     * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-     * @summary Retrieve list of snapshots with pagination
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Snapshot ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    getSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any, {}>>;
-    /**
      * Restore a snapshot.
      * @summary Restore a snapshot
      * @param {number} id
@@ -15591,7 +15626,27 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    postSnapshotRestore(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    /**
+     * Retrieve a snapshot.
+     * @summary Retrieve a snapshot
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any, {}>>;
+    /**
+     * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+     * @summary Retrieve list of snapshots with pagination
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Snapshot ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any, {}>>;
 }
 /**
  * StockApi - axios parameter creator
@@ -16125,13 +16180,22 @@ export declare class UserPermissionApi extends BaseAPI {
  */
 export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
      * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInstance: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    attachFirewallsToAVirtualMachine: (vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createOneOrMoreVirtualMachines: (payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
@@ -16142,6 +16206,14 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      */
     deleteSecurityRule: (vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteVirtualMachine: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
      * @param {string} name
@@ -16150,60 +16222,13 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      */
     fetchVirtualMachineNameAvailability: (name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-     * @summary Retrieve virtual machines associated with a contract
-     * @param {number} contractId
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Instance ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getContractInstances: (contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {number} [page]
-     * @param {number} [pageSize]
-     * @param {string} [search]
-     * @param {string} [environment]
-     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance: (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance2: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance3: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance4: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance5: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getInstanceHardReboot: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
      * @summary Hibernate virtual machine
@@ -16213,7 +16238,7 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      */
     getInstanceHibernate: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
@@ -16239,22 +16264,33 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      */
     getInstanceMetrics: (vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postInstance: (payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInstanceAttachFirewalls: (vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getInstanceStart: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceStop: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listVirtualMachines: (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -16300,37 +16336,14 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      * @throws {RequiredError}
      */
     putLabels: (vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * VirtualMachineApi - functional programming interface
- * @export
- */
-export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
     /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
-     * @summary Delete firewall rule from virtual machine
-     * @param {number} vmId
-     * @param {number} sgRuleId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Check if a Virtual Machine name is available
-     * @summary Fetch virtual machine name availability
-     * @param {string} name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
+    retrieveVirtualMachineDetails: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
@@ -16341,27 +16354,55 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>>;
+    retrieveVirtualMachinesAssociatedWithAContract: (contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * VirtualMachineApi - functional programming interface
+ * @export
+ */
+export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
     /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {number} [page]
-     * @param {number} [pageSize]
-     * @param {string} [search]
-     * @param {string} [environment]
-     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
+     * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
+    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>>;
+    /**
+     * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
+     * @summary Delete firewall rule from virtual machine
+     * @param {number} vmId
+     * @param {number} sgRuleId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance2(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
+    deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Check if a Virtual Machine name is available
+     * @summary Fetch virtual machine name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>>;
     /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
@@ -16369,23 +16410,7 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance3(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance4(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance5(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
      * @summary Hibernate virtual machine
@@ -16395,7 +16420,7 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      */
     getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
@@ -16421,22 +16446,33 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      */
     getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsFields>>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    getInstanceStart(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceStop(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -16482,37 +16518,14 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-};
-/**
- * VirtualMachineApi - factory interface
- * @export
- */
-export declare const VirtualMachineApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
-     * @summary Delete firewall rule from virtual machine
-     * @param {number} vmId
-     * @param {number} sgRuleId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Check if a Virtual Machine name is available
-     * @summary Fetch virtual machine name availability
-     * @param {string} name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
+    retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>>;
     /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
@@ -16523,27 +16536,55 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse>;
+    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>>;
+};
+/**
+ * VirtualMachineApi - factory interface
+ * @export
+ */
+export declare const VirtualMachineApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {number} [page]
-     * @param {number} [pageSize]
-     * @param {string} [search]
-     * @param {string} [environment]
-     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
+     * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
+    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse>;
+    /**
+     * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
+     * @summary Delete firewall rule from virtual machine
+     * @param {number} vmId
+     * @param {number} sgRuleId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance2(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
+    deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Check if a Virtual Machine name is available
+     * @summary Fetch virtual machine name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel>;
     /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
@@ -16551,23 +16592,7 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getInstance3(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance4(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getInstance5(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
      * @summary Hibernate virtual machine
@@ -16577,7 +16602,7 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      */
     getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
@@ -16603,22 +16628,33 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      */
     getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): AxiosPromise<MetricsFields>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    getInstanceStart(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInstanceStop(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -16664,6 +16700,25 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @throws {RequiredError}
      */
     putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance>;
+    /**
+     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+     * @summary Retrieve virtual machines associated with a contract
+     * @param {number} contractId
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Instance ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse>;
 };
 /**
  * VirtualMachineApi - object-oriented interface
@@ -16673,14 +16728,24 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
  */
 export declare class VirtualMachineApi extends BaseAPI {
     /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
      * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteInstance(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any, {}>>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
@@ -16692,6 +16757,15 @@ export declare class VirtualMachineApi extends BaseAPI {
      */
     deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
      * @param {string} name
@@ -16701,40 +16775,6 @@ export declare class VirtualMachineApi extends BaseAPI {
      */
     fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
     /**
-     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-     * @summary Retrieve virtual machines associated with a contract
-     * @param {number} contractId
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Instance ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getContractInstances(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any, {}>>;
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {number} [page]
-     * @param {number} [pageSize]
-     * @param {string} [search]
-     * @param {string} [environment]
-     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance2(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
-    /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
      * @param {number} vmId
@@ -16742,25 +16782,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstance3(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
-    /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance4(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
-    /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance5(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
      * @summary Hibernate virtual machine
@@ -16771,7 +16793,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      */
     getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
@@ -16800,24 +16822,36 @@ export declare class VirtualMachineApi extends BaseAPI {
      */
     getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MetricsFields, any, {}>>;
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    postInstance(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any, {}>>;
-    /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    postInstanceAttachFirewalls(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    getInstanceStart(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    getInstanceStop(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -16868,6 +16902,27 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @memberof VirtualMachineApi
      */
     putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    /**
+     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+     * @summary Retrieve virtual machines associated with a contract
+     * @param {number} contractId
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Instance ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any, {}>>;
 }
 /**
  * @export
@@ -16957,7 +17012,7 @@ export declare const VncUrlApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl: (vmId: number, jobId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getVNCURL: (vmId: number, jobId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
@@ -16965,7 +17020,7 @@ export declare const VncUrlApiAxiosParamCreator: (configuration?: Configuration)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl2: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getVncUrl: (vmId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * VncUrlApi - functional programming interface
@@ -16980,7 +17035,7 @@ export declare const VncUrlApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VNCURL>>;
+    getVNCURL(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VNCURL>>;
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
@@ -16988,7 +17043,7 @@ export declare const VncUrlApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>>;
+    getVncUrl(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>>;
 };
 /**
  * VncUrlApi - factory interface
@@ -17003,7 +17058,7 @@ export declare const VncUrlApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): AxiosPromise<VNCURL>;
+    getVNCURL(vmId: number, jobId: number, options?: RawAxiosRequestConfig): AxiosPromise<VNCURL>;
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
@@ -17011,7 +17066,7 @@ export declare const VncUrlApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole>;
+    getVncUrl(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole>;
 };
 /**
  * VncUrlApi - object-oriented interface
@@ -17029,7 +17084,7 @@ export declare class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncUrl(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any, {}>>;
+    getVNCURL(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any, {}>>;
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
@@ -17038,7 +17093,7 @@ export declare class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncUrl2(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any, {}>>;
+    getVncUrl(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any, {}>>;
 }
 /**
  * VolumeApi - axios parameter creator

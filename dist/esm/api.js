@@ -118,6 +118,101 @@ export const RegionFieldsGreenStatusEnum = {
     NotGreen: 'NOT_GREEN'
 };
 /**
+ * AdminApi - axios parameter creator
+ * @export
+ */
+export const AdminApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Send a password change notification email to a user
+         * @summary Send Password Change Notification Email
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendPasswordChangeNotificationEmail: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/admin/password-change-mail`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * AdminApi - functional programming interface
+ * @export
+ */
+export const AdminApiFp = function (configuration) {
+    const localVarAxiosParamCreator = AdminApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Send a password change notification email to a user
+         * @summary Send Password Change Notification Email
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendPasswordChangeNotificationEmail(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.sendPasswordChangeNotificationEmail(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AdminApi.sendPasswordChangeNotificationEmail']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * AdminApi - factory interface
+ * @export
+ */
+export const AdminApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = AdminApiFp(configuration);
+    return {
+        /**
+         * Send a password change notification email to a user
+         * @summary Send Password Change Notification Email
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        sendPasswordChangeNotificationEmail(options) {
+            return localVarFp.sendPasswordChangeNotificationEmail(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * AdminApi - object-oriented interface
+ * @export
+ * @class AdminApi
+ * @extends {BaseAPI}
+ */
+export class AdminApi extends BaseAPI {
+    /**
+     * Send a password change notification email to a user
+     * @summary Send Password Change Notification Email
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AdminApi
+     */
+    sendPasswordChangeNotificationEmail(options) {
+        return AdminApiFp(this.configuration).sendPasswordChangeNotificationEmail(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
  * AliveApi - axios parameter creator
  * @export
  */
@@ -7777,11 +7872,11 @@ export const FirewallAttachmentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postAttachSecurityGroups: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
+        attachFirewallToVirtualMachines: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('postAttachSecurityGroups', 'firewallId', firewallId);
+            assertParamExists('attachFirewallToVirtualMachines', 'firewallId', firewallId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postAttachSecurityGroups', 'payload', payload);
+            assertParamExists('attachFirewallToVirtualMachines', 'payload', payload);
             const localVarPath = `/core/firewalls/{firewall_id}/update-attachments`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -7822,12 +7917,12 @@ export const FirewallAttachmentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postAttachSecurityGroups(firewallId, payload, options) {
+        attachFirewallToVirtualMachines(firewallId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postAttachSecurityGroups(firewallId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallToVirtualMachines(firewallId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallAttachmentApi.postAttachSecurityGroups']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallAttachmentApi.attachFirewallToVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -7848,8 +7943,8 @@ export const FirewallAttachmentApiFactory = function (configuration, basePath, a
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postAttachSecurityGroups(firewallId, payload, options) {
-            return localVarFp.postAttachSecurityGroups(firewallId, payload, options).then((request) => request(axios, basePath));
+        attachFirewallToVirtualMachines(firewallId, payload, options) {
+            return localVarFp.attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7869,8 +7964,8 @@ export class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    postAttachSecurityGroups(firewallId, payload, options) {
-        return FirewallAttachmentApiFp(this.configuration).postAttachSecurityGroups(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    attachFirewallToVirtualMachines(firewallId, payload, options) {
+        return FirewallAttachmentApiFp(this.configuration).attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -7880,15 +7975,83 @@ export class FirewallAttachmentApi extends BaseAPI {
 export const FirewallsApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+         * @summary Add firewall rule to firewall
+         * @param {number} firewallId
+         * @param {CreateFirewallRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addFirewallRuleToAnExistingFirewall: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
+            // verify required parameter 'firewallId' is not null or undefined
+            assertParamExists('addFirewallRuleToAnExistingFirewall', 'firewallId', firewallId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('addFirewallRuleToAnExistingFirewall', 'payload', payload);
+            const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules`
+                .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+         * @summary Create firewall
+         * @param {CreateFirewallPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createANewFirewall: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createANewFirewall', 'payload', payload);
+            const localVarPath = `/core/firewalls`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
          * @summary Delete firewall
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupDetails: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteExistingFirewall: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteSecurityGroupDetails', 'id', id);
+            assertParamExists('deleteExistingFirewall', 'id', id);
             const localVarPath = `/core/firewalls/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -7918,11 +8081,11 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupRuleDelete: (firewallId_1, firewallRuleId_1, ...args_1) => __awaiter(this, [firewallId_1, firewallRuleId_1, ...args_1], void 0, function* (firewallId, firewallRuleId, options = {}) {
+        deleteFirewallRulesFromFirewall: (firewallId_1, firewallRuleId_1, ...args_1) => __awaiter(this, [firewallId_1, firewallRuleId_1, ...args_1], void 0, function* (firewallId, firewallRuleId, options = {}) {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('deleteSecurityGroupRuleDelete', 'firewallId', firewallId);
+            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallId', firewallId);
             // verify required parameter 'firewallRuleId' is not null or undefined
-            assertParamExists('deleteSecurityGroupRuleDelete', 'firewallRuleId', firewallRuleId);
+            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallRuleId', firewallRuleId);
             const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules/{firewall_rule_id}`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)))
                 .replace(`{${"firewall_rule_id"}}`, encodeURIComponent(String(firewallRuleId)));
@@ -7955,7 +8118,7 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroup: (page_1, pageSize_1, search_1, environment_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, ...args_1], void 0, function* (page, pageSize, search, environment, options = {}) {
+        listExistingFirewalls: (page_1, pageSize_1, search_1, environment_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, ...args_1], void 0, function* (page, pageSize, search, environment, options = {}) {
             const localVarPath = `/core/firewalls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7995,9 +8158,9 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroupDetails: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        retrieveTheDetailsOfAnExistingFirewall: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getSecurityGroupDetails', 'id', id);
+            assertParamExists('retrieveTheDetailsOfAnExistingFirewall', 'id', id);
             const localVarPath = `/core/firewalls/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8019,74 +8182,6 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-         * @summary Create firewall
-         * @param {CreateFirewallPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroup: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSecurityGroup', 'payload', payload);
-            const localVarPath = `/core/firewalls`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-         * @summary Add firewall rule to firewall
-         * @param {number} firewallId
-         * @param {CreateFirewallRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroupRules: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
-            // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('postSecurityGroupRules', 'firewallId', firewallId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSecurityGroupRules', 'payload', payload);
-            const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules`
-                .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 /**
@@ -8097,18 +8192,51 @@ export const FirewallsApiFp = function (configuration) {
     const localVarAxiosParamCreator = FirewallsApiAxiosParamCreator(configuration);
     return {
         /**
+         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+         * @summary Add firewall rule to firewall
+         * @param {number} firewallId
+         * @param {CreateFirewallRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addFirewallRuleToAnExistingFirewall(firewallId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.addFirewallRuleToAnExistingFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+         * @summary Create firewall
+         * @param {CreateFirewallPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createANewFirewall(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createANewFirewall(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.createANewFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
          * @summary Delete firewall
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupDetails(id, options) {
+        deleteExistingFirewall(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSecurityGroupDetails(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteExistingFirewall(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteSecurityGroupDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteExistingFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8120,12 +8248,12 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options) {
+        deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteSecurityGroupRuleDelete']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteFirewallRulesFromFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8139,12 +8267,12 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroup(page, pageSize, search, environment, options) {
+        listExistingFirewalls(page, pageSize, search, environment, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSecurityGroup(page, pageSize, search, environment, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listExistingFirewalls(page, pageSize, search, environment, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.getSecurityGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.listExistingFirewalls']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8155,45 +8283,12 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroupDetails(id, options) {
+        retrieveTheDetailsOfAnExistingFirewall(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSecurityGroupDetails(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveTheDetailsOfAnExistingFirewall(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.getSecurityGroupDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-         * @summary Create firewall
-         * @param {CreateFirewallPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroup(payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postSecurityGroup(payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.postSecurityGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-         * @summary Add firewall rule to firewall
-         * @param {number} firewallId
-         * @param {CreateFirewallRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroupRules(firewallId, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postSecurityGroupRules(firewallId, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.postSecurityGroupRules']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.retrieveTheDetailsOfAnExistingFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8207,14 +8302,35 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
     const localVarFp = FirewallsApiFp(configuration);
     return {
         /**
+         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+         * @summary Add firewall rule to firewall
+         * @param {number} firewallId
+         * @param {CreateFirewallRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
+            return localVarFp.addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+         * @summary Create firewall
+         * @param {CreateFirewallPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createANewFirewall(payload, options) {
+            return localVarFp.createANewFirewall(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
          * @summary Delete firewall
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupDetails(id, options) {
-            return localVarFp.deleteSecurityGroupDetails(id, options).then((request) => request(axios, basePath));
+        deleteExistingFirewall(id, options) {
+            return localVarFp.deleteExistingFirewall(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
@@ -8224,8 +8340,8 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options) {
-            return localVarFp.deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
+        deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
+            return localVarFp.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
@@ -8237,8 +8353,8 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroup(page, pageSize, search, environment, options) {
-            return localVarFp.getSecurityGroup(page, pageSize, search, environment, options).then((request) => request(axios, basePath));
+        listExistingFirewalls(page, pageSize, search, environment, options) {
+            return localVarFp.listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
@@ -8247,29 +8363,8 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSecurityGroupDetails(id, options) {
-            return localVarFp.getSecurityGroupDetails(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-         * @summary Create firewall
-         * @param {CreateFirewallPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroup(payload, options) {
-            return localVarFp.postSecurityGroup(payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-         * @summary Add firewall rule to firewall
-         * @param {number} firewallId
-         * @param {CreateFirewallRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityGroupRules(firewallId, payload, options) {
-            return localVarFp.postSecurityGroupRules(firewallId, payload, options).then((request) => request(axios, basePath));
+        retrieveTheDetailsOfAnExistingFirewall(id, options) {
+            return localVarFp.retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -8281,6 +8376,29 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
  */
 export class FirewallsApi extends BaseAPI {
     /**
+     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
+     * @summary Add firewall rule to firewall
+     * @param {number} firewallId
+     * @param {CreateFirewallRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
+        return FirewallsApiFp(this.configuration).addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
+     * @summary Create firewall
+     * @param {CreateFirewallPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    createANewFirewall(payload, options) {
+        return FirewallsApiFp(this.configuration).createANewFirewall(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
      * @param {number} id
@@ -8288,8 +8406,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteSecurityGroupDetails(id, options) {
-        return FirewallsApiFp(this.configuration).deleteSecurityGroupDetails(id, options).then((request) => request(this.axios, this.basePath));
+    deleteExistingFirewall(id, options) {
+        return FirewallsApiFp(this.configuration).deleteExistingFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
@@ -8300,8 +8418,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options) {
-        return FirewallsApiFp(this.configuration).deleteSecurityGroupRuleDelete(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
+    deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
+        return FirewallsApiFp(this.configuration).deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
@@ -8314,8 +8432,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    getSecurityGroup(page, pageSize, search, environment, options) {
-        return FirewallsApiFp(this.configuration).getSecurityGroup(page, pageSize, search, environment, options).then((request) => request(this.axios, this.basePath));
+    listExistingFirewalls(page, pageSize, search, environment, options) {
+        return FirewallsApiFp(this.configuration).listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
@@ -8325,31 +8443,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    getSecurityGroupDetails(id, options) {
-        return FirewallsApiFp(this.configuration).getSecurityGroupDetails(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
-     * @summary Create firewall
-     * @param {CreateFirewallPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    postSecurityGroup(payload, options) {
-        return FirewallsApiFp(this.configuration).postSecurityGroup(payload, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Creates a [**firewall rule**](https://docs.hyperstack.cloud/docs/network-security/security-rules) and adds it to an existing firewall. Include the firewall ID in the path, and provide the firewall rule configuration in the request body.
-     * @summary Add firewall rule to firewall
-     * @param {number} firewallId
-     * @param {CreateFirewallRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    postSecurityGroupRules(firewallId, payload, options) {
-        return FirewallsApiFp(this.configuration).postSecurityGroupRules(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    retrieveTheDetailsOfAnExistingFirewall(id, options) {
+        return FirewallsApiFp(this.configuration).retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -11607,9 +11702,9 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteAnExistingSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteSnapshot', 'id', id);
+            assertParamExists('deleteAnExistingSnapshot', 'id', id);
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11663,15 +11758,51 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id
+         * @param {SnapshotRestoreRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreASnapshot: (id_1, payload_1, ...args_1) => __awaiter(this, [id_1, payload_1, ...args_1], void 0, function* (id, payload, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('restoreASnapshot', 'id', id);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('restoreASnapshot', 'payload', payload);
+            const localVarPath = `/core/snapshots/{id}/restore`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        retrieveAnExistingSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getSnapshot', 'id', id);
+            assertParamExists('retrieveAnExistingSnapshot', 'id', id);
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11694,7 +11825,7 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+         * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
          * @summary Retrieve list of snapshots with pagination
          * @param {string} [page] Page Number
          * @param {string} [pageSize] Data Per Page
@@ -11702,7 +11833,7 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSnapshots: (page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, ...args_1], void 0, function* (page, pageSize, search, options = {}) {
+        retrievesAListOfSnapshots: (page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, ...args_1], void 0, function* (page, pageSize, search, options = {}) {
             const localVarPath = `/core/snapshots`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11727,42 +11858,6 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id
-         * @param {SnapshotRestoreRequest} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshotRestore: (id_1, payload_1, ...args_1) => __awaiter(this, [id_1, payload_1, ...args_1], void 0, function* (id, payload, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('postSnapshotRestore', 'id', id);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSnapshotRestore', 'payload', payload);
-            const localVarPath = `/core/snapshots/{id}/restore`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -11801,12 +11896,12 @@ export const SnapshotsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSnapshot(id, options) {
+        deleteAnExistingSnapshot(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSnapshot(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteAnExistingSnapshot(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.deleteSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.deleteAnExistingSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -11827,40 +11922,6 @@ export const SnapshotsApiFp = function (configuration) {
             });
         },
         /**
-         * Retrieve a snapshot.
-         * @summary Retrieve a snapshot
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshot(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSnapshot(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.getSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-         * @summary Retrieve list of snapshots with pagination
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Snapshot ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshots(page, pageSize, search, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSnapshots(page, pageSize, search, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.getSnapshots']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
          * Restore a snapshot.
          * @summary Restore a snapshot
          * @param {number} id
@@ -11868,12 +11929,46 @@ export const SnapshotsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postSnapshotRestore(id, payload, options) {
+        restoreASnapshot(id, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postSnapshotRestore(id, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreASnapshot(id, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.postSnapshotRestore']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.restoreASnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve a snapshot.
+         * @summary Retrieve a snapshot
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAnExistingSnapshot(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveAnExistingSnapshot(id, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.retrieveAnExistingSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+         * @summary Retrieve list of snapshots with pagination
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Snapshot ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrievesAListOfSnapshots(page, pageSize, search, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrievesAListOfSnapshots(page, pageSize, search, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.retrievesAListOfSnapshots']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -11904,8 +11999,8 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSnapshot(id, options) {
-            return localVarFp.deleteSnapshot(id, options).then((request) => request(axios, basePath));
+        deleteAnExistingSnapshot(id, options) {
+            return localVarFp.deleteAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Check if a Snapshot name is available
@@ -11918,28 +12013,6 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
             return localVarFp.fetchSnapshotNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieve a snapshot.
-         * @summary Retrieve a snapshot
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshot(id, options) {
-            return localVarFp.getSnapshot(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-         * @summary Retrieve list of snapshots with pagination
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Snapshot ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSnapshots(page, pageSize, search, options) {
-            return localVarFp.getSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Restore a snapshot.
          * @summary Restore a snapshot
          * @param {number} id
@@ -11947,8 +12020,30 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postSnapshotRestore(id, payload, options) {
-            return localVarFp.postSnapshotRestore(id, payload, options).then((request) => request(axios, basePath));
+        restoreASnapshot(id, payload, options) {
+            return localVarFp.restoreASnapshot(id, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve a snapshot.
+         * @summary Retrieve a snapshot
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAnExistingSnapshot(id, options) {
+            return localVarFp.retrieveAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+         * @summary Retrieve list of snapshots with pagination
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Snapshot ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrievesAListOfSnapshots(page, pageSize, search, options) {
+            return localVarFp.retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11979,8 +12074,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    deleteSnapshot(id, options) {
-        return SnapshotsApiFp(this.configuration).deleteSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    deleteAnExistingSnapshot(id, options) {
+        return SnapshotsApiFp(this.configuration).deleteAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check if a Snapshot name is available
@@ -11994,30 +12089,6 @@ export class SnapshotsApi extends BaseAPI {
         return SnapshotsApiFp(this.configuration).fetchSnapshotNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieve a snapshot.
-     * @summary Retrieve a snapshot
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    getSnapshot(id, options) {
-        return SnapshotsApiFp(this.configuration).getSnapshot(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves a list of snapshot, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
-     * @summary Retrieve list of snapshots with pagination
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Snapshot ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    getSnapshots(page, pageSize, search, options) {
-        return SnapshotsApiFp(this.configuration).getSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Restore a snapshot.
      * @summary Restore a snapshot
      * @param {number} id
@@ -12026,8 +12097,32 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    postSnapshotRestore(id, payload, options) {
-        return SnapshotsApiFp(this.configuration).postSnapshotRestore(id, payload, options).then((request) => request(this.axios, this.basePath));
+    restoreASnapshot(id, payload, options) {
+        return SnapshotsApiFp(this.configuration).restoreASnapshot(id, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve a snapshot.
+     * @summary Retrieve a snapshot
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    retrieveAnExistingSnapshot(id, options) {
+        return SnapshotsApiFp(this.configuration).retrieveAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
+     * @summary Retrieve list of snapshots with pagination
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Snapshot ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    retrievesAListOfSnapshots(page, pageSize, search, options) {
+        return SnapshotsApiFp(this.configuration).retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -13037,16 +13132,19 @@ export class UserPermissionApi extends BaseAPI {
 export const VirtualMachineApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-         * @summary Delete virtual machine
+         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+         * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
+         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInstance: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        attachFirewallsToAVirtualMachine: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteInstance', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}`
+            assertParamExists('attachFirewallsToAVirtualMachine', 'vmId', vmId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('attachFirewallsToAVirtualMachine', 'payload', payload);
+            const localVarPath = `/core/virtual-machines/{vm_id}/attach-firewalls`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13054,14 +13152,48 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+         * @summary Create virtual machines
+         * @param {CreateInstancesPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createOneOrMoreVirtualMachines: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createOneOrMoreVirtualMachines', 'payload', payload);
+            const localVarPath = `/core/virtual-machines`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -13083,6 +13215,37 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules/{sg_rule_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)))
                 .replace(`{${"sg_rule_id"}}`, encodeURIComponent(String(sgRuleId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+         * @summary Delete virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteVirtualMachine: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('deleteVirtualMachine', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13134,199 +13297,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getContractInstances: (contractId_1, page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [contractId_1, page_1, pageSize_1, search_1, ...args_1], void 0, function* (contractId, page, pageSize, search, options = {}) {
-            // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('getContractInstances', 'contractId', contractId);
-            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
-                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-         * @summary List virtual machines
-         * @param {number} [page]
-         * @param {number} [pageSize]
-         * @param {string} [search]
-         * @param {string} [environment]
-         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, options = {}) {
-            const localVarPath = `/core/virtual-machines`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            if (environment !== undefined) {
-                localVarQueryParameter['environment'] = environment;
-            }
-            if (excludeFirewalls) {
-                localVarQueryParameter['exclude_firewalls'] = excludeFirewalls;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance2: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstance2', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
          * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance3: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        getInstanceHardReboot: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstance3', 'vmId', vmId);
+            assertParamExists('getInstanceHardReboot', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/hard-reboot`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance4: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstance4', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/start`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance5: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstance5', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13379,7 +13359,7 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
          * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
@@ -13482,51 +13462,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-         * @summary Create virtual machines
-         * @param {CreateInstancesPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postInstance: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstance', 'payload', payload);
-            const localVarPath = `/core/virtual-machines`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-         * @summary Attach firewalls to a virtual machine
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
          * @param {number} vmId
-         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceAttachFirewalls: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        getInstanceStart: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postInstanceAttachFirewalls', 'vmId', vmId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstanceAttachFirewalls', 'payload', payload);
-            const localVarPath = `/core/virtual-machines/{vm_id}/attach-firewalls`
+            assertParamExists('getInstanceStart', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/start`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13534,16 +13479,92 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInstanceStop: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getInstanceStop', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+         * @summary List virtual machines
+         * @param {number} [page]
+         * @param {number} [pageSize]
+         * @param {string} [search]
+         * @param {string} [environment]
+         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listVirtualMachines: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, options = {}) {
+            const localVarPath = `/core/virtual-machines`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            if (pageSize !== undefined) {
+                localVarQueryParameter['pageSize'] = pageSize;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (environment !== undefined) {
+                localVarQueryParameter['environment'] = environment;
+            }
+            if (excludeFirewalls) {
+                localVarQueryParameter['exclude_firewalls'] = excludeFirewalls;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -13729,6 +13750,80 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachineDetails: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('retrieveVirtualMachineDetails', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachinesAssociatedWithAContract: (contractId_1, page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [contractId_1, page_1, pageSize_1, search_1, ...args_1], void 0, function* (contractId, page, pageSize, search, options = {}) {
+            // verify required parameter 'contractId' is not null or undefined
+            assertParamExists('retrieveVirtualMachinesAssociatedWithAContract', 'contractId', contractId);
+            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
+                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            if (pageSize !== undefined) {
+                localVarQueryParameter['pageSize'] = pageSize;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 /**
@@ -13739,18 +13834,35 @@ export const VirtualMachineApiFp = function (configuration) {
     const localVarAxiosParamCreator = VirtualMachineApiAxiosParamCreator(configuration);
     return {
         /**
-         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-         * @summary Delete virtual machine
+         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+         * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
+         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInstance(vmId, options) {
+        attachFirewallsToAVirtualMachine(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteInstance(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallsToAVirtualMachine(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteInstance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.attachFirewallsToAVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+         * @summary Create virtual machines
+         * @param {CreateInstancesPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createOneOrMoreVirtualMachines(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createOneOrMoreVirtualMachines(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.createOneOrMoreVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13772,6 +13884,22 @@ export const VirtualMachineApiFp = function (configuration) {
             });
         },
         /**
+         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+         * @summary Delete virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteVirtualMachine(vmId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteVirtualMachine(vmId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Check if a Virtual Machine name is available
          * @summary Fetch virtual machine name availability
          * @param {string} name
@@ -13788,105 +13916,18 @@ export const VirtualMachineApiFp = function (configuration) {
             });
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getContractInstances(contractId, page, pageSize, search, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getContractInstances(contractId, page, pageSize, search, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getContractInstances']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-         * @summary List virtual machines
-         * @param {number} [page]
-         * @param {number} [pageSize]
-         * @param {string} [search]
-         * @param {string} [environment]
-         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance(page, pageSize, search, environment, excludeFirewalls, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstance(page, pageSize, search, environment, excludeFirewalls, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance2(vmId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstance2(vmId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstance2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
          * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
          * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance3(vmId, options) {
+        getInstanceHardReboot(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstance3(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceHardReboot(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstance3']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance4(vmId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstance4(vmId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstance4']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance5(vmId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstance5(vmId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstance5']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceHardReboot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13907,7 +13948,7 @@ export const VirtualMachineApiFp = function (configuration) {
             });
         },
         /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
          * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
@@ -13957,35 +13998,54 @@ export const VirtualMachineApiFp = function (configuration) {
             });
         },
         /**
-         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-         * @summary Create virtual machines
-         * @param {CreateInstancesPayload} payload
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstance(payload, options) {
+        getInstanceStart(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postInstance(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceStart(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postInstance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceStart']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-         * @summary Attach firewalls to a virtual machine
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
          * @param {number} vmId
-         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceAttachFirewalls(vmId, payload, options) {
+        getInstanceStop(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postInstanceAttachFirewalls(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceStop(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postInstanceAttachFirewalls']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceStop']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+         * @summary List virtual machines
+         * @param {number} [page]
+         * @param {number} [pageSize]
+         * @param {string} [search]
+         * @param {string} [environment]
+         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.listVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14074,6 +14134,41 @@ export const VirtualMachineApiFp = function (configuration) {
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
+        /**
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachineDetails(vmId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveVirtualMachineDetails(vmId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.retrieveVirtualMachineDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.retrieveVirtualMachinesAssociatedWithAContract']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
     };
 };
 /**
@@ -14084,14 +14179,25 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
     const localVarFp = VirtualMachineApiFp(configuration);
     return {
         /**
-         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-         * @summary Delete virtual machine
+         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+         * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
+         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteInstance(vmId, options) {
-            return localVarFp.deleteInstance(vmId, options).then((request) => request(axios, basePath));
+        attachFirewallsToAVirtualMachine(vmId, payload, options) {
+            return localVarFp.attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+         * @summary Create virtual machines
+         * @param {CreateInstancesPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createOneOrMoreVirtualMachines(payload, options) {
+            return localVarFp.createOneOrMoreVirtualMachines(payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
@@ -14105,6 +14211,16 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
             return localVarFp.deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+         * @summary Delete virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteVirtualMachine(vmId, options) {
+            return localVarFp.deleteVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Check if a Virtual Machine name is available
          * @summary Fetch virtual machine name availability
          * @param {string} name
@@ -14115,71 +14231,14 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
             return localVarFp.fetchVirtualMachineNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getContractInstances(contractId, page, pageSize, search, options) {
-            return localVarFp.getContractInstances(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-         * @summary List virtual machines
-         * @param {number} [page]
-         * @param {number} [pageSize]
-         * @param {string} [search]
-         * @param {string} [environment]
-         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance(page, pageSize, search, environment, excludeFirewalls, options) {
-            return localVarFp.getInstance(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance2(vmId, options) {
-            return localVarFp.getInstance2(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
          * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance3(vmId, options) {
-            return localVarFp.getInstance3(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance4(vmId, options) {
-            return localVarFp.getInstance4(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstance5(vmId, options) {
-            return localVarFp.getInstance5(vmId, options).then((request) => request(axios, basePath));
+        getInstanceHardReboot(vmId, options) {
+            return localVarFp.getInstanceHardReboot(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
@@ -14192,7 +14251,7 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
             return localVarFp.getInstanceHibernate(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
          * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
@@ -14224,25 +14283,38 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
             return localVarFp.getInstanceMetrics(vmId, duration, options).then((request) => request(axios, basePath));
         },
         /**
-         * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-         * @summary Create virtual machines
-         * @param {CreateInstancesPayload} payload
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstance(payload, options) {
-            return localVarFp.postInstance(payload, options).then((request) => request(axios, basePath));
+        getInstanceStart(vmId, options) {
+            return localVarFp.getInstanceStart(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-         * @summary Attach firewalls to a virtual machine
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
          * @param {number} vmId
-         * @param {AttachFirewallsToVMPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceAttachFirewalls(vmId, payload, options) {
-            return localVarFp.postInstanceAttachFirewalls(vmId, payload, options).then((request) => request(axios, basePath));
+        getInstanceStop(vmId, options) {
+            return localVarFp.getInstanceStop(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+         * @summary List virtual machines
+         * @param {number} [page]
+         * @param {number} [pageSize]
+         * @param {string} [search]
+         * @param {string} [environment]
+         * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
+            return localVarFp.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
         },
         /**
          * Request console logs for a virtual machine
@@ -14299,6 +14371,29 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
         putLabels(vmId, payload, options) {
             return localVarFp.putLabels(vmId, payload, options).then((request) => request(axios, basePath));
         },
+        /**
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachineDetails(vmId, options) {
+            return localVarFp.retrieveVirtualMachineDetails(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
+            return localVarFp.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
+        },
     };
 };
 /**
@@ -14309,15 +14404,27 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
  */
 export class VirtualMachineApi extends BaseAPI {
     /**
-     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
-     * @summary Delete virtual machine
+     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
+     * @summary Attach firewalls to a virtual machine
      * @param {number} vmId
+     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteInstance(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).deleteInstance(vmId, options).then((request) => request(this.axios, this.basePath));
+    attachFirewallsToAVirtualMachine(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
+     * @summary Create virtual machines
+     * @param {CreateInstancesPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    createOneOrMoreVirtualMachines(payload, options) {
+        return VirtualMachineApiFp(this.configuration).createOneOrMoreVirtualMachines(payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
@@ -14332,6 +14439,17 @@ export class VirtualMachineApi extends BaseAPI {
         return VirtualMachineApiFp(this.configuration).deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
+     * @summary Delete virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    deleteVirtualMachine(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).deleteVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
      * @param {string} name
@@ -14343,46 +14461,6 @@ export class VirtualMachineApi extends BaseAPI {
         return VirtualMachineApiFp(this.configuration).fetchVirtualMachineNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-     * @summary Retrieve virtual machines associated with a contract
-     * @param {number} contractId
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Instance ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getContractInstances(contractId, page, pageSize, search, options) {
-        return VirtualMachineApiFp(this.configuration).getContractInstances(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
-     * @summary List virtual machines
-     * @param {number} [page]
-     * @param {number} [pageSize]
-     * @param {string} [search]
-     * @param {string} [environment]
-     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance(page, pageSize, search, environment, excludeFirewalls, options) {
-        return VirtualMachineApiFp(this.configuration).getInstance(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance2(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstance2(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
      * @param {number} vmId
@@ -14390,30 +14468,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstance3(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstance3(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance4(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstance4(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstance5(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstance5(vmId, options).then((request) => request(this.axios, this.basePath));
+    getInstanceHardReboot(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).getInstanceHardReboot(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
@@ -14427,7 +14483,7 @@ export class VirtualMachineApi extends BaseAPI {
         return VirtualMachineApiFp(this.configuration).getInstanceHibernate(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID in the path to specify the virtual machine to be restored from hibernation.
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
@@ -14462,27 +14518,41 @@ export class VirtualMachineApi extends BaseAPI {
         return VirtualMachineApiFp(this.configuration).getInstanceMetrics(vmId, duration, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
-     * @summary Create virtual machines
-     * @param {CreateInstancesPayload} payload
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    postInstance(payload, options) {
-        return VirtualMachineApiFp(this.configuration).postInstance(payload, options).then((request) => request(this.axios, this.basePath));
+    getInstanceStart(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).getInstanceStart(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
-     * @summary Attach firewalls to a virtual machine
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
      * @param {number} vmId
-     * @param {AttachFirewallsToVMPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    postInstanceAttachFirewalls(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).postInstanceAttachFirewalls(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    getInstanceStop(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).getInstanceStop(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
+     * @summary List virtual machines
+     * @param {number} [page]
+     * @param {number} [pageSize]
+     * @param {string} [search]
+     * @param {string} [environment]
+     * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
+        return VirtualMachineApiFp(this.configuration).listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Request console logs for a virtual machine
@@ -14543,6 +14613,31 @@ export class VirtualMachineApi extends BaseAPI {
      */
     putLabels(vmId, payload, options) {
         return VirtualMachineApiFp(this.configuration).putLabels(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    retrieveVirtualMachineDetails(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachineDetails(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+     * @summary Retrieve virtual machines associated with a contract
+     * @param {number} contractId
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Instance ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
+        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -14676,11 +14771,11 @@ export const VncUrlApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl: (vmId_1, jobId_1, ...args_1) => __awaiter(this, [vmId_1, jobId_1, ...args_1], void 0, function* (vmId, jobId, options = {}) {
+        getVNCURL: (vmId_1, jobId_1, ...args_1) => __awaiter(this, [vmId_1, jobId_1, ...args_1], void 0, function* (vmId, jobId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getVncUrl', 'vmId', vmId);
+            assertParamExists('getVNCURL', 'vmId', vmId);
             // verify required parameter 'jobId' is not null or undefined
-            assertParamExists('getVncUrl', 'jobId', jobId);
+            assertParamExists('getVNCURL', 'jobId', jobId);
             const localVarPath = `/core/virtual-machines/{vm_id}/console/{job_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)))
                 .replace(`{${"job_id"}}`, encodeURIComponent(String(jobId)));
@@ -14710,9 +14805,9 @@ export const VncUrlApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl2: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        getVncUrl: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getVncUrl2', 'vmId', vmId);
+            assertParamExists('getVncUrl', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/request-console`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14751,12 +14846,12 @@ export const VncUrlApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl(vmId, jobId, options) {
+        getVNCURL(vmId, jobId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVncUrl(vmId, jobId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVNCURL(vmId, jobId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.getVncUrl']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.getVNCURL']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14767,12 +14862,12 @@ export const VncUrlApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl2(vmId, options) {
+        getVncUrl(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVncUrl2(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVncUrl(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.getVncUrl2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.getVncUrl']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14793,8 +14888,8 @@ export const VncUrlApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl(vmId, jobId, options) {
-            return localVarFp.getVncUrl(vmId, jobId, options).then((request) => request(axios, basePath));
+        getVNCURL(vmId, jobId, options) {
+            return localVarFp.getVNCURL(vmId, jobId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
@@ -14803,8 +14898,8 @@ export const VncUrlApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl2(vmId, options) {
-            return localVarFp.getVncUrl2(vmId, options).then((request) => request(axios, basePath));
+        getVncUrl(vmId, options) {
+            return localVarFp.getVncUrl(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14824,8 +14919,8 @@ export class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncUrl(vmId, jobId, options) {
-        return VncUrlApiFp(this.configuration).getVncUrl(vmId, jobId, options).then((request) => request(this.axios, this.basePath));
+    getVNCURL(vmId, jobId, options) {
+        return VncUrlApiFp(this.configuration).getVNCURL(vmId, jobId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
@@ -14835,8 +14930,8 @@ export class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncUrl2(vmId, options) {
-        return VncUrlApiFp(this.configuration).getVncUrl2(vmId, options).then((request) => request(this.axios, this.basePath));
+    getVncUrl(vmId, options) {
+        return VncUrlApiFp(this.configuration).getVncUrl(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
