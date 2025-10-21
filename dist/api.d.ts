@@ -979,6 +979,12 @@ export interface ClusterFields {
     'id'?: number;
     /**
      *
+     * @type {boolean}
+     * @memberof ClusterFields
+     */
+    'is_reconciling'?: boolean;
+    /**
+     *
      * @type {string}
      * @memberof ClusterFields
      */
@@ -1227,6 +1233,18 @@ export interface ClusterNodeGroupFields {
      * @memberof ClusterNodeGroupFields
      */
     'id'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'max_count'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'min_count'?: number;
     /**
      *
      * @type {string}
@@ -1994,11 +2012,33 @@ export interface CreateClusterNodeGroupPayload {
     'flavor_name': string;
     /**
      *
+     * @type {number}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'max_count'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'min_count'?: number;
+    /**
+     *
      * @type {string}
      * @memberof CreateClusterNodeGroupPayload
      */
     'name': string;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'role': CreateClusterNodeGroupPayloadRoleEnum;
 }
+export declare const CreateClusterNodeGroupPayloadRoleEnum: {
+    readonly Worker: "worker";
+};
+export type CreateClusterNodeGroupPayloadRoleEnum = typeof CreateClusterNodeGroupPayloadRoleEnum[keyof typeof CreateClusterNodeGroupPayloadRoleEnum];
 /**
  *
  * @export
@@ -8544,6 +8584,25 @@ export interface URIs {
 /**
  *
  * @export
+ * @interface UpdateClusterNodeGroupPayload
+ */
+export interface UpdateClusterNodeGroupPayload {
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateClusterNodeGroupPayload
+     */
+    'max_count'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateClusterNodeGroupPayload
+     */
+    'min_count'?: number;
+}
+/**
+ *
+ * @export
  * @interface UpdateEnvironment
  */
 export interface UpdateEnvironment {
@@ -12180,6 +12239,16 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
      * @throws {RequiredError}
      */
     retrieveANodeGroup: (clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {UpdateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateANodeGroup: (clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ClustersApi - functional programming interface
@@ -12313,6 +12382,16 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsGetResponse>>;
+    /**
+     *
+     * @summary Update a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {UpdateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsCreateResponse>>;
 };
 /**
  * ClustersApi - factory interface
@@ -12446,6 +12525,16 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsGetResponse>;
+    /**
+     *
+     * @summary Update a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {UpdateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsCreateResponse>;
 };
 /**
  * ClustersApi - object-oriented interface
@@ -12596,6 +12685,17 @@ export declare class ClustersApi extends BaseAPI {
      * @memberof ClustersApi
      */
     retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsGetResponse, any, {}>>;
+    /**
+     *
+     * @summary Update a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {UpdateClusterNodeGroupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}>>;
 }
 /**
  * ComplianceApi - axios parameter creator

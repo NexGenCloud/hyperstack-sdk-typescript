@@ -995,6 +995,12 @@ export interface ClusterFields {
     'id'?: number;
     /**
      * 
+     * @type {boolean}
+     * @memberof ClusterFields
+     */
+    'is_reconciling'?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ClusterFields
      */
@@ -1243,6 +1249,18 @@ export interface ClusterNodeGroupFields {
      * @memberof ClusterNodeGroupFields
      */
     'id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'max_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ClusterNodeGroupFields
+     */
+    'min_count'?: number;
     /**
      * 
      * @type {string}
@@ -2013,11 +2031,36 @@ export interface CreateClusterNodeGroupPayload {
     'flavor_name': string;
     /**
      * 
+     * @type {number}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'max_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'min_count'?: number;
+    /**
+     * 
      * @type {string}
      * @memberof CreateClusterNodeGroupPayload
      */
     'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'role': CreateClusterNodeGroupPayloadRoleEnum;
 }
+
+export const CreateClusterNodeGroupPayloadRoleEnum = {
+    Worker: 'worker'
+} as const;
+
+export type CreateClusterNodeGroupPayloadRoleEnum = typeof CreateClusterNodeGroupPayloadRoleEnum[keyof typeof CreateClusterNodeGroupPayloadRoleEnum];
+
 /**
  * 
  * @export
@@ -8573,6 +8616,25 @@ export interface URIs {
      * @memberof URIs
      */
     'landing_page'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateClusterNodeGroupPayload
+ */
+export interface UpdateClusterNodeGroupPayload {
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateClusterNodeGroupPayload
+     */
+    'max_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateClusterNodeGroupPayload
+     */
+    'min_count'?: number;
 }
 /**
  * 
@@ -15588,6 +15650,53 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {UpdateClusterNodeGroupPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateANodeGroup: async (clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('updateANodeGroup', 'clusterId', clusterId)
+            // verify required parameter 'nodeGroupId' is not null or undefined
+            assertParamExists('updateANodeGroup', 'nodeGroupId', nodeGroupId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('updateANodeGroup', 'payload', payload)
+            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
+                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -15800,6 +15909,21 @@ export const ClustersApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['ClustersApi.retrieveANodeGroup']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Update a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {UpdateClusterNodeGroupPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsCreateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateANodeGroup(clusterId, nodeGroupId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.updateANodeGroup']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -15966,6 +16090,18 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
          */
         retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsGetResponse> {
             return localVarFp.retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {UpdateClusterNodeGroupPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsCreateResponse> {
+            return localVarFp.updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -16162,6 +16298,20 @@ export class ClustersApi extends BaseAPI {
      */
     public retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) {
         return ClustersApiFp(this.configuration).retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update a node group in a cluster
+     * @param {number} clusterId 
+     * @param {number} nodeGroupId 
+     * @param {UpdateClusterNodeGroupPayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    public updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
