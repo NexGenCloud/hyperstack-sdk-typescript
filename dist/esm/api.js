@@ -121,101 +121,6 @@ export const RegionFieldsGreenStatusEnum = {
     NotGreen: 'NOT_GREEN'
 };
 /**
- * AdminApi - axios parameter creator
- * @export
- */
-export const AdminApiAxiosParamCreator = function (configuration) {
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/auth/admin/password-change-mail`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-    };
-};
-/**
- * AdminApi - functional programming interface
- * @export
- */
-export const AdminApiFp = function (configuration) {
-    const localVarAxiosParamCreator = AdminApiAxiosParamCreator(configuration);
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.sendPasswordChangeNotificationEmail(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AdminApi.sendPasswordChangeNotificationEmail']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-    };
-};
-/**
- * AdminApi - factory interface
- * @export
- */
-export const AdminApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = AdminApiFp(configuration);
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail(options) {
-            return localVarFp.sendPasswordChangeNotificationEmail(options).then((request) => request(axios, basePath));
-        },
-    };
-};
-/**
- * AdminApi - object-oriented interface
- * @export
- * @class AdminApi
- * @extends {BaseAPI}
- */
-export class AdminApi extends BaseAPI {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    sendPasswordChangeNotificationEmail(options) {
-        return AdminApiFp(this.configuration).sendPasswordChangeNotificationEmail(options).then((request) => request(this.axios, this.basePath));
-    }
-}
-/**
  * AliveApi - axios parameter creator
  * @export
  */
@@ -5476,6 +5381,42 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes: (clusterId_1, payload_1, ...args_1) => __awaiter(this, [clusterId_1, payload_1, ...args_1], void 0, function* (clusterId, payload, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('deleteClusterNodes', 'clusterId', clusterId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('deleteClusterNodes', 'payload', payload);
+            const localVarPath = `/core/clusters/{cluster_id}/nodes/delete`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -5901,6 +5842,23 @@ export const ClustersApiFp = function (configuration) {
             });
         },
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes(clusterId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteClusterNodes(clusterId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteClusterNodes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -6133,6 +6091,17 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteClusterNode(clusterId, nodeId, options).then((request) => request(axios, basePath));
         },
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes(clusterId, payload, options) {
+            return localVarFp.deleteClusterNodes(clusterId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -6316,6 +6285,18 @@ export class ClustersApi extends BaseAPI {
      */
     deleteClusterNode(clusterId, nodeId, options) {
         return ClustersApiFp(this.configuration).deleteClusterNode(clusterId, nodeId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteClusterNodes(clusterId, payload, options) {
+        return ClustersApiFp(this.configuration).deleteClusterNodes(clusterId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check if a Cluster name is available
@@ -15813,5 +15794,108 @@ export class VolumeAttachmentApi extends BaseAPI {
      */
     updateAVolumeAttachment(volumeAttachmentId, payload, options) {
         return VolumeAttachmentApiFp(this.configuration).updateAVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * VouchersApi - axios parameter creator
+ * @export
+ */
+export const VouchersApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('redeemAVoucher', 'payload', payload);
+            const localVarPath = `/billing/billing/vouchers/redeem`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * VouchersApi - functional programming interface
+ * @export
+ */
+export const VouchersApiFp = function (configuration) {
+    const localVarAxiosParamCreator = VouchersApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.redeemAVoucher(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VouchersApi.redeemAVoucher']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * VouchersApi - factory interface
+ * @export
+ */
+export const VouchersApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = VouchersApiFp(configuration);
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher(payload, options) {
+            return localVarFp.redeemAVoucher(payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * VouchersApi - object-oriented interface
+ * @export
+ * @class VouchersApi
+ * @extends {BaseAPI}
+ */
+export class VouchersApi extends BaseAPI {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VouchersApi
+     */
+    redeemAVoucher(payload, options) {
+        return VouchersApiFp(this.configuration).redeemAVoucher(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }

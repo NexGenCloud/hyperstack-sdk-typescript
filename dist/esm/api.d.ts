@@ -2817,6 +2817,19 @@ export interface DataSynthesisBillingHistoryDetailsResponseSchema {
 /**
  *
  * @export
+ * @interface DeleteClusterNodesFields
+ */
+export interface DeleteClusterNodesFields {
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof DeleteClusterNodesFields
+     */
+    'ids'?: Array<number>;
+}
+/**
+ *
+ * @export
  * @interface DeploymentFields
  */
 export interface DeploymentFields {
@@ -6497,6 +6510,19 @@ export interface RbacRoleFields {
 /**
  *
  * @export
+ * @interface RedeemVoucherPayload
+ */
+export interface RedeemVoucherPayload {
+    /**
+     * The code of the voucher you want to redeem.
+     * @type {string}
+     * @memberof RedeemVoucherPayload
+     */
+    'voucher_code': string;
+}
+/**
+ *
+ * @export
  * @interface RegionFields
  */
 export interface RegionFields {
@@ -9475,6 +9501,56 @@ export interface VolumesFields {
 /**
  *
  * @export
+ * @interface Voucher
+ */
+export interface Voucher {
+    /**
+     * Voucher code
+     * @type {string}
+     * @memberof Voucher
+     */
+    'code': string;
+    /**
+     * Voucher ID
+     * @type {number}
+     * @memberof Voucher
+     */
+    'id': number;
+    /**
+     * Voucher status
+     * @type {string}
+     * @memberof Voucher
+     */
+    'status': string;
+}
+/**
+ *
+ * @export
+ * @interface VoucherRedeemResponseSchema
+ */
+export interface VoucherRedeemResponseSchema {
+    /**
+     * Response message
+     * @type {string}
+     * @memberof VoucherRedeemResponseSchema
+     */
+    'message': string;
+    /**
+     * Success status of the operation
+     * @type {boolean}
+     * @memberof VoucherRedeemResponseSchema
+     */
+    'status': boolean;
+    /**
+     * Redeemed voucher details
+     * @type {Voucher}
+     * @memberof VoucherRedeemResponseSchema
+     */
+    'voucher'?: Voucher;
+}
+/**
+ *
+ * @export
  * @interface WorkloadBillingHistoryResponse
  */
 export interface WorkloadBillingHistoryResponse {
@@ -9496,61 +9572,6 @@ export interface WorkloadBillingHistoryResponse {
      * @memberof WorkloadBillingHistoryResponse
      */
     'success'?: boolean;
-}
-/**
- * AdminApi - axios parameter creator
- * @export
- */
-export declare const AdminApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    sendPasswordChangeNotificationEmail: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * AdminApi - functional programming interface
- * @export
- */
-export declare const AdminApiFp: (configuration?: Configuration) => {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
-};
-/**
- * AdminApi - factory interface
- * @export
- */
-export declare const AdminApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
-};
-/**
- * AdminApi - object-oriented interface
- * @export
- * @class AdminApi
- * @extends {BaseAPI}
- */
-export declare class AdminApi extends BaseAPI {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    sendPasswordChangeNotificationEmail(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
 }
 /**
  * AliveApi - axios parameter creator
@@ -12173,6 +12194,15 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
      */
     deleteClusterNode: (clusterId: number, nodeId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNodes: (clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
      * @param {string} name
@@ -12316,6 +12346,15 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
      */
     deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
     /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
+    /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
      * @param {string} name
@@ -12458,6 +12497,15 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
+    /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -12610,6 +12658,16 @@ export declare class ClustersApi extends BaseAPI {
      * @memberof ClustersApi
      */
     deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -17600,4 +17658,63 @@ export declare class VolumeAttachmentApi extends BaseAPI {
      * @memberof VolumeAttachmentApi
      */
     updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}>>;
+}
+/**
+ * VouchersApi - axios parameter creator
+ * @export
+ */
+export declare const VouchersApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    redeemAVoucher: (payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * VouchersApi - functional programming interface
+ * @export
+ */
+export declare const VouchersApiFp: (configuration?: Configuration) => {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoucherRedeemResponseSchema>>;
+};
+/**
+ * VouchersApi - factory interface
+ * @export
+ */
+export declare const VouchersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): AxiosPromise<VoucherRedeemResponseSchema>;
+};
+/**
+ * VouchersApi - object-oriented interface
+ * @export
+ * @class VouchersApi
+ * @extends {BaseAPI}
+ */
+export declare class VouchersApi extends BaseAPI {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VouchersApi
+     */
+    redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherRedeemResponseSchema, any, {}>>;
 }

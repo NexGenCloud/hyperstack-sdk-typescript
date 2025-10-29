@@ -22,10 +22,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.AdminApi = exports.AdminApiFactory = exports.AdminApiFp = exports.AdminApiAxiosParamCreator = exports.RegionFieldsGreenStatusEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
-exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = void 0;
-exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = void 0;
-exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetInstanceMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = void 0;
+exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.RegionFieldsGreenStatusEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
+exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = void 0;
+exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = void 0;
+exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetInstanceMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -126,105 +126,6 @@ exports.RegionFieldsGreenStatusEnum = {
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
 };
-/**
- * AdminApi - axios parameter creator
- * @export
- */
-const AdminApiAxiosParamCreator = function (configuration) {
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/auth/admin/password-change-mail`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
-            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: (0, common_1.toPathString)(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-    };
-};
-exports.AdminApiAxiosParamCreator = AdminApiAxiosParamCreator;
-/**
- * AdminApi - functional programming interface
- * @export
- */
-const AdminApiFp = function (configuration) {
-    const localVarAxiosParamCreator = (0, exports.AdminApiAxiosParamCreator)(configuration);
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.sendPasswordChangeNotificationEmail(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AdminApi.sendPasswordChangeNotificationEmail']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-    };
-};
-exports.AdminApiFp = AdminApiFp;
-/**
- * AdminApi - factory interface
- * @export
- */
-const AdminApiFactory = function (configuration, basePath, axios) {
-    const localVarFp = (0, exports.AdminApiFp)(configuration);
-    return {
-        /**
-         * Send a password change notification email to a user
-         * @summary Send Password Change Notification Email
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sendPasswordChangeNotificationEmail(options) {
-            return localVarFp.sendPasswordChangeNotificationEmail(options).then((request) => request(axios, basePath));
-        },
-    };
-};
-exports.AdminApiFactory = AdminApiFactory;
-/**
- * AdminApi - object-oriented interface
- * @export
- * @class AdminApi
- * @extends {BaseAPI}
- */
-class AdminApi extends base_1.BaseAPI {
-    /**
-     * Send a password change notification email to a user
-     * @summary Send Password Change Notification Email
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    sendPasswordChangeNotificationEmail(options) {
-        return (0, exports.AdminApiFp)(this.configuration).sendPasswordChangeNotificationEmail(options).then((request) => request(this.axios, this.basePath));
-    }
-}
-exports.AdminApi = AdminApi;
 /**
  * AliveApi - axios parameter creator
  * @export
@@ -5522,6 +5423,42 @@ const ClustersApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes: (clusterId_1, payload_1, ...args_1) => __awaiter(this, [clusterId_1, payload_1, ...args_1], void 0, function* (clusterId, payload, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            (0, common_1.assertParamExists)('deleteClusterNodes', 'clusterId', clusterId);
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('deleteClusterNodes', 'payload', payload);
+            const localVarPath = `/core/clusters/{cluster_id}/nodes/delete`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -5948,6 +5885,23 @@ const ClustersApiFp = function (configuration) {
             });
         },
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes(clusterId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteClusterNodes(clusterId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ClustersApi.deleteClusterNodes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -6181,6 +6135,17 @@ const ClustersApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteClusterNode(clusterId, nodeId, options).then((request) => request(axios, basePath));
         },
         /**
+         *
+         * @summary Delete Multiple Cluster Nodes
+         * @param {number} clusterId
+         * @param {DeleteClusterNodesFields} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteClusterNodes(clusterId, payload, options) {
+            return localVarFp.deleteClusterNodes(clusterId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Check if a Cluster name is available
          * @summary Fetch cluster name availability
          * @param {string} name
@@ -6365,6 +6330,18 @@ class ClustersApi extends base_1.BaseAPI {
      */
     deleteClusterNode(clusterId, nodeId, options) {
         return (0, exports.ClustersApiFp)(this.configuration).deleteClusterNode(clusterId, nodeId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete Multiple Cluster Nodes
+     * @param {number} clusterId
+     * @param {DeleteClusterNodesFields} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteClusterNodes(clusterId, payload, options) {
+        return (0, exports.ClustersApiFp)(this.configuration).deleteClusterNodes(clusterId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check if a Cluster name is available
@@ -16009,3 +15986,110 @@ class VolumeAttachmentApi extends base_1.BaseAPI {
     }
 }
 exports.VolumeAttachmentApi = VolumeAttachmentApi;
+/**
+ * VouchersApi - axios parameter creator
+ * @export
+ */
+const VouchersApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('redeemAVoucher', 'payload', payload);
+            const localVarPath = `/billing/billing/vouchers/redeem`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.VouchersApiAxiosParamCreator = VouchersApiAxiosParamCreator;
+/**
+ * VouchersApi - functional programming interface
+ * @export
+ */
+const VouchersApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.VouchersApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.redeemAVoucher(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VouchersApi.redeemAVoucher']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.VouchersApiFp = VouchersApiFp;
+/**
+ * VouchersApi - factory interface
+ * @export
+ */
+const VouchersApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.VouchersApiFp)(configuration);
+    return {
+        /**
+         * Request to redeem a voucher with a voucher code.
+         * @summary Redeem a voucher with a voucher_code
+         * @param {RedeemVoucherPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        redeemAVoucher(payload, options) {
+            return localVarFp.redeemAVoucher(payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.VouchersApiFactory = VouchersApiFactory;
+/**
+ * VouchersApi - object-oriented interface
+ * @export
+ * @class VouchersApi
+ * @extends {BaseAPI}
+ */
+class VouchersApi extends base_1.BaseAPI {
+    /**
+     * Request to redeem a voucher with a voucher code.
+     * @summary Redeem a voucher with a voucher_code
+     * @param {RedeemVoucherPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VouchersApi
+     */
+    redeemAVoucher(payload, options) {
+        return (0, exports.VouchersApiFp)(this.configuration).redeemAVoucher(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.VouchersApi = VouchersApi;
