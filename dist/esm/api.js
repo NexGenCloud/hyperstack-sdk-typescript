@@ -158,7 +158,7 @@ export const AliveApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDoc: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getAliveDoc: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/billing/alive/doc`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -208,12 +208,12 @@ export const AliveApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDoc(options) {
+        getAliveDoc(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDoc(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAliveDoc(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AliveApi.getDoc']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AliveApi.getAliveDoc']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -240,8 +240,8 @@ export const AliveApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDoc(options) {
-            return localVarFp.getDoc(options).then((request) => request(axios, basePath));
+        getAliveDoc(options) {
+            return localVarFp.getAliveDoc(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -268,8 +268,8 @@ export class AliveApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AliveApi
      */
-    getDoc(options) {
-        return AliveApiFp(this.configuration).getDoc(options).then((request) => request(this.axios, this.basePath));
+    getAliveDoc(options) {
+        return AliveApiFp(this.configuration).getAliveDoc(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -345,7 +345,7 @@ export const ApiKeyApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAPIKey: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getAPIKey: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/api-key`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -449,12 +449,12 @@ export const ApiKeyApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAPIKey(options) {
+        getAPIKey(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveAPIKey(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAPIKey(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ApiKeyApi.retrieveAPIKey']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ApiKeyApi.getAPIKey']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -510,8 +510,8 @@ export const ApiKeyApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAPIKey(options) {
-            return localVarFp.retrieveAPIKey(options).then((request) => request(axios, basePath));
+        getAPIKey(options) {
+            return localVarFp.getAPIKey(options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
@@ -562,8 +562,8 @@ export class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    retrieveAPIKey(options) {
-        return ApiKeyApiFp(this.configuration).retrieveAPIKey(options).then((request) => request(this.axios, this.basePath));
+    getAPIKey(options) {
+        return ApiKeyApiFp(this.configuration).getAPIKey(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
@@ -819,6 +819,33 @@ export const AuthApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAuthenticatedUser: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -853,33 +880,6 @@ export const AuthApiAxiosParamCreator = function (configuration) {
          */
         getUserOrganizations: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/auth/me/organizations`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAuthenticatedUserDetails: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/auth/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -938,6 +938,21 @@ export const AuthApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAuthenticatedUser(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAuthenticatedUser(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AuthApi.getAuthenticatedUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -964,21 +979,6 @@ export const AuthApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserOrganizations(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AuthApi.getUserOrganizations']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAuthenticatedUserDetails(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveAuthenticatedUserDetails(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AuthApi.retrieveAuthenticatedUserDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -1009,6 +1009,15 @@ export const AuthApiFactory = function (configuration, basePath, axios) {
             return localVarFp.disableMFA(options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAuthenticatedUser(options) {
+            return localVarFp.getAuthenticatedUser(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -1025,15 +1034,6 @@ export const AuthApiFactory = function (configuration, basePath, axios) {
          */
         getUserOrganizations(options) {
             return localVarFp.getUserOrganizations(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAuthenticatedUserDetails(options) {
-            return localVarFp.retrieveAuthenticatedUserDetails(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1064,6 +1064,16 @@ export class AuthApi extends BaseAPI {
         return AuthApiFp(this.configuration).disableMFA(options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    getAuthenticatedUser(options) {
+        return AuthApiFp(this.configuration).getAuthenticatedUser(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -1083,16 +1093,6 @@ export class AuthApi extends BaseAPI {
     getUserOrganizations(options) {
         return AuthApiFp(this.configuration).getUserOrganizations(options).then((request) => request(this.axios, this.basePath));
     }
-    /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    retrieveAuthenticatedUserDetails(options) {
-        return AuthApiFp(this.configuration).retrieveAuthenticatedUserDetails(options).then((request) => request(this.axios, this.basePath));
-    }
 }
 /**
  * BetaAccessApi - axios parameter creator
@@ -1107,9 +1107,9 @@ export const BetaAccessApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createABetaAccessRequest: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        createBetaAccessRequest: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createABetaAccessRequest', 'payload', payload);
+            assertParamExists('createBetaAccessRequest', 'payload', payload);
             const localVarPath = `/auth/beta-access/requests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1133,13 +1133,17 @@ export const BetaAccessApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Check the status of all beta access requests.
-         * @summary Check the status of all beta access requests
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBetaAccessStatus: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/auth/beta-access/requests`;
+        getBetaAccessRequests: (program_1, ...args_1) => __awaiter(this, [program_1, ...args_1], void 0, function* (program, options = {}) {
+            // verify required parameter 'program' is not null or undefined
+            assertParamExists('getBetaAccessRequests', 'program', program);
+            const localVarPath = `/auth/beta-access/requests/{program}`
+                .replace(`{${"program"}}`, encodeURIComponent(String(program)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1160,17 +1164,13 @@ export const BetaAccessApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program
+         * Check the status of all beta access requests.
+         * @summary Check the status of all beta access requests
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBetaAccessStatus2: (program_1, ...args_1) => __awaiter(this, [program_1, ...args_1], void 0, function* (program, options = {}) {
-            // verify required parameter 'program' is not null or undefined
-            assertParamExists('getBetaAccessStatus2', 'program', program);
-            const localVarPath = `/auth/beta-access/requests/{program}`
-                .replace(`{${"program"}}`, encodeURIComponent(String(program)));
+        getBetaAccessStatus: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/beta-access/requests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1206,12 +1206,28 @@ export const BetaAccessApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createABetaAccessRequest(payload, options) {
+        createBetaAccessRequest(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createABetaAccessRequest(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createBetaAccessRequest(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BetaAccessApi.createABetaAccessRequest']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BetaAccessApi.createBetaAccessRequest']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBetaAccessRequests(program, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBetaAccessRequests(program, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BetaAccessApi.getBetaAccessRequests']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -1227,22 +1243,6 @@ export const BetaAccessApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.getBetaAccessStatus(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BetaAccessApi.getBetaAccessStatus']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBetaAccessStatus2(program, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBetaAccessStatus2(program, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BetaAccessApi.getBetaAccessStatus2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -1262,8 +1262,18 @@ export const BetaAccessApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createABetaAccessRequest(payload, options) {
-            return localVarFp.createABetaAccessRequest(payload, options).then((request) => request(axios, basePath));
+        createBetaAccessRequest(payload, options) {
+            return localVarFp.createBetaAccessRequest(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBetaAccessRequests(program, options) {
+            return localVarFp.getBetaAccessRequests(program, options).then((request) => request(axios, basePath));
         },
         /**
          * Check the status of all beta access requests.
@@ -1273,16 +1283,6 @@ export const BetaAccessApiFactory = function (configuration, basePath, axios) {
          */
         getBetaAccessStatus(options) {
             return localVarFp.getBetaAccessStatus(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBetaAccessStatus2(program, options) {
-            return localVarFp.getBetaAccessStatus2(program, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1301,8 +1301,19 @@ export class BetaAccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BetaAccessApi
      */
-    createABetaAccessRequest(payload, options) {
-        return BetaAccessApiFp(this.configuration).createABetaAccessRequest(payload, options).then((request) => request(this.axios, this.basePath));
+    createBetaAccessRequest(payload, options) {
+        return BetaAccessApiFp(this.configuration).createBetaAccessRequest(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BetaAccessApi
+     */
+    getBetaAccessRequests(program, options) {
+        return BetaAccessApiFp(this.configuration).getBetaAccessRequests(program, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check the status of all beta access requests.
@@ -1314,17 +1325,6 @@ export class BetaAccessApi extends BaseAPI {
     getBetaAccessStatus(options) {
         return BetaAccessApiFp(this.configuration).getBetaAccessStatus(options).then((request) => request(this.axios, this.basePath));
     }
-    /**
-     * Check the status of a particular beta access requests.
-     * @summary Check the status of beta access requests
-     * @param {string} program
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BetaAccessApi
-     */
-    getBetaAccessStatus2(program, options) {
-        return BetaAccessApiFp(this.configuration).getBetaAccessStatus2(program, options).then((request) => request(this.axios, this.basePath));
-    }
 }
 /**
  * BillingApi - axios parameter creator
@@ -1333,96 +1333,7 @@ export class BetaAccessApi extends BaseAPI {
 export const BillingApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-         * @summary GET: Last Day Cost
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getLastDayCost: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/billing/billing/last-day-cost`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getOrganizationThreshold: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/billing/billing/threshold`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-         * @summary GET: Billing usage
-         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-         * @param {string} [environment] Filter resources by environment ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsage2: (deleted_1, environment_1, ...args_1) => __awaiter(this, [deleted_1, environment_1, ...args_1], void 0, function* (deleted, environment, options = {}) {
-            const localVarPath = `/billing/billing/usage`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (deleted !== undefined) {
-                localVarQueryParameter['deleted'] = deleted;
-            }
-            if (environment !== undefined) {
-                localVarQueryParameter['environment'] = environment;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
          * @param {number} bucketId
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -1430,11 +1341,89 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingBucketDetailsGraph: (bucketId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [bucketId_1, startDate_1, endDate_1, ...args_1], void 0, function* (bucketId, startDate, endDate, options = {}) {
+        bucketsBillingHistoryHourlyChart: (bucketId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [bucketId_1, startDate_1, endDate_1, ...args_1], void 0, function* (bucketId, startDate, endDate, options = {}) {
             // verify required parameter 'bucketId' is not null or undefined
-            assertParamExists('getUserBillingBucketDetailsGraph', 'bucketId', bucketId);
+            assertParamExists('bucketsBillingHistoryHourlyChart', 'bucketId', bucketId);
             const localVarPath = `/billing/billing/history/bucket/{bucket_id}/graph`
                 .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} bucketId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBucketBillingHistory: (bucketId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [bucketId_1, startDate_1, endDate_1, ...args_1], void 0, function* (bucketId, startDate, endDate, options = {}) {
+            // verify required parameter 'bucketId' is not null or undefined
+            assertParamExists('getBucketBillingHistory', 'bucketId', bucketId);
+            const localVarPath = `/billing/billing/history/bucket/{bucket_id}`
+                .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistory: (clusterId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [clusterId_1, startDate_1, endDate_1, ...args_1], void 0, function* (clusterId, startDate, endDate, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('getClusterBillingHistory', 'clusterId', clusterId);
+            const localVarPath = `/billing/billing/history/cluster/{cluster_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1469,9 +1458,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingClusterDetailsGraph: (clusterId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [clusterId_1, startDate_1, endDate_1, ...args_1], void 0, function* (clusterId, startDate, endDate, options = {}) {
+        getClusterBillingHistoryGraph: (clusterId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [clusterId_1, startDate_1, endDate_1, ...args_1], void 0, function* (clusterId, startDate, endDate, options = {}) {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('getUserBillingClusterDetailsGraph', 'clusterId', clusterId);
+            assertParamExists('getClusterBillingHistoryGraph', 'clusterId', clusterId);
             const localVarPath = `/billing/billing/history/cluster/{cluster_id}/graph`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1500,335 +1489,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingDataSynthesisDetailsGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingDataSynthesisDetailsGraph', 'resourceId', resourceId);
-            const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingFineTuningDetailsGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingFineTuningDetailsGraph', 'resourceId', resourceId);
-            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-         * @summary Retrieve Billing History for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistory2: (startDate_1, endDate_1, graph_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, graph_1, ...args_1], void 0, function* (startDate, endDate, graph, options = {}) {
-            const localVarPath = `/billing/billing/history`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            if (graph !== undefined) {
-                localVarQueryParameter['graph'] = graph;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucket2: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
-            const localVarPath = `/billing/billing/history/bucket`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} bucketId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucketDetails: (bucketId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [bucketId_1, startDate_1, endDate_1, ...args_1], void 0, function* (bucketId, startDate, endDate, options = {}) {
-            // verify required parameter 'bucketId' is not null or undefined
-            assertParamExists('getUserBillingHistoryBucketDetails', 'bucketId', bucketId);
-            const localVarPath = `/billing/billing/history/bucket/{bucket_id}`
-                .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryCluster: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
-            const localVarPath = `/billing/billing/history/cluster`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryClusterDetails: (clusterId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [clusterId_1, startDate_1, endDate_1, ...args_1], void 0, function* (clusterId, startDate, endDate, options = {}) {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('getUserBillingHistoryClusterDetails', 'clusterId', clusterId);
-            const localVarPath = `/billing/billing/history/cluster/{cluster_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryContract: (startDate_1, endDate_1, search_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, ...args_1], void 0, function* (startDate, endDate, search, options = {}) {
-            const localVarPath = `/billing/billing/history/contract`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
+         * User will receive billing history of data_synthesis for the specified billing cycle.
          * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -1838,7 +1499,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryDataSynthesis: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+        getDataSynthesisBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
             const localVarPath = `/billing/billing/history/data_synthesis`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1875,6 +1536,45 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistoryGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getDataSynthesisBillingHistoryGraph', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
          * @param {number} resourceId
          * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
@@ -1882,9 +1582,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryDataSynthesisDetails: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+        getDataSynthesisHistoryForResource: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryDataSynthesisDetails', 'resourceId', resourceId);
+            assertParamExists('getDataSynthesisHistoryForResource', 'resourceId', resourceId);
             const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1913,7 +1613,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
+         * User will receive billing history of fine_tuning for the specified billing cycle.
          * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -1923,7 +1623,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryFineTuning: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+        getFineTuningBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
             const localVarPath = `/billing/billing/history/fine_tuning`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1960,18 +1660,18 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
          * @param {number} resourceId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryFineTuningDetails: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+        getFineTuningBillingHistoryGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryFineTuningDetails', 'resourceId', resourceId);
-            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}`
+            assertParamExists('getFineTuningBillingHistoryGraph', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}/graph`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1999,7 +1699,34 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
+         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+         * @summary GET: Last Day Cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLastDayCost: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/billing/last-day-cost`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of model_evaluation for the specified billing cycle.
          * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2009,7 +1736,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryModelEvaluation: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+        getModelEvaluationBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
             const localVarPath = `/billing/billing/history/model_evaluation`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2046,6 +1773,120 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistoryGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getModelEvaluationBillingHistoryGraph', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationThreshold: (thresholdId_1, payload_1, ...args_1) => __awaiter(this, [thresholdId_1, payload_1, ...args_1], void 0, function* (thresholdId, payload, options = {}) {
+            // verify required parameter 'thresholdId' is not null or undefined
+            assertParamExists('getNotificationThreshold', 'thresholdId', thresholdId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('getNotificationThreshold', 'payload', payload);
+            const localVarPath = `/billing/billing/threshold/{threshold_id}`
+                .replace(`{${"threshold_id"}}`, encodeURIComponent(String(thresholdId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceFineTuningBillingHistory: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getResourceFineTuningBillingHistory', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
          * @param {number} resourceId
          * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
@@ -2053,9 +1894,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryModelEvaluationDetails: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+        getResourceModelEvaluationBillingHistory: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryModelEvaluationDetails', 'resourceId', resourceId);
+            assertParamExists('getResourceModelEvaluationBillingHistory', 'resourceId', resourceId);
             const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2084,18 +1925,19 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
-         * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInference: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
-            const localVarPath = `/billing/billing/history/serverless_inference`;
+        getServerlessInferenceBillingHistoryGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getServerlessInferenceBillingHistoryGraph', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2113,15 +1955,6 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             if (endDate !== undefined) {
                 localVarQueryParameter['end_date'] = endDate;
             }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2138,9 +1971,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInferenceDetails: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+        getServerlessInferencesBillingHistory: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryServerlessInferenceDetails', 'resourceId', resourceId);
+            assertParamExists('getServerlessInferencesBillingHistory', 'resourceId', resourceId);
             const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2169,53 +2002,6 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistorySnapshot: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
-            const localVarPath = `/billing/billing/history/snapshot`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
          * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
          * @param {number} snapshotId
@@ -2224,9 +2010,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistorySnapshotDetails: (snapshotId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [snapshotId_1, startDate_1, endDate_1, ...args_1], void 0, function* (snapshotId, startDate, endDate, options = {}) {
+        getSnapshotBillingHistory: (snapshotId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [snapshotId_1, startDate_1, endDate_1, ...args_1], void 0, function* (snapshotId, startDate, endDate, options = {}) {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('getUserBillingHistorySnapshotDetails', 'snapshotId', snapshotId);
+            assertParamExists('getSnapshotBillingHistory', 'snapshotId', snapshotId);
             const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2255,7 +2041,237 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistoryGraph: (snapshotId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [snapshotId_1, startDate_1, endDate_1, ...args_1], void 0, function* (snapshotId, startDate, endDate, options = {}) {
+            // verify required parameter 'snapshotId' is not null or undefined
+            assertParamExists('getSnapshotBillingHistoryGraph', 'snapshotId', snapshotId);
+            const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}/graph`
+                .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+         * @summary GET: Billing usage
+         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+         * @param {string} [environment] Filter resources by environment ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsage: (deleted_1, environment_1, ...args_1) => __awaiter(this, [deleted_1, environment_1, ...args_1], void 0, function* (deleted, environment, options = {}) {
+            const localVarPath = `/billing/billing/usage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (deleted !== undefined) {
+                localVarQueryParameter['deleted'] = deleted;
+            }
+            if (environment !== undefined) {
+                localVarQueryParameter['environment'] = environment;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * @summary Retrieve Billing History for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingHistory: (startDate_1, endDate_1, graph_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, graph_1, ...args_1], void 0, function* (startDate, endDate, graph, options = {}) {
+            const localVarPath = `/billing/billing/history`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            if (graph !== undefined) {
+                localVarQueryParameter['graph'] = graph;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingDetails: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingDetails', 'vmId', vmId);
+            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingEvents: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingEvents', 'vmId', vmId);
+            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/billing-events`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingGraph: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingGraph', 'vmId', vmId);
+            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}/graph`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2265,7 +2281,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVm2: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+        getVMBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
             const localVarPath = `/billing/billing/history/virtual-machine`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2302,84 +2318,6 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmDetails2: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmDetails2', 'vmId', vmId);
-            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmSubResourceGraph2: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmSubResourceGraph2', 'vmId', vmId);
-            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource/graph`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
          * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
          * @param {number} vmId
@@ -2388,9 +2326,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVmTotalCosts: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
+        getVMSubResourceCosts: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmTotalCosts', 'vmId', vmId);
+            assertParamExists('getVMSubResourceCosts', 'vmId', vmId);
             const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2419,7 +2357,124 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceGraph: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMSubResourceGraph', 'vmId', vmId);
+            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource/graph`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingDetails: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolumeBillingDetails', 'volumeId', volumeId);
+            const localVarPath = `/billing/billing/history/volume/{volume_id}`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingEvents: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolumeBillingEvents', 'volumeId', volumeId);
+            const localVarPath = `/billing/billing/volume/{volume_id}/billing-events`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Volume for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2429,7 +2484,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVolume2: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+        getVolumeBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
             const localVarPath = `/billing/billing/history/volume`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2466,202 +2521,7 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolumeDetails2: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVolumeDetails2', 'volumeId', volumeId);
-            const localVarPath = `/billing/billing/history/volume/{volume_id}`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingModelEvaluationDetailsGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingModelEvaluationDetailsGraph', 'resourceId', resourceId);
-            const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingServerlessInferenceDetailsGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingServerlessInferenceDetailsGraph', 'resourceId', resourceId);
-            const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingSnapshotDetailsGraph: (snapshotId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [snapshotId_1, startDate_1, endDate_1, ...args_1], void 0, function* (snapshotId, startDate, endDate, options = {}) {
-            // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('getUserBillingSnapshotDetailsGraph', 'snapshotId', snapshotId);
-            const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}/graph`
-                .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVmDetailsGraph2: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingVmDetailsGraph2', 'vmId', vmId);
-            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}/graph`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
          * @param {number} volumeId
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2669,9 +2529,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingVolumeDetailsGraph: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
+        getVolumeBillingHistoryGraph: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
             // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserBillingVolumeDetailsGraph', 'volumeId', volumeId);
+            assertParamExists('getVolumeBillingHistoryGraph', 'volumeId', volumeId);
             const localVarPath = `/billing/billing/history/volume/{volume_id}/graph`
                 .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2700,19 +2560,16 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserVmBillingEvents: (vmId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [vmId_1, startDate_1, endDate_1, ...args_1], void 0, function* (vmId, startDate, endDate, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserVmBillingEvents', 'vmId', vmId);
-            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/billing-events`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+        listBillingContractHistory: (startDate_1, endDate_1, search_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, ...args_1], void 0, function* (startDate, endDate, search, options = {}) {
+            const localVarPath = `/billing/billing/history/contract`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2730,6 +2587,9 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             if (endDate !== undefined) {
                 localVarQueryParameter['end_date'] = endDate;
             }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2739,19 +2599,18 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserVolumeBillingEvents: (volumeId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [volumeId_1, startDate_1, endDate_1, ...args_1], void 0, function* (volumeId, startDate, endDate, options = {}) {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserVolumeBillingEvents', 'volumeId', volumeId);
-            const localVarPath = `/billing/billing/volume/{volume_id}/billing-events`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+        listBucketBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+            const localVarPath = `/billing/billing/history/bucket`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2769,6 +2628,15 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             if (endDate !== undefined) {
                 localVarQueryParameter['end_date'] = endDate;
             }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -2778,36 +2646,168 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
+         * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putOrganizationThreshold: (thresholdId_1, payload_1, ...args_1) => __awaiter(this, [thresholdId_1, payload_1, ...args_1], void 0, function* (thresholdId, payload, options = {}) {
-            // verify required parameter 'thresholdId' is not null or undefined
-            assertParamExists('putOrganizationThreshold', 'thresholdId', thresholdId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putOrganizationThreshold', 'payload', payload);
-            const localVarPath = `/billing/billing/threshold/{threshold_id}`
-                .replace(`{${"threshold_id"}}`, encodeURIComponent(String(thresholdId)));
+        listClustersBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+            const localVarPath = `/billing/billing/history/cluster`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listOrgNotificationThresholds: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/billing/threshold`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of serverless_inference for the specified billing cycle.
+         * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listServerlessInferenceBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+            const localVarPath = `/billing/billing/history/serverless_inference`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSnapshotBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+            const localVarPath = `/billing/billing/history/snapshot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -2822,6 +2822,171 @@ export const BillingApiAxiosParamCreator = function (configuration) {
 export const BillingApiFp = function (configuration) {
     const localVarAxiosParamCreator = BillingApiAxiosParamCreator(configuration);
     return {
+        /**
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+         * @param {number} bucketId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.bucketsBillingHistoryHourlyChart']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} bucketId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBucketBillingHistory(bucketId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getBucketBillingHistory(bucketId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getBucketBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistory(clusterId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getClusterBillingHistory(clusterId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getClusterBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+         * @param {number} clusterId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistoryGraph(clusterId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getClusterBillingHistoryGraph(clusterId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getClusterBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of data_synthesis for the specified billing cycle.
+         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getDataSynthesisBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getDataSynthesisBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getDataSynthesisHistoryForResource']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of fine_tuning for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getFineTuningBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getFineTuningBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
         /**
          * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
          * @summary GET: Last Day Cost
@@ -2838,17 +3003,163 @@ export const BillingApiFp = function (configuration) {
             });
         },
         /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
+         * User will receive billing history of model_evaluation for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOrganizationThreshold(options) {
+        getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getOrganizationThreshold(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getOrganizationThreshold']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getModelEvaluationBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getModelEvaluationBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationThreshold(thresholdId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getNotificationThreshold(thresholdId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getNotificationThreshold']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getResourceFineTuningBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getResourceModelEvaluationBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getServerlessInferenceBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getServerlessInferencesBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} snapshotId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistory(snapshotId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSnapshotBillingHistory(snapshotId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getSnapshotBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getSnapshotBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -2860,89 +3171,17 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUsage2(deleted, environment, options) {
+        getUsage(deleted, environment, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsage2(deleted, environment, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUsage(deleted, environment, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUsage2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUsage']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
-         * @param {number} bucketId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingBucketDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-         * @param {number} clusterId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingClusterDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingDataSynthesisDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingFineTuningDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
          * @summary Retrieve Billing History for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2950,17 +3189,163 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistory2(startDate, endDate, graph, options) {
+        getUserBillingHistory(startDate, endDate, graph, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistory2(startDate, endDate, graph, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistory(startDate, endDate, graph, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistory2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingDetails(vmId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMBillingDetails(vmId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMBillingDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingEvents(vmId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMBillingEvents(vmId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMBillingEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingGraph(vmId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMBillingGraph(vmId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMBillingGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMBillingHistory(startDate, endDate, search, perPage, page, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceCosts(vmId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMSubResourceCosts(vmId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMSubResourceCosts']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceGraph(vmId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMSubResourceGraph(vmId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVMSubResourceGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingDetails(volumeId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVolumeBillingDetails(volumeId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVolumeBillingDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingEvents(volumeId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVolumeBillingEvents(volumeId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVolumeBillingEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Volume for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -2970,30 +3355,68 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options) {
+        getVolumeBillingHistory(startDate, endDate, search, perPage, page, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVolumeBillingHistory(startDate, endDate, search, perPage, page, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryBucket2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVolumeBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} bucketId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options) {
+        getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryBucketDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getVolumeBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBillingContractHistory(startDate, endDate, search, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listBillingContractHistory(startDate, endDate, search, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listBillingContractHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listBucketBillingHistory(startDate, endDate, search, perPage, page, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listBucketBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -3008,165 +3431,32 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options) {
+        listClustersBillingHistory(startDate, endDate, search, perPage, page, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listClustersBillingHistory(startDate, endDate, search, perPage, page, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryCluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listClustersBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options) {
+        listOrgNotificationThresholds(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listOrgNotificationThresholds(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryClusterDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listOrgNotificationThresholds']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryContract(startDate, endDate, search, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryContract(startDate, endDate, search, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryContract']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
-         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryDataSynthesis']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryDataSynthesisDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryFineTuning']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-         * @param {number} resourceId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryFineTuningDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryModelEvaluation']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryModelEvaluationDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
+         * User will receive billing history of serverless_inference for the specified billing cycle.
          * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -3176,34 +3466,17 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options) {
+        listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryServerlessInference']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listServerlessInferenceBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryServerlessInferenceDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -3213,285 +3486,12 @@ export const BillingApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options) {
+        listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistorySnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} snapshotId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistorySnapshotDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVm2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVmDetails2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVmSubResourceGraph2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVmTotalCosts']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVolume2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingHistoryVolumeDetails2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingModelEvaluationDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingServerlessInferenceDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingSnapshotDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingVmDetailsGraph2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserBillingVolumeDetailsGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVmBillingEvents(vmId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserVmBillingEvents(vmId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserVmBillingEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVolumeBillingEvents(volumeId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserVolumeBillingEvents(volumeId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getUserVolumeBillingEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putOrganizationThreshold(thresholdId, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.putOrganizationThreshold(thresholdId, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.putOrganizationThreshold']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.listSnapshotBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -3505,36 +3505,7 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
     const localVarFp = BillingApiFp(configuration);
     return {
         /**
-         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-         * @summary GET: Last Day Cost
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getLastDayCost(options) {
-            return localVarFp.getLastDayCost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getOrganizationThreshold(options) {
-            return localVarFp.getOrganizationThreshold(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-         * @summary GET: Billing usage
-         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-         * @param {string} [environment] Filter resources by environment ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsage2(deleted, environment, options) {
-            return localVarFp.getUsage2(deleted, environment, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
          * @param {number} bucketId
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -3542,70 +3513,8 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options) {
-            return localVarFp.getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-         * @param {number} clusterId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options) {
-            return localVarFp.getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-         * @summary Retrieve Billing History for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistory2(startDate, endDate, graph, options) {
-            return localVarFp.getUserBillingHistory2(startDate, endDate, graph, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options) {
+            return localVarFp.bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
@@ -3616,8 +3525,384 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
+        getBucketBillingHistory(bucketId, startDate, endDate, options) {
+            return localVarFp.getBucketBillingHistory(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistory(clusterId, startDate, endDate, options) {
+            return localVarFp.getClusterBillingHistory(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+         * @param {number} clusterId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistoryGraph(clusterId, startDate, endDate, options) {
+            return localVarFp.getClusterBillingHistoryGraph(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of data_synthesis for the specified billing cycle.
+         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return localVarFp.getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options) {
+            return localVarFp.getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of fine_tuning for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return localVarFp.getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+         * @summary GET: Last Day Cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLastDayCost(options) {
+            return localVarFp.getLastDayCost(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of model_evaluation for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return localVarFp.getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationThreshold(thresholdId, payload, options) {
+            return localVarFp.getNotificationThreshold(thresholdId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options) {
+            return localVarFp.getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options) {
+            return localVarFp.getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return localVarFp.getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options) {
+            return localVarFp.getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} snapshotId
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistory(snapshotId, startDate, endDate, options) {
+            return localVarFp.getSnapshotBillingHistory(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options) {
+            return localVarFp.getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+         * @summary GET: Billing usage
+         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+         * @param {string} [environment] Filter resources by environment ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsage(deleted, environment, options) {
+            return localVarFp.getUsage(deleted, environment, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * @summary Retrieve Billing History for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingHistory(startDate, endDate, graph, options) {
+            return localVarFp.getUserBillingHistory(startDate, endDate, graph, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingDetails(vmId, startDate, endDate, options) {
+            return localVarFp.getVMBillingDetails(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingEvents(vmId, startDate, endDate, options) {
+            return localVarFp.getVMBillingEvents(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingGraph(vmId, startDate, endDate, options) {
+            return localVarFp.getVMBillingGraph(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getVMBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceCosts(vmId, startDate, endDate, options) {
+            return localVarFp.getVMSubResourceCosts(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceGraph(vmId, startDate, endDate, options) {
+            return localVarFp.getVMSubResourceGraph(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingDetails(volumeId, startDate, endDate, options) {
+            return localVarFp.getVolumeBillingDetails(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingEvents(volumeId, startDate, endDate, options) {
+            return localVarFp.getVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getVolumeBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+         * @param {number} volumeId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options) {
+            return localVarFp.getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBillingContractHistory(startDate, endDate, search, options) {
+            return localVarFp.listBillingContractHistory(startDate, endDate, search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.listBucketBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
          * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
@@ -3630,111 +3915,20 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        listClustersBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.listClustersBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        listOrgNotificationThresholds(options) {
+            return localVarFp.listOrgNotificationThresholds(options).then((request) => request(axios, basePath));
         },
         /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryContract(startDate, endDate, search, options) {
-            return localVarFp.getUserBillingHistoryContract(startDate, endDate, search, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
-         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-         * @param {number} resourceId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
+         * User will receive billing history of serverless_inference for the specified billing cycle.
          * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -3744,22 +3938,11 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -3769,191 +3952,8 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} snapshotId
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options) {
-            return localVarFp.getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options) {
-            return localVarFp.getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options) {
-            return localVarFp.getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options) {
-            return localVarFp.getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options) {
-            return localVarFp.getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options) {
-            return localVarFp.getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVmBillingEvents(vmId, startDate, endDate, options) {
-            return localVarFp.getUserVmBillingEvents(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVolumeBillingEvents(volumeId, startDate, endDate, options) {
-            return localVarFp.getUserVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putOrganizationThreshold(thresholdId, payload, options) {
-            return localVarFp.putOrganizationThreshold(thresholdId, payload, options).then((request) => request(axios, basePath));
+        listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3965,39 +3965,7 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
  */
 export class BillingApi extends BaseAPI {
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getLastDayCost(options) {
-        return BillingApiFp(this.configuration).getLastDayCost(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve all the notification thresholds for an organization.
-     * @summary GET: All Thresholds for Organization
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getOrganizationThreshold(options) {
-        return BillingApiFp(this.configuration).getOrganizationThreshold(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-     * @summary GET: Billing usage
-     * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-     * @param {string} [environment] Filter resources by environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUsage2(deleted, environment, options) {
-        return BillingApiFp(this.configuration).getUsage2(deleted, environment, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
      * @param {number} bucketId
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -4006,75 +3974,8 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-     * @param {number} clusterId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-     * @param {number} resourceId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-     * @param {number} resourceId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-     * @summary Retrieve Billing History for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistory2(startDate, endDate, graph, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistory2(startDate, endDate, graph, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
@@ -4086,8 +3987,415 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    getBucketBillingHistory(bucketId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getBucketBillingHistory(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getClusterBillingHistory(clusterId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getClusterBillingHistory(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getClusterBillingHistoryGraph(clusterId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getClusterBillingHistoryGraph(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getLastDayCost(options) {
+        return BillingApiFp(this.configuration).getLastDayCost(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+     * @summary Update: Subscribe or Unsubscribe Notification Threshold
+     * @param {number} thresholdId
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getNotificationThreshold(thresholdId, payload, options) {
+        return BillingApiFp(this.configuration).getNotificationThreshold(thresholdId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getSnapshotBillingHistory(snapshotId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getSnapshotBillingHistory(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * @summary GET: Billing usage
+     * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+     * @param {string} [environment] Filter resources by environment ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUsage(deleted, environment, options) {
+        return BillingApiFp(this.configuration).getUsage(deleted, environment, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+     * @summary Retrieve Billing History for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getUserBillingHistory(startDate, endDate, graph, options) {
+        return BillingApiFp(this.configuration).getUserBillingHistory(startDate, endDate, graph, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMBillingDetails(vmId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVMBillingDetails(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive vm billing events history
+     * @summary Retrieve VM billing events history
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMBillingEvents(vmId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVMBillingEvents(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMBillingGraph(vmId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVMBillingGraph(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getVMBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+     * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMSubResourceCosts(vmId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVMSubResourceCosts(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+     * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+     * @param {number} vmId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVMSubResourceGraph(vmId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVMSubResourceGraph(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVolumeBillingDetails(volumeId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVolumeBillingDetails(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive volume billing events history
+     * @summary Retrieve Volume billing events history
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVolumeBillingEvents(volumeId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVolumeBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getVolumeBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    listBillingContractHistory(startDate, endDate, search, options) {
+        return BillingApiFp(this.configuration).listBillingContractHistory(startDate, endDate, search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    listBucketBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).listBucketBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
@@ -4101,119 +4409,21 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    listClustersBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).listClustersBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-     * @param {number} clusterId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * Retrieve all the notification thresholds for an organization.
+     * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    listOrgNotificationThresholds(options) {
+        return BillingApiFp(this.configuration).listOrgNotificationThresholds(options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryContract(startDate, endDate, search, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryContract(startDate, endDate, search, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of data_synthesis for the specified billing cycle.
-     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of fine_tuning for the specified billing cycle.
-     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-     * @param {number} resourceId
-     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of model_evaluation for the specified billing cycle.
-     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * User will receive billing history of serverless_inference for the specified billing cycle.
      * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -4224,23 +4434,11 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -4251,206 +4449,8 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-     * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-     * @param {number} vmId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-     * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-     * @param {number} vmId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-     * @param {number} resourceId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-     * @param {number} resourceId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-     * @param {number} vmId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will receive vm billing events history
-     * @summary Retrieve VM billing events history
-     * @param {number} vmId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserVmBillingEvents(vmId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserVmBillingEvents(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * User will receive volume billing events history
-     * @summary Retrieve Volume billing events history
-     * @param {number} volumeId
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    getUserVolumeBillingEvents(volumeId, startDate, endDate, options) {
-        return BillingApiFp(this.configuration).getUserVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-     * @summary Update: Subscribe or Unsubscribe Notification Threshold
-     * @param {number} thresholdId
-     * @param {SubscribeOrUnsubscribeUpdatePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    putOrganizationThreshold(thresholdId, payload, options) {
-        return BillingApiFp(this.configuration).putOrganizationThreshold(thresholdId, payload, options).then((request) => request(this.axios, this.basePath));
+    listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -4467,11 +4467,11 @@ export const CalculateApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCalculate2: (resourceType_1, id_1, ...args_1) => __awaiter(this, [resourceType_1, id_1, ...args_1], void 0, function* (resourceType, id, options = {}) {
+        calculateResourceBillingRate: (resourceType_1, id_1, ...args_1) => __awaiter(this, [resourceType_1, id_1, ...args_1], void 0, function* (resourceType, id, options = {}) {
             // verify required parameter 'resourceType' is not null or undefined
-            assertParamExists('getCalculate2', 'resourceType', resourceType);
+            assertParamExists('calculateResourceBillingRate', 'resourceType', resourceType);
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getCalculate2', 'id', id);
+            assertParamExists('calculateResourceBillingRate', 'id', id);
             const localVarPath = `/pricebook/calculate/resource/{resource_type}/{id}`
                 .replace(`{${"resource_type"}}`, encodeURIComponent(String(resourceType)))
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -4511,12 +4511,12 @@ export const CalculateApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCalculate2(resourceType, id, options) {
+        calculateResourceBillingRate(resourceType, id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCalculate2(resourceType, id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.calculateResourceBillingRate(resourceType, id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CalculateApi.getCalculate2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CalculateApi.calculateResourceBillingRate']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -4537,8 +4537,8 @@ export const CalculateApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCalculate2(resourceType, id, options) {
-            return localVarFp.getCalculate2(resourceType, id, options).then((request) => request(axios, basePath));
+        calculateResourceBillingRate(resourceType, id, options) {
+            return localVarFp.calculateResourceBillingRate(resourceType, id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4558,8 +4558,8 @@ export class CalculateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CalculateApi
      */
-    getCalculate2(resourceType, id, options) {
-        return CalculateApiFp(this.configuration).getCalculate2(resourceType, id, options).then((request) => request(this.axios, this.basePath));
+    calculateResourceBillingRate(resourceType, id, options) {
+        return CalculateApiFp(this.configuration).calculateResourceBillingRate(resourceType, id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -4576,11 +4576,11 @@ export const CallbacksApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachCallbackToVirtualMachine: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        attachCallbackToVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachCallbackToVirtualMachine', 'vmId', vmId);
+            assertParamExists('attachCallbackToVM', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachCallbackToVirtualMachine', 'payload', payload);
+            assertParamExists('attachCallbackToVM', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4647,9 +4647,9 @@ export const CallbacksApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachineCallback: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        deleteVMCallback: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteVirtualMachineCallback', 'vmId', vmId);
+            assertParamExists('deleteVMCallback', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/delete-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4710,11 +4710,11 @@ export const CallbacksApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVirtualMachineCallback: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        updateVMCallback: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('updateVirtualMachineCallback', 'vmId', vmId);
+            assertParamExists('updateVMCallback', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateVirtualMachineCallback', 'payload', payload);
+            assertParamExists('updateVMCallback', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/update-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4791,12 +4791,12 @@ export const CallbacksApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachCallbackToVirtualMachine(vmId, payload, options) {
+        attachCallbackToVM(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachCallbackToVirtualMachine(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachCallbackToVM(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.attachCallbackToVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.attachCallbackToVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -4824,12 +4824,12 @@ export const CallbacksApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachineCallback(vmId, options) {
+        deleteVMCallback(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteVirtualMachineCallback(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteVMCallback(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.deleteVirtualMachineCallback']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.deleteVMCallback']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -4857,12 +4857,12 @@ export const CallbacksApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVirtualMachineCallback(vmId, payload, options) {
+        updateVMCallback(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVirtualMachineCallback(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVMCallback(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.updateVirtualMachineCallback']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CallbacksApi.updateVMCallback']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -4900,8 +4900,8 @@ export const CallbacksApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachCallbackToVirtualMachine(vmId, payload, options) {
-            return localVarFp.attachCallbackToVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachCallbackToVM(vmId, payload, options) {
+            return localVarFp.attachCallbackToVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
@@ -4921,8 +4921,8 @@ export const CallbacksApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachineCallback(vmId, options) {
-            return localVarFp.deleteVirtualMachineCallback(vmId, options).then((request) => request(axios, basePath));
+        deleteVMCallback(vmId, options) {
+            return localVarFp.deleteVMCallback(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
@@ -4942,8 +4942,8 @@ export const CallbacksApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVirtualMachineCallback(vmId, payload, options) {
-            return localVarFp.updateVirtualMachineCallback(vmId, payload, options).then((request) => request(axios, basePath));
+        updateVMCallback(vmId, payload, options) {
+            return localVarFp.updateVMCallback(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
@@ -4974,8 +4974,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    attachCallbackToVirtualMachine(vmId, payload, options) {
-        return CallbacksApiFp(this.configuration).attachCallbackToVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    attachCallbackToVM(vmId, payload, options) {
+        return CallbacksApiFp(this.configuration).attachCallbackToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
@@ -4997,8 +4997,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    deleteVirtualMachineCallback(vmId, options) {
-        return CallbacksApiFp(this.configuration).deleteVirtualMachineCallback(vmId, options).then((request) => request(this.axios, this.basePath));
+    deleteVMCallback(vmId, options) {
+        return CallbacksApiFp(this.configuration).deleteVMCallback(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
@@ -5020,8 +5020,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    updateVirtualMachineCallback(vmId, payload, options) {
-        return CallbacksApiFp(this.configuration).updateVirtualMachineCallback(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    updateVMCallback(vmId, payload, options) {
+        return CallbacksApiFp(this.configuration).updateVMCallback(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
@@ -5049,9 +5049,9 @@ export const ClusterEventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllOfAClusterEvents: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
+        listClusterEvents: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('fetchAllOfAClusterEvents', 'clusterId', clusterId);
+            assertParamExists('listClusterEvents', 'clusterId', clusterId);
             const localVarPath = `/core/clusters/{cluster_id}/events`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5089,12 +5089,12 @@ export const ClusterEventsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllOfAClusterEvents(clusterId, options) {
+        listClusterEvents(clusterId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.fetchAllOfAClusterEvents(clusterId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listClusterEvents(clusterId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClusterEventsApi.fetchAllOfAClusterEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClusterEventsApi.listClusterEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -5114,8 +5114,8 @@ export const ClusterEventsApiFactory = function (configuration, basePath, axios)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllOfAClusterEvents(clusterId, options) {
-            return localVarFp.fetchAllOfAClusterEvents(clusterId, options).then((request) => request(axios, basePath));
+        listClusterEvents(clusterId, options) {
+            return localVarFp.listClusterEvents(clusterId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -5134,8 +5134,8 @@ export class ClusterEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClusterEventsApi
      */
-    fetchAllOfAClusterEvents(clusterId, options) {
-        return ClusterEventsApiFp(this.configuration).fetchAllOfAClusterEvents(clusterId, options).then((request) => request(this.axios, this.basePath));
+    listClusterEvents(clusterId, options) {
+        return ClusterEventsApiFp(this.configuration).listClusterEvents(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -5144,37 +5144,6 @@ export class ClusterEventsApi extends BaseAPI {
  */
 export const ClustersApiAxiosParamCreator = function (configuration) {
     return {
-        /**
-         *
-         * @summary Reconcile a cluster
-         * @param {number} clusterId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        attemptToManuallyReconcileACluster: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('attemptToManuallyReconcileACluster', 'clusterId', clusterId);
-            const localVarPath = `/core/clusters/{cluster_id}/reconcile`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
         /**
          *
          * @summary Create Cluster
@@ -5286,46 +5255,11 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACluster: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteCluster: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteACluster', 'id', id);
+            assertParamExists('deleteCluster', 'id', id);
             const localVarPath = `/core/clusters/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         *
-         * @summary Delete a node group
-         * @param {number} clusterId
-         * @param {number} nodeGroupId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteANodeGroup: (clusterId_1, nodeGroupId_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, ...args_1], void 0, function* (clusterId, nodeGroupId, options = {}) {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('deleteANodeGroup', 'clusterId', clusterId);
-            // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('deleteANodeGroup', 'nodeGroupId', nodeGroupId);
-            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
-                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -5411,6 +5345,41 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Delete a node group
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNodeGroup: (clusterId_1, nodeGroupId_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, ...args_1], void 0, function* (clusterId, nodeGroupId, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('deleteNodeGroup', 'clusterId', clusterId);
+            // verify required parameter 'nodeGroupId' is not null or undefined
+            assertParamExists('deleteNodeGroup', 'nodeGroupId', nodeGroupId);
+            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
+                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -5538,6 +5507,41 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNodeGroup: (clusterId_1, nodeGroupId_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, ...args_1], void 0, function* (clusterId, nodeGroupId, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('getNodeGroup', 'clusterId', clusterId);
+            // verify required parameter 'nodeGroupId' is not null or undefined
+            assertParamExists('getNodeGroup', 'nodeGroupId', nodeGroupId);
+            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
+                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Getting Cluster Detail
          * @param {number} id
          * @param {*} [options] Override http request option.
@@ -5643,27 +5647,23 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId
-         * @param {number} nodeGroupId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveANodeGroup: (clusterId_1, nodeGroupId_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, ...args_1], void 0, function* (clusterId, nodeGroupId, options = {}) {
+        reconcileCluster: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('retrieveANodeGroup', 'clusterId', clusterId);
-            // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('retrieveANodeGroup', 'nodeGroupId', nodeGroupId);
-            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
-                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            assertParamExists('reconcileCluster', 'clusterId', clusterId);
+            const localVarPath = `/core/clusters/{cluster_id}/reconcile`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -5685,13 +5685,13 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateANodeGroup: (clusterId_1, nodeGroupId_1, payload_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, payload_1, ...args_1], void 0, function* (clusterId, nodeGroupId, payload, options = {}) {
+        updateNodeGroup: (clusterId_1, nodeGroupId_1, payload_1, ...args_1) => __awaiter(this, [clusterId_1, nodeGroupId_1, payload_1, ...args_1], void 0, function* (clusterId, nodeGroupId, payload, options = {}) {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('updateANodeGroup', 'clusterId', clusterId);
+            assertParamExists('updateNodeGroup', 'clusterId', clusterId);
             // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('updateANodeGroup', 'nodeGroupId', nodeGroupId);
+            assertParamExists('updateNodeGroup', 'nodeGroupId', nodeGroupId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateANodeGroup', 'payload', payload);
+            assertParamExists('updateNodeGroup', 'payload', payload);
             const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
                 .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
@@ -5725,22 +5725,6 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
 export const ClustersApiFp = function (configuration) {
     const localVarAxiosParamCreator = ClustersApiAxiosParamCreator(configuration);
     return {
-        /**
-         *
-         * @summary Reconcile a cluster
-         * @param {number} clusterId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        attemptToManuallyReconcileACluster(clusterId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attemptToManuallyReconcileACluster(clusterId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.attemptToManuallyReconcileACluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
         /**
          *
          * @summary Create Cluster
@@ -5798,29 +5782,12 @@ export const ClustersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACluster(id, options) {
+        deleteCluster(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteACluster(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteCluster(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteACluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         *
-         * @summary Delete a node group
-         * @param {number} clusterId
-         * @param {number} nodeGroupId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteANodeGroup(clusterId, nodeGroupId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteANodeGroup(clusterId, nodeGroupId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteANodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteCluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -5855,6 +5822,23 @@ export const ClustersApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteClusterNodes(clusterId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteClusterNodes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Delete a node group
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNodeGroup(clusterId, nodeGroupId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteNodeGroup(clusterId, nodeGroupId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.deleteNodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -5923,6 +5907,23 @@ export const ClustersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNodeGroup(clusterId, nodeGroupId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getNodeGroup(clusterId, nodeGroupId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.getNodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Getting Cluster Detail
          * @param {number} id
          * @param {*} [options] Override http request option.
@@ -5974,18 +5975,17 @@ export const ClustersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId
-         * @param {number} nodeGroupId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveANodeGroup(clusterId, nodeGroupId, options) {
+        reconcileCluster(clusterId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveANodeGroup(clusterId, nodeGroupId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.reconcileCluster(clusterId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.retrieveANodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.reconcileCluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -5998,12 +5998,12 @@ export const ClustersApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateANodeGroup(clusterId, nodeGroupId, payload, options) {
+        updateNodeGroup(clusterId, nodeGroupId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateANodeGroup(clusterId, nodeGroupId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateNodeGroup(clusterId, nodeGroupId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.updateANodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.updateNodeGroup']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6016,16 +6016,6 @@ export const ClustersApiFp = function (configuration) {
 export const ClustersApiFactory = function (configuration, basePath, axios) {
     const localVarFp = ClustersApiFp(configuration);
     return {
-        /**
-         *
-         * @summary Reconcile a cluster
-         * @param {number} clusterId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        attemptToManuallyReconcileACluster(clusterId, options) {
-            return localVarFp.attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(axios, basePath));
-        },
         /**
          *
          * @summary Create Cluster
@@ -6065,19 +6055,8 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACluster(id, options) {
-            return localVarFp.deleteACluster(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         *
-         * @summary Delete a node group
-         * @param {number} clusterId
-         * @param {number} nodeGroupId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteANodeGroup(clusterId, nodeGroupId, options) {
-            return localVarFp.deleteANodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        deleteCluster(id, options) {
+            return localVarFp.deleteCluster(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6100,6 +6079,17 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
          */
         deleteClusterNodes(clusterId, payload, options) {
             return localVarFp.deleteClusterNodes(clusterId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Delete a node group
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNodeGroup(clusterId, nodeGroupId, options) {
+            return localVarFp.deleteNodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
         },
         /**
          * Check if a Cluster name is available
@@ -6142,6 +6132,17 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId
+         * @param {number} nodeGroupId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNodeGroup(clusterId, nodeGroupId, options) {
+            return localVarFp.getNodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Getting Cluster Detail
          * @param {number} id
          * @param {*} [options] Override http request option.
@@ -6175,14 +6176,13 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId
-         * @param {number} nodeGroupId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveANodeGroup(clusterId, nodeGroupId, options) {
-            return localVarFp.retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        reconcileCluster(clusterId, options) {
+            return localVarFp.reconcileCluster(clusterId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6193,8 +6193,8 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateANodeGroup(clusterId, nodeGroupId, payload, options) {
-            return localVarFp.updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(axios, basePath));
+        updateNodeGroup(clusterId, nodeGroupId, payload, options) {
+            return localVarFp.updateNodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6205,17 +6205,6 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
  * @extends {BaseAPI}
  */
 export class ClustersApi extends BaseAPI {
-    /**
-     *
-     * @summary Reconcile a cluster
-     * @param {number} clusterId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClustersApi
-     */
-    attemptToManuallyReconcileACluster(clusterId, options) {
-        return ClustersApiFp(this.configuration).attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(this.axios, this.basePath));
-    }
     /**
      *
      * @summary Create Cluster
@@ -6259,20 +6248,8 @@ export class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteACluster(id, options) {
-        return ClustersApiFp(this.configuration).deleteACluster(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     *
-     * @summary Delete a node group
-     * @param {number} clusterId
-     * @param {number} nodeGroupId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClustersApi
-     */
-    deleteANodeGroup(clusterId, nodeGroupId, options) {
-        return ClustersApiFp(this.configuration).deleteANodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    deleteCluster(id, options) {
+        return ClustersApiFp(this.configuration).deleteCluster(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6297,6 +6274,18 @@ export class ClustersApi extends BaseAPI {
      */
     deleteClusterNodes(clusterId, payload, options) {
         return ClustersApiFp(this.configuration).deleteClusterNodes(clusterId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Delete a node group
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    deleteNodeGroup(clusterId, nodeGroupId, options) {
+        return ClustersApiFp(this.configuration).deleteNodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check if a Cluster name is available
@@ -6343,6 +6332,18 @@ export class ClustersApi extends BaseAPI {
     }
     /**
      *
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId
+     * @param {number} nodeGroupId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    getNodeGroup(clusterId, nodeGroupId, options) {
+        return ClustersApiFp(this.configuration).getNodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Getting Cluster Detail
      * @param {number} id
      * @param {*} [options] Override http request option.
@@ -6379,15 +6380,14 @@ export class ClustersApi extends BaseAPI {
     }
     /**
      *
-     * @summary Retrieve a node group in a cluster
+     * @summary Reconcile a cluster
      * @param {number} clusterId
-     * @param {number} nodeGroupId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    retrieveANodeGroup(clusterId, nodeGroupId, options) {
-        return ClustersApiFp(this.configuration).retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    reconcileCluster(clusterId, options) {
+        return ClustersApiFp(this.configuration).reconcileCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6399,8 +6399,8 @@ export class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    updateANodeGroup(clusterId, nodeGroupId, payload, options) {
-        return ClustersApiFp(this.configuration).updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(this.axios, this.basePath));
+    updateNodeGroup(clusterId, nodeGroupId, payload, options) {
+        return ClustersApiFp(this.configuration).updateNodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -6448,9 +6448,9 @@ export const ComplianceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACompliance: (gpuModel_1, ...args_1) => __awaiter(this, [gpuModel_1, ...args_1], void 0, function* (gpuModel, options = {}) {
+        deleteCompliance: (gpuModel_1, ...args_1) => __awaiter(this, [gpuModel_1, ...args_1], void 0, function* (gpuModel, options = {}) {
             // verify required parameter 'gpuModel' is not null or undefined
-            assertParamExists('deleteACompliance', 'gpuModel', gpuModel);
+            assertParamExists('deleteCompliance', 'gpuModel', gpuModel);
             const localVarPath = `/core/compliance/{gpu_model}`
                 .replace(`{${"gpu_model"}}`, encodeURIComponent(String(gpuModel)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -6479,7 +6479,7 @@ export const ComplianceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveCompliance: (gpu_1, ...args_1) => __awaiter(this, [gpu_1, ...args_1], void 0, function* (gpu, options = {}) {
+        getCompliance: (gpu_1, ...args_1) => __awaiter(this, [gpu_1, ...args_1], void 0, function* (gpu, options = {}) {
             const localVarPath = `/core/compliance`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6510,9 +6510,9 @@ export const ComplianceApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateACompliance: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        updateCompliance: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateACompliance', 'payload', payload);
+            assertParamExists('updateCompliance', 'payload', payload);
             const localVarPath = `/core/compliance`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6567,12 +6567,12 @@ export const ComplianceApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACompliance(gpuModel, options) {
+        deleteCompliance(gpuModel, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteACompliance(gpuModel, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteCompliance(gpuModel, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.deleteACompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.deleteCompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6583,12 +6583,12 @@ export const ComplianceApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveCompliance(gpu, options) {
+        getCompliance(gpu, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveCompliance(gpu, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCompliance(gpu, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.retrieveCompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.getCompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6599,12 +6599,12 @@ export const ComplianceApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateACompliance(payload, options) {
+        updateCompliance(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateACompliance(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateCompliance(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.updateACompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ComplianceApi.updateCompliance']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6634,8 +6634,8 @@ export const ComplianceApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACompliance(gpuModel, options) {
-            return localVarFp.deleteACompliance(gpuModel, options).then((request) => request(axios, basePath));
+        deleteCompliance(gpuModel, options) {
+            return localVarFp.deleteCompliance(gpuModel, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
@@ -6644,8 +6644,8 @@ export const ComplianceApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveCompliance(gpu, options) {
-            return localVarFp.retrieveCompliance(gpu, options).then((request) => request(axios, basePath));
+        getCompliance(gpu, options) {
+            return localVarFp.getCompliance(gpu, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -6654,8 +6654,8 @@ export const ComplianceApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateACompliance(payload, options) {
-            return localVarFp.updateACompliance(payload, options).then((request) => request(axios, basePath));
+        updateCompliance(payload, options) {
+            return localVarFp.updateCompliance(payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6685,8 +6685,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    deleteACompliance(gpuModel, options) {
-        return ComplianceApiFp(this.configuration).deleteACompliance(gpuModel, options).then((request) => request(this.axios, this.basePath));
+    deleteCompliance(gpuModel, options) {
+        return ComplianceApiFp(this.configuration).deleteCompliance(gpuModel, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
@@ -6696,8 +6696,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    retrieveCompliance(gpu, options) {
-        return ComplianceApiFp(this.configuration).retrieveCompliance(gpu, options).then((request) => request(this.axios, this.basePath));
+    getCompliance(gpu, options) {
+        return ComplianceApiFp(this.configuration).getCompliance(gpu, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -6707,8 +6707,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    updateACompliance(payload, options) {
-        return ComplianceApiFp(this.configuration).updateACompliance(payload, options).then((request) => request(this.axios, this.basePath));
+    updateCompliance(payload, options) {
+        return ComplianceApiFp(this.configuration).updateCompliance(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -6723,7 +6723,7 @@ export const CreditApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCredit2: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getUserCredit: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/billing/user-credit/credit`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6759,12 +6759,12 @@ export const CreditApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCredit2(options) {
+        getUserCredit(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCredit2(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserCredit(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CreditApi.getCredit2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CreditApi.getUserCredit']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6783,8 +6783,8 @@ export const CreditApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCredit2(options) {
-            return localVarFp.getCredit2(options).then((request) => request(axios, basePath));
+        getUserCredit(options) {
+            return localVarFp.getUserCredit(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6802,8 +6802,8 @@ export class CreditApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CreditApi
      */
-    getCredit2(options) {
-        return CreditApiFp(this.configuration).getCredit2(options).then((request) => request(this.axios, this.basePath));
+    getUserCredit(options) {
+        return CreditApiFp(this.configuration).getUserCredit(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -6813,6 +6813,45 @@ export class CreditApi extends BaseAPI {
 export const CustomerContractApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
+         * @summary Retrieve GPU Allocation Graph for Contract
+         * @param {number} contractId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getContractGPUAllocationGraph: (contractId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [contractId_1, startDate_1, endDate_1, ...args_1], void 0, function* (contractId, startDate, endDate, options = {}) {
+            // verify required parameter 'contractId' is not null or undefined
+            assertParamExists('getContractGPUAllocationGraph', 'contractId', contractId);
+            const localVarPath = `/pricebook/contracts/{contract_id}/gpu_allocation_graph`
+                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
          * @summary List Contracts
          * @param {number} [page]
@@ -6820,7 +6859,7 @@ export const CustomerContractApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContract: (page_1, perPage_1, ...args_1) => __awaiter(this, [page_1, perPage_1, ...args_1], void 0, function* (page, perPage, options = {}) {
+        listCustomerContracts: (page_1, perPage_1, ...args_1) => __awaiter(this, [page_1, perPage_1, ...args_1], void 0, function* (page, perPage, options = {}) {
             const localVarPath = `/pricebook/contracts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6854,9 +6893,9 @@ export const CustomerContractApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContractDetails: (contractId_1, ...args_1) => __awaiter(this, [contractId_1, ...args_1], void 0, function* (contractId, options = {}) {
+        retrieveContract: (contractId_1, ...args_1) => __awaiter(this, [contractId_1, ...args_1], void 0, function* (contractId, options = {}) {
             // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('getCustomerContractDetails', 'contractId', contractId);
+            assertParamExists('retrieveContract', 'contractId', contractId);
             const localVarPath = `/pricebook/contracts/{contract_id}`
                 .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -6878,45 +6917,6 @@ export const CustomerContractApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
-         * @summary Retrieve GPU Allocation Graph for Contract
-         * @param {number} contractId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContractGpuAllocationGraph: (contractId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [contractId_1, startDate_1, endDate_1, ...args_1], void 0, function* (contractId, startDate, endDate, options = {}) {
-            // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('getCustomerContractGpuAllocationGraph', 'contractId', contractId);
-            const localVarPath = `/pricebook/contracts/{contract_id}/gpu_allocation_graph`
-                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 /**
@@ -6927,6 +6927,24 @@ export const CustomerContractApiFp = function (configuration) {
     const localVarAxiosParamCreator = CustomerContractApiAxiosParamCreator(configuration);
     return {
         /**
+         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
+         * @summary Retrieve GPU Allocation Graph for Contract
+         * @param {number} contractId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getContractGPUAllocationGraph(contractId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getContractGPUAllocationGraph(contractId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.getContractGPUAllocationGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
          * @summary List Contracts
          * @param {number} [page]
@@ -6934,12 +6952,12 @@ export const CustomerContractApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContract(page, perPage, options) {
+        listCustomerContracts(page, perPage, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCustomerContract(page, perPage, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listCustomerContracts(page, perPage, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.getCustomerContract']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.listCustomerContracts']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6950,30 +6968,12 @@ export const CustomerContractApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContractDetails(contractId, options) {
+        retrieveContract(contractId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCustomerContractDetails(contractId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveContract(contractId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.getCustomerContractDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
-         * @summary Retrieve GPU Allocation Graph for Contract
-         * @param {number} contractId
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.getCustomerContractGpuAllocationGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['CustomerContractApi.retrieveContract']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -6987,27 +6987,6 @@ export const CustomerContractApiFactory = function (configuration, basePath, axi
     const localVarFp = CustomerContractApiFp(configuration);
     return {
         /**
-         * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
-         * @summary List Contracts
-         * @param {number} [page]
-         * @param {number} [perPage]
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContract(page, perPage, options) {
-            return localVarFp.getCustomerContract(page, perPage, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
-         * @summary Retrieve Contract Details
-         * @param {number} contractId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContractDetails(contractId, options) {
-            return localVarFp.getCustomerContractDetails(contractId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
          * @summary Retrieve GPU Allocation Graph for Contract
          * @param {number} contractId
@@ -7016,8 +6995,29 @@ export const CustomerContractApiFactory = function (configuration, basePath, axi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options) {
-            return localVarFp.getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options).then((request) => request(axios, basePath));
+        getContractGPUAllocationGraph(contractId, startDate, endDate, options) {
+            return localVarFp.getContractGPUAllocationGraph(contractId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
+         * @summary List Contracts
+         * @param {number} [page]
+         * @param {number} [perPage]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listCustomerContracts(page, perPage, options) {
+            return localVarFp.listCustomerContracts(page, perPage, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
+         * @summary Retrieve Contract Details
+         * @param {number} contractId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveContract(contractId, options) {
+            return localVarFp.retrieveContract(contractId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7029,29 +7029,6 @@ export const CustomerContractApiFactory = function (configuration, basePath, axi
  */
 export class CustomerContractApi extends BaseAPI {
     /**
-     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
-     * @summary List Contracts
-     * @param {number} [page]
-     * @param {number} [perPage]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomerContractApi
-     */
-    getCustomerContract(page, perPage, options) {
-        return CustomerContractApiFp(this.configuration).getCustomerContract(page, perPage, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
-     * @summary Retrieve Contract Details
-     * @param {number} contractId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomerContractApi
-     */
-    getCustomerContractDetails(contractId, options) {
-        return CustomerContractApiFp(this.configuration).getCustomerContractDetails(contractId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
      * @summary Retrieve GPU Allocation Graph for Contract
      * @param {number} contractId
@@ -7061,8 +7038,31 @@ export class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options) {
-        return CustomerContractApiFp(this.configuration).getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    getContractGPUAllocationGraph(contractId, startDate, endDate, options) {
+        return CustomerContractApiFp(this.configuration).getContractGPUAllocationGraph(contractId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
+     * @summary List Contracts
+     * @param {number} [page]
+     * @param {number} [perPage]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CustomerContractApi
+     */
+    listCustomerContracts(page, perPage, options) {
+        return CustomerContractApiFp(this.configuration).listCustomerContracts(page, perPage, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
+     * @summary Retrieve Contract Details
+     * @param {number} contractId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CustomerContractApi
+     */
+    retrieveContract(contractId, options) {
+        return CustomerContractApiFp(this.configuration).retrieveContract(contractId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -7077,7 +7077,7 @@ export const DashboardApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDashboard: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getDashboard: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/core/dashboard`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7113,12 +7113,12 @@ export const DashboardApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDashboard(options) {
+        getDashboard(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveDashboard(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDashboard(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['DashboardApi.retrieveDashboard']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['DashboardApi.getDashboard']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -7137,8 +7137,8 @@ export const DashboardApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDashboard(options) {
-            return localVarFp.retrieveDashboard(options).then((request) => request(axios, basePath));
+        getDashboard(options) {
+            return localVarFp.getDashboard(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7156,8 +7156,8 @@ export class DashboardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    retrieveDashboard(options) {
-        return DashboardApiFp(this.configuration).retrieveDashboard(options).then((request) => request(this.axios, this.basePath));
+    getDashboard(options) {
+        return DashboardApiFp(this.configuration).getDashboard(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -7204,9 +7204,9 @@ export const DeploymentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detailsOfDeploymentByID: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getDeployment: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('detailsOfDeploymentByID', 'id', id);
+            assertParamExists('getDeployment', 'id', id);
             const localVarPath = `/core/marketplace/deployments/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -7319,12 +7319,12 @@ export const DeploymentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detailsOfDeploymentByID(id, options) {
+        getDeployment(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.detailsOfDeploymentByID(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDeployment(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['DeploymentApi.detailsOfDeploymentByID']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['DeploymentApi.getDeployment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -7385,8 +7385,8 @@ export const DeploymentApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detailsOfDeploymentByID(id, options) {
-            return localVarFp.detailsOfDeploymentByID(id, options).then((request) => request(axios, basePath));
+        getDeployment(id, options) {
+            return localVarFp.getDeployment(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -7435,8 +7435,8 @@ export class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    detailsOfDeploymentByID(id, options) {
-        return DeploymentApiFp(this.configuration).detailsOfDeploymentByID(id, options).then((request) => request(this.axios, this.basePath));
+    getDeployment(id, options) {
+        return DeploymentApiFp(this.configuration).getDeployment(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -7561,6 +7561,37 @@ export const EnvironmentApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironment: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getEnvironment', 'id', id);
+            const localVarPath = `/core/environments/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -7591,37 +7622,6 @@ export const EnvironmentApiAxiosParamCreator = function (configuration) {
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
             }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveEnvironment: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveEnvironment', 'id', id);
-            const localVarPath = `/core/environments/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -7724,6 +7724,22 @@ export const EnvironmentApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironment(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getEnvironment(id, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EnvironmentApi.getEnvironment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -7738,22 +7754,6 @@ export const EnvironmentApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.listEnvironments(page, pageSize, search, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EnvironmentApi.listEnvironments']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveEnvironment(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveEnvironment(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EnvironmentApi.retrieveEnvironment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -7814,6 +7814,16 @@ export const EnvironmentApiFactory = function (configuration, basePath, axios) {
             return localVarFp.fetchEnvironmentNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironment(id, options) {
+            return localVarFp.getEnvironment(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -7824,16 +7834,6 @@ export const EnvironmentApiFactory = function (configuration, basePath, axios) {
          */
         listEnvironments(page, pageSize, search, options) {
             return localVarFp.listEnvironments(page, pageSize, search, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveEnvironment(id, options) {
-            return localVarFp.retrieveEnvironment(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the name of an existing environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
@@ -7889,6 +7889,17 @@ export class EnvironmentApi extends BaseAPI {
         return EnvironmentApiFp(this.configuration).fetchEnvironmentNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+     * @summary Retrieve environment
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnvironmentApi
+     */
+    getEnvironment(id, options) {
+        return EnvironmentApiFp(this.configuration).getEnvironment(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
@@ -7902,17 +7913,6 @@ export class EnvironmentApi extends BaseAPI {
         return EnvironmentApiFp(this.configuration).listEnvironments(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-     * @summary Retrieve environment
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApi
-     */
-    retrieveEnvironment(id, options) {
-        return EnvironmentApiFp(this.configuration).retrieveEnvironment(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Updates the name of an existing environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
      * @summary Update environment
      * @param {number} id
@@ -7923,6 +7923,104 @@ export class EnvironmentApi extends BaseAPI {
      */
     updateEnvironment(id, payload, options) {
         return EnvironmentApiFp(this.configuration).updateEnvironment(id, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * FIPExclusionsApi - axios parameter creator
+ * @export
+ */
+export const FIPExclusionsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkIfOrgIsExcludedFromFloatingIPDetachment: (orgId_1, ...args_1) => __awaiter(this, [orgId_1, ...args_1], void 0, function* (orgId, options = {}) {
+            // verify required parameter 'orgId' is not null or undefined
+            assertParamExists('checkIfOrgIsExcludedFromFloatingIPDetachment', 'orgId', orgId);
+            const localVarPath = `/core/fip-detachment-exclusions/org/{org_id}`
+                .replace(`{${"org_id"}}`, encodeURIComponent(String(orgId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * FIPExclusionsApi - functional programming interface
+ * @export
+ */
+export const FIPExclusionsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = FIPExclusionsApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FIPExclusionsApi.checkIfOrgIsExcludedFromFloatingIPDetachment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * FIPExclusionsApi - factory interface
+ * @export
+ */
+export const FIPExclusionsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = FIPExclusionsApiFp(configuration);
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options) {
+            return localVarFp.checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * FIPExclusionsApi - object-oriented interface
+ * @export
+ * @class FIPExclusionsApi
+ * @extends {BaseAPI}
+ */
+export class FIPExclusionsApi extends BaseAPI {
+    /**
+     * is org excluded from floating ip detachment
+     * @param {number} orgId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FIPExclusionsApi
+     */
+    checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options) {
+        return FIPExclusionsApiFp(this.configuration).checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -7939,11 +8037,11 @@ export const FirewallAttachmentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallToVirtualMachines: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
+        attachFirewallToVMs: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('attachFirewallToVirtualMachines', 'firewallId', firewallId);
+            assertParamExists('attachFirewallToVMs', 'firewallId', firewallId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachFirewallToVirtualMachines', 'payload', payload);
+            assertParamExists('attachFirewallToVMs', 'payload', payload);
             const localVarPath = `/core/firewalls/{firewall_id}/update-attachments`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -7984,12 +8082,12 @@ export const FirewallAttachmentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallToVirtualMachines(firewallId, payload, options) {
+        attachFirewallToVMs(firewallId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallToVirtualMachines(firewallId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallToVMs(firewallId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallAttachmentApi.attachFirewallToVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallAttachmentApi.attachFirewallToVMs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8010,8 +8108,8 @@ export const FirewallAttachmentApiFactory = function (configuration, basePath, a
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallToVirtualMachines(firewallId, payload, options) {
-            return localVarFp.attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(axios, basePath));
+        attachFirewallToVMs(firewallId, payload, options) {
+            return localVarFp.attachFirewallToVMs(firewallId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -8031,8 +8129,8 @@ export class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    attachFirewallToVirtualMachines(firewallId, payload, options) {
-        return FirewallAttachmentApiFp(this.configuration).attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    attachFirewallToVMs(firewallId, payload, options) {
+        return FirewallAttachmentApiFp(this.configuration).attachFirewallToVMs(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -8049,11 +8147,11 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFirewallRuleToAnExistingFirewall: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
+        addRuleToFirewall: (firewallId_1, payload_1, ...args_1) => __awaiter(this, [firewallId_1, payload_1, ...args_1], void 0, function* (firewallId, payload, options = {}) {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('addFirewallRuleToAnExistingFirewall', 'firewallId', firewallId);
+            assertParamExists('addRuleToFirewall', 'firewallId', firewallId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('addFirewallRuleToAnExistingFirewall', 'payload', payload);
+            assertParamExists('addRuleToFirewall', 'payload', payload);
             const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8084,9 +8182,9 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewFirewall: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        createFirewall: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createANewFirewall', 'payload', payload);
+            assertParamExists('createFirewall', 'payload', payload);
             const localVarPath = `/core/firewalls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8148,11 +8246,11 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFirewallRulesFromFirewall: (firewallId_1, firewallRuleId_1, ...args_1) => __awaiter(this, [firewallId_1, firewallRuleId_1, ...args_1], void 0, function* (firewallId, firewallRuleId, options = {}) {
+        deleteRuleFromFirewall: (firewallId_1, firewallRuleId_1, ...args_1) => __awaiter(this, [firewallId_1, firewallRuleId_1, ...args_1], void 0, function* (firewallId, firewallRuleId, options = {}) {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallId', firewallId);
+            assertParamExists('deleteRuleFromFirewall', 'firewallId', firewallId);
             // verify required parameter 'firewallRuleId' is not null or undefined
-            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallRuleId', firewallRuleId);
+            assertParamExists('deleteRuleFromFirewall', 'firewallRuleId', firewallRuleId);
             const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules/{firewall_rule_id}`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)))
                 .replace(`{${"firewall_rule_id"}}`, encodeURIComponent(String(firewallRuleId)));
@@ -8163,6 +8261,37 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
                 baseOptions = configuration.baseOptions;
             }
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFirewall: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getFirewall', 'id', id);
+            const localVarPath = `/core/firewalls/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
             // authentication apiKey required
@@ -8218,37 +8347,6 @@ export const FirewallsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTheDetailsOfAnExistingFirewall: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveTheDetailsOfAnExistingFirewall', 'id', id);
-            const localVarPath = `/core/firewalls/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
     };
 };
 /**
@@ -8266,12 +8364,12 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
+        addRuleToFirewall(firewallId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.addFirewallRuleToAnExistingFirewall(firewallId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addRuleToFirewall(firewallId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.addFirewallRuleToAnExistingFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.addRuleToFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8282,12 +8380,12 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewFirewall(payload, options) {
+        createFirewall(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createANewFirewall(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createFirewall(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.createANewFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.createFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8315,12 +8413,28 @@ export const FirewallsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
+        deleteRuleFromFirewall(firewallId, firewallRuleId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteRuleFromFirewall(firewallId, firewallRuleId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteFirewallRulesFromFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.deleteRuleFromFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFirewall(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getFirewall(id, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.getFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8343,22 +8457,6 @@ export const FirewallsApiFp = function (configuration) {
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTheDetailsOfAnExistingFirewall(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveTheDetailsOfAnExistingFirewall(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FirewallsApi.retrieveTheDetailsOfAnExistingFirewall']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
     };
 };
 /**
@@ -8376,8 +8474,8 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
-            return localVarFp.addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(axios, basePath));
+        addRuleToFirewall(firewallId, payload, options) {
+            return localVarFp.addRuleToFirewall(firewallId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
@@ -8386,8 +8484,8 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewFirewall(payload, options) {
-            return localVarFp.createANewFirewall(payload, options).then((request) => request(axios, basePath));
+        createFirewall(payload, options) {
+            return localVarFp.createFirewall(payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
@@ -8407,8 +8505,18 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
-            return localVarFp.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
+        deleteRuleFromFirewall(firewallId, firewallRuleId, options) {
+            return localVarFp.deleteRuleFromFirewall(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFirewall(id, options) {
+            return localVarFp.getFirewall(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
@@ -8422,16 +8530,6 @@ export const FirewallsApiFactory = function (configuration, basePath, axios) {
          */
         listExistingFirewalls(page, pageSize, search, environment, options) {
             return localVarFp.listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTheDetailsOfAnExistingFirewall(id, options) {
-            return localVarFp.retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -8451,8 +8549,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    addFirewallRuleToAnExistingFirewall(firewallId, payload, options) {
-        return FirewallsApiFp(this.configuration).addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    addRuleToFirewall(firewallId, payload, options) {
+        return FirewallsApiFp(this.configuration).addRuleToFirewall(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
@@ -8462,8 +8560,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    createANewFirewall(payload, options) {
-        return FirewallsApiFp(this.configuration).createANewFirewall(payload, options).then((request) => request(this.axios, this.basePath));
+    createFirewall(payload, options) {
+        return FirewallsApiFp(this.configuration).createFirewall(payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
@@ -8485,8 +8583,19 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options) {
-        return FirewallsApiFp(this.configuration).deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
+    deleteRuleFromFirewall(firewallId, firewallRuleId, options) {
+        return FirewallsApiFp(this.configuration).deleteRuleFromFirewall(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+     * @summary Retrieve firewall details
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    getFirewall(id, options) {
+        return FirewallsApiFp(this.configuration).getFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
@@ -8501,17 +8610,6 @@ export class FirewallsApi extends BaseAPI {
      */
     listExistingFirewalls(page, pageSize, search, environment, options) {
         return FirewallsApiFp(this.configuration).listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-     * @summary Retrieve firewall details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    retrieveTheDetailsOfAnExistingFirewall(id, options) {
-        return FirewallsApiFp(this.configuration).retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -8629,9 +8727,9 @@ export const FloatingIpApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachPublicIPToVirtualMachine: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        attachPublicIPToVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachPublicIPToVirtualMachine', 'vmId', vmId);
+            assertParamExists('attachPublicIPToVM', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-floatingip`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8660,9 +8758,9 @@ export const FloatingIpApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPublicIPFromVirtualMachine: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        detachPublicIPFromVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('detachPublicIPFromVirtualMachine', 'vmId', vmId);
+            assertParamExists('detachPublicIPFromVM', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/detach-floatingip`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8700,12 +8798,12 @@ export const FloatingIpApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachPublicIPToVirtualMachine(vmId, options) {
+        attachPublicIPToVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachPublicIPToVirtualMachine(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachPublicIPToVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FloatingIpApi.attachPublicIPToVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FloatingIpApi.attachPublicIPToVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8716,12 +8814,12 @@ export const FloatingIpApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPublicIPFromVirtualMachine(vmId, options) {
+        detachPublicIPFromVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.detachPublicIPFromVirtualMachine(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.detachPublicIPFromVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FloatingIpApi.detachPublicIPFromVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['FloatingIpApi.detachPublicIPFromVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -8741,8 +8839,8 @@ export const FloatingIpApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachPublicIPToVirtualMachine(vmId, options) {
-            return localVarFp.attachPublicIPToVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        attachPublicIPToVM(vmId, options) {
+            return localVarFp.attachPublicIPToVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
@@ -8751,8 +8849,8 @@ export const FloatingIpApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPublicIPFromVirtualMachine(vmId, options) {
-            return localVarFp.detachPublicIPFromVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        detachPublicIPFromVM(vmId, options) {
+            return localVarFp.detachPublicIPFromVM(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -8771,8 +8869,8 @@ export class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    attachPublicIPToVirtualMachine(vmId, options) {
-        return FloatingIpApiFp(this.configuration).attachPublicIPToVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    attachPublicIPToVM(vmId, options) {
+        return FloatingIpApiFp(this.configuration).attachPublicIPToVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
@@ -8782,8 +8880,8 @@ export class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    detachPublicIPFromVirtualMachine(vmId, options) {
-        return FloatingIpApiFp(this.configuration).detachPublicIPFromVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    detachPublicIPFromVM(vmId, options) {
+        return FloatingIpApiFp(this.configuration).detachPublicIPFromVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -8957,9 +9055,9 @@ export const ImageApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getImageDetails: (id_1, includeRelatedVms_1, ...args_1) => __awaiter(this, [id_1, includeRelatedVms_1, ...args_1], void 0, function* (id, includeRelatedVms, options = {}) {
+        getImage: (id_1, includeRelatedVms_1, ...args_1) => __awaiter(this, [id_1, includeRelatedVms_1, ...args_1], void 0, function* (id, includeRelatedVms, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getImageDetails', 'id', id);
+            assertParamExists('getImage', 'id', id);
             const localVarPath = `/core/images/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8995,7 +9093,7 @@ export const ImageApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listImages2: (region_1, includePublic_1, search_1, page_1, perPage_1, ...args_1) => __awaiter(this, [region_1, includePublic_1, search_1, page_1, perPage_1, ...args_1], void 0, function* (region, includePublic, search, page, perPage, options = {}) {
+        listImages: (region_1, includePublic_1, search_1, page_1, perPage_1, ...args_1) => __awaiter(this, [region_1, includePublic_1, search_1, page_1, perPage_1, ...args_1], void 0, function* (region, includePublic, search, page, perPage, options = {}) {
             const localVarPath = `/core/images`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9080,12 +9178,12 @@ export const ImageApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getImageDetails(id, includeRelatedVms, options) {
+        getImage(id, includeRelatedVms, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getImageDetails(id, includeRelatedVms, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getImage(id, includeRelatedVms, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ImageApi.getImageDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ImageApi.getImage']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -9100,12 +9198,12 @@ export const ImageApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listImages2(region, includePublic, search, page, perPage, options) {
+        listImages(region, includePublic, search, page, perPage, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.listImages2(region, includePublic, search, page, perPage, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listImages(region, includePublic, search, page, perPage, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ImageApi.listImages2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ImageApi.listImages']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -9146,8 +9244,8 @@ export const ImageApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getImageDetails(id, includeRelatedVms, options) {
-            return localVarFp.getImageDetails(id, includeRelatedVms, options).then((request) => request(axios, basePath));
+        getImage(id, includeRelatedVms, options) {
+            return localVarFp.getImage(id, includeRelatedVms, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
@@ -9160,8 +9258,8 @@ export const ImageApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listImages2(region, includePublic, search, page, perPage, options) {
-            return localVarFp.listImages2(region, includePublic, search, page, perPage, options).then((request) => request(axios, basePath));
+        listImages(region, includePublic, search, page, perPage, options) {
+            return localVarFp.listImages(region, includePublic, search, page, perPage, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -9203,8 +9301,8 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    getImageDetails(id, includeRelatedVms, options) {
-        return ImageApiFp(this.configuration).getImageDetails(id, includeRelatedVms, options).then((request) => request(this.axios, this.basePath));
+    getImage(id, includeRelatedVms, options) {
+        return ImageApiFp(this.configuration).getImage(id, includeRelatedVms, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
@@ -9218,8 +9316,8 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    listImages2(region, includePublic, search, page, perPage, options) {
-        return ImageApiFp(this.configuration).listImages2(region, includePublic, search, page, perPage, options).then((request) => request(this.axios, this.basePath));
+    listImages(region, includePublic, search, page, perPage, options) {
+        return ImageApiFp(this.configuration).listImages(region, includePublic, search, page, perPage, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -10246,42 +10344,15 @@ export class PartnerConfigApi extends BaseAPI {
 export const PaymentApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDetails: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/billing/payment/payment-details`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentReceipt2: (paymentId_1, ...args_1) => __awaiter(this, [paymentId_1, ...args_1], void 0, function* (paymentId, options = {}) {
+        getPaymentReceipt: (paymentId_1, ...args_1) => __awaiter(this, [paymentId_1, ...args_1], void 0, function* (paymentId, options = {}) {
             // verify required parameter 'paymentId' is not null or undefined
-            assertParamExists('getPaymentReceipt2', 'paymentId', paymentId);
+            assertParamExists('getPaymentReceipt', 'paymentId', paymentId);
             const localVarPath = `/billing/payment/receipt/{payment_id}`
                 .replace(`{${"payment_id"}}`, encodeURIComponent(String(paymentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -10310,9 +10381,9 @@ export const PaymentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postPayment: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        initiatePayment: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postPayment', 'payload', payload);
+            assertParamExists('initiatePayment', 'payload', payload);
             const localVarPath = `/billing/payment/payment-initiate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10335,6 +10406,33 @@ export const PaymentApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPaymentDetails: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/payment/payment-details`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 /**
@@ -10345,33 +10443,18 @@ export const PaymentApiFp = function (configuration) {
     const localVarAxiosParamCreator = PaymentApiAxiosParamCreator(configuration);
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDetails(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getDetails(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.getDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentReceipt2(paymentId, options) {
+        getPaymentReceipt(paymentId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPaymentReceipt2(paymentId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getPaymentReceipt(paymentId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.getPaymentReceipt2']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.getPaymentReceipt']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -10382,12 +10465,27 @@ export const PaymentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postPayment(payload, options) {
+        initiatePayment(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postPayment(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.initiatePayment(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.postPayment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.initiatePayment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPaymentDetails(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listPaymentDetails(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['PaymentApi.listPaymentDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -10401,23 +10499,14 @@ export const PaymentApiFactory = function (configuration, basePath, axios) {
     const localVarFp = PaymentApiFp(configuration);
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDetails(options) {
-            return localVarFp.getDetails(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentReceipt2(paymentId, options) {
-            return localVarFp.getPaymentReceipt2(paymentId, options).then((request) => request(axios, basePath));
+        getPaymentReceipt(paymentId, options) {
+            return localVarFp.getPaymentReceipt(paymentId, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
@@ -10426,8 +10515,17 @@ export const PaymentApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postPayment(payload, options) {
-            return localVarFp.postPayment(payload, options).then((request) => request(axios, basePath));
+        initiatePayment(payload, options) {
+            return localVarFp.initiatePayment(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPaymentDetails(options) {
+            return localVarFp.listPaymentDetails(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10439,16 +10537,6 @@ export const PaymentApiFactory = function (configuration, basePath, axios) {
  */
 export class PaymentApi extends BaseAPI {
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-     * @summary GET: View payment details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApi
-     */
-    getDetails(options) {
-        return PaymentApiFp(this.configuration).getDetails(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Retrieve the payment receipt from Stripe for a specific payment
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId
@@ -10456,8 +10544,8 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    getPaymentReceipt2(paymentId, options) {
-        return PaymentApiFp(this.configuration).getPaymentReceipt2(paymentId, options).then((request) => request(this.axios, this.basePath));
+    getPaymentReceipt(paymentId, options) {
+        return PaymentApiFp(this.configuration).getPaymentReceipt(paymentId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
@@ -10467,8 +10555,18 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    postPayment(payload, options) {
-        return PaymentApiFp(this.configuration).postPayment(payload, options).then((request) => request(this.axios, this.basePath));
+    initiatePayment(payload, options) {
+        return PaymentApiFp(this.configuration).initiatePayment(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * @summary GET: View payment details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentApi
+     */
+    listPaymentDetails(options) {
+        return PaymentApiFp(this.configuration).listPaymentDetails(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -10822,13 +10920,17 @@ export const ProfileApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
-         * @summary List profiles
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProfiles: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/core/profiles`;
+        getProfile: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getProfile', 'id', id);
+            const localVarPath = `/core/profiles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10849,17 +10951,13 @@ export const ProfileApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id
+         * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
+         * @summary List profiles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveProfileDetails: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveProfileDetails', 'id', id);
-            const localVarPath = `/core/profiles/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        listProfiles: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/core/profiles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10921,6 +11019,22 @@ export const ProfileApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProfile(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getProfile(id, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ProfileApi.getProfile']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
          * @summary List profiles
          * @param {*} [options] Override http request option.
@@ -10932,22 +11046,6 @@ export const ProfileApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.listProfiles(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ProfileApi.listProfiles']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveProfileDetails(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveProfileDetails(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ProfileApi.retrieveProfileDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -10981,6 +11079,16 @@ export const ProfileApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteProfile(id, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProfile(id, options) {
+            return localVarFp.getProfile(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
          * @summary List profiles
          * @param {*} [options] Override http request option.
@@ -10988,16 +11096,6 @@ export const ProfileApiFactory = function (configuration, basePath, axios) {
          */
         listProfiles(options) {
             return localVarFp.listProfiles(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveProfileDetails(id, options) {
-            return localVarFp.retrieveProfileDetails(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11031,6 +11129,17 @@ export class ProfileApi extends BaseAPI {
         return ProfileApiFp(this.configuration).deleteProfile(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+     * @summary Retrieve profile details
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProfileApi
+     */
+    getProfile(id, options) {
+        return ProfileApiFp(this.configuration).getProfile(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
@@ -11039,17 +11148,6 @@ export class ProfileApi extends BaseAPI {
      */
     listProfiles(options) {
         return ProfileApiFp(this.configuration).listProfiles(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-     * @summary Retrieve profile details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProfileApi
-     */
-    retrieveProfileDetails(id, options) {
-        return ProfileApiFp(this.configuration).retrieveProfileDetails(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -11631,9 +11729,9 @@ export const SnapshotEventsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllEventsForASnapshot: (snapshotId_1, ...args_1) => __awaiter(this, [snapshotId_1, ...args_1], void 0, function* (snapshotId, options = {}) {
+        listSnapshotEvents: (snapshotId_1, ...args_1) => __awaiter(this, [snapshotId_1, ...args_1], void 0, function* (snapshotId, options = {}) {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('fetchAllEventsForASnapshot', 'snapshotId', snapshotId);
+            assertParamExists('listSnapshotEvents', 'snapshotId', snapshotId);
             const localVarPath = `/core/snapshots/{snapshot_id}/events`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11671,12 +11769,12 @@ export const SnapshotEventsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllEventsForASnapshot(snapshotId, options) {
+        listSnapshotEvents(snapshotId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.fetchAllEventsForASnapshot(snapshotId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listSnapshotEvents(snapshotId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotEventsApi.fetchAllEventsForASnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotEventsApi.listSnapshotEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -11696,8 +11794,8 @@ export const SnapshotEventsApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllEventsForASnapshot(snapshotId, options) {
-            return localVarFp.fetchAllEventsForASnapshot(snapshotId, options).then((request) => request(axios, basePath));
+        listSnapshotEvents(snapshotId, options) {
+            return localVarFp.listSnapshotEvents(snapshotId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -11716,8 +11814,8 @@ export class SnapshotEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotEventsApi
      */
-    fetchAllEventsForASnapshot(snapshotId, options) {
-        return SnapshotEventsApiFp(this.configuration).fetchAllEventsForASnapshot(snapshotId, options).then((request) => request(this.axios, this.basePath));
+    listSnapshotEvents(snapshotId, options) {
+        return SnapshotEventsApiFp(this.configuration).listSnapshotEvents(snapshotId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -11734,11 +11832,11 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewCustomImage: (snapshotId_1, payload_1, ...args_1) => __awaiter(this, [snapshotId_1, payload_1, ...args_1], void 0, function* (snapshotId, payload, options = {}) {
+        createCustomImage: (snapshotId_1, payload_1, ...args_1) => __awaiter(this, [snapshotId_1, payload_1, ...args_1], void 0, function* (snapshotId, payload, options = {}) {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('createANewCustomImage', 'snapshotId', snapshotId);
+            assertParamExists('createCustomImage', 'snapshotId', snapshotId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createANewCustomImage', 'payload', payload);
+            assertParamExists('createCustomImage', 'payload', payload);
             const localVarPath = `/core/snapshots/{snapshot_id}/image`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11769,9 +11867,9 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAnExistingSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        deleteSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteAnExistingSnapshot', 'id', id);
+            assertParamExists('deleteSnapshot', 'id', id);
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11825,51 +11923,15 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id
-         * @param {SnapshotRestoreRequest} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        restoreASnapshot: (id_1, payload_1, ...args_1) => __awaiter(this, [id_1, payload_1, ...args_1], void 0, function* (id, payload, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('restoreASnapshot', 'id', id);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('restoreASnapshot', 'payload', payload);
-            const localVarPath = `/core/snapshots/{id}/restore`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAnExistingSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+        getSnapshot: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveAnExistingSnapshot', 'id', id);
+            assertParamExists('getSnapshot', 'id', id);
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11900,7 +11962,7 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrievesAListOfSnapshots: (page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, ...args_1], void 0, function* (page, pageSize, search, options = {}) {
+        listSnapshots: (page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, ...args_1], void 0, function* (page, pageSize, search, options = {}) {
             const localVarPath = `/core/snapshots`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11930,6 +11992,42 @@ export const SnapshotsApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id
+         * @param {SnapshotRestoreRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreSnapshot: (id_1, payload_1, ...args_1) => __awaiter(this, [id_1, payload_1, ...args_1], void 0, function* (id, payload, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('restoreSnapshot', 'id', id);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('restoreSnapshot', 'payload', payload);
+            const localVarPath = `/core/snapshots/{id}/restore`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 /**
@@ -11947,12 +12045,12 @@ export const SnapshotsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewCustomImage(snapshotId, payload, options) {
+        createCustomImage(snapshotId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createANewCustomImage(snapshotId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createCustomImage(snapshotId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.createANewCustomImage']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.createCustomImage']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -11963,12 +12061,12 @@ export const SnapshotsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAnExistingSnapshot(id, options) {
+        deleteSnapshot(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteAnExistingSnapshot(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSnapshot(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.deleteAnExistingSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.deleteSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -11989,35 +12087,18 @@ export const SnapshotsApiFp = function (configuration) {
             });
         },
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id
-         * @param {SnapshotRestoreRequest} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        restoreASnapshot(id, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreASnapshot(id, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.restoreASnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAnExistingSnapshot(id, options) {
+        getSnapshot(id, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveAnExistingSnapshot(id, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getSnapshot(id, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.retrieveAnExistingSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.getSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -12030,12 +12111,29 @@ export const SnapshotsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrievesAListOfSnapshots(page, pageSize, search, options) {
+        listSnapshots(page, pageSize, search, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrievesAListOfSnapshots(page, pageSize, search, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listSnapshots(page, pageSize, search, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.retrievesAListOfSnapshots']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.listSnapshots']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id
+         * @param {SnapshotRestoreRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreSnapshot(id, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreSnapshot(id, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['SnapshotsApi.restoreSnapshot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -12056,8 +12154,8 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewCustomImage(snapshotId, payload, options) {
-            return localVarFp.createANewCustomImage(snapshotId, payload, options).then((request) => request(axios, basePath));
+        createCustomImage(snapshotId, payload, options) {
+            return localVarFp.createCustomImage(snapshotId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
@@ -12066,8 +12164,8 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAnExistingSnapshot(id, options) {
-            return localVarFp.deleteAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
+        deleteSnapshot(id, options) {
+            return localVarFp.deleteSnapshot(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Check if a Snapshot name is available
@@ -12080,25 +12178,14 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
             return localVarFp.fetchSnapshotNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id
-         * @param {SnapshotRestoreRequest} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        restoreASnapshot(id, payload, options) {
-            return localVarFp.restoreASnapshot(id, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAnExistingSnapshot(id, options) {
-            return localVarFp.retrieveAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
+        getSnapshot(id, options) {
+            return localVarFp.getSnapshot(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
@@ -12109,8 +12196,19 @@ export const SnapshotsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrievesAListOfSnapshots(page, pageSize, search, options) {
-            return localVarFp.retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
+        listSnapshots(page, pageSize, search, options) {
+            return localVarFp.listSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id
+         * @param {SnapshotRestoreRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreSnapshot(id, payload, options) {
+            return localVarFp.restoreSnapshot(id, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12130,8 +12228,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    createANewCustomImage(snapshotId, payload, options) {
-        return SnapshotsApiFp(this.configuration).createANewCustomImage(snapshotId, payload, options).then((request) => request(this.axios, this.basePath));
+    createCustomImage(snapshotId, payload, options) {
+        return SnapshotsApiFp(this.configuration).createCustomImage(snapshotId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
@@ -12141,8 +12239,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    deleteAnExistingSnapshot(id, options) {
-        return SnapshotsApiFp(this.configuration).deleteAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    deleteSnapshot(id, options) {
+        return SnapshotsApiFp(this.configuration).deleteSnapshot(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Check if a Snapshot name is available
@@ -12156,18 +12254,6 @@ export class SnapshotsApi extends BaseAPI {
         return SnapshotsApiFp(this.configuration).fetchSnapshotNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id
-     * @param {SnapshotRestoreRequest} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    restoreASnapshot(id, payload, options) {
-        return SnapshotsApiFp(this.configuration).restoreASnapshot(id, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
      * @param {number} id
@@ -12175,8 +12261,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    retrieveAnExistingSnapshot(id, options) {
-        return SnapshotsApiFp(this.configuration).retrieveAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    getSnapshot(id, options) {
+        return SnapshotsApiFp(this.configuration).getSnapshot(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
@@ -12188,8 +12274,20 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    retrievesAListOfSnapshots(page, pageSize, search, options) {
-        return SnapshotsApiFp(this.configuration).retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    listSnapshots(page, pageSize, search, options) {
+        return SnapshotsApiFp(this.configuration).listSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id
+     * @param {SnapshotRestoreRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    restoreSnapshot(id, payload, options) {
+        return SnapshotsApiFp(this.configuration).restoreSnapshot(id, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -12204,7 +12302,7 @@ export const StockApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveGPUStocks: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        getGPUStock: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/core/stocks`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12240,12 +12338,12 @@ export const StockApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveGPUStocks(options) {
+        getGPUStock(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveGPUStocks(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getGPUStock(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['StockApi.retrieveGPUStocks']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['StockApi.getGPUStock']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -12264,8 +12362,8 @@ export const StockApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveGPUStocks(options) {
-            return localVarFp.retrieveGPUStocks(options).then((request) => request(axios, basePath));
+        getGPUStock(options) {
+            return localVarFp.getGPUStock(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12283,8 +12381,8 @@ export class StockApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StockApi
      */
-    retrieveGPUStocks(options) {
-        return StockApiFp(this.configuration).retrieveGPUStocks(options).then((request) => request(this.axios, this.basePath));
+    getGPUStock(options) {
+        return StockApiFp(this.configuration).getGPUStock(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -12379,6 +12477,37 @@ export const TemplateApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTemplate: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTemplate', 'id', id);
+            const localVarPath = `/core/marketplace/templates/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -12401,37 +12530,6 @@ export const TemplateApiAxiosParamCreator = function (configuration) {
             if (visibility !== undefined) {
                 localVarQueryParameter['visibility'] = visibility;
             }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplateDetails: (id_1, ...args_1) => __awaiter(this, [id_1, ...args_1], void 0, function* (id, options = {}) {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveTemplateDetails', 'id', id);
-            const localVarPath = `/core/marketplace/templates/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -12521,6 +12619,22 @@ export const TemplateApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTemplate(id, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getTemplate(id, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['TemplateApi.getTemplate']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -12533,22 +12647,6 @@ export const TemplateApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.listTemplates(visibility, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['TemplateApi.listTemplates']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplateDetails(id, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveTemplateDetails(id, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['TemplateApi.retrieveTemplateDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -12602,6 +12700,16 @@ export const TemplateApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteTemplate(id, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTemplate(id, options) {
+            return localVarFp.getTemplate(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -12610,16 +12718,6 @@ export const TemplateApiFactory = function (configuration, basePath, axios) {
          */
         listTemplates(visibility, options) {
             return localVarFp.listTemplates(visibility, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplateDetails(id, options) {
-            return localVarFp.retrieveTemplateDetails(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
@@ -12667,6 +12765,17 @@ export class TemplateApi extends BaseAPI {
         return TemplateApiFp(this.configuration).deleteTemplate(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+     * @summary Retrieve template details
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplateApi
+     */
+    getTemplate(id, options) {
+        return TemplateApiFp(this.configuration).getTemplate(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -12676,17 +12785,6 @@ export class TemplateApi extends BaseAPI {
      */
     listTemplates(visibility, options) {
         return TemplateApiFp(this.configuration).listTemplates(visibility, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    retrieveTemplateDetails(id, options) {
-        return TemplateApiFp(this.configuration).retrieveTemplateDetails(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
@@ -12708,42 +12806,15 @@ export class TemplateApi extends BaseAPI {
 export const UserApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
-            const localVarPath = `/billing/user/info`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        addUserBillingInfo: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postUser', 'payload', payload);
+            assertParamExists('addUserBillingInfo', 'payload', payload);
             const localVarPath = `/billing/user/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12767,15 +12838,42 @@ export const UserApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingInfo: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/user/info`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        updateUserBillingInfo: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putUser', 'payload', payload);
+            assertParamExists('updateUserBillingInfo', 'payload', payload);
             const localVarPath = `/billing/user/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12808,49 +12906,49 @@ export const UserApiFp = function (configuration) {
     const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration);
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser(options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUser(options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.getUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUser(payload, options) {
+        addUserBillingInfo(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postUser(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addUserBillingInfo(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.postUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.addUserBillingInfo']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingInfo(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getUserBillingInfo(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.getUserBillingInfo']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putUser(payload, options) {
+        updateUserBillingInfo(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.putUser(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateUserBillingInfo(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.putUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.updateUserBillingInfo']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -12864,33 +12962,33 @@ export const UserApiFactory = function (configuration, basePath, axios) {
     const localVarFp = UserApiFp(configuration);
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser(options) {
-            return localVarFp.getUser(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUser(payload, options) {
-            return localVarFp.postUser(payload, options).then((request) => request(axios, basePath));
+        addUserBillingInfo(payload, options) {
+            return localVarFp.addUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingInfo(options) {
+            return localVarFp.getUserBillingInfo(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putUser(payload, options) {
-            return localVarFp.putUser(payload, options).then((request) => request(axios, basePath));
+        updateUserBillingInfo(payload, options) {
+            return localVarFp.updateUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12902,36 +13000,36 @@ export const UserApiFactory = function (configuration, basePath, axios) {
  */
 export class UserApi extends BaseAPI {
     /**
-     * Retrieve the billing details associated with your organization.
-     * @summary GET: Retrieve billing info
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserApi
-     */
-    getUser(options) {
-        return UserApiFp(this.configuration).getUser(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Add billing details associated with your organization in the request body.
+     * Add billing details associated with your user in the request body.
      * @summary POST: Insert billing info
      * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    postUser(payload, options) {
-        return UserApiFp(this.configuration).postUser(payload, options).then((request) => request(this.axios, this.basePath));
+    addUserBillingInfo(payload, options) {
+        return UserApiFp(this.configuration).addUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Update the billing information for your organization in the request body.
+     * Retrieve the billing details associated with your user.
+     * @summary GET: Retrieve billing info
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    getUserBillingInfo(options) {
+        return UserApiFp(this.configuration).getUserBillingInfo(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Update the billing information for your user in the request body.
      * @summary PUT: Update billing info
      * @param {UserInfoPostPayload} payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    putUser(payload, options) {
-        return UserApiFp(this.configuration).putUser(payload, options).then((request) => request(this.axios, this.basePath));
+    updateUserBillingInfo(payload, options) {
+        return UserApiFp(this.configuration).updateUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -12941,12 +13039,12 @@ export class UserApi extends BaseAPI {
 export const UserDetailChoiceApiAxiosParamCreator = function (configuration) {
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDefaultFlavorsAndImages: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+        listDefaultFlavorsAndImages: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
             const localVarPath = `/core/user/resources/defaults`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12977,17 +13075,17 @@ export const UserDetailChoiceApiFp = function (configuration) {
     const localVarAxiosParamCreator = UserDetailChoiceApiAxiosParamCreator(configuration);
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDefaultFlavorsAndImages(options) {
+        listDefaultFlavorsAndImages(options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveDefaultFlavorsAndImages(options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listDefaultFlavorsAndImages(options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserDetailChoiceApi.retrieveDefaultFlavorsAndImages']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserDetailChoiceApi.listDefaultFlavorsAndImages']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13001,13 +13099,13 @@ export const UserDetailChoiceApiFactory = function (configuration, basePath, axi
     const localVarFp = UserDetailChoiceApiFp(configuration);
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDefaultFlavorsAndImages(options) {
-            return localVarFp.retrieveDefaultFlavorsAndImages(options).then((request) => request(axios, basePath));
+        listDefaultFlavorsAndImages(options) {
+            return localVarFp.listDefaultFlavorsAndImages(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -13019,14 +13117,14 @@ export const UserDetailChoiceApiFactory = function (configuration, basePath, axi
  */
 export class UserDetailChoiceApi extends BaseAPI {
     /**
-     * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+     * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
      * @summary Retrieve Default Flavors and Images
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserDetailChoiceApi
      */
-    retrieveDefaultFlavorsAndImages(options) {
-        return UserDetailChoiceApiFp(this.configuration).retrieveDefaultFlavorsAndImages(options).then((request) => request(this.axios, this.basePath));
+    listDefaultFlavorsAndImages(options) {
+        return UserDetailChoiceApiFp(this.configuration).listDefaultFlavorsAndImages(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -13199,6 +13297,42 @@ export class UserPermissionApi extends BaseAPI {
 export const VirtualMachineApiAxiosParamCreator = function (configuration) {
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId
+         * @param {EditLabelOfAnExistingVMPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addVMLabel: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('addVMLabel', 'vmId', vmId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('addVMLabel', 'payload', payload);
+            const localVarPath = `/core/virtual-machines/{vm_id}/label`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
@@ -13206,12 +13340,115 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallsToAVirtualMachine: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        attachFirewallsToVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachFirewallsToAVirtualMachine', 'vmId', vmId);
+            assertParamExists('attachFirewallsToVM', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachFirewallsToAVirtualMachine', 'payload', payload);
+            assertParamExists('attachFirewallsToVM', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-firewalls`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkVMNameAvailability: (name_1, ...args_1) => __awaiter(this, [name_1, ...args_1], void 0, function* (name, options = {}) {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('checkVMNameAvailability', 'name', name);
+            const localVarPath = `/core/virtual-machines/name-availability/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId
+         * @param {CreateSecurityRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createFirewallRuleForVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('createFirewallRuleForVM', 'vmId', vmId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createFirewallRuleForVM', 'payload', payload);
+            const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId
+         * @param {CreateSnapshotPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSnapshotForVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('createSnapshotForVM', 'vmId', vmId);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createSnapshotForVM', 'payload', payload);
+            const localVarPath = `/core/virtual-machines/{vm_id}/snapshots`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13241,9 +13478,9 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createOneOrMoreVirtualMachines: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+        createVMs: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createOneOrMoreVirtualMachines', 'payload', payload);
+            assertParamExists('createVMs', 'payload', payload);
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13274,11 +13511,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityRule: (vmId_1, sgRuleId_1, ...args_1) => __awaiter(this, [vmId_1, sgRuleId_1, ...args_1], void 0, function* (vmId, sgRuleId, options = {}) {
+        deleteFirewallRuleForVM: (vmId_1, sgRuleId_1, ...args_1) => __awaiter(this, [vmId_1, sgRuleId_1, ...args_1], void 0, function* (vmId, sgRuleId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteSecurityRule', 'vmId', vmId);
+            assertParamExists('deleteFirewallRuleForVM', 'vmId', vmId);
             // verify required parameter 'sgRuleId' is not null or undefined
-            assertParamExists('deleteSecurityRule', 'sgRuleId', sgRuleId);
+            assertParamExists('deleteFirewallRuleForVM', 'sgRuleId', sgRuleId);
             const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules/{sg_rule_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)))
                 .replace(`{${"sg_rule_id"}}`, encodeURIComponent(String(sgRuleId)));
@@ -13308,9 +13545,9 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachine: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        deleteVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteVirtualMachine', 'vmId', vmId);
+            assertParamExists('deleteVM', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13333,17 +13570,20 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVirtualMachineNameAvailability: (name_1, ...args_1) => __awaiter(this, [name_1, ...args_1], void 0, function* (name, options = {}) {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('fetchVirtualMachineNameAvailability', 'name', name);
-            const localVarPath = `/core/virtual-machines/name-availability/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        getContractVMs: (contractId_1, page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [contractId_1, page_1, pageSize_1, search_1, ...args_1], void 0, function* (contractId, page, pageSize, search, options = {}) {
+            // verify required parameter 'contractId' is not null or undefined
+            assertParamExists('getContractVMs', 'contractId', contractId);
+            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
+                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13355,68 +13595,15 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHardReboot: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHardReboot', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/hard-reboot`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernate: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHibernate', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
+            if (pageSize !== undefined) {
+                localVarQueryParameter['pageSize'] = pageSize;
             }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -13426,16 +13613,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceHibernateRestore: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        getVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHibernateRestore', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate-restore`
+            assertParamExists('getVM', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13464,11 +13651,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceLogs: (vmId_1, requestId_1, ...args_1) => __awaiter(this, [vmId_1, requestId_1, ...args_1], void 0, function* (vmId, requestId, options = {}) {
+        getVMLogs: (vmId_1, requestId_1, ...args_1) => __awaiter(this, [vmId_1, requestId_1, ...args_1], void 0, function* (vmId, requestId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceLogs', 'vmId', vmId);
+            assertParamExists('getVMLogs', 'vmId', vmId);
             // verify required parameter 'requestId' is not null or undefined
-            assertParamExists('getInstanceLogs', 'requestId', requestId);
+            assertParamExists('getVMLogs', 'requestId', requestId);
             const localVarPath = `/core/virtual-machines/{vm_id}/logs`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13497,13 +13684,13 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId
-         * @param {GetInstanceMetricsDurationEnum} [duration]
+         * @param {GetVMMetricsDurationEnum} [duration]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceMetrics: (vmId_1, duration_1, ...args_1) => __awaiter(this, [vmId_1, duration_1, ...args_1], void 0, function* (vmId, duration, options = {}) {
+        getVMMetrics: (vmId_1, duration_1, ...args_1) => __awaiter(this, [vmId_1, duration_1, ...args_1], void 0, function* (vmId, duration, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceMetrics', 'vmId', vmId);
+            assertParamExists('getVMMetrics', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/metrics`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13529,16 +13716,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStart: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        hardRebootVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceStart', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/start`
+            assertParamExists('hardRebootVM', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/hard-reboot`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13560,16 +13747,17 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStop: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        hibernateVM: (vmId_1, retainIp_1, ...args_1) => __awaiter(this, [vmId_1, retainIp_1, ...args_1], void 0, function* (vmId, retainIp, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceStop', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
+            assertParamExists('hibernateVM', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13582,6 +13770,9 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (retainIp !== undefined) {
+                localVarQueryParameter['retain_ip'] = retainIp;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -13601,7 +13792,7 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachines: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, options = {}) {
+        listVMs: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, options = {}) {
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13645,11 +13836,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceLogs: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        requestVMLogs: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postInstanceLogs', 'vmId', vmId);
+            assertParamExists('requestVMLogs', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstanceLogs', 'payload', payload);
+            assertParamExists('requestVMLogs', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/logs`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13681,11 +13872,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceResize: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        resizeVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postInstanceResize', 'vmId', vmId);
+            assertParamExists('resizeVM', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstanceResize', 'payload', payload);
+            assertParamExists('resizeVM', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/resize`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -13710,124 +13901,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId
-         * @param {CreateSecurityRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityRule: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postSecurityRule', 'vmId', vmId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSecurityRule', 'payload', payload);
-            const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId
-         * @param {CreateSnapshotPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshots: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postSnapshots', 'vmId', vmId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSnapshots', 'payload', payload);
-            const localVarPath = `/core/virtual-machines/{vm_id}/snapshots`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId
-         * @param {EditLabelOfAnExistingVMPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putLabels: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('putLabels', 'vmId', vmId);
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putLabels', 'payload', payload);
-            const localVarPath = `/core/virtual-machines/{vm_id}/label`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
-            const localVarHeaderParameter = {};
-            const localVarQueryParameter = {};
-            // authentication apiKey required
-            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        }),
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachineDetails: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        restoreVMFromHibernation: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('retrieveVirtualMachineDetails', 'vmId', vmId);
-            const localVarPath = `/core/virtual-machines/{vm_id}`
+            assertParamExists('restoreVMFromHibernation', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate-restore`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13849,20 +13932,17 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachinesAssociatedWithAContract: (contractId_1, page_1, pageSize_1, search_1, ...args_1) => __awaiter(this, [contractId_1, page_1, pageSize_1, search_1, ...args_1], void 0, function* (contractId, page, pageSize, search, options = {}) {
-            // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('retrieveVirtualMachinesAssociatedWithAContract', 'contractId', contractId);
-            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
-                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
+        startVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('startVM', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/start`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13874,15 +13954,37 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration) {
             const localVarQueryParameter = {};
             // authentication apiKey required
             yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        stopVM: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('stopVM', 'vmId', vmId);
+            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -13901,6 +14003,23 @@ export const VirtualMachineApiFp = function (configuration) {
     const localVarAxiosParamCreator = VirtualMachineApiAxiosParamCreator(configuration);
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId
+         * @param {EditLabelOfAnExistingVMPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addVMLabel(vmId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addVMLabel(vmId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.addVMLabel']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
@@ -13908,12 +14027,62 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallsToAVirtualMachine(vmId, payload, options) {
+        attachFirewallsToVM(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallsToAVirtualMachine(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachFirewallsToVM(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.attachFirewallsToAVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.attachFirewallsToVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkVMNameAvailability(name, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.checkVMNameAvailability(name, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.checkVMNameAvailability']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId
+         * @param {CreateSecurityRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createFirewallRuleForVM(vmId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createFirewallRuleForVM(vmId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.createFirewallRuleForVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId
+         * @param {CreateSnapshotPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSnapshotForVM(vmId, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createSnapshotForVM(vmId, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.createSnapshotForVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13924,12 +14093,12 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createOneOrMoreVirtualMachines(payload, options) {
+        createVMs(payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.createOneOrMoreVirtualMachines(payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createVMs(payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.createOneOrMoreVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.createVMs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13941,12 +14110,12 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityRule(vmId, sgRuleId, options) {
+        deleteFirewallRuleForVM(vmId, sgRuleId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteSecurityRule(vmId, sgRuleId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteFirewallRuleForVM(vmId, sgRuleId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteSecurityRule']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteFirewallRuleForVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -13957,76 +14126,47 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachine(vmId, options) {
+        deleteVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteVirtualMachine(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.deleteVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVirtualMachineNameAvailability(name, options) {
+        getContractVMs(contractId, page, pageSize, search, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.fetchVirtualMachineNameAvailability(name, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getContractVMs(contractId, page, pageSize, search, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.fetchVirtualMachineNameAvailability']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getContractVMs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceHardReboot(vmId, options) {
+        getVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceHardReboot(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceHardReboot']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernate(vmId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceHibernate(vmId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceHibernate']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernateRestore(vmId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceHibernateRestore(vmId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceHibernateRestore']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14038,12 +14178,12 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceLogs(vmId, requestId, options) {
+        getVMLogs(vmId, requestId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceLogs(vmId, requestId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMLogs(vmId, requestId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceLogs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getVMLogs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14051,48 +14191,49 @@ export const VirtualMachineApiFp = function (configuration) {
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId
-         * @param {GetInstanceMetricsDurationEnum} [duration]
+         * @param {GetVMMetricsDurationEnum} [duration]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceMetrics(vmId, duration, options) {
+        getVMMetrics(vmId, duration, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceMetrics(vmId, duration, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVMMetrics(vmId, duration, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceMetrics']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getVMMetrics']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStart(vmId, options) {
+        hardRebootVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceStart(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.hardRebootVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceStart']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.hardRebootVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStop(vmId, options) {
+        hibernateVM(vmId, retainIp, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getInstanceStop(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.hibernateVM(vmId, retainIp, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.getInstanceStop']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.hibernateVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14107,12 +14248,12 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
+        listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.listVirtualMachines']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.listVMs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14124,12 +14265,12 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceLogs(vmId, payload, options) {
+        requestVMLogs(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postInstanceLogs(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.requestVMLogs(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postInstanceLogs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.requestVMLogs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14141,98 +14282,60 @@ export const VirtualMachineApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceResize(vmId, payload, options) {
+        resizeVM(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postInstanceResize(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.resizeVM(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postInstanceResize']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.resizeVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId
-         * @param {CreateSecurityRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityRule(vmId, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postSecurityRule(vmId, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postSecurityRule']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId
-         * @param {CreateSnapshotPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshots(vmId, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.postSnapshots(vmId, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.postSnapshots']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId
-         * @param {EditLabelOfAnExistingVMPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putLabels(vmId, payload, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.putLabels(vmId, payload, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.putLabels']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachineDetails(vmId, options) {
+        restoreVMFromHibernation(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveVirtualMachineDetails(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreVMFromHibernation(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.retrieveVirtualMachineDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.restoreVMFromHibernation']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
+        startVM(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.startVM(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.retrieveVirtualMachinesAssociatedWithAContract']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.startVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        stopVM(vmId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.stopVM(vmId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineApi.stopVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14246,6 +14349,17 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
     const localVarFp = VirtualMachineApiFp(configuration);
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId
+         * @param {EditLabelOfAnExistingVMPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addVMLabel(vmId, payload, options) {
+            return localVarFp.addVMLabel(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId
@@ -14253,8 +14367,40 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallsToAVirtualMachine(vmId, payload, options) {
-            return localVarFp.attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachFirewallsToVM(vmId, payload, options) {
+            return localVarFp.attachFirewallsToVM(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkVMNameAvailability(name, options) {
+            return localVarFp.checkVMNameAvailability(name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId
+         * @param {CreateSecurityRulePayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createFirewallRuleForVM(vmId, payload, options) {
+            return localVarFp.createFirewallRuleForVM(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId
+         * @param {CreateSnapshotPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSnapshotForVM(vmId, payload, options) {
+            return localVarFp.createSnapshotForVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
@@ -14263,8 +14409,8 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createOneOrMoreVirtualMachines(payload, options) {
-            return localVarFp.createOneOrMoreVirtualMachines(payload, options).then((request) => request(axios, basePath));
+        createVMs(payload, options) {
+            return localVarFp.createVMs(payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
@@ -14274,8 +14420,8 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityRule(vmId, sgRuleId, options) {
-            return localVarFp.deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(axios, basePath));
+        deleteFirewallRuleForVM(vmId, sgRuleId, options) {
+            return localVarFp.deleteFirewallRuleForVM(vmId, sgRuleId, options).then((request) => request(axios, basePath));
         },
         /**
          * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
@@ -14284,48 +14430,31 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachine(vmId, options) {
-            return localVarFp.deleteVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        deleteVM(vmId, options) {
+            return localVarFp.deleteVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVirtualMachineNameAvailability(name, options) {
-            return localVarFp.fetchVirtualMachineNameAvailability(name, options).then((request) => request(axios, basePath));
+        getContractVMs(contractId, page, pageSize, search, options) {
+            return localVarFp.getContractVMs(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
         },
         /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceHardReboot(vmId, options) {
-            return localVarFp.getInstanceHardReboot(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernate(vmId, options) {
-            return localVarFp.getInstanceHibernate(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
-         * @param {number} vmId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernateRestore(vmId, options) {
-            return localVarFp.getInstanceHibernateRestore(vmId, options).then((request) => request(axios, basePath));
+        getVM(vmId, options) {
+            return localVarFp.getVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve console logs for a virtual machine
@@ -14335,39 +14464,40 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceLogs(vmId, requestId, options) {
-            return localVarFp.getInstanceLogs(vmId, requestId, options).then((request) => request(axios, basePath));
+        getVMLogs(vmId, requestId, options) {
+            return localVarFp.getVMLogs(vmId, requestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId
-         * @param {GetInstanceMetricsDurationEnum} [duration]
+         * @param {GetVMMetricsDurationEnum} [duration]
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceMetrics(vmId, duration, options) {
-            return localVarFp.getInstanceMetrics(vmId, duration, options).then((request) => request(axios, basePath));
+        getVMMetrics(vmId, duration, options) {
+            return localVarFp.getVMMetrics(vmId, duration, options).then((request) => request(axios, basePath));
         },
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStart(vmId, options) {
-            return localVarFp.getInstanceStart(vmId, options).then((request) => request(axios, basePath));
+        hardRebootVM(vmId, options) {
+            return localVarFp.hardRebootVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStop(vmId, options) {
-            return localVarFp.getInstanceStop(vmId, options).then((request) => request(axios, basePath));
+        hibernateVM(vmId, retainIp, options) {
+            return localVarFp.hibernateVM(vmId, retainIp, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
@@ -14380,8 +14510,8 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
-            return localVarFp.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
+        listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
+            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
         },
         /**
          * Request console logs for a virtual machine
@@ -14391,8 +14521,8 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceLogs(vmId, payload, options) {
-            return localVarFp.postInstanceLogs(vmId, payload, options).then((request) => request(axios, basePath));
+        requestVMLogs(vmId, payload, options) {
+            return localVarFp.requestVMLogs(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
@@ -14402,64 +14532,38 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceResize(vmId, payload, options) {
-            return localVarFp.postInstanceResize(vmId, payload, options).then((request) => request(axios, basePath));
+        resizeVM(vmId, payload, options) {
+            return localVarFp.resizeVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId
-         * @param {CreateSecurityRulePayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityRule(vmId, payload, options) {
-            return localVarFp.postSecurityRule(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId
-         * @param {CreateSnapshotPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshots(vmId, payload, options) {
-            return localVarFp.postSnapshots(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId
-         * @param {EditLabelOfAnExistingVMPayload} payload
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putLabels(vmId, payload, options) {
-            return localVarFp.putLabels(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachineDetails(vmId, options) {
-            return localVarFp.retrieveVirtualMachineDetails(vmId, options).then((request) => request(axios, basePath));
+        restoreVMFromHibernation(vmId, options) {
+            return localVarFp.restoreVMFromHibernation(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
-            return localVarFp.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
+        startVM(vmId, options) {
+            return localVarFp.startVM(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        stopVM(vmId, options) {
+            return localVarFp.stopVM(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14471,6 +14575,18 @@ export const VirtualMachineApiFactory = function (configuration, basePath, axios
  */
 export class VirtualMachineApi extends BaseAPI {
     /**
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId
+     * @param {EditLabelOfAnExistingVMPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    addVMLabel(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).addVMLabel(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
      * @summary Attach firewalls to a virtual machine
      * @param {number} vmId
@@ -14479,8 +14595,43 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    attachFirewallsToAVirtualMachine(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    attachFirewallsToVM(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).attachFirewallsToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Check if a Virtual Machine name is available
+     * @summary Fetch virtual machine name availability
+     * @param {string} name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    checkVMNameAvailability(name, options) {
+        return VirtualMachineApiFp(this.configuration).checkVMNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId
+     * @param {CreateSecurityRulePayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    createFirewallRuleForVM(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).createFirewallRuleForVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+     * @summary Create snapshot from a virtual machine
+     * @param {number} vmId
+     * @param {CreateSnapshotPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    createSnapshotForVM(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).createSnapshotForVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
@@ -14490,8 +14641,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    createOneOrMoreVirtualMachines(payload, options) {
-        return VirtualMachineApiFp(this.configuration).createOneOrMoreVirtualMachines(payload, options).then((request) => request(this.axios, this.basePath));
+    createVMs(payload, options) {
+        return VirtualMachineApiFp(this.configuration).createVMs(payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
@@ -14502,8 +14653,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteSecurityRule(vmId, sgRuleId, options) {
-        return VirtualMachineApiFp(this.configuration).deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(this.axios, this.basePath));
+    deleteFirewallRuleForVM(vmId, sgRuleId, options) {
+        return VirtualMachineApiFp(this.configuration).deleteFirewallRuleForVM(vmId, sgRuleId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
@@ -14513,52 +14664,33 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteVirtualMachine(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).deleteVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    deleteVM(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).deleteVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Check if a Virtual Machine name is available
-     * @summary Fetch virtual machine name availability
-     * @param {string} name
+     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+     * @summary Retrieve virtual machines associated with a contract
+     * @param {number} contractId
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Instance ID or Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    fetchVirtualMachineNameAvailability(name, options) {
-        return VirtualMachineApiFp(this.configuration).fetchVirtualMachineNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    getContractVMs(contractId, page, pageSize, search, options) {
+        return VirtualMachineApiFp(this.configuration).getContractVMs(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstanceHardReboot(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHardReboot(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstanceHibernate(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHibernate(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} vmId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    getInstanceHibernateRestore(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHibernateRestore(vmId, options).then((request) => request(this.axios, this.basePath));
+    getVM(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).getVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve console logs for a virtual machine
@@ -14569,42 +14701,43 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstanceLogs(vmId, requestId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceLogs(vmId, requestId, options).then((request) => request(this.axios, this.basePath));
+    getVMLogs(vmId, requestId, options) {
+        return VirtualMachineApiFp(this.configuration).getVMLogs(vmId, requestId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
      * @summary Retrieve virtual machine performance metrics
      * @param {number} vmId
-     * @param {GetInstanceMetricsDurationEnum} [duration]
+     * @param {GetVMMetricsDurationEnum} [duration]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstanceMetrics(vmId, duration, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceMetrics(vmId, duration, options).then((request) => request(this.axios, this.basePath));
+    getVMMetrics(vmId, duration, options) {
+        return VirtualMachineApiFp(this.configuration).getVMMetrics(vmId, duration, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstanceStart(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceStart(vmId, options).then((request) => request(this.axios, this.basePath));
+    hardRebootVM(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).hardRebootVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
      * @param {number} vmId
+     * @param {string} [retainIp] false
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getInstanceStop(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).getInstanceStop(vmId, options).then((request) => request(this.axios, this.basePath));
+    hibernateVM(vmId, retainIp, options) {
+        return VirtualMachineApiFp(this.configuration).hibernateVM(vmId, retainIp, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
@@ -14618,8 +14751,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options) {
-        return VirtualMachineApiFp(this.configuration).listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
+    listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
+        return VirtualMachineApiFp(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Request console logs for a virtual machine
@@ -14630,8 +14763,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    postInstanceLogs(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).postInstanceLogs(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    requestVMLogs(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).requestVMLogs(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
@@ -14642,75 +14775,47 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    postInstanceResize(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).postInstanceResize(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    resizeVM(vmId, payload, options) {
+        return VirtualMachineApiFp(this.configuration).resizeVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} vmId
-     * @param {CreateSecurityRulePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    postSecurityRule(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).postSecurityRule(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-     * @summary Create snapshot from a virtual machine
-     * @param {number} vmId
-     * @param {CreateSnapshotPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    postSnapshots(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).postSnapshots(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} vmId
-     * @param {EditLabelOfAnExistingVMPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    putLabels(vmId, payload, options) {
-        return VirtualMachineApiFp(this.configuration).putLabels(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+     * @summary Restore virtual machine from hibernation
      * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    retrieveVirtualMachineDetails(vmId, options) {
-        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachineDetails(vmId, options).then((request) => request(this.axios, this.basePath));
+    restoreVMFromHibernation(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).restoreVMFromHibernation(vmId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-     * @summary Retrieve virtual machines associated with a contract
-     * @param {number} contractId
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Instance ID or Name
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
+     * @param {number} vmId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options) {
-        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    startVM(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).startVM(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    stopVM(vmId, options) {
+        return VirtualMachineApiFp(this.configuration).stopVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
  * @export
  */
-export const GetInstanceMetricsDurationEnum = {
+export const GetVMMetricsDurationEnum = {
     _1h: '1h',
     _2h: '2h',
     _4h: '4h',
@@ -14735,9 +14840,9 @@ export const VirtualMachineEventsApiAxiosParamCreator = function (configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachineEvents: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        listVMEvents: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('listVirtualMachineEvents', 'vmId', vmId);
+            assertParamExists('listVMEvents', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/events`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14775,12 +14880,12 @@ export const VirtualMachineEventsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachineEvents(vmId, options) {
+        listVMEvents(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVirtualMachineEvents(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVMEvents(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineEventsApi.listVirtualMachineEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VirtualMachineEventsApi.listVMEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14800,8 +14905,8 @@ export const VirtualMachineEventsApiFactory = function (configuration, basePath,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachineEvents(vmId, options) {
-            return localVarFp.listVirtualMachineEvents(vmId, options).then((request) => request(axios, basePath));
+        listVMEvents(vmId, options) {
+            return localVarFp.listVMEvents(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14820,8 +14925,8 @@ export class VirtualMachineEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineEventsApi
      */
-    listVirtualMachineEvents(vmId, options) {
-        return VirtualMachineEventsApiFp(this.configuration).listVirtualMachineEvents(vmId, options).then((request) => request(this.axios, this.basePath));
+    listVMEvents(vmId, options) {
+        return VirtualMachineEventsApiFp(this.configuration).listVMEvents(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -14872,9 +14977,9 @@ export const VncUrlApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
+        requestVMConsole: (vmId_1, ...args_1) => __awaiter(this, [vmId_1, ...args_1], void 0, function* (vmId, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getVncUrl', 'vmId', vmId);
+            assertParamExists('requestVMConsole', 'vmId', vmId);
             const localVarPath = `/core/virtual-machines/{vm_id}/request-console`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14929,12 +15034,12 @@ export const VncUrlApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl(vmId, options) {
+        requestVMConsole(vmId, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVncUrl(vmId, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.requestVMConsole(vmId, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.getVncUrl']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VncUrlApi.requestVMConsole']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -14965,8 +15070,8 @@ export const VncUrlApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl(vmId, options) {
-            return localVarFp.getVncUrl(vmId, options).then((request) => request(axios, basePath));
+        requestVMConsole(vmId, options) {
+            return localVarFp.requestVMConsole(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14997,8 +15102,8 @@ export class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVncUrl(vmId, options) {
-        return VncUrlApiFp(this.configuration).getVncUrl(vmId, options).then((request) => request(this.axios, this.basePath));
+    requestVMConsole(vmId, options) {
+        return VncUrlApiFp(this.configuration).requestVMConsole(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -15071,17 +15176,17 @@ export const VolumeApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId
+         * Check if a Volume name is available
+         * @summary Fetch volume name availability
+         * @param {string} name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVolumeDetails: (volumeId_1, ...args_1) => __awaiter(this, [volumeId_1, ...args_1], void 0, function* (volumeId, options = {}) {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('fetchVolumeDetails', 'volumeId', volumeId);
-            const localVarPath = `/core/volumes/{volume_id}`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+        fetchVolumeNameAvailability: (name_1, ...args_1) => __awaiter(this, [name_1, ...args_1], void 0, function* (name, options = {}) {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('fetchVolumeNameAvailability', 'name', name);
+            const localVarPath = `/core/volume/name-availability/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -15102,17 +15207,17 @@ export const VolumeApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
-         * Check if a Volume name is available
-         * @summary Fetch volume name availability
-         * @param {string} name
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVolumeNameAvailability: (name_1, ...args_1) => __awaiter(this, [name_1, ...args_1], void 0, function* (name, options = {}) {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('fetchVolumeNameAvailability', 'name', name);
-            const localVarPath = `/core/volume/name-availability/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        getVolume: (volumeId_1, ...args_1) => __awaiter(this, [volumeId_1, ...args_1], void 0, function* (volumeId, options = {}) {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolume', 'volumeId', volumeId);
+            const localVarPath = `/core/volumes/{volume_id}`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -15280,22 +15385,6 @@ export const VolumeApiFp = function (configuration) {
             });
         },
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        fetchVolumeDetails(volumeId, options) {
-            return __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.fetchVolumeDetails(volumeId, options);
-                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeApi.fetchVolumeDetails']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
-                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-            });
-        },
-        /**
          * Check if a Volume name is available
          * @summary Fetch volume name availability
          * @param {string} name
@@ -15308,6 +15397,22 @@ export const VolumeApiFp = function (configuration) {
                 const localVarAxiosArgs = yield localVarAxiosParamCreator.fetchVolumeNameAvailability(name, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeApi.fetchVolumeNameAvailability']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolume(volumeId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getVolume(volumeId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeApi.getVolume']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -15392,16 +15497,6 @@ export const VolumeApiFactory = function (configuration, basePath, axios) {
             return localVarFp.deleteVolume(volumeId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        fetchVolumeDetails(volumeId, options) {
-            return localVarFp.fetchVolumeDetails(volumeId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Check if a Volume name is available
          * @summary Fetch volume name availability
          * @param {string} name
@@ -15410,6 +15505,16 @@ export const VolumeApiFactory = function (configuration, basePath, axios) {
          */
         fetchVolumeNameAvailability(name, options) {
             return localVarFp.fetchVolumeNameAvailability(name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolume(volumeId, options) {
+            return localVarFp.getVolume(volumeId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of available volume types that can be used in the creation of a new volume.
@@ -15476,17 +15581,6 @@ export class VolumeApi extends BaseAPI {
         return VolumeApiFp(this.configuration).deleteVolume(volumeId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-     * @summary Fetch Volume Details
-     * @param {number} volumeId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VolumeApi
-     */
-    fetchVolumeDetails(volumeId, options) {
-        return VolumeApiFp(this.configuration).fetchVolumeDetails(volumeId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
      * @param {string} name
@@ -15496,6 +15590,17 @@ export class VolumeApi extends BaseAPI {
      */
     fetchVolumeNameAvailability(name, options) {
         return VolumeApiFp(this.configuration).fetchVolumeNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+     * @summary Fetch Volume Details
+     * @param {number} volumeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VolumeApi
+     */
+    getVolume(volumeId, options) {
+        return VolumeApiFp(this.configuration).getVolume(volumeId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieves a list of available volume types that can be used in the creation of a new volume.
@@ -15548,11 +15653,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachVolumesToVirtualMachine: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        attachVolumesToVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachVolumesToVirtualMachine', 'vmId', vmId);
+            assertParamExists('attachVolumesToVM', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachVolumesToVirtualMachine', 'payload', payload);
+            assertParamExists('attachVolumesToVM', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-volumes`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -15584,11 +15689,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachVolumesFromVirtualMachine: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
+        detachVolumesFromVM: (vmId_1, payload_1, ...args_1) => __awaiter(this, [vmId_1, payload_1, ...args_1], void 0, function* (vmId, payload, options = {}) {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('detachVolumesFromVirtualMachine', 'vmId', vmId);
+            assertParamExists('detachVolumesFromVM', 'vmId', vmId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('detachVolumesFromVirtualMachine', 'payload', payload);
+            assertParamExists('detachVolumesFromVM', 'payload', payload);
             const localVarPath = `/core/virtual-machines/{vm_id}/detach-volumes`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -15620,11 +15725,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAVolumeAttachment: (volumeAttachmentId_1, payload_1, ...args_1) => __awaiter(this, [volumeAttachmentId_1, payload_1, ...args_1], void 0, function* (volumeAttachmentId, payload, options = {}) {
+        updateVolumeAttachment: (volumeAttachmentId_1, payload_1, ...args_1) => __awaiter(this, [volumeAttachmentId_1, payload_1, ...args_1], void 0, function* (volumeAttachmentId, payload, options = {}) {
             // verify required parameter 'volumeAttachmentId' is not null or undefined
-            assertParamExists('updateAVolumeAttachment', 'volumeAttachmentId', volumeAttachmentId);
+            assertParamExists('updateVolumeAttachment', 'volumeAttachmentId', volumeAttachmentId);
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateAVolumeAttachment', 'payload', payload);
+            assertParamExists('updateVolumeAttachment', 'payload', payload);
             const localVarPath = `/core/volume-attachments/{volume_attachment_id}`
                 .replace(`{${"volume_attachment_id"}}`, encodeURIComponent(String(volumeAttachmentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -15665,12 +15770,12 @@ export const VolumeAttachmentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachVolumesToVirtualMachine(vmId, payload, options) {
+        attachVolumesToVM(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachVolumesToVirtualMachine(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.attachVolumesToVM(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.attachVolumesToVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.attachVolumesToVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -15682,12 +15787,12 @@ export const VolumeAttachmentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachVolumesFromVirtualMachine(vmId, payload, options) {
+        detachVolumesFromVM(vmId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.detachVolumesFromVirtualMachine(vmId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.detachVolumesFromVM(vmId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.detachVolumesFromVirtualMachine']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.detachVolumesFromVM']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -15699,12 +15804,12 @@ export const VolumeAttachmentApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAVolumeAttachment(volumeAttachmentId, payload, options) {
+        updateVolumeAttachment(volumeAttachmentId, payload, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAVolumeAttachment(volumeAttachmentId, payload, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateVolumeAttachment(volumeAttachmentId, payload, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
-                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.updateAVolumeAttachment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['VolumeAttachmentApi.updateVolumeAttachment']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
@@ -15725,8 +15830,8 @@ export const VolumeAttachmentApiFactory = function (configuration, basePath, axi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachVolumesToVirtualMachine(vmId, payload, options) {
-            return localVarFp.attachVolumesToVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachVolumesToVM(vmId, payload, options) {
+            return localVarFp.attachVolumesToVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
@@ -15736,8 +15841,8 @@ export const VolumeAttachmentApiFactory = function (configuration, basePath, axi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachVolumesFromVirtualMachine(vmId, payload, options) {
-            return localVarFp.detachVolumesFromVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        detachVolumesFromVM(vmId, payload, options) {
+            return localVarFp.detachVolumesFromVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -15747,8 +15852,8 @@ export const VolumeAttachmentApiFactory = function (configuration, basePath, axi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAVolumeAttachment(volumeAttachmentId, payload, options) {
-            return localVarFp.updateAVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(axios, basePath));
+        updateVolumeAttachment(volumeAttachmentId, payload, options) {
+            return localVarFp.updateVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -15768,8 +15873,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    attachVolumesToVirtualMachine(vmId, payload, options) {
-        return VolumeAttachmentApiFp(this.configuration).attachVolumesToVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    attachVolumesToVM(vmId, payload, options) {
+        return VolumeAttachmentApiFp(this.configuration).attachVolumesToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
@@ -15780,8 +15885,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    detachVolumesFromVirtualMachine(vmId, payload, options) {
-        return VolumeAttachmentApiFp(this.configuration).detachVolumesFromVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    detachVolumesFromVM(vmId, payload, options) {
+        return VolumeAttachmentApiFp(this.configuration).detachVolumesFromVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -15792,8 +15897,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    updateAVolumeAttachment(volumeAttachmentId, payload, options) {
-        return VolumeAttachmentApiFp(this.configuration).updateAVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(this.axios, this.basePath));
+    updateVolumeAttachment(volumeAttachmentId, payload, options) {
+        return VolumeAttachmentApiFp(this.configuration).updateVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**

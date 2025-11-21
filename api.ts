@@ -9654,7 +9654,7 @@ export const AliveApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDoc: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAliveDoc: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/alive/doc`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9708,10 +9708,10 @@ export const AliveApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDoc(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDoc(options);
+        async getAliveDoc(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAliveDoc(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AliveApi.getDoc']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['AliveApi.getAliveDoc']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -9738,8 +9738,8 @@ export const AliveApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDoc(options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.getDoc(options).then((request) => request(axios, basePath));
+        getAliveDoc(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.getAliveDoc(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -9768,8 +9768,8 @@ export class AliveApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AliveApi
      */
-    public getDoc(options?: RawAxiosRequestConfig) {
-        return AliveApiFp(this.configuration).getDoc(options).then((request) => request(this.axios, this.basePath));
+    public getAliveDoc(options?: RawAxiosRequestConfig) {
+        return AliveApiFp(this.configuration).getAliveDoc(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -9860,7 +9860,7 @@ export const ApiKeyApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAPIKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAPIKey: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api-key`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9972,10 +9972,10 @@ export const ApiKeyApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAPIKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetApiKeysResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAPIKey(options);
+        async getAPIKey(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetApiKeysResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAPIKey(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ApiKeyApi.retrieveAPIKey']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ApiKeyApi.getAPIKey']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -10028,8 +10028,8 @@ export const ApiKeyApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAPIKey(options?: RawAxiosRequestConfig): AxiosPromise<GetApiKeysResponseModel> {
-            return localVarFp.retrieveAPIKey(options).then((request) => request(axios, basePath));
+        getAPIKey(options?: RawAxiosRequestConfig): AxiosPromise<GetApiKeysResponseModel> {
+            return localVarFp.getAPIKey(options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
@@ -10083,8 +10083,8 @@ export class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    public retrieveAPIKey(options?: RawAxiosRequestConfig) {
-        return ApiKeyApiFp(this.configuration).retrieveAPIKey(options).then((request) => request(this.axios, this.basePath));
+    public getAPIKey(options?: RawAxiosRequestConfig) {
+        return ApiKeyApiFp(this.configuration).getAPIKey(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10370,6 +10370,39 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAuthenticatedUser: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/auth/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10435,39 +10468,6 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAuthenticatedUserDetails: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/auth/me`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -10502,6 +10502,18 @@ export const AuthApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAuthenticatedUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAuthenticatedUser(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.getAuthenticatedUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10523,18 +10535,6 @@ export const AuthApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserOrganizations(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AuthApi.getUserOrganizations']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAuthenticatedUserDetails(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AuthApi.retrieveAuthenticatedUserDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -10565,6 +10565,15 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
             return localVarFp.disableMFA(options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAuthenticatedUser(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel> {
+            return localVarFp.getAuthenticatedUser(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10581,15 +10590,6 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          */
         getUserOrganizations(options?: RawAxiosRequestConfig): AxiosPromise<UserOrganizationsResponse> {
             return localVarFp.getUserOrganizations(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel> {
-            return localVarFp.retrieveAuthenticatedUserDetails(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10623,6 +10623,17 @@ export class AuthApi extends BaseAPI {
     }
 
     /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public getAuthenticatedUser(options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).getAuthenticatedUser(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -10643,17 +10654,6 @@ export class AuthApi extends BaseAPI {
     public getUserOrganizations(options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).getUserOrganizations(options).then((request) => request(this.axios, this.basePath));
     }
-
-    /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    public retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).retrieveAuthenticatedUserDetails(options).then((request) => request(this.axios, this.basePath));
-    }
 }
 
 
@@ -10671,9 +10671,9 @@ export const BetaAccessApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createABetaAccessRequest: async (payload: BetaAccessRequestPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createBetaAccessRequest: async (payload: BetaAccessRequestPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createABetaAccessRequest', 'payload', payload)
+            assertParamExists('createBetaAccessRequest', 'payload', payload)
             const localVarPath = `/auth/beta-access/requests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10704,13 +10704,17 @@ export const BetaAccessApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Check the status of all beta access requests.
-         * @summary Check the status of all beta access requests
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBetaAccessStatus: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/auth/beta-access/requests`;
+        getBetaAccessRequests: async (program: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'program' is not null or undefined
+            assertParamExists('getBetaAccessRequests', 'program', program)
+            const localVarPath = `/auth/beta-access/requests/{program}`
+                .replace(`{${"program"}}`, encodeURIComponent(String(program)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10737,17 +10741,13 @@ export const BetaAccessApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program 
+         * Check the status of all beta access requests.
+         * @summary Check the status of all beta access requests
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBetaAccessStatus2: async (program: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'program' is not null or undefined
-            assertParamExists('getBetaAccessStatus2', 'program', program)
-            const localVarPath = `/auth/beta-access/requests/{program}`
-                .replace(`{${"program"}}`, encodeURIComponent(String(program)));
+        getBetaAccessStatus: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/auth/beta-access/requests`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -10790,10 +10790,23 @@ export const BetaAccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessRequestResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createABetaAccessRequest(payload, options);
+        async createBetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessRequestResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createBetaAccessRequest(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BetaAccessApi.createABetaAccessRequest']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BetaAccessApi.createBetaAccessRequest']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBetaAccessRequests(program: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessStatusResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBetaAccessRequests(program, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BetaAccessApi.getBetaAccessRequests']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -10806,19 +10819,6 @@ export const BetaAccessApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBetaAccessStatus(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BetaAccessApi.getBetaAccessStatus']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BetaAccessStatusResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBetaAccessStatus2(program, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BetaAccessApi.getBetaAccessStatus2']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -10838,8 +10838,18 @@ export const BetaAccessApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessRequestResponseModel> {
-            return localVarFp.createABetaAccessRequest(payload, options).then((request) => request(axios, basePath));
+        createBetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessRequestResponseModel> {
+            return localVarFp.createBetaAccessRequest(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Check the status of a particular beta access requests.
+         * @summary Check the status of beta access requests
+         * @param {string} program 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBetaAccessRequests(program: string, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessStatusResponseModel> {
+            return localVarFp.getBetaAccessRequests(program, options).then((request) => request(axios, basePath));
         },
         /**
          * Check the status of all beta access requests.
@@ -10849,16 +10859,6 @@ export const BetaAccessApiFactory = function (configuration?: Configuration, bas
          */
         getBetaAccessStatus(options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessStatusResponseModel> {
             return localVarFp.getBetaAccessStatus(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Check the status of a particular beta access requests.
-         * @summary Check the status of beta access requests
-         * @param {string} program 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig): AxiosPromise<BetaAccessStatusResponseModel> {
-            return localVarFp.getBetaAccessStatus2(program, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10878,8 +10878,20 @@ export class BetaAccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BetaAccessApi
      */
-    public createABetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig) {
-        return BetaAccessApiFp(this.configuration).createABetaAccessRequest(payload, options).then((request) => request(this.axios, this.basePath));
+    public createBetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig) {
+        return BetaAccessApiFp(this.configuration).createBetaAccessRequest(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Check the status of a particular beta access requests.
+     * @summary Check the status of beta access requests
+     * @param {string} program 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BetaAccessApi
+     */
+    public getBetaAccessRequests(program: string, options?: RawAxiosRequestConfig) {
+        return BetaAccessApiFp(this.configuration).getBetaAccessRequests(program, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10892,18 +10904,6 @@ export class BetaAccessApi extends BaseAPI {
     public getBetaAccessStatus(options?: RawAxiosRequestConfig) {
         return BetaAccessApiFp(this.configuration).getBetaAccessStatus(options).then((request) => request(this.axios, this.basePath));
     }
-
-    /**
-     * Check the status of a particular beta access requests.
-     * @summary Check the status of beta access requests
-     * @param {string} program 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BetaAccessApi
-     */
-    public getBetaAccessStatus2(program: string, options?: RawAxiosRequestConfig) {
-        return BetaAccessApiFp(this.configuration).getBetaAccessStatus2(program, options).then((request) => request(this.axios, this.basePath));
-    }
 }
 
 
@@ -10915,116 +10915,7 @@ export class BetaAccessApi extends BaseAPI {
 export const BillingApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-         * @summary GET: Last Day Cost
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getLastDayCost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/last-day-cost`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getOrganizationThreshold: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/threshold`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-         * @summary GET: Billing usage
-         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-         * @param {string} [environment] Filter resources by environment ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsage2: async (deleted?: string, environment?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/usage`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (deleted !== undefined) {
-                localVarQueryParameter['deleted'] = deleted;
-            }
-
-            if (environment !== undefined) {
-                localVarQueryParameter['environment'] = environment;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
          * @param {number} bucketId 
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -11032,11 +10923,105 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingBucketDetailsGraph: async (bucketId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        bucketsBillingHistoryHourlyChart: async (bucketId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bucketId' is not null or undefined
-            assertParamExists('getUserBillingBucketDetailsGraph', 'bucketId', bucketId)
+            assertParamExists('bucketsBillingHistoryHourlyChart', 'bucketId', bucketId)
             const localVarPath = `/billing/billing/history/bucket/{bucket_id}/graph`
                 .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} bucketId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getBucketBillingHistory: async (bucketId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'bucketId' is not null or undefined
+            assertParamExists('getBucketBillingHistory', 'bucketId', bucketId)
+            const localVarPath = `/billing/billing/history/bucket/{bucket_id}`
+                .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistory: async (clusterId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('getClusterBillingHistory', 'clusterId', clusterId)
+            const localVarPath = `/billing/billing/history/cluster/{cluster_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11079,9 +11064,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingClusterDetailsGraph: async (clusterId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getClusterBillingHistoryGraph: async (clusterId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('getUserBillingClusterDetailsGraph', 'clusterId', clusterId)
+            assertParamExists('getClusterBillingHistoryGraph', 'clusterId', clusterId)
             const localVarPath = `/billing/billing/history/cluster/{cluster_id}/graph`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11118,407 +11103,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingDataSynthesisDetailsGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingDataSynthesisDetailsGraph', 'resourceId', resourceId)
-            const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingFineTuningDetailsGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingFineTuningDetailsGraph', 'resourceId', resourceId)
-            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-         * @summary Retrieve Billing History for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistory2: async (startDate?: string, endDate?: string, graph?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-            if (graph !== undefined) {
-                localVarQueryParameter['graph'] = graph;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucket2: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history/bucket`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} bucketId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucketDetails: async (bucketId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'bucketId' is not null or undefined
-            assertParamExists('getUserBillingHistoryBucketDetails', 'bucketId', bucketId)
-            const localVarPath = `/billing/billing/history/bucket/{bucket_id}`
-                .replace(`{${"bucket_id"}}`, encodeURIComponent(String(bucketId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryCluster: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history/cluster`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryClusterDetails: async (clusterId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('getUserBillingHistoryClusterDetails', 'clusterId', clusterId)
-            const localVarPath = `/billing/billing/history/cluster/{cluster_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryContract: async (startDate?: string, endDate?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history/contract`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
+         * User will receive billing history of data_synthesis for the specified billing cycle.
          * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -11528,7 +11113,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryDataSynthesis: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDataSynthesisBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/billing/history/data_synthesis`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11576,6 +11161,53 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistoryGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getDataSynthesisBillingHistoryGraph', 'resourceId', resourceId)
+            const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
          * @param {number} resourceId 
          * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
@@ -11583,9 +11215,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryDataSynthesisDetails: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDataSynthesisHistoryForResource: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryDataSynthesisDetails', 'resourceId', resourceId)
+            assertParamExists('getDataSynthesisHistoryForResource', 'resourceId', resourceId)
             const localVarPath = `/billing/billing/history/data_synthesis/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11622,7 +11254,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
+         * User will receive billing history of fine_tuning for the specified billing cycle.
          * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -11632,7 +11264,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryFineTuning: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFineTuningBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/billing/history/fine_tuning`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11680,18 +11312,18 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
          * @param {number} resourceId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryFineTuningDetails: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getFineTuningBillingHistoryGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryFineTuningDetails', 'resourceId', resourceId)
-            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}`
+            assertParamExists('getFineTuningBillingHistoryGraph', 'resourceId', resourceId)
+            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}/graph`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11727,7 +11359,40 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
+         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+         * @summary GET: Last Day Cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLastDayCost: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/last-day-cost`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of model_evaluation for the specified billing cycle.
          * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -11737,7 +11402,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryModelEvaluation: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getModelEvaluationBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/billing/history/model_evaluation`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11785,6 +11450,143 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistoryGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getModelEvaluationBillingHistoryGraph', 'resourceId', resourceId)
+            const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId 
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationThreshold: async (thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'thresholdId' is not null or undefined
+            assertParamExists('getNotificationThreshold', 'thresholdId', thresholdId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('getNotificationThreshold', 'payload', payload)
+            const localVarPath = `/billing/billing/threshold/{threshold_id}`
+                .replace(`{${"threshold_id"}}`, encodeURIComponent(String(thresholdId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceFineTuningBillingHistory: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getResourceFineTuningBillingHistory', 'resourceId', resourceId)
+            const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
          * @param {number} resourceId 
          * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
@@ -11792,9 +11594,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryModelEvaluationDetails: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getResourceModelEvaluationBillingHistory: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryModelEvaluationDetails', 'resourceId', resourceId)
+            assertParamExists('getResourceModelEvaluationBillingHistory', 'resourceId', resourceId)
             const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11831,18 +11633,19 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
-         * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId 
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInference: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history/serverless_inference`;
+        getServerlessInferenceBillingHistoryGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getServerlessInferenceBillingHistoryGraph', 'resourceId', resourceId)
+            const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11865,18 +11668,6 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['end_date'] = endDate;
             }
 
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -11896,9 +11687,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInferenceDetails: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getServerlessInferencesBillingHistory: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingHistoryServerlessInferenceDetails', 'resourceId', resourceId)
+            assertParamExists('getServerlessInferencesBillingHistory', 'resourceId', resourceId)
             const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11935,64 +11726,6 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistorySnapshot: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/billing/history/snapshot`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
-
-            if (perPage !== undefined) {
-                localVarQueryParameter['per_page'] = perPage;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
          * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
          * @param {number} snapshotId 
@@ -12001,9 +11734,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistorySnapshotDetails: async (snapshotId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSnapshotBillingHistory: async (snapshotId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('getUserBillingHistorySnapshotDetails', 'snapshotId', snapshotId)
+            assertParamExists('getSnapshotBillingHistory', 'snapshotId', snapshotId)
             const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12040,7 +11773,286 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistoryGraph: async (snapshotId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'snapshotId' is not null or undefined
+            assertParamExists('getSnapshotBillingHistoryGraph', 'snapshotId', snapshotId)
+            const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}/graph`
+                .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+         * @summary GET: Billing usage
+         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+         * @param {string} [environment] Filter resources by environment ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsage: async (deleted?: string, environment?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/usage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (deleted !== undefined) {
+                localVarQueryParameter['deleted'] = deleted;
+            }
+
+            if (environment !== undefined) {
+                localVarQueryParameter['environment'] = environment;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * @summary Retrieve Billing History for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingHistory: async (startDate?: string, endDate?: string, graph?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+            if (graph !== undefined) {
+                localVarQueryParameter['graph'] = graph;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingDetails: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingDetails', 'vmId', vmId)
+            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingEvents: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingEvents', 'vmId', vmId)
+            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/billing-events`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingGraph: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMBillingGraph', 'vmId', vmId)
+            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}/graph`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12050,7 +12062,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVm2: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVMBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/billing/history/virtual-machine`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12098,100 +12110,6 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmDetails2: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmDetails2', 'vmId', vmId)
-            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmSubResourceGraph2: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmSubResourceGraph2', 'vmId', vmId)
-            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource/graph`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
          * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
          * @param {number} vmId 
@@ -12200,9 +12118,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVmTotalCosts: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVMSubResourceCosts: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVmTotalCosts', 'vmId', vmId)
+            assertParamExists('getVMSubResourceCosts', 'vmId', vmId)
             const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12239,7 +12157,148 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceGraph: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('getVMSubResourceGraph', 'vmId', vmId)
+            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/sub-resource/graph`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingDetails: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolumeBillingDetails', 'volumeId', volumeId)
+            const localVarPath = `/billing/billing/history/volume/{volume_id}`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingEvents: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolumeBillingEvents', 'volumeId', volumeId)
+            const localVarPath = `/billing/billing/volume/{volume_id}/billing-events`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Volume for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12249,7 +12308,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryVolume2: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVolumeBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/billing/history/volume`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12297,242 +12356,7 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolumeDetails2: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserBillingHistoryVolumeDetails2', 'volumeId', volumeId)
-            const localVarPath = `/billing/billing/history/volume/{volume_id}`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingModelEvaluationDetailsGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingModelEvaluationDetailsGraph', 'resourceId', resourceId)
-            const localVarPath = `/billing/billing/history/model_evaluation/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingServerlessInferenceDetailsGraph: async (resourceId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'resourceId' is not null or undefined
-            assertParamExists('getUserBillingServerlessInferenceDetailsGraph', 'resourceId', resourceId)
-            const localVarPath = `/billing/billing/history/serverless_inference/{resource_id}/graph`
-                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingSnapshotDetailsGraph: async (snapshotId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('getUserBillingSnapshotDetailsGraph', 'snapshotId', snapshotId)
-            const localVarPath = `/billing/billing/history/snapshot/{snapshot_id}/graph`
-                .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVmDetailsGraph2: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserBillingVmDetailsGraph2', 'vmId', vmId)
-            const localVarPath = `/billing/billing/history/virtual-machine/{vm_id}/graph`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
          * @param {number} volumeId 
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12540,9 +12364,9 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingVolumeDetailsGraph: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVolumeBillingHistoryGraph: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserBillingVolumeDetailsGraph', 'volumeId', volumeId)
+            assertParamExists('getVolumeBillingHistoryGraph', 'volumeId', volumeId)
             const localVarPath = `/billing/billing/history/volume/{volume_id}/graph`
                 .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -12579,19 +12403,16 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId 
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserVmBillingEvents: async (vmId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getUserVmBillingEvents', 'vmId', vmId)
-            const localVarPath = `/billing/billing/virtual-machine/{vm_id}/billing-events`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+        listBillingContractHistory: async (startDate?: string, endDate?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history/contract`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12614,6 +12435,10 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['end_date'] = endDate;
             }
 
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -12626,19 +12451,18 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId 
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserVolumeBillingEvents: async (volumeId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('getUserVolumeBillingEvents', 'volumeId', volumeId)
-            const localVarPath = `/billing/billing/volume/{volume_id}/billing-events`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+        listBucketBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history/bucket`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12661,6 +12485,18 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['end_date'] = endDate;
             }
 
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -12673,20 +12509,18 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId 
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
+         * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putOrganizationThreshold: async (thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'thresholdId' is not null or undefined
-            assertParamExists('putOrganizationThreshold', 'thresholdId', thresholdId)
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putOrganizationThreshold', 'payload', payload)
-            const localVarPath = `/billing/billing/threshold/{threshold_id}`
-                .replace(`{${"threshold_id"}}`, encodeURIComponent(String(thresholdId)));
+        listClustersBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history/cluster`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12694,7 +12528,60 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listOrgNotificationThresholds: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/threshold`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -12703,12 +12590,125 @@ export const BillingApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of serverless_inference for the specified billing cycle.
+         * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listServerlessInferenceBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history/serverless_inference`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSnapshotBillingHistory: async (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/billing/history/snapshot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12726,6 +12726,144 @@ export const BillingApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BillingApiAxiosParamCreator(configuration)
     return {
         /**
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
+         * @param {number} bucketId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async bucketsBillingHistoryHourlyChart(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelGraphBillingDetailsBucket>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.bucketsBillingHistoryHourlyChart']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} bucketId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getBucketBillingHistory(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBucketBillingHistory(bucketId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getBucketBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getClusterBillingHistory(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getClusterBillingHistory(clusterId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getClusterBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+         * @param {number} clusterId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getClusterBillingHistoryGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getClusterBillingHistoryGraph(clusterId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getClusterBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of data_synthesis for the specified billing cycle.
+         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDataSynthesisBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getDataSynthesisBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDataSynthesisBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getDataSynthesisBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDataSynthesisHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getDataSynthesisHistoryForResource']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of fine_tuning for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFineTuningBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkloadBillingHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getFineTuningBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getFineTuningBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
          * @summary GET: Last Day Cost
          * @param {*} [options] Override http request option.
@@ -12738,15 +12876,137 @@ export const BillingApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
+         * User will receive billing history of model_evaluation for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOrganizationThreshold(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOrganizationThreshold(options);
+        async getModelEvaluationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getOrganizationThreshold']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getModelEvaluationBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getModelEvaluationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getModelEvaluationBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId 
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNotificationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdUpdateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNotificationThreshold(thresholdId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getNotificationThreshold']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getResourceFineTuningBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getResourceFineTuningBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getResourceModelEvaluationBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getResourceModelEvaluationBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getServerlessInferenceBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getServerlessInferenceBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getServerlessInferencesBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getServerlessInferencesBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} snapshotId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSnapshotBillingHistory(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSnapshotBillingHistory(snapshotId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getSnapshotBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getSnapshotBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12757,74 +13017,14 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BillingMetricesResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsage2(deleted, environment, options);
+        async getUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BillingMetricesResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsage(deleted, environment, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUsage2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUsage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
-         * @param {number} bucketId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelGraphBillingDetailsBucket>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingBucketDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-         * @param {number} clusterId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingClusterDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingDataSynthesisDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingFineTuningDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
          * @summary Retrieve Billing History for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12832,14 +13032,136 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationLevelBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistory2(startDate, endDate, graph, options);
+        async getUserBillingHistory(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationLevelBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistory(startDate, endDate, graph, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistory2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMBillingDetails(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMBillingDetails(vmId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMBillingDetails']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMBillingEvents(vmId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMBillingEvents']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMBillingGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMBillingGraph(vmId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMBillingGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMBillingHistory(startDate, endDate, search, perPage, page, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMBillingHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMSubResourceCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesCostsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMSubResourceCosts(vmId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMSubResourceCosts']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVMSubResourceGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesGraphResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMSubResourceGraph(vmId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVMSubResourceGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVolumeBillingDetails(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVolumeBillingDetails(volumeId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVolumeBillingDetails']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVolumeBillingEvents(volumeId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVolumeBillingEvents']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Volume for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -12849,25 +13171,57 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options);
+        async getVolumeBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVolumeBillingHistory(startDate, endDate, search, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryBucket2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVolumeBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} bucketId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options);
+        async getVolumeBillingHistoryGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryBucketDetails']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.getVolumeBillingHistoryGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listBillingContractHistory(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listBillingContractHistory(startDate, endDate, search, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listBillingContractHistory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listBucketBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listBucketBillingHistory(startDate, endDate, search, perPage, page, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listBucketBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12881,138 +13235,26 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options);
+        async listClustersBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listClustersBillingHistory(startDate, endDate, search, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryCluster']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listClustersBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options);
+        async listOrgNotificationThresholds(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listOrgNotificationThresholds(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryClusterDetails']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listOrgNotificationThresholds']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryContract(startDate, endDate, search, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryContract']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
-         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryDataSynthesis']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryDataSynthesisDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkloadBillingHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryFineTuning']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-         * @param {number} resourceId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryFineTuningDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryModelEvaluation']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryModelEvaluationDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
+         * User will receive billing history of serverless_inference for the specified billing cycle.
          * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13022,28 +13264,14 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options);
+        async listServerlessInferenceBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryServerlessInference']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listServerlessInferenceBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryServerlessInferenceDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13053,238 +13281,10 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options);
+        async listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistorySnapshot']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} snapshotId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistorySnapshotDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVm2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVMBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVmDetails2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesGraphResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVmSubResourceGraph2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SubResourcesCostsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVmTotalCosts']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVolume2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingHistoryVolumeDetails2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingModelEvaluationDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingServerlessInferenceDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingSnapshotDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingVmDetailsGraph2']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserBillingVolumeDetailsGraph']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserVmBillingEvents(vmId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserVmBillingEvents']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingEventsHistoryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserVolumeBillingEvents(volumeId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.getUserVolumeBillingEvents']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId 
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationThresholdUpdateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.putOrganizationThreshold(thresholdId, payload, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BillingApi.putOrganizationThreshold']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['BillingApi.listSnapshotBillingHistory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -13298,36 +13298,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = BillingApiFp(configuration)
     return {
         /**
-         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-         * @summary GET: Last Day Cost
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getLastDayCost(options?: RawAxiosRequestConfig): AxiosPromise<LastDayCostResponse> {
-            return localVarFp.getLastDayCost(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve all the notification thresholds for an organization.
-         * @summary GET: All Thresholds for Organization
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getOrganizationThreshold(options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdsResponse> {
-            return localVarFp.getOrganizationThreshold(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-         * @summary GET: Billing usage
-         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-         * @param {string} [environment] Filter resources by environment ID or Name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<BillingMetricesResponse> {
-            return localVarFp.getUsage2(deleted, environment, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
          * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
          * @param {number} bucketId 
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13335,70 +13306,8 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelGraphBillingDetailsBucket> {
-            return localVarFp.getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-         * @param {number} clusterId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-         * @summary Retrieve Billing History for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationLevelBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistory2(startDate, endDate, graph, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        bucketsBillingHistoryHourlyChart(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelGraphBillingDetailsBucket> {
+            return localVarFp.bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
@@ -13409,8 +13318,384 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
+        getBucketBillingHistory(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingDetailsResponseModel> {
+            return localVarFp.getBucketBillingHistory(bucketId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+         * @param {number} clusterId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistory(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel> {
+            return localVarFp.getClusterBillingHistory(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+         * @param {number} clusterId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getClusterBillingHistoryGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterGraphBillingDetailsResponseModel> {
+            return localVarFp.getClusterBillingHistoryGraph(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of data_synthesis for the specified billing cycle.
+         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
+            return localVarFp.getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDataSynthesisHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of fine_tuning for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkloadBillingHistoryResponse> {
+            return localVarFp.getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
+            return localVarFp.getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+         * @summary GET: Last Day Cost
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getLastDayCost(options?: RawAxiosRequestConfig): AxiosPromise<LastDayCostResponse> {
+            return localVarFp.getLastDayCost(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of model_evaluation for the specified billing cycle.
+         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
+            return localVarFp.getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getModelEvaluationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+         * @summary Update: Subscribe or Unsubscribe Notification Threshold
+         * @param {number} thresholdId 
+         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotificationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdUpdateResponse> {
+            return localVarFp.getNotificationThreshold(thresholdId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+         * @param {number} resourceId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceFineTuningBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
+            return localVarFp.getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getResourceModelEvaluationBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+         * @param {number} resourceId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferenceBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId 
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getServerlessInferencesBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema> {
+            return localVarFp.getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+         * @param {number} snapshotId 
+         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistory(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
+            return localVarFp.getSnapshotBillingHistory(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+         * @param {number} snapshotId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
+            return localVarFp.getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+         * @summary GET: Billing usage
+         * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+         * @param {string} [environment] Filter resources by environment ID or Name
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<BillingMetricesResponse> {
+            return localVarFp.getUsage(deleted, environment, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+         * @summary Retrieve Billing History for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingHistory(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationLevelBillingHistoryResponseModel> {
+            return localVarFp.getUserBillingHistory(startDate, endDate, graph, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingDetails(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVMBillingDetailsResponseModel> {
+            return localVarFp.getVMBillingDetails(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive vm billing events history
+         * @summary Retrieve VM billing events history
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse> {
+            return localVarFp.getVMBillingEvents(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel> {
+            return localVarFp.getVMBillingGraph(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmBillingHistoryResponseModel> {
+            return localVarFp.getVMBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesCostsResponseModel> {
+            return localVarFp.getVMSubResourceCosts(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+         * @param {number} vmId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVMSubResourceGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesGraphResponseModel> {
+            return localVarFp.getVMSubResourceGraph(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingDetails(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
+            return localVarFp.getVolumeBillingDetails(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive volume billing events history
+         * @summary Retrieve Volume billing events history
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse> {
+            return localVarFp.getVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel> {
+            return localVarFp.getVolumeBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+         * @param {number} volumeId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolumeBillingHistoryGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
+            return localVarFp.getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBillingContractHistory(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.listBillingContractHistory(startDate, endDate, search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelBucketBillingHistoryResponseModel> {
+            return localVarFp.listBucketBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
          * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
@@ -13423,111 +13708,20 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        listClustersBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingHistoryResponseModel> {
+            return localVarFp.listClustersBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
-         * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-         * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-         * @param {number} clusterId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * Retrieve all the notification thresholds for an organization.
+         * @summary GET: All Thresholds for Organization
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelClusterBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options).then((request) => request(axios, basePath));
+        listOrgNotificationThresholds(options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdsResponse> {
+            return localVarFp.listOrgNotificationThresholds(options).then((request) => request(axios, basePath));
         },
         /**
-         * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.getUserBillingHistoryContract(startDate, endDate, search, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of data_synthesis for the specified billing cycle.
-         * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
-            return localVarFp.getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<DataSynthesisBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of fine_tuning for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkloadBillingHistoryResponse> {
-            return localVarFp.getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-         * @param {number} resourceId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of model_evaluation for the specified billing cycle.
-         * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
-            return localVarFp.getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of serverless_inference for the specified billing cycle.
+         * User will receive billing history of serverless_inference for the specified billing cycle.
          * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13537,22 +13731,11 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
-            return localVarFp.getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        listServerlessInferenceBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse> {
+            return localVarFp.listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-         * @param {number} resourceId 
-         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+         * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
          * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
          * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
          * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13562,191 +13745,8 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-         * @param {number} snapshotId 
-         * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-         * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVMBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-         * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesGraphResponseModel> {
-            return localVarFp.getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-         * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<SubResourcesCostsResponseModel> {
-            return localVarFp.getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-         * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-         * @param {number} [perPage] Number of items to return per page
-         * @param {number} [page] Page number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel> {
-            return localVarFp.getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-         * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ModelEvaluationBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-         * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-         * @param {number} resourceId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ServerlessInferencedBillingHistoryDetailsResponseSchema> {
-            return localVarFp.getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-         * @param {number} snapshotId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVmGraphBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-         * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel> {
-            return localVarFp.getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive vm billing events history
-         * @summary Retrieve VM billing events history
-         * @param {number} vmId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse> {
-            return localVarFp.getUserVmBillingEvents(vmId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * User will receive volume billing events history
-         * @summary Retrieve Volume billing events history
-         * @param {number} volumeId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingEventsHistoryResponse> {
-            return localVarFp.getUserVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-         * @summary Update: Subscribe or Unsubscribe Notification Threshold
-         * @param {number} thresholdId 
-         * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): AxiosPromise<OrganizationThresholdUpdateResponse> {
-            return localVarFp.putOrganizationThreshold(thresholdId, payload, options).then((request) => request(axios, basePath));
+        listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeBillingHistoryResponseModel> {
+            return localVarFp.listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -13759,42 +13759,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
  */
 export class BillingApi extends BaseAPI {
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
-     * @summary GET: Last Day Cost
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getLastDayCost(options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getLastDayCost(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve all the notification thresholds for an organization.
-     * @summary GET: All Thresholds for Organization
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getOrganizationThreshold(options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getOrganizationThreshold(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
-     * @summary GET: Billing usage
-     * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
-     * @param {string} [environment] Filter resources by environment ID or Name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUsage2(deleted?: string, environment?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUsage2(deleted, environment, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * User will receive hourly cost datapoints for a Bucket for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Bucket for a specific billing cycle
      * @param {number} bucketId 
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -13803,80 +13768,8 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingBucketDetailsGraph(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingBucketDetailsGraph(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
-     * @param {number} clusterId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingClusterDetailsGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingClusterDetailsGraph(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
-     * @param {number} resourceId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingDataSynthesisDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingDataSynthesisDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
-     * @param {number} resourceId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingFineTuningDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingFineTuningDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
-     * @summary Retrieve Billing History for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistory2(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistory2(startDate, endDate, graph, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryBucket2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryBucket2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    public bucketsBillingHistoryHourlyChart(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).bucketsBillingHistoryHourlyChart(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13889,8 +13782,446 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingHistoryBucketDetails(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryBucketDetails(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    public getBucketBillingHistory(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getBucketBillingHistory(bucketId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
+     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
+     * @param {number} clusterId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getClusterBillingHistory(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getClusterBillingHistory(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
+     * @param {number} clusterId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getClusterBillingHistoryGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getClusterBillingHistoryGraph(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of data_synthesis for the specified billing cycle.
+     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getDataSynthesisBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getDataSynthesisBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
+     * @param {number} resourceId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getDataSynthesisBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getDataSynthesisBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId 
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getDataSynthesisHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getDataSynthesisHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of fine_tuning for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getFineTuningBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getFineTuningBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
+     * @param {number} resourceId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * @summary GET: Last Day Cost
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getLastDayCost(options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getLastDayCost(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of model_evaluation for the specified billing cycle.
+     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getModelEvaluationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getModelEvaluationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
+     * @param {number} resourceId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getModelEvaluationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getModelEvaluationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
+     * @summary Update: Subscribe or Unsubscribe Notification Threshold
+     * @param {number} thresholdId 
+     * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getNotificationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getNotificationThreshold(thresholdId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
+     * @param {number} resourceId 
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getResourceFineTuningBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getResourceFineTuningBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId 
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getResourceModelEvaluationBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getResourceModelEvaluationBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
+     * @param {number} resourceId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getServerlessInferenceBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getServerlessInferenceBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId 
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getServerlessInferencesBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getServerlessInferencesBillingHistory(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
+     * @param {number} snapshotId 
+     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getSnapshotBillingHistory(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getSnapshotBillingHistory(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
+     * @param {number} snapshotId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getSnapshotBillingHistoryGraph(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * @summary GET: Billing usage
+     * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
+     * @param {string} [environment] Filter resources by environment ID or Name
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getUsage(deleted, environment, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
+     * @summary Retrieve Billing History for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [graph] Set this value to \&quot;true\&quot; for getting graph value
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getUserBillingHistory(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getUserBillingHistory(startDate, endDate, graph, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
+     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
+     * @param {number} vmId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMBillingDetails(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMBillingDetails(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive vm billing events history
+     * @summary Retrieve VM billing events history
+     * @param {number} vmId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMBillingEvents(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
+     * @param {number} vmId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMBillingGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMBillingGraph(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
+     * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
+     * @param {number} vmId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMSubResourceCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMSubResourceCosts(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
+     * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
+     * @param {number} vmId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVMSubResourceGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVMSubResourceGraph(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
+     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
+     * @param {number} volumeId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVolumeBillingDetails(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVolumeBillingDetails(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive volume billing events history
+     * @summary Retrieve Volume billing events history
+     * @param {number} volumeId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVolumeBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVolumeBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
+     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
+     * @param {number} volumeId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public getVolumeBillingHistoryGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).getVolumeBillingHistoryGraph(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
+     * @summary Retrieve Billing History of Contract for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public listBillingContractHistory(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listBillingContractHistory(startDate, endDate, search, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    public listBucketBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listBucketBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13905,128 +14236,23 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingHistoryCluster(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryCluster(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    public listClustersBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listClustersBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
-     * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
-     * @param {number} clusterId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * Retrieve all the notification thresholds for an organization.
+     * @summary GET: All Thresholds for Organization
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingHistoryClusterDetails(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryClusterDetails(clusterId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    public listOrgNotificationThresholds(options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listOrgNotificationThresholds(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * User will recieve billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Contract for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by Contract \&quot;Description\&quot; or \&quot;ID\&quot;
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryContract(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryContract(startDate, endDate, search, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of data_synthesis for the specified billing cycle.
-     * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryDataSynthesis(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryDataSynthesis(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId 
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryDataSynthesisDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryDataSynthesisDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of fine_tuning for the specified billing cycle.
-     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryFineTuning(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryFineTuning(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve billing history of a specific Fine tunning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
-     * @param {number} resourceId 
-     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryFineTuningDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryFineTuningDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of model_evaluation for the specified billing cycle.
-     * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryModelEvaluation(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryModelEvaluation(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId 
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryModelEvaluationDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryModelEvaluationDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of serverless_inference for the specified billing cycle.
+     * User will receive billing history of serverless_inference for the specified billing cycle.
      * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -14037,25 +14263,12 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingHistoryServerlessInference(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryServerlessInference(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    public listServerlessInferenceBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listServerlessInferenceBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
-     * @param {number} resourceId 
-     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryServerlessInferenceDetails(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryServerlessInferenceDetails(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
+     * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
      * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
      * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
@@ -14066,221 +14279,8 @@ export class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    public getUserBillingHistorySnapshot(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistorySnapshot(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
-     * @param {number} snapshotId 
-     * @param {string} [startDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Datetime should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistorySnapshotDetails(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistorySnapshotDetails(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVm2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVm2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
-     * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
-     * @param {number} vmId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVmDetails2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmDetails2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
-     * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
-     * @param {number} vmId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVmSubResourceGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmSubResourceGraph2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
-     * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
-     * @param {number} vmId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVmTotalCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVmTotalCosts(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
-     * @summary Retrieve Billing History of Volume for a specific Billing Cycle
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
-     * @param {number} [perPage] Number of items to return per page
-     * @param {number} [page] Page number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVolume2(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVolume2(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
-     * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
-     * @param {number} volumeId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingHistoryVolumeDetails2(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingHistoryVolumeDetails2(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
-     * @param {number} resourceId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingModelEvaluationDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingModelEvaluationDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a serverles inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
-     * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
-     * @param {number} resourceId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingServerlessInferenceDetailsGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingServerlessInferenceDetailsGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
-     * @param {number} snapshotId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingSnapshotDetailsGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingSnapshotDetailsGraph(snapshotId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
-     * @param {number} vmId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingVmDetailsGraph2(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingVmDetailsGraph2(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will recieve hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
-     * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
-     * @param {number} volumeId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserBillingVolumeDetailsGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserBillingVolumeDetailsGraph(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will receive vm billing events history
-     * @summary Retrieve VM billing events history
-     * @param {number} vmId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserVmBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserVmBillingEvents(vmId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * User will receive volume billing events history
-     * @summary Retrieve Volume billing events history
-     * @param {number} volumeId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public getUserVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).getUserVolumeBillingEvents(volumeId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
-     * @summary Update: Subscribe or Unsubscribe Notification Threshold
-     * @param {number} thresholdId 
-     * @param {SubscribeOrUnsubscribeUpdatePayload} payload 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BillingApi
-     */
-    public putOrganizationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig) {
-        return BillingApiFp(this.configuration).putOrganizationThreshold(thresholdId, payload, options).then((request) => request(this.axios, this.basePath));
+    public listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
+        return BillingApiFp(this.configuration).listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -14300,11 +14300,11 @@ export const CalculateApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCalculate2: async (resourceType: string, id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        calculateResourceBillingRate: async (resourceType: string, id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'resourceType' is not null or undefined
-            assertParamExists('getCalculate2', 'resourceType', resourceType)
+            assertParamExists('calculateResourceBillingRate', 'resourceType', resourceType)
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getCalculate2', 'id', id)
+            assertParamExists('calculateResourceBillingRate', 'id', id)
             const localVarPath = `/pricebook/calculate/resource/{resource_type}/{id}`
                 .replace(`{${"resource_type"}}`, encodeURIComponent(String(resourceType)))
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
@@ -14351,10 +14351,10 @@ export const CalculateApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingResponseForCustomer>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCalculate2(resourceType, id, options);
+        async calculateResourceBillingRate(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceBillingResponseForCustomer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.calculateResourceBillingRate(resourceType, id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CalculateApi.getCalculate2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CalculateApi.calculateResourceBillingRate']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -14375,8 +14375,8 @@ export const CalculateApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingResponseForCustomer> {
-            return localVarFp.getCalculate2(resourceType, id, options).then((request) => request(axios, basePath));
+        calculateResourceBillingRate(resourceType: string, id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResourceBillingResponseForCustomer> {
+            return localVarFp.calculateResourceBillingRate(resourceType, id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -14397,8 +14397,8 @@ export class CalculateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CalculateApi
      */
-    public getCalculate2(resourceType: string, id: number, options?: RawAxiosRequestConfig) {
-        return CalculateApiFp(this.configuration).getCalculate2(resourceType, id, options).then((request) => request(this.axios, this.basePath));
+    public calculateResourceBillingRate(resourceType: string, id: number, options?: RawAxiosRequestConfig) {
+        return CalculateApiFp(this.configuration).calculateResourceBillingRate(resourceType, id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -14418,11 +14418,11 @@ export const CallbacksApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachCallbackToVirtualMachine: async (vmId: number, payload: AttachCallbackPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        attachCallbackToVM: async (vmId: number, payload: AttachCallbackPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachCallbackToVirtualMachine', 'vmId', vmId)
+            assertParamExists('attachCallbackToVM', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachCallbackToVirtualMachine', 'payload', payload)
+            assertParamExists('attachCallbackToVM', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14503,9 +14503,9 @@ export const CallbacksApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachineCallback: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteVMCallback: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteVirtualMachineCallback', 'vmId', vmId)
+            assertParamExists('deleteVMCallback', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/delete-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14578,11 +14578,11 @@ export const CallbacksApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVirtualMachineCallback: async (vmId: number, payload: AttachCallbackPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateVMCallback: async (vmId: number, payload: AttachCallbackPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('updateVirtualMachineCallback', 'vmId', vmId)
+            assertParamExists('updateVMCallback', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateVirtualMachineCallback', 'payload', payload)
+            assertParamExists('updateVMCallback', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/update-callback`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14674,10 +14674,10 @@ export const CallbacksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachCallbackToVirtualMachine(vmId, payload, options);
+        async attachCallbackToVM(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachCallbackToVM(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.attachCallbackToVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.attachCallbackToVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14701,10 +14701,10 @@ export const CallbacksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteVirtualMachineCallback(vmId, options);
+        async deleteVMCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteVMCallback(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.deleteVirtualMachineCallback']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.deleteVMCallback']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14728,10 +14728,10 @@ export const CallbacksApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVirtualMachineCallback(vmId, payload, options);
+        async updateVMCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachCallbackResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVMCallback(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.updateVirtualMachineCallback']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CallbacksApi.updateVMCallback']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14766,8 +14766,8 @@ export const CallbacksApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse> {
-            return localVarFp.attachCallbackToVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachCallbackToVM(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse> {
+            return localVarFp.attachCallbackToVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
@@ -14787,8 +14787,8 @@ export const CallbacksApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteVirtualMachineCallback(vmId, options).then((request) => request(axios, basePath));
+        deleteVMCallback(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteVMCallback(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
@@ -14808,8 +14808,8 @@ export const CallbacksApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse> {
-            return localVarFp.updateVirtualMachineCallback(vmId, payload, options).then((request) => request(axios, basePath));
+        updateVMCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachCallbackResponse> {
+            return localVarFp.updateVMCallback(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
@@ -14841,8 +14841,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    public attachCallbackToVirtualMachine(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) {
-        return CallbacksApiFp(this.configuration).attachCallbackToVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public attachCallbackToVM(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) {
+        return CallbacksApiFp(this.configuration).attachCallbackToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14866,8 +14866,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    public deleteVirtualMachineCallback(vmId: number, options?: RawAxiosRequestConfig) {
-        return CallbacksApiFp(this.configuration).deleteVirtualMachineCallback(vmId, options).then((request) => request(this.axios, this.basePath));
+    public deleteVMCallback(vmId: number, options?: RawAxiosRequestConfig) {
+        return CallbacksApiFp(this.configuration).deleteVMCallback(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14891,8 +14891,8 @@ export class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    public updateVirtualMachineCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) {
-        return CallbacksApiFp(this.configuration).updateVirtualMachineCallback(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public updateVMCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig) {
+        return CallbacksApiFp(this.configuration).updateVMCallback(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14924,9 +14924,9 @@ export const ClusterEventsApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllOfAClusterEvents: async (clusterId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listClusterEvents: async (clusterId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('fetchAllOfAClusterEvents', 'clusterId', clusterId)
+            assertParamExists('listClusterEvents', 'clusterId', clusterId)
             const localVarPath = `/core/clusters/{cluster_id}/events`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -14971,10 +14971,10 @@ export const ClusterEventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchAllOfAClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterEvents>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchAllOfAClusterEvents(clusterId, options);
+        async listClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterEvents>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listClusterEvents(clusterId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClusterEventsApi.fetchAllOfAClusterEvents']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ClusterEventsApi.listClusterEvents']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -14994,8 +14994,8 @@ export const ClusterEventsApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllOfAClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): AxiosPromise<ClusterEvents> {
-            return localVarFp.fetchAllOfAClusterEvents(clusterId, options).then((request) => request(axios, basePath));
+        listClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): AxiosPromise<ClusterEvents> {
+            return localVarFp.listClusterEvents(clusterId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -15015,8 +15015,8 @@ export class ClusterEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClusterEventsApi
      */
-    public fetchAllOfAClusterEvents(clusterId: string, options?: RawAxiosRequestConfig) {
-        return ClusterEventsApiFp(this.configuration).fetchAllOfAClusterEvents(clusterId, options).then((request) => request(this.axios, this.basePath));
+    public listClusterEvents(clusterId: string, options?: RawAxiosRequestConfig) {
+        return ClusterEventsApiFp(this.configuration).listClusterEvents(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -15028,43 +15028,6 @@ export class ClusterEventsApi extends BaseAPI {
  */
 export const ClustersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @summary Reconcile a cluster
-         * @param {number} clusterId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        attemptToManuallyReconcileACluster: async (clusterId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('attemptToManuallyReconcileACluster', 'clusterId', clusterId)
-            const localVarPath = `/core/clusters/{cluster_id}/reconcile`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @summary Create Cluster
@@ -15197,52 +15160,11 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACluster: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteCluster: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteACluster', 'id', id)
+            assertParamExists('deleteCluster', 'id', id)
             const localVarPath = `/core/clusters/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Delete a node group
-         * @param {number} clusterId 
-         * @param {number} nodeGroupId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteANodeGroup: async (clusterId: number, nodeGroupId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('deleteANodeGroup', 'clusterId', clusterId)
-            // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('deleteANodeGroup', 'nodeGroupId', nodeGroupId)
-            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
-                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -15346,6 +15268,47 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a node group
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNodeGroup: async (clusterId: number, nodeGroupId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('deleteNodeGroup', 'clusterId', clusterId)
+            // verify required parameter 'nodeGroupId' is not null or undefined
+            assertParamExists('deleteNodeGroup', 'nodeGroupId', nodeGroupId)
+            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
+                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -15499,6 +15462,47 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNodeGroup: async (clusterId: number, nodeGroupId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('getNodeGroup', 'clusterId', clusterId)
+            // verify required parameter 'nodeGroupId' is not null or undefined
+            assertParamExists('getNodeGroup', 'nodeGroupId', nodeGroupId)
+            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
+                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Getting Cluster Detail
          * @param {number} id 
          * @param {*} [options] Override http request option.
@@ -15626,20 +15630,16 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId 
-         * @param {number} nodeGroupId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveANodeGroup: async (clusterId: number, nodeGroupId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        reconcileCluster: async (clusterId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('retrieveANodeGroup', 'clusterId', clusterId)
-            // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('retrieveANodeGroup', 'nodeGroupId', nodeGroupId)
-            const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
-                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
-                .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
+            assertParamExists('reconcileCluster', 'clusterId', clusterId)
+            const localVarPath = `/core/clusters/{cluster_id}/reconcile`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -15647,7 +15647,7 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -15674,13 +15674,13 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateANodeGroup: async (clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateNodeGroup: async (clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'clusterId' is not null or undefined
-            assertParamExists('updateANodeGroup', 'clusterId', clusterId)
+            assertParamExists('updateNodeGroup', 'clusterId', clusterId)
             // verify required parameter 'nodeGroupId' is not null or undefined
-            assertParamExists('updateANodeGroup', 'nodeGroupId', nodeGroupId)
+            assertParamExists('updateNodeGroup', 'nodeGroupId', nodeGroupId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateANodeGroup', 'payload', payload)
+            assertParamExists('updateNodeGroup', 'payload', payload)
             const localVarPath = `/core/clusters/{cluster_id}/node-groups/{node_group_id}`
                 .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)))
                 .replace(`{${"node_group_id"}}`, encodeURIComponent(String(nodeGroupId)));
@@ -15722,19 +15722,6 @@ export const ClustersApiAxiosParamCreator = function (configuration?: Configurat
 export const ClustersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ClustersApiAxiosParamCreator(configuration)
     return {
-        /**
-         * 
-         * @summary Reconcile a cluster
-         * @param {number} clusterId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualReconciliationModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attemptToManuallyReconcileACluster(clusterId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClustersApi.attemptToManuallyReconcileACluster']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
         /**
          * 
          * @summary Create Cluster
@@ -15783,24 +15770,10 @@ export const ClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteACluster(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteACluster(id, options);
+        async deleteCluster(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCluster(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClustersApi.deleteACluster']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Delete a node group
-         * @param {number} clusterId 
-         * @param {number} nodeGroupId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteANodeGroup(clusterId, nodeGroupId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClustersApi.deleteANodeGroup']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.deleteCluster']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -15829,6 +15802,20 @@ export const ClustersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteClusterNodes(clusterId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ClustersApi.deleteClusterNodes']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete a node group
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteNodeGroup(clusterId, nodeGroupId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.deleteNodeGroup']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -15884,6 +15871,20 @@ export const ClustersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsGetResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNodeGroup(clusterId, nodeGroupId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.getNodeGroup']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Getting Cluster Detail
          * @param {number} id 
          * @param {*} [options] Override http request option.
@@ -15926,16 +15927,15 @@ export const ClustersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId 
-         * @param {number} nodeGroupId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsGetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveANodeGroup(clusterId, nodeGroupId, options);
+        async reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualReconciliationModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.reconcileCluster(clusterId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClustersApi.retrieveANodeGroup']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.reconcileCluster']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -15947,10 +15947,10 @@ export const ClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsCreateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateANodeGroup(clusterId, nodeGroupId, payload, options);
+        async updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterNodeGroupsCreateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateNodeGroup(clusterId, nodeGroupId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ClustersApi.updateANodeGroup']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ClustersApi.updateNodeGroup']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -15963,16 +15963,6 @@ export const ClustersApiFp = function(configuration?: Configuration) {
 export const ClustersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ClustersApiFp(configuration)
     return {
-        /**
-         * 
-         * @summary Reconcile a cluster
-         * @param {number} clusterId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ManualReconciliationModel> {
-            return localVarFp.attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(axios, basePath));
-        },
         /**
          * 
          * @summary Create Cluster
@@ -16012,19 +16002,8 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACluster(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteACluster(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Delete a node group
-         * @param {number} clusterId 
-         * @param {number} nodeGroupId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteANodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        deleteCluster(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteCluster(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16047,6 +16026,17 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
          */
         deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
             return localVarFp.deleteClusterNodes(clusterId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete a node group
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteNodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
         },
         /**
          * Check if a Cluster name is available
@@ -16089,6 +16079,17 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @summary Retrieve a node group in a cluster
+         * @param {number} clusterId 
+         * @param {number} nodeGroupId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsGetResponse> {
+            return localVarFp.getNodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Getting Cluster Detail
          * @param {number} id 
          * @param {*} [options] Override http request option.
@@ -16122,14 +16123,13 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @summary Retrieve a node group in a cluster
+         * @summary Reconcile a cluster
          * @param {number} clusterId 
-         * @param {number} nodeGroupId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsGetResponse> {
-            return localVarFp.retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(axios, basePath));
+        reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ManualReconciliationModel> {
+            return localVarFp.reconcileCluster(clusterId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16140,8 +16140,8 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsCreateResponse> {
-            return localVarFp.updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(axios, basePath));
+        updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): AxiosPromise<ClusterNodeGroupsCreateResponse> {
+            return localVarFp.updateNodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -16153,18 +16153,6 @@ export const ClustersApiFactory = function (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export class ClustersApi extends BaseAPI {
-    /**
-     * 
-     * @summary Reconcile a cluster
-     * @param {number} clusterId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClustersApi
-     */
-    public attemptToManuallyReconcileACluster(clusterId: number, options?: RawAxiosRequestConfig) {
-        return ClustersApiFp(this.configuration).attemptToManuallyReconcileACluster(clusterId, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @summary Create Cluster
@@ -16211,21 +16199,8 @@ export class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    public deleteACluster(id: number, options?: RawAxiosRequestConfig) {
-        return ClustersApiFp(this.configuration).deleteACluster(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Delete a node group
-     * @param {number} clusterId 
-     * @param {number} nodeGroupId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClustersApi
-     */
-    public deleteANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) {
-        return ClustersApiFp(this.configuration).deleteANodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    public deleteCluster(id: number, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).deleteCluster(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16252,6 +16227,19 @@ export class ClustersApi extends BaseAPI {
      */
     public deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig) {
         return ClustersApiFp(this.configuration).deleteClusterNodes(clusterId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete a node group
+     * @param {number} clusterId 
+     * @param {number} nodeGroupId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    public deleteNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).deleteNodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16303,6 +16291,19 @@ export class ClustersApi extends BaseAPI {
 
     /**
      * 
+     * @summary Retrieve a node group in a cluster
+     * @param {number} clusterId 
+     * @param {number} nodeGroupId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    public getNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).getNodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Getting Cluster Detail
      * @param {number} id 
      * @param {*} [options] Override http request option.
@@ -16342,15 +16343,14 @@ export class ClustersApi extends BaseAPI {
 
     /**
      * 
-     * @summary Retrieve a node group in a cluster
+     * @summary Reconcile a cluster
      * @param {number} clusterId 
-     * @param {number} nodeGroupId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    public retrieveANodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig) {
-        return ClustersApiFp(this.configuration).retrieveANodeGroup(clusterId, nodeGroupId, options).then((request) => request(this.axios, this.basePath));
+    public reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).reconcileCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16363,8 +16363,8 @@ export class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    public updateANodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig) {
-        return ClustersApiFp(this.configuration).updateANodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(this.axios, this.basePath));
+    public updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig) {
+        return ClustersApiFp(this.configuration).updateNodeGroup(clusterId, nodeGroupId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -16422,9 +16422,9 @@ export const ComplianceApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACompliance: async (gpuModel: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteCompliance: async (gpuModel: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'gpuModel' is not null or undefined
-            assertParamExists('deleteACompliance', 'gpuModel', gpuModel)
+            assertParamExists('deleteCompliance', 'gpuModel', gpuModel)
             const localVarPath = `/core/compliance/{gpu_model}`
                 .replace(`{${"gpu_model"}}`, encodeURIComponent(String(gpuModel)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -16459,7 +16459,7 @@ export const ComplianceApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveCompliance: async (gpu?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getCompliance: async (gpu?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/compliance`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16497,9 +16497,9 @@ export const ComplianceApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateACompliance: async (payload: CompliancePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateCompliance: async (payload: CompliancePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateACompliance', 'payload', payload)
+            assertParamExists('updateCompliance', 'payload', payload)
             const localVarPath = `/core/compliance`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16559,10 +16559,10 @@ export const ComplianceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteACompliance(gpuModel, options);
+        async deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCompliance(gpuModel, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.deleteACompliance']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.deleteCompliance']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -16572,10 +16572,10 @@ export const ComplianceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ComplianceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveCompliance(gpu, options);
+        async getCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ComplianceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCompliance(gpu, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.retrieveCompliance']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.getCompliance']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -16585,10 +16585,10 @@ export const ComplianceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateACompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateUpdateComplianceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateACompliance(payload, options);
+        async updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateUpdateComplianceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateCompliance(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.updateACompliance']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ComplianceApi.updateCompliance']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -16618,8 +16618,8 @@ export const ComplianceApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteACompliance(gpuModel, options).then((request) => request(axios, basePath));
+        deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteCompliance(gpuModel, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
@@ -16628,8 +16628,8 @@ export const ComplianceApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceResponse> {
-            return localVarFp.retrieveCompliance(gpu, options).then((request) => request(axios, basePath));
+        getCompliance(gpu?: string, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceResponse> {
+            return localVarFp.getCompliance(gpu, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16638,8 +16638,8 @@ export const ComplianceApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateACompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateUpdateComplianceResponse> {
-            return localVarFp.updateACompliance(payload, options).then((request) => request(axios, basePath));
+        updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateUpdateComplianceResponse> {
+            return localVarFp.updateCompliance(payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -16671,8 +16671,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    public deleteACompliance(gpuModel: string, options?: RawAxiosRequestConfig) {
-        return ComplianceApiFp(this.configuration).deleteACompliance(gpuModel, options).then((request) => request(this.axios, this.basePath));
+    public deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig) {
+        return ComplianceApiFp(this.configuration).deleteCompliance(gpuModel, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16683,8 +16683,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    public retrieveCompliance(gpu?: string, options?: RawAxiosRequestConfig) {
-        return ComplianceApiFp(this.configuration).retrieveCompliance(gpu, options).then((request) => request(this.axios, this.basePath));
+    public getCompliance(gpu?: string, options?: RawAxiosRequestConfig) {
+        return ComplianceApiFp(this.configuration).getCompliance(gpu, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16695,8 +16695,8 @@ export class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    public updateACompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig) {
-        return ComplianceApiFp(this.configuration).updateACompliance(payload, options).then((request) => request(this.axios, this.basePath));
+    public updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig) {
+        return ComplianceApiFp(this.configuration).updateCompliance(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -16714,7 +16714,7 @@ export const CreditApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCredit2: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUserCredit: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/billing/user-credit/credit`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16757,10 +16757,10 @@ export const CreditApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCredit2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCreditAndThresholdInfoInResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCredit2(options);
+        async getUserCredit(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCreditAndThresholdInfoInResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserCredit(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CreditApi.getCredit2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CreditApi.getUserCredit']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -16779,8 +16779,8 @@ export const CreditApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCredit2(options?: RawAxiosRequestConfig): AxiosPromise<GetCreditAndThresholdInfoInResponse> {
-            return localVarFp.getCredit2(options).then((request) => request(axios, basePath));
+        getUserCredit(options?: RawAxiosRequestConfig): AxiosPromise<GetCreditAndThresholdInfoInResponse> {
+            return localVarFp.getUserCredit(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -16799,8 +16799,8 @@ export class CreditApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CreditApi
      */
-    public getCredit2(options?: RawAxiosRequestConfig) {
-        return CreditApiFp(this.configuration).getCredit2(options).then((request) => request(this.axios, this.basePath));
+    public getUserCredit(options?: RawAxiosRequestConfig) {
+        return CreditApiFp(this.configuration).getUserCredit(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -16813,6 +16813,53 @@ export class CreditApi extends BaseAPI {
 export const CustomerContractApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
+         * @summary Retrieve GPU Allocation Graph for Contract
+         * @param {number} contractId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getContractGPUAllocationGraph: async (contractId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contractId' is not null or undefined
+            assertParamExists('getContractGPUAllocationGraph', 'contractId', contractId)
+            const localVarPath = `/pricebook/contracts/{contract_id}/gpu_allocation_graph`
+                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
          * @summary List Contracts
          * @param {number} [page] 
@@ -16820,7 +16867,7 @@ export const CustomerContractApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContract: async (page?: number, perPage?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listCustomerContracts: async (page?: number, perPage?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/pricebook/contracts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -16862,9 +16909,9 @@ export const CustomerContractApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContractDetails: async (contractId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        retrieveContract: async (contractId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('getCustomerContractDetails', 'contractId', contractId)
+            assertParamExists('retrieveContract', 'contractId', contractId)
             const localVarPath = `/pricebook/contracts/{contract_id}`
                 .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -16892,53 +16939,6 @@ export const CustomerContractApiAxiosParamCreator = function (configuration?: Co
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
-         * @summary Retrieve GPU Allocation Graph for Contract
-         * @param {number} contractId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContractGpuAllocationGraph: async (contractId: number, startDate?: string, endDate?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('getCustomerContractGpuAllocationGraph', 'contractId', contractId)
-            const localVarPath = `/pricebook/contracts/{contract_id}/gpu_allocation_graph`
-                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-            if (startDate !== undefined) {
-                localVarQueryParameter['start_date'] = startDate;
-            }
-
-            if (endDate !== undefined) {
-                localVarQueryParameter['end_date'] = endDate;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -16950,6 +16950,21 @@ export const CustomerContractApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = CustomerContractApiAxiosParamCreator(configuration)
     return {
         /**
+         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
+         * @summary Retrieve GPU Allocation Graph for Contract
+         * @param {number} contractId 
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getContractGPUAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractGPUAllocationGraphResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getContractGPUAllocationGraph(contractId, startDate, endDate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.getContractGPUAllocationGraph']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
          * @summary List Contracts
          * @param {number} [page] 
@@ -16957,10 +16972,10 @@ export const CustomerContractApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCustomerContractsListResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCustomerContract(page, perPage, options);
+        async listCustomerContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCustomerContractsListResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listCustomerContracts(page, perPage, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.getCustomerContract']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.listCustomerContracts']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -16970,25 +16985,10 @@ export const CustomerContractApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerContractDetailResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCustomerContractDetails(contractId, options);
+        async retrieveContract(contractId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CustomerContractDetailResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveContract(contractId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.getCustomerContractDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
-         * @summary Retrieve GPU Allocation Graph for Contract
-         * @param {number} contractId 
-         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractGPUAllocationGraphResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.getCustomerContractGpuAllocationGraph']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CustomerContractApi.retrieveContract']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -17002,27 +17002,6 @@ export const CustomerContractApiFactory = function (configuration?: Configuratio
     const localVarFp = CustomerContractApiFp(configuration)
     return {
         /**
-         * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
-         * @summary List Contracts
-         * @param {number} [page] 
-         * @param {number} [perPage] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<GetCustomerContractsListResponseModel> {
-            return localVarFp.getCustomerContract(page, perPage, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
-         * @summary Retrieve Contract Details
-         * @param {number} contractId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig): AxiosPromise<CustomerContractDetailResponseModel> {
-            return localVarFp.getCustomerContractDetails(contractId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
          * @summary Retrieve GPU Allocation Graph for Contract
          * @param {number} contractId 
@@ -17031,8 +17010,29 @@ export const CustomerContractApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractGPUAllocationGraphResponse> {
-            return localVarFp.getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options).then((request) => request(axios, basePath));
+        getContractGPUAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractGPUAllocationGraphResponse> {
+            return localVarFp.getContractGPUAllocationGraph(contractId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
+         * @summary List Contracts
+         * @param {number} [page] 
+         * @param {number} [perPage] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listCustomerContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<GetCustomerContractsListResponseModel> {
+            return localVarFp.listCustomerContracts(page, perPage, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
+         * @summary Retrieve Contract Details
+         * @param {number} contractId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveContract(contractId: number, options?: RawAxiosRequestConfig): AxiosPromise<CustomerContractDetailResponseModel> {
+            return localVarFp.retrieveContract(contractId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -17045,6 +17045,20 @@ export const CustomerContractApiFactory = function (configuration?: Configuratio
  */
 export class CustomerContractApi extends BaseAPI {
     /**
+     * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
+     * @summary Retrieve GPU Allocation Graph for Contract
+     * @param {number} contractId 
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CustomerContractApi
+     */
+    public getContractGPUAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
+        return CustomerContractApiFp(this.configuration).getContractGPUAllocationGraph(contractId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
      * @param {number} [page] 
@@ -17053,8 +17067,8 @@ export class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    public getCustomerContract(page?: number, perPage?: number, options?: RawAxiosRequestConfig) {
-        return CustomerContractApiFp(this.configuration).getCustomerContract(page, perPage, options).then((request) => request(this.axios, this.basePath));
+    public listCustomerContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig) {
+        return CustomerContractApiFp(this.configuration).listCustomerContracts(page, perPage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17065,22 +17079,8 @@ export class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    public getCustomerContractDetails(contractId: number, options?: RawAxiosRequestConfig) {
-        return CustomerContractApiFp(this.configuration).getCustomerContractDetails(contractId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieve GPU allocation count graph for a specific contract by providing the contract ID in the path. The endpoint returns the GPU allocation count graph for the contract within the specified date range.
-     * @summary Retrieve GPU Allocation Graph for Contract
-     * @param {number} contractId 
-     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CustomerContractApi
-     */
-    public getCustomerContractGpuAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) {
-        return CustomerContractApiFp(this.configuration).getCustomerContractGpuAllocationGraph(contractId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    public retrieveContract(contractId: number, options?: RawAxiosRequestConfig) {
+        return CustomerContractApiFp(this.configuration).retrieveContract(contractId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -17098,7 +17098,7 @@ export const DashboardApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDashboard: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDashboard: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/dashboard`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -17141,10 +17141,10 @@ export const DashboardApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveDashboard(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DashboardInfoResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveDashboard(options);
+        async getDashboard(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DashboardInfoResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDashboard(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DashboardApi.retrieveDashboard']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DashboardApi.getDashboard']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -17163,8 +17163,8 @@ export const DashboardApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDashboard(options?: RawAxiosRequestConfig): AxiosPromise<DashboardInfoResponse> {
-            return localVarFp.retrieveDashboard(options).then((request) => request(axios, basePath));
+        getDashboard(options?: RawAxiosRequestConfig): AxiosPromise<DashboardInfoResponse> {
+            return localVarFp.getDashboard(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -17183,8 +17183,8 @@ export class DashboardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    public retrieveDashboard(options?: RawAxiosRequestConfig) {
-        return DashboardApiFp(this.configuration).retrieveDashboard(options).then((request) => request(this.axios, this.basePath));
+    public getDashboard(options?: RawAxiosRequestConfig) {
+        return DashboardApiFp(this.configuration).getDashboard(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -17240,9 +17240,9 @@ export const DeploymentApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detailsOfDeploymentByID: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDeployment: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('detailsOfDeploymentByID', 'id', id)
+            assertParamExists('getDeployment', 'id', id)
             const localVarPath = `/core/marketplace/deployments/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -17372,10 +17372,10 @@ export const DeploymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.detailsOfDeploymentByID(id, options);
+        async getDeployment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDeployment(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DeploymentApi.detailsOfDeploymentByID']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DeploymentApi.getDeployment']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -17430,8 +17430,8 @@ export const DeploymentApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment> {
-            return localVarFp.detailsOfDeploymentByID(id, options).then((request) => request(axios, basePath));
+        getDeployment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment> {
+            return localVarFp.getDeployment(id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -17482,8 +17482,8 @@ export class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    public detailsOfDeploymentByID(id: number, options?: RawAxiosRequestConfig) {
-        return DeploymentApiFp(this.configuration).detailsOfDeploymentByID(id, options).then((request) => request(this.axios, this.basePath));
+    public getDeployment(id: number, options?: RawAxiosRequestConfig) {
+        return DeploymentApiFp(this.configuration).getDeployment(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17632,6 +17632,43 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironment: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getEnvironment', 'id', id)
+            const localVarPath = `/core/environments/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -17667,43 +17704,6 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveEnvironment: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveEnvironment', 'id', id)
-            const localVarPath = `/core/environments/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
 
     
@@ -17809,6 +17809,19 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Environment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnvironment(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['EnvironmentApi.getEnvironment']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -17821,19 +17834,6 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listEnvironments(page, pageSize, search, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['EnvironmentApi.listEnvironments']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Environment>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveEnvironment(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['EnvironmentApi.retrieveEnvironment']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -17891,6 +17891,16 @@ export const EnvironmentApiFactory = function (configuration?: Configuration, ba
             return localVarFp.fetchEnvironmentNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+         * @summary Retrieve environment
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Environment> {
+            return localVarFp.getEnvironment(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -17901,16 +17911,6 @@ export const EnvironmentApiFactory = function (configuration?: Configuration, ba
          */
         listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Environments> {
             return localVarFp.listEnvironments(page, pageSize, search, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-         * @summary Retrieve environment
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveEnvironment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Environment> {
-            return localVarFp.retrieveEnvironment(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the name of an existing environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
@@ -17970,6 +17970,18 @@ export class EnvironmentApi extends BaseAPI {
     }
 
     /**
+     * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
+     * @summary Retrieve environment
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnvironmentApi
+     */
+    public getEnvironment(id: number, options?: RawAxiosRequestConfig) {
+        return EnvironmentApiFp(this.configuration).getEnvironment(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
      * @param {string} [page] Page Number
@@ -17981,18 +17993,6 @@ export class EnvironmentApi extends BaseAPI {
      */
     public listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).listEnvironments(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
-     * @summary Retrieve environment
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof EnvironmentApi
-     */
-    public retrieveEnvironment(id: number, options?: RawAxiosRequestConfig) {
-        return EnvironmentApiFp(this.configuration).retrieveEnvironment(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18012,6 +18012,113 @@ export class EnvironmentApi extends BaseAPI {
 
 
 /**
+ * FIPExclusionsApi - axios parameter creator
+ * @export
+ */
+export const FIPExclusionsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkIfOrgIsExcludedFromFloatingIPDetachment: async (orgId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'orgId' is not null or undefined
+            assertParamExists('checkIfOrgIsExcludedFromFloatingIPDetachment', 'orgId', orgId)
+            const localVarPath = `/core/fip-detachment-exclusions/org/{org_id}`
+                .replace(`{${"org_id"}}`, encodeURIComponent(String(orgId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * FIPExclusionsApi - functional programming interface
+ * @export
+ */
+export const FIPExclusionsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = FIPExclusionsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async checkIfOrgIsExcludedFromFloatingIPDetachment(orgId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FIPExclusionsApi.checkIfOrgIsExcludedFromFloatingIPDetachment']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * FIPExclusionsApi - factory interface
+ * @export
+ */
+export const FIPExclusionsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = FIPExclusionsApiFp(configuration)
+    return {
+        /**
+         * is org excluded from floating ip detachment
+         * @param {number} orgId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkIfOrgIsExcludedFromFloatingIPDetachment(orgId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * FIPExclusionsApi - object-oriented interface
+ * @export
+ * @class FIPExclusionsApi
+ * @extends {BaseAPI}
+ */
+export class FIPExclusionsApi extends BaseAPI {
+    /**
+     * is org excluded from floating ip detachment
+     * @param {number} orgId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FIPExclusionsApi
+     */
+    public checkIfOrgIsExcludedFromFloatingIPDetachment(orgId: number, options?: RawAxiosRequestConfig) {
+        return FIPExclusionsApiFp(this.configuration).checkIfOrgIsExcludedFromFloatingIPDetachment(orgId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * FirewallAttachmentApi - axios parameter creator
  * @export
  */
@@ -18025,11 +18132,11 @@ export const FirewallAttachmentApiAxiosParamCreator = function (configuration?: 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallToVirtualMachines: async (firewallId: number, payload: AttachFirewallWithVM, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        attachFirewallToVMs: async (firewallId: number, payload: AttachFirewallWithVM, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('attachFirewallToVirtualMachines', 'firewallId', firewallId)
+            assertParamExists('attachFirewallToVMs', 'firewallId', firewallId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachFirewallToVirtualMachines', 'payload', payload)
+            assertParamExists('attachFirewallToVMs', 'payload', payload)
             const localVarPath = `/core/firewalls/{firewall_id}/update-attachments`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -18078,10 +18185,10 @@ export const FirewallAttachmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachFirewallToVirtualMachines(firewallId, payload, options);
+        async attachFirewallToVMs(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachFirewallToVMs(firewallId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FirewallAttachmentApi.attachFirewallToVirtualMachines']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FirewallAttachmentApi.attachFirewallToVMs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -18102,8 +18209,8 @@ export const FirewallAttachmentApiFactory = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(axios, basePath));
+        attachFirewallToVMs(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.attachFirewallToVMs(firewallId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18124,8 +18231,8 @@ export class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    public attachFirewallToVirtualMachines(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) {
-        return FirewallAttachmentApiFp(this.configuration).attachFirewallToVirtualMachines(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    public attachFirewallToVMs(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig) {
+        return FirewallAttachmentApiFp(this.configuration).attachFirewallToVMs(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18145,11 +18252,11 @@ export const FirewallsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFirewallRuleToAnExistingFirewall: async (firewallId: number, payload: CreateFirewallRulePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addRuleToFirewall: async (firewallId: number, payload: CreateFirewallRulePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('addFirewallRuleToAnExistingFirewall', 'firewallId', firewallId)
+            assertParamExists('addRuleToFirewall', 'firewallId', firewallId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('addFirewallRuleToAnExistingFirewall', 'payload', payload)
+            assertParamExists('addRuleToFirewall', 'payload', payload)
             const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -18187,9 +18294,9 @@ export const FirewallsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewFirewall: async (payload: CreateFirewallPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createFirewall: async (payload: CreateFirewallPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createANewFirewall', 'payload', payload)
+            assertParamExists('createFirewall', 'payload', payload)
             const localVarPath = `/core/firewalls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -18264,11 +18371,11 @@ export const FirewallsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFirewallRulesFromFirewall: async (firewallId: number, firewallRuleId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteRuleFromFirewall: async (firewallId: number, firewallRuleId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'firewallId' is not null or undefined
-            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallId', firewallId)
+            assertParamExists('deleteRuleFromFirewall', 'firewallId', firewallId)
             // verify required parameter 'firewallRuleId' is not null or undefined
-            assertParamExists('deleteFirewallRulesFromFirewall', 'firewallRuleId', firewallRuleId)
+            assertParamExists('deleteRuleFromFirewall', 'firewallRuleId', firewallRuleId)
             const localVarPath = `/core/firewalls/{firewall_id}/firewall-rules/{firewall_rule_id}`
                 .replace(`{${"firewall_id"}}`, encodeURIComponent(String(firewallId)))
                 .replace(`{${"firewall_rule_id"}}`, encodeURIComponent(String(firewallRuleId)));
@@ -18280,6 +18387,43 @@ export const FirewallsApiAxiosParamCreator = function (configuration?: Configura
             }
 
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFirewall: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getFirewall', 'id', id)
+            const localVarPath = `/core/firewalls/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -18350,43 +18494,6 @@ export const FirewallsApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTheDetailsOfAnExistingFirewall: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveTheDetailsOfAnExistingFirewall', 'id', id)
-            const localVarPath = `/core/firewalls/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -18405,10 +18512,10 @@ export const FirewallsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addFirewallRuleToAnExistingFirewall(firewallId, payload, options);
+        async addRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallRule>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addRuleToFirewall(firewallId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.addFirewallRuleToAnExistingFirewall']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.addRuleToFirewall']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -18418,10 +18525,10 @@ export const FirewallsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createANewFirewall(payload, options);
+        async createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createFirewall(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.createANewFirewall']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.createFirewall']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -18445,10 +18552,23 @@ export const FirewallsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options);
+        async deleteRuleFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRuleFromFirewall(firewallId, firewallRuleId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.deleteFirewallRulesFromFirewall']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.deleteRuleFromFirewall']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFirewall(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFirewall(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.getFirewall']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -18465,19 +18585,6 @@ export const FirewallsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listExistingFirewalls(page, pageSize, search, environment, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FirewallsApi.listExistingFirewalls']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FirewallDetailResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTheDetailsOfAnExistingFirewall(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FirewallsApi.retrieveTheDetailsOfAnExistingFirewall']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -18498,8 +18605,8 @@ export const FirewallsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule> {
-            return localVarFp.addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(axios, basePath));
+        addRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallRule> {
+            return localVarFp.addRuleToFirewall(firewallId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
@@ -18508,8 +18615,8 @@ export const FirewallsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse> {
-            return localVarFp.createANewFirewall(payload, options).then((request) => request(axios, basePath));
+        createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): AxiosPromise<FirewallResponse> {
+            return localVarFp.createFirewall(payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
@@ -18529,8 +18636,18 @@ export const FirewallsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
+        deleteRuleFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteRuleFromFirewall(firewallId, firewallRuleId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+         * @summary Retrieve firewall details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFirewall(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse> {
+            return localVarFp.getFirewall(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
@@ -18544,16 +18661,6 @@ export const FirewallsApiFactory = function (configuration?: Configuration, base
          */
         listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): AxiosPromise<FirewallsListResponse> {
             return localVarFp.listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-         * @summary Retrieve firewall details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig): AxiosPromise<FirewallDetailResponse> {
-            return localVarFp.retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18574,8 +18681,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    public addFirewallRuleToAnExistingFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) {
-        return FirewallsApiFp(this.configuration).addFirewallRuleToAnExistingFirewall(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
+    public addRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig) {
+        return FirewallsApiFp(this.configuration).addRuleToFirewall(firewallId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18586,8 +18693,8 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    public createANewFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) {
-        return FirewallsApiFp(this.configuration).createANewFirewall(payload, options).then((request) => request(this.axios, this.basePath));
+    public createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig) {
+        return FirewallsApiFp(this.configuration).createFirewall(payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18611,8 +18718,20 @@ export class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    public deleteFirewallRulesFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) {
-        return FirewallsApiFp(this.configuration).deleteFirewallRulesFromFirewall(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
+    public deleteRuleFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig) {
+        return FirewallsApiFp(this.configuration).deleteRuleFromFirewall(firewallId, firewallRuleId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
+     * @summary Retrieve firewall details
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FirewallsApi
+     */
+    public getFirewall(id: number, options?: RawAxiosRequestConfig) {
+        return FirewallsApiFp(this.configuration).getFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18628,18 +18747,6 @@ export class FirewallsApi extends BaseAPI {
      */
     public listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig) {
         return FirewallsApiFp(this.configuration).listExistingFirewalls(page, pageSize, search, environment, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
-     * @summary Retrieve firewall details
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FirewallsApi
-     */
-    public retrieveTheDetailsOfAnExistingFirewall(id: number, options?: RawAxiosRequestConfig) {
-        return FirewallsApiFp(this.configuration).retrieveTheDetailsOfAnExistingFirewall(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18770,9 +18877,9 @@ export const FloatingIpApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachPublicIPToVirtualMachine: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        attachPublicIPToVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachPublicIPToVirtualMachine', 'vmId', vmId)
+            assertParamExists('attachPublicIPToVM', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-floatingip`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -18807,9 +18914,9 @@ export const FloatingIpApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPublicIPFromVirtualMachine: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        detachPublicIPFromVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('detachPublicIPFromVirtualMachine', 'vmId', vmId)
+            assertParamExists('detachPublicIPFromVM', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/detach-floatingip`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -18854,10 +18961,10 @@ export const FloatingIpApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachPublicIPToVirtualMachine(vmId, options);
+        async attachPublicIPToVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachPublicIPToVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FloatingIpApi.attachPublicIPToVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FloatingIpApi.attachPublicIPToVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -18867,10 +18974,10 @@ export const FloatingIpApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.detachPublicIPFromVirtualMachine(vmId, options);
+        async detachPublicIPFromVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.detachPublicIPFromVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FloatingIpApi.detachPublicIPFromVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['FloatingIpApi.detachPublicIPFromVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -18890,8 +18997,8 @@ export const FloatingIpApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.attachPublicIPToVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        attachPublicIPToVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.attachPublicIPToVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
@@ -18900,8 +19007,8 @@ export const FloatingIpApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.detachPublicIPFromVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        detachPublicIPFromVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.detachPublicIPFromVM(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18921,8 +19028,8 @@ export class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    public attachPublicIPToVirtualMachine(vmId: number, options?: RawAxiosRequestConfig) {
-        return FloatingIpApiFp(this.configuration).attachPublicIPToVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    public attachPublicIPToVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return FloatingIpApiFp(this.configuration).attachPublicIPToVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18933,8 +19040,8 @@ export class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    public detachPublicIPFromVirtualMachine(vmId: number, options?: RawAxiosRequestConfig) {
-        return FloatingIpApiFp(this.configuration).detachPublicIPFromVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    public detachPublicIPFromVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return FloatingIpApiFp(this.configuration).detachPublicIPFromVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -19132,9 +19239,9 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getImageDetails: async (id: number, includeRelatedVms?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getImage: async (id: number, includeRelatedVms?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getImageDetails', 'id', id)
+            assertParamExists('getImage', 'id', id)
             const localVarPath = `/core/images/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19177,7 +19284,7 @@ export const ImageApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listImages2: async (region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listImages: async (region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/images`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -19268,10 +19375,10 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Image>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getImageDetails(id, includeRelatedVms, options);
+        async getImage(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Image>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getImage(id, includeRelatedVms, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ImageApi.getImageDetails']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ImageApi.getImage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19285,10 +19392,10 @@ export const ImageApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Images>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listImages2(region, includePublic, search, page, perPage, options);
+        async listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Images>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listImages(region, includePublic, search, page, perPage, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ImageApi.listImages2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ImageApi.listImages']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -19329,8 +19436,8 @@ export const ImageApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Image> {
-            return localVarFp.getImageDetails(id, includeRelatedVms, options).then((request) => request(axios, basePath));
+        getImage(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Image> {
+            return localVarFp.getImage(id, includeRelatedVms, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
@@ -19343,8 +19450,8 @@ export const ImageApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<Images> {
-            return localVarFp.listImages2(region, includePublic, search, page, perPage, options).then((request) => request(axios, basePath));
+        listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<Images> {
+            return localVarFp.listImages(region, includePublic, search, page, perPage, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -19389,8 +19496,8 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public getImageDetails(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig) {
-        return ImageApiFp(this.configuration).getImageDetails(id, includeRelatedVms, options).then((request) => request(this.axios, this.basePath));
+    public getImage(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig) {
+        return ImageApiFp(this.configuration).getImage(id, includeRelatedVms, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19405,8 +19512,8 @@ export class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    public listImages2(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig) {
-        return ImageApiFp(this.configuration).listImages2(region, includePublic, search, page, perPage, options).then((request) => request(this.axios, this.basePath));
+    public listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig) {
+        return ImageApiFp(this.configuration).listImages(region, includePublic, search, page, perPage, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -20515,48 +20622,15 @@ export class PartnerConfigApi extends BaseAPI {
 export const PaymentApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDetails: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/payment/payment-details`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentReceipt2: async (paymentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPaymentReceipt: async (paymentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'paymentId' is not null or undefined
-            assertParamExists('getPaymentReceipt2', 'paymentId', paymentId)
+            assertParamExists('getPaymentReceipt', 'paymentId', paymentId)
             const localVarPath = `/billing/payment/receipt/{payment_id}`
                 .replace(`{${"payment_id"}}`, encodeURIComponent(String(paymentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -20591,9 +20665,9 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postPayment: async (payload: PaymentInitiatePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        initiatePayment: async (payload: PaymentInitiatePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postPayment', 'payload', payload)
+            assertParamExists('initiatePayment', 'payload', payload)
             const localVarPath = `/billing/payment/payment-initiate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -20623,6 +20697,39 @@ export const PaymentApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPaymentDetails: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/payment/payment-details`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -20634,28 +20741,16 @@ export const PaymentApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PaymentApiAxiosParamCreator(configuration)
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDetailsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDetails(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentApi.getDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaymentReceipt2(paymentId, options);
+        async getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaymentReceipt(paymentId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentApi.getPaymentReceipt2']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentApi.getPaymentReceipt']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -20665,10 +20760,22 @@ export const PaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentInitiateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postPayment(payload, options);
+        async initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentInitiateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.initiatePayment(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PaymentApi.postPayment']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['PaymentApi.initiatePayment']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listPaymentDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentDetailsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPaymentDetails(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PaymentApi.listPaymentDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -20682,23 +20789,14 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = PaymentApiFp(configuration)
     return {
         /**
-         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-         * @summary GET: View payment details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDetails(options?: RawAxiosRequestConfig): AxiosPromise<PaymentDetailsResponse> {
-            return localVarFp.getDetails(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve the payment receipt from Stripe for a specific payment
          * @summary Retrieve Payment Receipt
          * @param {string} paymentId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.getPaymentReceipt2(paymentId, options).then((request) => request(axios, basePath));
+        getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.getPaymentReceipt(paymentId, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
@@ -20707,8 +20805,17 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): AxiosPromise<PaymentInitiateResponse> {
-            return localVarFp.postPayment(payload, options).then((request) => request(axios, basePath));
+        initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): AxiosPromise<PaymentInitiateResponse> {
+            return localVarFp.initiatePayment(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+         * @summary GET: View payment details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPaymentDetails(options?: RawAxiosRequestConfig): AxiosPromise<PaymentDetailsResponse> {
+            return localVarFp.listPaymentDetails(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -20721,17 +20828,6 @@ export const PaymentApiFactory = function (configuration?: Configuration, basePa
  */
 export class PaymentApi extends BaseAPI {
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
-     * @summary GET: View payment details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentApi
-     */
-    public getDetails(options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).getDetails(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Retrieve the payment receipt from Stripe for a specific payment
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId 
@@ -20739,8 +20835,8 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public getPaymentReceipt2(paymentId: string, options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).getPaymentReceipt2(paymentId, options).then((request) => request(this.axios, this.basePath));
+    public getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig) {
+        return PaymentApiFp(this.configuration).getPaymentReceipt(paymentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20751,8 +20847,19 @@ export class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    public postPayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig) {
-        return PaymentApiFp(this.configuration).postPayment(payload, options).then((request) => request(this.axios, this.basePath));
+    public initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig) {
+        return PaymentApiFp(this.configuration).initiatePayment(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * @summary GET: View payment details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentApi
+     */
+    public listPaymentDetails(options?: RawAxiosRequestConfig) {
+        return PaymentApiFp(this.configuration).listPaymentDetails(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -21149,13 +21256,17 @@ export const ProfileApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
-         * @summary List profiles
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProfiles: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/core/profiles`;
+        getProfile: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getProfile', 'id', id)
+            const localVarPath = `/core/profiles/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21182,17 +21293,13 @@ export const ProfileApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id 
+         * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
+         * @summary List profiles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveProfileDetails: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveProfileDetails', 'id', id)
-            const localVarPath = `/core/profiles/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        listProfiles: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/core/profiles`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -21255,6 +21362,19 @@ export const ProfileApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getProfile(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateProfileResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getProfile(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProfileApi.getProfile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
          * @summary List profiles
          * @param {*} [options] Override http request option.
@@ -21264,19 +21384,6 @@ export const ProfileApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listProfiles(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ProfileApi.listProfiles']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveProfileDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateProfileResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveProfileDetails(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProfileApi.retrieveProfileDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -21310,6 +21417,16 @@ export const ProfileApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deleteProfile(id, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+         * @summary Retrieve profile details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProfile(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CreateProfileResponse> {
+            return localVarFp.getProfile(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
          * @summary List profiles
          * @param {*} [options] Override http request option.
@@ -21317,16 +21434,6 @@ export const ProfileApiFactory = function (configuration?: Configuration, basePa
          */
         listProfiles(options?: RawAxiosRequestConfig): AxiosPromise<ProfileListResponse> {
             return localVarFp.listProfiles(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-         * @summary Retrieve profile details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveProfileDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<CreateProfileResponse> {
-            return localVarFp.retrieveProfileDetails(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -21363,6 +21470,18 @@ export class ProfileApi extends BaseAPI {
     }
 
     /**
+     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
+     * @summary Retrieve profile details
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProfileApi
+     */
+    public getProfile(id: number, options?: RawAxiosRequestConfig) {
+        return ProfileApiFp(this.configuration).getProfile(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
      * @param {*} [options] Override http request option.
@@ -21371,18 +21490,6 @@ export class ProfileApi extends BaseAPI {
      */
     public listProfiles(options?: RawAxiosRequestConfig) {
         return ProfileApiFp(this.configuration).listProfiles(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
-     * @summary Retrieve profile details
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProfileApi
-     */
-    public retrieveProfileDetails(id: number, options?: RawAxiosRequestConfig) {
-        return ProfileApiFp(this.configuration).retrieveProfileDetails(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -22012,9 +22119,9 @@ export const SnapshotEventsApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllEventsForASnapshot: async (snapshotId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listSnapshotEvents: async (snapshotId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('fetchAllEventsForASnapshot', 'snapshotId', snapshotId)
+            assertParamExists('listSnapshotEvents', 'snapshotId', snapshotId)
             const localVarPath = `/core/snapshots/{snapshot_id}/events`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -22059,10 +22166,10 @@ export const SnapshotEventsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchAllEventsForASnapshot(snapshotId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchAllEventsForASnapshot(snapshotId, options);
+        async listSnapshotEvents(snapshotId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSnapshotEvents(snapshotId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotEventsApi.fetchAllEventsForASnapshot']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotEventsApi.listSnapshotEvents']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -22082,8 +22189,8 @@ export const SnapshotEventsApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchAllEventsForASnapshot(snapshotId: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.fetchAllEventsForASnapshot(snapshotId, options).then((request) => request(axios, basePath));
+        listSnapshotEvents(snapshotId: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.listSnapshotEvents(snapshotId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -22103,8 +22210,8 @@ export class SnapshotEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotEventsApi
      */
-    public fetchAllEventsForASnapshot(snapshotId: number, options?: RawAxiosRequestConfig) {
-        return SnapshotEventsApiFp(this.configuration).fetchAllEventsForASnapshot(snapshotId, options).then((request) => request(this.axios, this.basePath));
+    public listSnapshotEvents(snapshotId: number, options?: RawAxiosRequestConfig) {
+        return SnapshotEventsApiFp(this.configuration).listSnapshotEvents(snapshotId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -22124,11 +22231,11 @@ export const SnapshotsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewCustomImage: async (snapshotId: number, payload: CreateImagePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createCustomImage: async (snapshotId: number, payload: CreateImagePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'snapshotId' is not null or undefined
-            assertParamExists('createANewCustomImage', 'snapshotId', snapshotId)
+            assertParamExists('createCustomImage', 'snapshotId', snapshotId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createANewCustomImage', 'payload', payload)
+            assertParamExists('createCustomImage', 'payload', payload)
             const localVarPath = `/core/snapshots/{snapshot_id}/image`
                 .replace(`{${"snapshot_id"}}`, encodeURIComponent(String(snapshotId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -22166,9 +22273,9 @@ export const SnapshotsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAnExistingSnapshot: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteSnapshot: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteAnExistingSnapshot', 'id', id)
+            assertParamExists('deleteSnapshot', 'id', id)
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -22234,58 +22341,15 @@ export const SnapshotsApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id 
-         * @param {SnapshotRestoreRequest} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        restoreASnapshot: async (id: number, payload: SnapshotRestoreRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('restoreASnapshot', 'id', id)
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('restoreASnapshot', 'payload', payload)
-            const localVarPath = `/core/snapshots/{id}/restore`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAnExistingSnapshot: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSnapshot: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveAnExistingSnapshot', 'id', id)
+            assertParamExists('getSnapshot', 'id', id)
             const localVarPath = `/core/snapshots/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -22322,7 +22386,7 @@ export const SnapshotsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrievesAListOfSnapshots: async (page?: string, pageSize?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listSnapshots: async (page?: string, pageSize?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/snapshots`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -22361,6 +22425,49 @@ export const SnapshotsApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id 
+         * @param {SnapshotRestoreRequest} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreSnapshot: async (id: number, payload: SnapshotRestoreRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('restoreSnapshot', 'id', id)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('restoreSnapshot', 'payload', payload)
+            const localVarPath = `/core/snapshots/{id}/restore`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -22379,10 +22486,10 @@ export const SnapshotsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateImage>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createANewCustomImage(snapshotId, payload, options);
+        async createCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateImage>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createCustomImage(snapshotId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.createANewCustomImage']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.createCustomImage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -22392,10 +22499,10 @@ export const SnapshotsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAnExistingSnapshot(id, options);
+        async deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSnapshot(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.deleteAnExistingSnapshot']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.deleteSnapshot']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -22412,30 +22519,16 @@ export const SnapshotsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id 
-         * @param {SnapshotRestoreRequest} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.restoreASnapshot(id, payload, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.restoreASnapshot']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAnExistingSnapshot(id, options);
+        async getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SnapshotRetrieve>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSnapshot(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.retrieveAnExistingSnapshot']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.getSnapshot']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -22447,10 +22540,24 @@ export const SnapshotsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrievesAListOfSnapshots(page, pageSize, search, options);
+        async listSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Snapshots>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSnapshots(page, pageSize, search, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.retrievesAListOfSnapshots']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.listSnapshots']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id 
+         * @param {SnapshotRestoreRequest} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async restoreSnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.restoreSnapshot(id, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SnapshotsApi.restoreSnapshot']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -22471,8 +22578,8 @@ export const SnapshotsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateImage> {
-            return localVarFp.createANewCustomImage(snapshotId, payload, options).then((request) => request(axios, basePath));
+        createCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateImage> {
+            return localVarFp.createCustomImage(snapshotId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
@@ -22481,8 +22588,8 @@ export const SnapshotsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
+        deleteSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteSnapshot(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Check if a Snapshot name is available
@@ -22495,25 +22602,14 @@ export const SnapshotsApiFactory = function (configuration?: Configuration, base
             return localVarFp.fetchSnapshotNameAvailability(name, options).then((request) => request(axios, basePath));
         },
         /**
-         * Restore a snapshot.
-         * @summary Restore a snapshot
-         * @param {number} id 
-         * @param {SnapshotRestoreRequest} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance> {
-            return localVarFp.restoreASnapshot(id, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve a snapshot.
          * @summary Retrieve a snapshot
          * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve> {
-            return localVarFp.retrieveAnExistingSnapshot(id, options).then((request) => request(axios, basePath));
+        getSnapshot(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SnapshotRetrieve> {
+            return localVarFp.getSnapshot(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
@@ -22524,8 +22620,19 @@ export const SnapshotsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots> {
-            return localVarFp.retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
+        listSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Snapshots> {
+            return localVarFp.listSnapshots(page, pageSize, search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Restore a snapshot.
+         * @summary Restore a snapshot
+         * @param {number} id 
+         * @param {SnapshotRestoreRequest} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreSnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): AxiosPromise<Instance> {
+            return localVarFp.restoreSnapshot(id, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -22546,8 +22653,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    public createANewCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig) {
-        return SnapshotsApiFp(this.configuration).createANewCustomImage(snapshotId, payload, options).then((request) => request(this.axios, this.basePath));
+    public createCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig) {
+        return SnapshotsApiFp(this.configuration).createCustomImage(snapshotId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22558,8 +22665,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    public deleteAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig) {
-        return SnapshotsApiFp(this.configuration).deleteAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    public deleteSnapshot(id: number, options?: RawAxiosRequestConfig) {
+        return SnapshotsApiFp(this.configuration).deleteSnapshot(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22575,19 +22682,6 @@ export class SnapshotsApi extends BaseAPI {
     }
 
     /**
-     * Restore a snapshot.
-     * @summary Restore a snapshot
-     * @param {number} id 
-     * @param {SnapshotRestoreRequest} payload 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SnapshotsApi
-     */
-    public restoreASnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) {
-        return SnapshotsApiFp(this.configuration).restoreASnapshot(id, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
      * @param {number} id 
@@ -22595,8 +22689,8 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    public retrieveAnExistingSnapshot(id: number, options?: RawAxiosRequestConfig) {
-        return SnapshotsApiFp(this.configuration).retrieveAnExistingSnapshot(id, options).then((request) => request(this.axios, this.basePath));
+    public getSnapshot(id: number, options?: RawAxiosRequestConfig) {
+        return SnapshotsApiFp(this.configuration).getSnapshot(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -22609,8 +22703,21 @@ export class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    public retrievesAListOfSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) {
-        return SnapshotsApiFp(this.configuration).retrievesAListOfSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    public listSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) {
+        return SnapshotsApiFp(this.configuration).listSnapshots(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Restore a snapshot.
+     * @summary Restore a snapshot
+     * @param {number} id 
+     * @param {SnapshotRestoreRequest} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SnapshotsApi
+     */
+    public restoreSnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig) {
+        return SnapshotsApiFp(this.configuration).restoreSnapshot(id, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -22628,7 +22735,7 @@ export const StockApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveGPUStocks: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getGPUStock: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/stocks`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -22671,10 +22778,10 @@ export const StockApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveGPUStocks(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NewStockRetriveResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveGPUStocks(options);
+        async getGPUStock(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NewStockRetriveResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGPUStock(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StockApi.retrieveGPUStocks']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StockApi.getGPUStock']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -22693,8 +22800,8 @@ export const StockApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveGPUStocks(options?: RawAxiosRequestConfig): AxiosPromise<NewStockRetriveResponse> {
-            return localVarFp.retrieveGPUStocks(options).then((request) => request(axios, basePath));
+        getGPUStock(options?: RawAxiosRequestConfig): AxiosPromise<NewStockRetriveResponse> {
+            return localVarFp.getGPUStock(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -22713,8 +22820,8 @@ export class StockApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StockApi
      */
-    public retrieveGPUStocks(options?: RawAxiosRequestConfig) {
-        return StockApiFp(this.configuration).retrieveGPUStocks(options).then((request) => request(this.axios, this.basePath));
+    public getGPUStock(options?: RawAxiosRequestConfig) {
+        return StockApiFp(this.configuration).getGPUStock(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -22829,6 +22936,43 @@ export const TemplateApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTemplate: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getTemplate', 'id', id)
+            const localVarPath = `/core/marketplace/templates/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -22854,43 +22998,6 @@ export const TemplateApiAxiosParamCreator = function (configuration?: Configurat
             if (visibility !== undefined) {
                 localVarQueryParameter['visibility'] = visibility;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplateDetails: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('retrieveTemplateDetails', 'id', id)
-            const localVarPath = `/core/marketplace/templates/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
 
     
@@ -22986,6 +23093,19 @@ export const TemplateApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTemplate(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTemplate(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TemplateApi.getTemplate']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -22996,19 +23116,6 @@ export const TemplateApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listTemplates(visibility, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TemplateApi.listTemplates']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTemplateDetails(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TemplateApi.retrieveTemplateDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -23059,6 +23166,16 @@ export const TemplateApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.deleteTemplate(id, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+         * @summary Retrieve template details
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTemplate(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Template> {
+            return localVarFp.getTemplate(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
          * @summary List templates
          * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -23067,16 +23184,6 @@ export const TemplateApiFactory = function (configuration?: Configuration, baseP
          */
         listTemplates(visibility?: string, options?: RawAxiosRequestConfig): AxiosPromise<Templates> {
             return localVarFp.listTemplates(visibility, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-         * @summary Retrieve template details
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Template> {
-            return localVarFp.retrieveTemplateDetails(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
@@ -23127,6 +23234,18 @@ export class TemplateApi extends BaseAPI {
     }
 
     /**
+     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
+     * @summary Retrieve template details
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TemplateApi
+     */
+    public getTemplate(id: number, options?: RawAxiosRequestConfig) {
+        return TemplateApiFp(this.configuration).getTemplate(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
      * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
@@ -23136,18 +23255,6 @@ export class TemplateApi extends BaseAPI {
      */
     public listTemplates(visibility?: string, options?: RawAxiosRequestConfig) {
         return TemplateApiFp(this.configuration).listTemplates(visibility, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    public retrieveTemplateDetails(id: number, options?: RawAxiosRequestConfig) {
-        return TemplateApiFp(this.configuration).retrieveTemplateDetails(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -23173,48 +23280,15 @@ export class TemplateApi extends BaseAPI {
 export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/billing/user/info`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUser: async (payload: UserInfoPostPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addUserBillingInfo: async (payload: UserInfoPostPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postUser', 'payload', payload)
+            assertParamExists('addUserBillingInfo', 'payload', payload)
             const localVarPath = `/billing/user/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23245,15 +23319,48 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingInfo: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/user/info`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putUser: async (payload: UserInfoPostPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateUserBillingInfo: async (payload: UserInfoPostPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putUser', 'payload', payload)
+            assertParamExists('updateUserBillingInfo', 'payload', payload)
             const localVarPath = `/billing/user/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23294,41 +23401,41 @@ export const UserApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersInfoListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.getUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postUser(payload, options);
+        async addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addUserBillingInfo(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.postUser']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.addUserBillingInfo']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserBillingInfo(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UsersInfoListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserBillingInfo(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.getUserBillingInfo']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.putUser(payload, options);
+        async updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUserBillingInfo(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.putUser']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.updateUserBillingInfo']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -23342,33 +23449,33 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = UserApiFp(configuration)
     return {
         /**
-         * Retrieve the billing details associated with your organization.
-         * @summary GET: Retrieve billing info
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser(options?: RawAxiosRequestConfig): AxiosPromise<UsersInfoListResponse> {
-            return localVarFp.getUser(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Add billing details associated with your organization in the request body.
+         * Add billing details associated with your user in the request body.
          * @summary POST: Insert billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel> {
-            return localVarFp.postUser(payload, options).then((request) => request(axios, basePath));
+        addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel> {
+            return localVarFp.addUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update the billing information for your organization in the request body.
+         * Retrieve the billing details associated with your user.
+         * @summary GET: Retrieve billing info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserBillingInfo(options?: RawAxiosRequestConfig): AxiosPromise<UsersInfoListResponse> {
+            return localVarFp.getUserBillingInfo(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Update the billing information for your user in the request body.
          * @summary PUT: Update billing info
          * @param {UserInfoPostPayload} payload 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel> {
-            return localVarFp.putUser(payload, options).then((request) => request(axios, basePath));
+        updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel> {
+            return localVarFp.updateUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -23381,38 +23488,38 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
  */
 export class UserApi extends BaseAPI {
     /**
-     * Retrieve the billing details associated with your organization.
-     * @summary GET: Retrieve billing info
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserApi
-     */
-    public getUser(options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).getUser(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Add billing details associated with your organization in the request body.
+     * Add billing details associated with your user in the request body.
      * @summary POST: Insert billing info
      * @param {UserInfoPostPayload} payload 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public postUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).postUser(payload, options).then((request) => request(this.axios, this.basePath));
+    public addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).addUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Update the billing information for your organization in the request body.
+     * Retrieve the billing details associated with your user.
+     * @summary GET: Retrieve billing info
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public getUserBillingInfo(options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).getUserBillingInfo(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Update the billing information for your user in the request body.
      * @summary PUT: Update billing info
      * @param {UserInfoPostPayload} payload 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public putUser(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).putUser(payload, options).then((request) => request(this.axios, this.basePath));
+    public updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).updateUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -23425,12 +23532,12 @@ export class UserApi extends BaseAPI {
 export const UserDetailChoiceApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDefaultFlavorsAndImages: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listDefaultFlavorsAndImages: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/user/resources/defaults`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23468,15 +23575,15 @@ export const UserDetailChoiceApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UserDetailChoiceApiAxiosParamCreator(configuration)
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserDefaultChoicesForUserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveDefaultFlavorsAndImages(options);
+        async listDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserDefaultChoicesForUserResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listDefaultFlavorsAndImages(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserDetailChoiceApi.retrieveDefaultFlavorsAndImages']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserDetailChoiceApi.listDefaultFlavorsAndImages']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -23490,13 +23597,13 @@ export const UserDetailChoiceApiFactory = function (configuration?: Configuratio
     const localVarFp = UserDetailChoiceApiFp(configuration)
     return {
         /**
-         * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+         * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
          * @summary Retrieve Default Flavors and Images
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): AxiosPromise<UserDefaultChoicesForUserResponse> {
-            return localVarFp.retrieveDefaultFlavorsAndImages(options).then((request) => request(axios, basePath));
+        listDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): AxiosPromise<UserDefaultChoicesForUserResponse> {
+            return localVarFp.listDefaultFlavorsAndImages(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -23509,14 +23616,14 @@ export const UserDetailChoiceApiFactory = function (configuration?: Configuratio
  */
 export class UserDetailChoiceApi extends BaseAPI {
     /**
-     * Retrieve the default choices for virtual machine deployment, including the default region, flavor, and image.
+     * Retrieves the default options for virtual machine deployment, including the default region, flavor, and image.
      * @summary Retrieve Default Flavors and Images
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserDetailChoiceApi
      */
-    public retrieveDefaultFlavorsAndImages(options?: RawAxiosRequestConfig) {
-        return UserDetailChoiceApiFp(this.configuration).retrieveDefaultFlavorsAndImages(options).then((request) => request(this.axios, this.basePath));
+    public listDefaultFlavorsAndImages(options?: RawAxiosRequestConfig) {
+        return UserDetailChoiceApiFp(this.configuration).listDefaultFlavorsAndImages(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -23705,6 +23812,49 @@ export class UserPermissionApi extends BaseAPI {
 export const VirtualMachineApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId 
+         * @param {EditLabelOfAnExistingVMPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addVMLabel: async (vmId: number, payload: EditLabelOfAnExistingVMPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('addVMLabel', 'vmId', vmId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('addVMLabel', 'payload', payload)
+            const localVarPath = `/core/virtual-machines/{vm_id}/label`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId 
@@ -23712,12 +23862,135 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallsToAVirtualMachine: async (vmId: number, payload: AttachFirewallsToVMPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        attachFirewallsToVM: async (vmId: number, payload: AttachFirewallsToVMPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachFirewallsToAVirtualMachine', 'vmId', vmId)
+            assertParamExists('attachFirewallsToVM', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachFirewallsToAVirtualMachine', 'payload', payload)
+            assertParamExists('attachFirewallsToVM', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-firewalls`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkVMNameAvailability: async (name: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('checkVMNameAvailability', 'name', name)
+            const localVarPath = `/core/virtual-machines/name-availability/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId 
+         * @param {CreateSecurityRulePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createFirewallRuleForVM: async (vmId: number, payload: CreateSecurityRulePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('createFirewallRuleForVM', 'vmId', vmId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createFirewallRuleForVM', 'payload', payload)
+            const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId 
+         * @param {CreateSnapshotPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSnapshotForVM: async (vmId: number, payload: CreateSnapshotPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('createSnapshotForVM', 'vmId', vmId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createSnapshotForVM', 'payload', payload)
+            const localVarPath = `/core/virtual-machines/{vm_id}/snapshots`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23754,9 +24027,9 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createOneOrMoreVirtualMachines: async (payload: CreateInstancesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createVMs: async (payload: CreateInstancesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createOneOrMoreVirtualMachines', 'payload', payload)
+            assertParamExists('createVMs', 'payload', payload)
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -23794,11 +24067,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityRule: async (vmId: number, sgRuleId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteFirewallRuleForVM: async (vmId: number, sgRuleId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteSecurityRule', 'vmId', vmId)
+            assertParamExists('deleteFirewallRuleForVM', 'vmId', vmId)
             // verify required parameter 'sgRuleId' is not null or undefined
-            assertParamExists('deleteSecurityRule', 'sgRuleId', sgRuleId)
+            assertParamExists('deleteFirewallRuleForVM', 'sgRuleId', sgRuleId)
             const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules/{sg_rule_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)))
                 .replace(`{${"sg_rule_id"}}`, encodeURIComponent(String(sgRuleId)));
@@ -23834,9 +24107,9 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachine: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('deleteVirtualMachine', 'vmId', vmId)
+            assertParamExists('deleteVM', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -23865,17 +24138,20 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name 
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId 
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVirtualMachineNameAvailability: async (name: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('fetchVirtualMachineNameAvailability', 'name', name)
-            const localVarPath = `/core/virtual-machines/name-availability/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        getContractVMs: async (contractId: number, page?: string, pageSize?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contractId' is not null or undefined
+            assertParamExists('getContractVMs', 'contractId', contractId)
+            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
+                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -23890,79 +24166,17 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHardReboot: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHardReboot', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}/hard-reboot`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernate: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHibernate', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
+            if (pageSize !== undefined) {
+                localVarQueryParameter['pageSize'] = pageSize;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
 
 
     
@@ -23976,16 +24190,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceHibernateRestore: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceHibernateRestore', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate-restore`
+            assertParamExists('getVM', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24020,11 +24234,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceLogs: async (vmId: number, requestId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVMLogs: async (vmId: number, requestId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceLogs', 'vmId', vmId)
+            assertParamExists('getVMLogs', 'vmId', vmId)
             // verify required parameter 'requestId' is not null or undefined
-            assertParamExists('getInstanceLogs', 'requestId', requestId)
+            assertParamExists('getVMLogs', 'requestId', requestId)
             const localVarPath = `/core/virtual-machines/{vm_id}/logs`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -24060,13 +24274,13 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId 
-         * @param {GetInstanceMetricsDurationEnum} [duration] 
+         * @param {GetVMMetricsDurationEnum} [duration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceMetrics: async (vmId: number, duration?: GetInstanceMetricsDurationEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getVMMetrics: async (vmId: number, duration?: GetVMMetricsDurationEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceMetrics', 'vmId', vmId)
+            assertParamExists('getVMMetrics', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/metrics`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -24099,16 +24313,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStart: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hardRebootVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceStart', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}/start`
+            assertParamExists('hardRebootVM', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}/hard-reboot`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24136,16 +24350,17 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId 
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStop: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hibernateVM: async (vmId: number, retainIp?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getInstanceStop', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
+            assertParamExists('hibernateVM', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24160,6 +24375,10 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (retainIp !== undefined) {
+                localVarQueryParameter['retain_ip'] = retainIp;
+            }
 
 
     
@@ -24183,7 +24402,7 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachines: async (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listVMs: async (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24238,11 +24457,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceLogs: async (vmId: number, payload: RequestInstanceLogsPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        requestVMLogs: async (vmId: number, payload: RequestInstanceLogsPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postInstanceLogs', 'vmId', vmId)
+            assertParamExists('requestVMLogs', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstanceLogs', 'payload', payload)
+            assertParamExists('requestVMLogs', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/logs`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -24281,11 +24500,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceResize: async (vmId: number, payload: InstanceResizePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        resizeVM: async (vmId: number, payload: InstanceResizePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postInstanceResize', 'vmId', vmId)
+            assertParamExists('resizeVM', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postInstanceResize', 'payload', payload)
+            assertParamExists('resizeVM', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/resize`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -24317,145 +24536,16 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId 
-         * @param {CreateSecurityRulePayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityRule: async (vmId: number, payload: CreateSecurityRulePayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postSecurityRule', 'vmId', vmId)
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSecurityRule', 'payload', payload)
-            const localVarPath = `/core/virtual-machines/{vm_id}/sg-rules`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId 
-         * @param {CreateSnapshotPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshots: async (vmId: number, payload: CreateSnapshotPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('postSnapshots', 'vmId', vmId)
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('postSnapshots', 'payload', payload)
-            const localVarPath = `/core/virtual-machines/{vm_id}/snapshots`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId 
-         * @param {EditLabelOfAnExistingVMPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putLabels: async (vmId: number, payload: EditLabelOfAnExistingVMPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('putLabels', 'vmId', vmId)
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('putLabels', 'payload', payload)
-            const localVarPath = `/core/virtual-machines/{vm_id}/label`
-                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachineDetails: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        restoreVMFromHibernation: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('retrieveVirtualMachineDetails', 'vmId', vmId)
-            const localVarPath = `/core/virtual-machines/{vm_id}`
+            assertParamExists('restoreVMFromHibernation', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}/hibernate-restore`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24483,20 +24573,17 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId 
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachinesAssociatedWithAContract: async (contractId: number, page?: string, pageSize?: string, search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'contractId' is not null or undefined
-            assertParamExists('retrieveVirtualMachinesAssociatedWithAContract', 'contractId', contractId)
-            const localVarPath = `/core/virtual-machines/contract/{contract_id}/virtual-machines`
-                .replace(`{${"contract_id"}}`, encodeURIComponent(String(contractId)));
+        startVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('startVM', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}/start`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -24511,17 +24598,42 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        stopVM: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('stopVM', 'vmId', vmId)
+            const localVarPath = `/core/virtual-machines/{vm_id}/stop`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
 
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-            if (search !== undefined) {
-                localVarQueryParameter['search'] = search;
-            }
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
 
     
@@ -24545,6 +24657,20 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = VirtualMachineApiAxiosParamCreator(configuration)
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId 
+         * @param {EditLabelOfAnExistingVMPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addVMLabel(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addVMLabel(vmId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.addVMLabel']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId 
@@ -24552,10 +24678,51 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachFirewallsToAVirtualMachine(vmId, payload, options);
+        async attachFirewallsToVM(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachFirewallsToVM(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.attachFirewallsToAVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.attachFirewallsToVM']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.checkVMNameAvailability(name, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.checkVMNameAvailability']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId 
+         * @param {CreateSecurityRulePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createFirewallRuleForVM(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecurityGroupRule>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createFirewallRuleForVM(vmId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.createFirewallRuleForVM']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId 
+         * @param {CreateSnapshotPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createSnapshotForVM(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSnapshotResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createSnapshotForVM(vmId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.createSnapshotForVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24565,10 +24732,10 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createOneOrMoreVirtualMachines(payload, options);
+        async createVMs(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInstancesResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createVMs(payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.createOneOrMoreVirtualMachines']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.createVMs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24579,10 +24746,10 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSecurityRule(vmId, sgRuleId, options);
+        async deleteFirewallRuleForVM(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFirewallRuleForVM(vmId, sgRuleId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.deleteSecurityRule']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.deleteFirewallRuleForVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24592,62 +24759,39 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteVirtualMachine(vmId, options);
+        async deleteVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.deleteVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.deleteVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name 
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId 
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchVirtualMachineNameAvailability(name, options);
+        async getContractVMs(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getContractVMs(contractId, page, pageSize, search, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.fetchVirtualMachineNameAvailability']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getContractVMs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceHardReboot(vmId, options);
+        async getVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceHardReboot']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceHibernate(vmId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceHibernate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceHibernateRestore(vmId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceHibernateRestore']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24658,50 +24802,51 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetInstanceLogsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceLogs(vmId, requestId, options);
+        async getVMLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetInstanceLogsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMLogs(vmId, requestId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceLogs']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getVMLogs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId 
-         * @param {GetInstanceMetricsDurationEnum} [duration] 
+         * @param {GetVMMetricsDurationEnum} [duration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsFields>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceMetrics(vmId, duration, options);
+        async getVMMetrics(vmId: number, duration?: GetVMMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsFields>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVMMetrics(vmId, duration, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceMetrics']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getVMMetrics']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceStart(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceStart(vmId, options);
+        async hardRebootVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.hardRebootVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceStart']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.hardRebootVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId 
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceStop(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceStop(vmId, options);
+        async hibernateVM(vmId: number, retainIp?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.hibernateVM(vmId, retainIp, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.getInstanceStop']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.hibernateVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24715,10 +24860,10 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options);
+        async listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.listVirtualMachines']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.listVMs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24729,10 +24874,10 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestInstanceLogsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postInstanceLogs(vmId, payload, options);
+        async requestVMLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestInstanceLogsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestVMLogs(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.postInstanceLogs']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.requestVMLogs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24743,81 +24888,49 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postInstanceResize(vmId, payload, options);
+        async resizeVM(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.resizeVM(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.postInstanceResize']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.resizeVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId 
-         * @param {CreateSecurityRulePayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecurityGroupRule>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postSecurityRule(vmId, payload, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.postSecurityRule']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId 
-         * @param {CreateSnapshotPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateSnapshotResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postSnapshots(vmId, payload, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.postSnapshots']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId 
-         * @param {EditLabelOfAnExistingVMPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.putLabels(vmId, payload, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.putLabels']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveVirtualMachineDetails(vmId, options);
+        async restoreVMFromHibernation(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.restoreVMFromHibernation(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.retrieveVirtualMachineDetails']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.restoreVMFromHibernation']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId 
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractInstancesResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options);
+        async startVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.startVM(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.retrieveVirtualMachinesAssociatedWithAContract']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.startVM']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async stopVM(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.stopVM(vmId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.stopVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -24831,6 +24944,17 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
     const localVarFp = VirtualMachineApiFp(configuration)
     return {
         /**
+         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+         * @summary Edit virtual machine labels
+         * @param {number} vmId 
+         * @param {EditLabelOfAnExistingVMPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addVMLabel(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.addVMLabel(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
          * @summary Attach firewalls to a virtual machine
          * @param {number} vmId 
@@ -24838,8 +24962,40 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachFirewallsToVM(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.attachFirewallsToVM(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Check if a Virtual Machine name is available
+         * @summary Fetch virtual machine name availability
+         * @param {string} name 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel> {
+            return localVarFp.checkVMNameAvailability(name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+         * @summary Add firewall rule to virtual machine
+         * @param {number} vmId 
+         * @param {CreateSecurityRulePayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createFirewallRuleForVM(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<SecurityGroupRule> {
+            return localVarFp.createFirewallRuleForVM(vmId, payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+         * @summary Create snapshot from a virtual machine
+         * @param {number} vmId 
+         * @param {CreateSnapshotPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createSnapshotForVM(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateSnapshotResponse> {
+            return localVarFp.createSnapshotForVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
@@ -24848,8 +25004,8 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse> {
-            return localVarFp.createOneOrMoreVirtualMachines(payload, options).then((request) => request(axios, basePath));
+        createVMs(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateInstancesResponse> {
+            return localVarFp.createVMs(payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
@@ -24859,8 +25015,8 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(axios, basePath));
+        deleteFirewallRuleForVM(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteFirewallRuleForVM(vmId, sgRuleId, options).then((request) => request(axios, basePath));
         },
         /**
          * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
@@ -24869,48 +25025,31 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.deleteVirtualMachine(vmId, options).then((request) => request(axios, basePath));
+        deleteVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.deleteVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Check if a Virtual Machine name is available
-         * @summary Fetch virtual machine name availability
-         * @param {string} name 
+         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+         * @summary Retrieve virtual machines associated with a contract
+         * @param {number} contractId 
+         * @param {string} [page] Page Number
+         * @param {string} [pageSize] Data Per Page
+         * @param {string} [search] Search By Instance ID or Name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel> {
-            return localVarFp.fetchVirtualMachineNameAvailability(name, options).then((request) => request(axios, basePath));
+        getContractVMs(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse> {
+            return localVarFp.getContractVMs(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
         },
         /**
-         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-         * @summary Hard reboot virtual machine
+         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+         * @summary Retrieve virtual machine details
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.getInstanceHardReboot(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-         * @summary Hibernate virtual machine
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.getInstanceHibernate(vmId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-         * @summary Restore virtual machine from hibernation
-         * @param {number} vmId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.getInstanceHibernateRestore(vmId, options).then((request) => request(axios, basePath));
+        getVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance> {
+            return localVarFp.getVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve console logs for a virtual machine
@@ -24920,39 +25059,40 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): AxiosPromise<GetInstanceLogsResponse> {
-            return localVarFp.getInstanceLogs(vmId, requestId, options).then((request) => request(axios, basePath));
+        getVMLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): AxiosPromise<GetInstanceLogsResponse> {
+            return localVarFp.getVMLogs(vmId, requestId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
          * @summary Retrieve virtual machine performance metrics
          * @param {number} vmId 
-         * @param {GetInstanceMetricsDurationEnum} [duration] 
+         * @param {GetVMMetricsDurationEnum} [duration] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig): AxiosPromise<MetricsFields> {
-            return localVarFp.getInstanceMetrics(vmId, duration, options).then((request) => request(axios, basePath));
+        getVMMetrics(vmId: number, duration?: GetVMMetricsDurationEnum, options?: RawAxiosRequestConfig): AxiosPromise<MetricsFields> {
+            return localVarFp.getVMMetrics(vmId, duration, options).then((request) => request(axios, basePath));
         },
         /**
-         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-         * @summary Start virtual machine
+         * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+         * @summary Hard reboot virtual machine
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStart(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.getInstanceStart(vmId, options).then((request) => request(axios, basePath));
+        hardRebootVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.hardRebootVM(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-         * @summary Stop virtual machine
+         * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+         * @summary Hibernate virtual machine
          * @param {number} vmId 
+         * @param {string} [retainIp] false
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceStop(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.getInstanceStop(vmId, options).then((request) => request(axios, basePath));
+        hibernateVM(vmId: number, retainIp?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.hibernateVM(vmId, retainIp, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
@@ -24965,8 +25105,8 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances> {
-            return localVarFp.listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
+        listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances> {
+            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
         },
         /**
          * Request console logs for a virtual machine
@@ -24976,8 +25116,8 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): AxiosPromise<RequestInstanceLogsResponse> {
-            return localVarFp.postInstanceLogs(vmId, payload, options).then((request) => request(axios, basePath));
+        requestVMLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): AxiosPromise<RequestInstanceLogsResponse> {
+            return localVarFp.requestVMLogs(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
@@ -24987,64 +25127,38 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.postInstanceResize(vmId, payload, options).then((request) => request(axios, basePath));
+        resizeVM(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.resizeVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
-         * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-         * @summary Add firewall rule to virtual machine
-         * @param {number} vmId 
-         * @param {CreateSecurityRulePayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): AxiosPromise<SecurityGroupRule> {
-            return localVarFp.postSecurityRule(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-         * @summary Create snapshot from a virtual machine
-         * @param {number} vmId 
-         * @param {CreateSnapshotPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateSnapshotResponse> {
-            return localVarFp.postSnapshots(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-         * @summary Edit virtual machine labels
-         * @param {number} vmId 
-         * @param {EditLabelOfAnExistingVMPayload} payload 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
-            return localVarFp.putLabels(vmId, payload, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-         * @summary Retrieve virtual machine details
+         * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+         * @summary Restore virtual machine from hibernation
          * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<Instance> {
-            return localVarFp.retrieveVirtualMachineDetails(vmId, options).then((request) => request(axios, basePath));
+        restoreVMFromHibernation(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.restoreVMFromHibernation(vmId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-         * @summary Retrieve virtual machines associated with a contract
-         * @param {number} contractId 
-         * @param {string} [page] Page Number
-         * @param {string} [pageSize] Data Per Page
-         * @param {string} [search] Search By Instance ID or Name
+         * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+         * @summary Start virtual machine
+         * @param {number} vmId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ContractInstancesResponse> {
-            return localVarFp.retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(axios, basePath));
+        startVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.startVM(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+         * @summary Stop virtual machine
+         * @param {number} vmId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        stopVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
+            return localVarFp.stopVM(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -25057,6 +25171,19 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
  */
 export class VirtualMachineApi extends BaseAPI {
     /**
+     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
+     * @summary Edit virtual machine labels
+     * @param {number} vmId 
+     * @param {EditLabelOfAnExistingVMPayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public addVMLabel(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).addVMLabel(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
      * @summary Attach firewalls to a virtual machine
      * @param {number} vmId 
@@ -25065,8 +25192,46 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public attachFirewallsToAVirtualMachine(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).attachFirewallsToAVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public attachFirewallsToVM(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).attachFirewallsToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Check if a Virtual Machine name is available
+     * @summary Fetch virtual machine name availability
+     * @param {string} name 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).checkVMNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
+     * @summary Add firewall rule to virtual machine
+     * @param {number} vmId 
+     * @param {CreateSecurityRulePayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public createFirewallRuleForVM(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).createFirewallRuleForVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
+     * @summary Create snapshot from a virtual machine
+     * @param {number} vmId 
+     * @param {CreateSnapshotPayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public createSnapshotForVM(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).createSnapshotForVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25077,8 +25242,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public createOneOrMoreVirtualMachines(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).createOneOrMoreVirtualMachines(payload, options).then((request) => request(this.axios, this.basePath));
+    public createVMs(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).createVMs(payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25090,8 +25255,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public deleteSecurityRule(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).deleteSecurityRule(vmId, sgRuleId, options).then((request) => request(this.axios, this.basePath));
+    public deleteFirewallRuleForVM(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).deleteFirewallRuleForVM(vmId, sgRuleId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25102,56 +25267,35 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public deleteVirtualMachine(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).deleteVirtualMachine(vmId, options).then((request) => request(this.axios, this.basePath));
+    public deleteVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).deleteVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Check if a Virtual Machine name is available
-     * @summary Fetch virtual machine name availability
-     * @param {string} name 
+     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
+     * @summary Retrieve virtual machines associated with a contract
+     * @param {number} contractId 
+     * @param {string} [page] Page Number
+     * @param {string} [pageSize] Data Per Page
+     * @param {string} [search] Search By Instance ID or Name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public fetchVirtualMachineNameAvailability(name: string, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).fetchVirtualMachineNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    public getContractVMs(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).getContractVMs(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
-     * @summary Hard reboot virtual machine
+     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
+     * @summary Retrieve virtual machine details
      * @param {number} vmId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public getInstanceHardReboot(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHardReboot(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
-     * @summary Hibernate virtual machine
-     * @param {number} vmId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    public getInstanceHibernate(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHibernate(vmId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
-     * @summary Restore virtual machine from hibernation
-     * @param {number} vmId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    public getInstanceHibernateRestore(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceHibernateRestore(vmId, options).then((request) => request(this.axios, this.basePath));
+    public getVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).getVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25163,45 +25307,46 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public getInstanceLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceLogs(vmId, requestId, options).then((request) => request(this.axios, this.basePath));
+    public getVMLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).getVMLogs(vmId, requestId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
      * @summary Retrieve virtual machine performance metrics
      * @param {number} vmId 
-     * @param {GetInstanceMetricsDurationEnum} [duration] 
+     * @param {GetVMMetricsDurationEnum} [duration] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public getInstanceMetrics(vmId: number, duration?: GetInstanceMetricsDurationEnum, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceMetrics(vmId, duration, options).then((request) => request(this.axios, this.basePath));
+    public getVMMetrics(vmId: number, duration?: GetVMMetricsDurationEnum, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).getVMMetrics(vmId, duration, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
-     * @summary Start virtual machine
+     * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
+     * @summary Hard reboot virtual machine
      * @param {number} vmId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public getInstanceStart(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceStart(vmId, options).then((request) => request(this.axios, this.basePath));
+    public hardRebootVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).hardRebootVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
-     * @summary Stop virtual machine
+     * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
+     * @summary Hibernate virtual machine
      * @param {number} vmId 
+     * @param {string} [retainIp] false
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public getInstanceStop(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).getInstanceStop(vmId, options).then((request) => request(this.axios, this.basePath));
+    public hibernateVM(vmId: number, retainIp?: string, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).hibernateVM(vmId, retainIp, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25216,8 +25361,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public listVirtualMachines(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).listVirtualMachines(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
+    public listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25229,8 +25374,8 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public postInstanceLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).postInstanceLogs(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public requestVMLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).requestVMLogs(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25242,81 +25387,51 @@ export class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public postInstanceResize(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).postInstanceResize(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public resizeVM(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).resizeVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
-     * @summary Add firewall rule to virtual machine
-     * @param {number} vmId 
-     * @param {CreateSecurityRulePayload} payload 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    public postSecurityRule(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).postSecurityRule(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Create snapshots of a virtual machine by providing the virtual machine ID in the path
-     * @summary Create snapshot from a virtual machine
-     * @param {number} vmId 
-     * @param {CreateSnapshotPayload} payload 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    public postSnapshots(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).postSnapshots(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Adds one or more labels to an existing virtual machine. Provide the virtual machine ID in the path to add labels to the specified VM. For multiple labels, add a space between each label in the request body.
-     * @summary Edit virtual machine labels
-     * @param {number} vmId 
-     * @param {EditLabelOfAnExistingVMPayload} payload 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VirtualMachineApi
-     */
-    public putLabels(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).putLabels(vmId, payload, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
-     * @summary Retrieve virtual machine details
+     * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
+     * @summary Restore virtual machine from hibernation
      * @param {number} vmId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public retrieveVirtualMachineDetails(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachineDetails(vmId, options).then((request) => request(this.axios, this.basePath));
+    public restoreVMFromHibernation(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).restoreVMFromHibernation(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
-     * @summary Retrieve virtual machines associated with a contract
-     * @param {number} contractId 
-     * @param {string} [page] Page Number
-     * @param {string} [pageSize] Data Per Page
-     * @param {string} [search] Search By Instance ID or Name
+     * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
+     * @summary Start virtual machine
+     * @param {number} vmId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public retrieveVirtualMachinesAssociatedWithAContract(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).retrieveVirtualMachinesAssociatedWithAContract(contractId, page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    public startVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).startVM(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
+     * @summary Stop virtual machine
+     * @param {number} vmId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public stopVM(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).stopVM(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
  * @export
  */
-export const GetInstanceMetricsDurationEnum = {
+export const GetVMMetricsDurationEnum = {
     _1h: '1h',
     _2h: '2h',
     _4h: '4h',
@@ -25328,7 +25443,7 @@ export const GetInstanceMetricsDurationEnum = {
     _15d: '15d',
     _30d: '30d'
 } as const;
-export type GetInstanceMetricsDurationEnum = typeof GetInstanceMetricsDurationEnum[keyof typeof GetInstanceMetricsDurationEnum];
+export type GetVMMetricsDurationEnum = typeof GetVMMetricsDurationEnum[keyof typeof GetVMMetricsDurationEnum];
 
 
 /**
@@ -25344,9 +25459,9 @@ export const VirtualMachineEventsApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachineEvents: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listVMEvents: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('listVirtualMachineEvents', 'vmId', vmId)
+            assertParamExists('listVMEvents', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/events`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -25391,10 +25506,10 @@ export const VirtualMachineEventsApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstanceEvents>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listVirtualMachineEvents(vmId, options);
+        async listVMEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstanceEvents>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listVMEvents(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VirtualMachineEventsApi.listVirtualMachineEvents']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineEventsApi.listVMEvents']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -25414,8 +25529,8 @@ export const VirtualMachineEventsApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<InstanceEvents> {
-            return localVarFp.listVirtualMachineEvents(vmId, options).then((request) => request(axios, basePath));
+        listVMEvents(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<InstanceEvents> {
+            return localVarFp.listVMEvents(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -25435,8 +25550,8 @@ export class VirtualMachineEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineEventsApi
      */
-    public listVirtualMachineEvents(vmId: number, options?: RawAxiosRequestConfig) {
-        return VirtualMachineEventsApiFp(this.configuration).listVirtualMachineEvents(vmId, options).then((request) => request(this.axios, this.basePath));
+    public listVMEvents(vmId: number, options?: RawAxiosRequestConfig) {
+        return VirtualMachineEventsApiFp(this.configuration).listVMEvents(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -25496,9 +25611,9 @@ export const VncUrlApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        requestVMConsole: async (vmId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('getVncUrl', 'vmId', vmId)
+            assertParamExists('requestVMConsole', 'vmId', vmId)
             const localVarPath = `/core/virtual-machines/{vm_id}/request-console`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -25557,10 +25672,10 @@ export const VncUrlApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getVncUrl(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getVncUrl(vmId, options);
+        async requestVMConsole(vmId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RequestConsole>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.requestVMConsole(vmId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VncUrlApi.getVncUrl']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VncUrlApi.requestVMConsole']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -25591,8 +25706,8 @@ export const VncUrlApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVncUrl(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole> {
-            return localVarFp.getVncUrl(vmId, options).then((request) => request(axios, basePath));
+        requestVMConsole(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<RequestConsole> {
+            return localVarFp.requestVMConsole(vmId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -25625,8 +25740,8 @@ export class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    public getVncUrl(vmId: number, options?: RawAxiosRequestConfig) {
-        return VncUrlApiFp(this.configuration).getVncUrl(vmId, options).then((request) => request(this.axios, this.basePath));
+    public requestVMConsole(vmId: number, options?: RawAxiosRequestConfig) {
+        return VncUrlApiFp(this.configuration).requestVMConsole(vmId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -25715,17 +25830,17 @@ export const VolumeApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId 
+         * Check if a Volume name is available
+         * @summary Fetch volume name availability
+         * @param {string} name 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVolumeDetails: async (volumeId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'volumeId' is not null or undefined
-            assertParamExists('fetchVolumeDetails', 'volumeId', volumeId)
-            const localVarPath = `/core/volumes/{volume_id}`
-                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
+        fetchVolumeNameAvailability: async (name: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'name' is not null or undefined
+            assertParamExists('fetchVolumeNameAvailability', 'name', name)
+            const localVarPath = `/core/volume/name-availability/{name}`
+                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -25752,17 +25867,17 @@ export const VolumeApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Check if a Volume name is available
-         * @summary Fetch volume name availability
-         * @param {string} name 
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchVolumeNameAvailability: async (name: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('fetchVolumeNameAvailability', 'name', name)
-            const localVarPath = `/core/volume/name-availability/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        getVolume: async (volumeId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'volumeId' is not null or undefined
+            assertParamExists('getVolume', 'volumeId', volumeId)
+            const localVarPath = `/core/volumes/{volume_id}`
+                .replace(`{${"volume_id"}}`, encodeURIComponent(String(volumeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -25954,19 +26069,6 @@ export const VolumeApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Volume>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchVolumeDetails(volumeId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VolumeApi.fetchVolumeDetails']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Check if a Volume name is available
          * @summary Fetch volume name availability
          * @param {string} name 
@@ -25977,6 +26079,19 @@ export const VolumeApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.fetchVolumeNameAvailability(name, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VolumeApi.fetchVolumeNameAvailability']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Volume>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVolume(volumeId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VolumeApi.getVolume']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -26052,16 +26167,6 @@ export const VolumeApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.deleteVolume(volumeId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-         * @summary Fetch Volume Details
-         * @param {number} volumeId 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<Volume> {
-            return localVarFp.fetchVolumeDetails(volumeId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Check if a Volume name is available
          * @summary Fetch volume name availability
          * @param {string} name 
@@ -26070,6 +26175,16 @@ export const VolumeApiFactory = function (configuration?: Configuration, basePat
          */
         fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel> {
             return localVarFp.fetchVolumeNameAvailability(name, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+         * @summary Fetch Volume Details
+         * @param {number} volumeId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVolume(volumeId: number, options?: RawAxiosRequestConfig): AxiosPromise<Volume> {
+            return localVarFp.getVolume(volumeId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a list of available volume types that can be used in the creation of a new volume.
@@ -26139,18 +26254,6 @@ export class VolumeApi extends BaseAPI {
     }
 
     /**
-     * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
-     * @summary Fetch Volume Details
-     * @param {number} volumeId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VolumeApi
-     */
-    public fetchVolumeDetails(volumeId: number, options?: RawAxiosRequestConfig) {
-        return VolumeApiFp(this.configuration).fetchVolumeDetails(volumeId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
      * @param {string} name 
@@ -26160,6 +26263,18 @@ export class VolumeApi extends BaseAPI {
      */
     public fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig) {
         return VolumeApiFp(this.configuration).fetchVolumeNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
+     * @summary Fetch Volume Details
+     * @param {number} volumeId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VolumeApi
+     */
+    public getVolume(volumeId: number, options?: RawAxiosRequestConfig) {
+        return VolumeApiFp(this.configuration).getVolume(volumeId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -26218,11 +26333,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachVolumesToVirtualMachine: async (vmId: number, payload: AttachVolumesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        attachVolumesToVM: async (vmId: number, payload: AttachVolumesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('attachVolumesToVirtualMachine', 'vmId', vmId)
+            assertParamExists('attachVolumesToVM', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('attachVolumesToVirtualMachine', 'payload', payload)
+            assertParamExists('attachVolumesToVM', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/attach-volumes`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -26261,11 +26376,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachVolumesFromVirtualMachine: async (vmId: number, payload: DetachVolumesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        detachVolumesFromVM: async (vmId: number, payload: DetachVolumesPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'vmId' is not null or undefined
-            assertParamExists('detachVolumesFromVirtualMachine', 'vmId', vmId)
+            assertParamExists('detachVolumesFromVM', 'vmId', vmId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('detachVolumesFromVirtualMachine', 'payload', payload)
+            assertParamExists('detachVolumesFromVM', 'payload', payload)
             const localVarPath = `/core/virtual-machines/{vm_id}/detach-volumes`
                 .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -26304,11 +26419,11 @@ export const VolumeAttachmentApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAVolumeAttachment: async (volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateVolumeAttachment: async (volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'volumeAttachmentId' is not null or undefined
-            assertParamExists('updateAVolumeAttachment', 'volumeAttachmentId', volumeAttachmentId)
+            assertParamExists('updateVolumeAttachment', 'volumeAttachmentId', volumeAttachmentId)
             // verify required parameter 'payload' is not null or undefined
-            assertParamExists('updateAVolumeAttachment', 'payload', payload)
+            assertParamExists('updateVolumeAttachment', 'payload', payload)
             const localVarPath = `/core/volume-attachments/{volume_attachment_id}`
                 .replace(`{${"volume_attachment_id"}}`, encodeURIComponent(String(volumeAttachmentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -26357,10 +26472,10 @@ export const VolumeAttachmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.attachVolumesToVirtualMachine(vmId, payload, options);
+        async attachVolumesToVM(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.attachVolumesToVM(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.attachVolumesToVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.attachVolumesToVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -26371,10 +26486,10 @@ export const VolumeAttachmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetachVolumes>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.detachVolumesFromVirtualMachine(vmId, payload, options);
+        async detachVolumesFromVM(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetachVolumes>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.detachVolumesFromVM(vmId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.detachVolumesFromVirtualMachine']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.detachVolumesFromVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -26385,10 +26500,10 @@ export const VolumeAttachmentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateAVolumeAttachment(volumeAttachmentId, payload, options);
+        async updateVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AttachVolumes>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateVolumeAttachment(volumeAttachmentId, payload, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.updateAVolumeAttachment']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VolumeAttachmentApi.updateVolumeAttachment']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -26409,8 +26524,8 @@ export const VolumeAttachmentApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes> {
-            return localVarFp.attachVolumesToVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        attachVolumesToVM(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes> {
+            return localVarFp.attachVolumesToVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
@@ -26420,8 +26535,8 @@ export const VolumeAttachmentApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<DetachVolumes> {
-            return localVarFp.detachVolumesFromVirtualMachine(vmId, payload, options).then((request) => request(axios, basePath));
+        detachVolumesFromVM(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): AxiosPromise<DetachVolumes> {
+            return localVarFp.detachVolumesFromVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -26431,8 +26546,8 @@ export const VolumeAttachmentApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes> {
-            return localVarFp.updateAVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(axios, basePath));
+        updateVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): AxiosPromise<AttachVolumes> {
+            return localVarFp.updateVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -26453,8 +26568,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    public attachVolumesToVirtualMachine(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig) {
-        return VolumeAttachmentApiFp(this.configuration).attachVolumesToVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public attachVolumesToVM(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig) {
+        return VolumeAttachmentApiFp(this.configuration).attachVolumesToVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -26466,8 +26581,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    public detachVolumesFromVirtualMachine(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig) {
-        return VolumeAttachmentApiFp(this.configuration).detachVolumesFromVirtualMachine(vmId, payload, options).then((request) => request(this.axios, this.basePath));
+    public detachVolumesFromVM(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig) {
+        return VolumeAttachmentApiFp(this.configuration).detachVolumesFromVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -26479,8 +26594,8 @@ export class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    public updateAVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig) {
-        return VolumeAttachmentApiFp(this.configuration).updateAVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(this.axios, this.basePath));
+    public updateVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig) {
+        return VolumeAttachmentApiFp(this.configuration).updateVolumeAttachment(volumeAttachmentId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
