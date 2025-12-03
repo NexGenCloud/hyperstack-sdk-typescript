@@ -9926,13 +9926,6 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      */
     disableMFA: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getAuthenticatedUser: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -9946,6 +9939,13 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     getUserOrganizations: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAuthenticatedUserDetails: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -9966,13 +9966,6 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      */
     disableMFA(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getAuthenticatedUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -9986,6 +9979,13 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getUserOrganizations(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserOrganizationsResponse>>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>>;
 };
 /**
  * AuthApi - factory interface
@@ -10006,13 +10006,6 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      */
     disableMFA(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getAuthenticatedUser(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -10026,6 +10019,13 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     getUserOrganizations(options?: RawAxiosRequestConfig): AxiosPromise<UserOrganizationsResponse>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel>;
 };
 /**
  * AuthApi - object-oriented interface
@@ -10050,14 +10050,6 @@ export declare class AuthApi extends BaseAPI {
      */
     disableMFA(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    getAuthenticatedUser(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}>>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -10073,6 +10065,14 @@ export declare class AuthApi extends BaseAPI {
      * @memberof AuthApi
      */
     getUserOrganizations(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserOrganizationsResponse, any, {}>>;
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}>>;
 }
 /**
  * BetaAccessApi - axios parameter creator

@@ -10370,39 +10370,6 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAuthenticatedUser: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/auth/me`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication apiKey required
-            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10468,6 +10435,39 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAuthenticatedUserDetails: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/auth/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -10502,18 +10502,6 @@ export const AuthApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getAuthenticatedUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAuthenticatedUser(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AuthApi.getAuthenticatedUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10535,6 +10523,18 @@ export const AuthApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserOrganizations(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AuthApi.getUserOrganizations']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthUserInfoResponseModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAuthenticatedUserDetails(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.retrieveAuthenticatedUserDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -10565,15 +10565,6 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
             return localVarFp.disableMFA(options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-         * @summary Retrieve Authenticated User Details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAuthenticatedUser(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel> {
-            return localVarFp.getAuthenticatedUser(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -10590,6 +10581,15 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          */
         getUserOrganizations(options?: RawAxiosRequestConfig): AxiosPromise<UserOrganizationsResponse> {
             return localVarFp.getUserOrganizations(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+         * @summary Retrieve Authenticated User Details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): AxiosPromise<AuthUserInfoResponseModel> {
+            return localVarFp.retrieveAuthenticatedUserDetails(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10623,17 +10623,6 @@ export class AuthApi extends BaseAPI {
     }
 
     /**
-     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
-     * @summary Retrieve Authenticated User Details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    public getAuthenticatedUser(options?: RawAxiosRequestConfig) {
-        return AuthApiFp(this.configuration).getAuthenticatedUser(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -10653,6 +10642,17 @@ export class AuthApi extends BaseAPI {
      */
     public getUserOrganizations(options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).getUserOrganizations(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
+     * @summary Retrieve Authenticated User Details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).retrieveAuthenticatedUserDetails(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
