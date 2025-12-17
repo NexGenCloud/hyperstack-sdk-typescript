@@ -5517,6 +5517,321 @@ export interface NewStockRetriveResponse {
 /**
  * 
  * @export
+ * @interface ObjectStorageAccessKeyCreateRequest
+ */
+export interface ObjectStorageAccessKeyCreateRequest {
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyCreateRequest
+     */
+    'description'?: object;
+    /**
+     * 
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyCreateRequest
+     */
+    'region': ObjectStorageRegionsEnum;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface ObjectStorageAccessKeyCreateResponse
+ */
+export interface ObjectStorageAccessKeyCreateResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'access_key': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'description'?: object;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'id': number;
+    /**
+     * 
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'secret_key': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'user_id': number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface ObjectStorageAccessKeyListResponse
+ */
+export interface ObjectStorageAccessKeyListResponse {
+    /**
+     * 
+     * @type {Array<ObjectStorageAccessKeyResponse>}
+     * @memberof ObjectStorageAccessKeyListResponse
+     */
+    'access_keys': Array<ObjectStorageAccessKeyResponse>;
+    /**
+     * 
+     * @type {ObjectStoragePaginationMeta}
+     * @memberof ObjectStorageAccessKeyListResponse
+     */
+    'meta': ObjectStoragePaginationMeta;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageAccessKeyResponse
+ */
+export interface ObjectStorageAccessKeyResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'access_key': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'description'?: object;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'id': number;
+    /**
+     * 
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'user_id': number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface ObjectStorageBucketListResponse
+ */
+export interface ObjectStorageBucketListResponse {
+    /**
+     * 
+     * @type {Array<ObjectStorageBucketResponse>}
+     * @memberof ObjectStorageBucketListResponse
+     */
+    'buckets': Array<ObjectStorageBucketResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageBucketResponse
+ */
+export interface ObjectStorageBucketResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'created_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'endpoint': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'name': string;
+    /**
+     * Number of objects
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'num_objects': number;
+    /**
+     * 
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     * Accumulated size in bytes
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'size_bytes': number;
+    /**
+     * Size utilized in bytes
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'size_bytes_actual': number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface ObjectStorageDeleteResponse
+ */
+export interface ObjectStorageDeleteResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageDeleteResponse
+     */
+    'message': string;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageErrorResponse
+ */
+export interface ObjectStorageErrorResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'error_reason': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'message': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'status'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageHealthResponse
+ */
+export interface ObjectStorageHealthResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageHealthResponse
+     */
+    'status': string;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStoragePaginationMeta
+ */
+export interface ObjectStoragePaginationMeta {
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'count': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'current_page': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'total_pages': number;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageRegionListResponse
+ */
+export interface ObjectStorageRegionListResponse {
+    /**
+     * 
+     * @type {Array<ObjectStorageRegionResponse>}
+     * @memberof ObjectStorageRegionListResponse
+     */
+    'regions': Array<ObjectStorageRegionResponse>;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectStorageRegionResponse
+ */
+export interface ObjectStorageRegionResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectStorageRegionResponse
+     */
+    'name': string;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ObjectStorageRegionsEnum = {
+    Canada1: 'CANADA-1'
+} as const;
+
+export type ObjectStorageRegionsEnum = typeof ObjectStorageRegionsEnum[keyof typeof ObjectStorageRegionsEnum];
+
+
+/**
+ * 
+ * @export
  * @interface OrganizationFields
  */
 export interface OrganizationFields {
@@ -9611,6 +9926,278 @@ export interface WorkloadBillingHistoryResponse {
 }
 
 /**
+ * AccessKeysApi - axios parameter creator
+ * @export
+ */
+export const AccessKeysApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint: async (body?: ObjectStorageAccessKeyCreateRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint: async (accessKeyId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accessKeyId' is not null or undefined
+            assertParamExists('deleteAccessKeyEndpoint', 'accessKeyId', accessKeyId)
+            const localVarPath = `/object-storage/access-keys/{access_key_id}`
+                .replace(`{${"access_key_id"}}`, encodeURIComponent(String(accessKeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List access keys
+         * @param {string} [search] 
+         * @param {string} [page] 
+         * @param {string} [pageSize] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint: async (search?: string, page?: string, pageSize?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * AccessKeysApi - functional programming interface
+ * @export
+ */
+export const AccessKeysApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AccessKeysApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyCreateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createAccessKeyEndpoint(body, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessKeysApi.createAccessKeyEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageDeleteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAccessKeyEndpoint(accessKeyId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessKeysApi.deleteAccessKeyEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List access keys
+         * @param {string} [search] 
+         * @param {string} [page] 
+         * @param {string} [pageSize] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listAccessKeysEndpoint(search, page, pageSize, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessKeysApi.listAccessKeysEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * AccessKeysApi - factory interface
+ * @export
+ */
+export const AccessKeysApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AccessKeysApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyCreateResponse> {
+            return localVarFp.createAccessKeyEndpoint(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageDeleteResponse> {
+            return localVarFp.deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List access keys
+         * @param {string} [search] 
+         * @param {string} [page] 
+         * @param {string} [pageSize] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyListResponse> {
+            return localVarFp.listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * AccessKeysApi - object-oriented interface
+ * @export
+ * @class AccessKeysApi
+ * @extends {BaseAPI}
+ */
+export class AccessKeysApi extends BaseAPI {
+    /**
+     * 
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    public createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig) {
+        return AccessKeysApiFp(this.configuration).createAccessKeyEndpoint(body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    public deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig) {
+        return AccessKeysApiFp(this.configuration).deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List access keys
+     * @param {string} [search] 
+     * @param {string} [page] 
+     * @param {string} [pageSize] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    public listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig) {
+        return AccessKeysApiFp(this.configuration).listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * AliveApi - axios parameter creator
  * @export
  */
@@ -9839,6 +10426,9 @@ export const ApiKeyApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
 
     
@@ -14281,6 +14871,282 @@ export class BillingApi extends BaseAPI {
      */
     public listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) {
         return BillingApiFp(this.configuration).listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * BucketsApi - axios parameter creator
+ * @export
+ */
+export const BucketsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Delete a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint: async (bucketName: string, region: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'bucketName' is not null or undefined
+            assertParamExists('deleteBucketEndpoint', 'bucketName', bucketName)
+            // verify required parameter 'region' is not null or undefined
+            assertParamExists('deleteBucketEndpoint', 'region', region)
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary List buckets
+         * @param {string} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint: async (search?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/object-storage/buckets`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Retrieve a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint: async (bucketName: string, region: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'bucketName' is not null or undefined
+            assertParamExists('retrieveBucketEndpoint', 'bucketName', bucketName)
+            // verify required parameter 'region' is not null or undefined
+            assertParamExists('retrieveBucketEndpoint', 'region', region)
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * BucketsApi - functional programming interface
+ * @export
+ */
+export const BucketsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = BucketsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageDeleteResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteBucketEndpoint(bucketName, region, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BucketsApi.deleteBucketEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary List buckets
+         * @param {string} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageBucketListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listBucketsEndpoint(search, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BucketsApi.listBucketsEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Retrieve a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageBucketResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveBucketEndpoint(bucketName, region, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['BucketsApi.retrieveBucketEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * BucketsApi - factory interface
+ * @export
+ */
+export const BucketsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = BucketsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageDeleteResponse> {
+            return localVarFp.deleteBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary List buckets
+         * @param {string} [search] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageBucketListResponse> {
+            return localVarFp.listBucketsEndpoint(search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Retrieve a bucket
+         * @param {string} bucketName 
+         * @param {string} region 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageBucketResponse> {
+            return localVarFp.retrieveBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * BucketsApi - object-oriented interface
+ * @export
+ * @class BucketsApi
+ * @extends {BaseAPI}
+ */
+export class BucketsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Delete a bucket
+     * @param {string} bucketName 
+     * @param {string} region 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig) {
+        return BucketsApiFp(this.configuration).deleteBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary List buckets
+     * @param {string} [search] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig) {
+        return BucketsApiFp(this.configuration).listBucketsEndpoint(search, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Retrieve a bucket
+     * @param {string} bucketName 
+     * @param {string} region 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    public retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig) {
+        return BucketsApiFp(this.configuration).retrieveBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -19152,6 +20018,110 @@ export class GpuApi extends BaseAPI {
 
 
 /**
+ * HealthApi - axios parameter creator
+ * @export
+ */
+export const HealthApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/object-storage/healthz`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * HealthApi - functional programming interface
+ * @export
+ */
+export const HealthApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = HealthApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async healthzEndpoint(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageHealthResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.healthzEndpoint(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['HealthApi.healthzEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * HealthApi - factory interface
+ * @export
+ */
+export const HealthApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = HealthApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint(options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageHealthResponse> {
+            return localVarFp.healthzEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * HealthApi - object-oriented interface
+ * @export
+ * @class HealthApi
+ * @extends {BaseAPI}
+ */
+export class HealthApi extends BaseAPI {
+    /**
+     * 
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HealthApi
+     */
+    public healthzEndpoint(options?: RawAxiosRequestConfig) {
+        return HealthApiFp(this.configuration).healthzEndpoint(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * ImageApi - axios parameter creator
  * @export
  */
@@ -20473,6 +21443,9 @@ export const PartnerConfigApiAxiosParamCreator = function (configuration?: Confi
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -20502,6 +21475,9 @@ export const PartnerConfigApiAxiosParamCreator = function (configuration?: Confi
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
 
             if (domain !== undefined) {
                 localVarQueryParameter['domain'] = domain;
@@ -21997,6 +22973,110 @@ export class RegionApi extends BaseAPI {
      */
     public listRegions(options?: RawAxiosRequestConfig) {
         return RegionApiFp(this.configuration).listRegions(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * RegionsApi - axios parameter creator
+ * @export
+ */
+export const RegionsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/object-storage/regions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * RegionsApi - functional programming interface
+ * @export
+ */
+export const RegionsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = RegionsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listRegionsEndpoint(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageRegionListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listRegionsEndpoint(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RegionsApi.listRegionsEndpoint']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * RegionsApi - factory interface
+ * @export
+ */
+export const RegionsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = RegionsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint(options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageRegionListResponse> {
+            return localVarFp.listRegionsEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * RegionsApi - object-oriented interface
+ * @export
+ * @class RegionsApi
+ * @extends {BaseAPI}
+ */
+export class RegionsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    public listRegionsEndpoint(options?: RawAxiosRequestConfig) {
+        return RegionsApiFp(this.configuration).listRegionsEndpoint(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

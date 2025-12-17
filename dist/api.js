@@ -22,11 +22,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.RegionFieldsGreenStatusEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
-exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = void 0;
-exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = void 0;
-exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = void 0;
-exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = void 0;
+exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = exports.BucketsApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.AccessKeysApi = exports.AccessKeysApiFactory = exports.AccessKeysApiFp = exports.AccessKeysApiAxiosParamCreator = exports.RegionFieldsGreenStatusEnum = exports.ObjectStorageRegionsEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
+exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = void 0;
+exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = void 0;
+exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = void 0;
+exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -122,11 +122,274 @@ exports.KeypairEnvironmentFeaturesGreenStatusEnum = {
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
 };
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+exports.ObjectStorageRegionsEnum = {
+    Canada1: 'CANADA-1'
+};
 exports.RegionFieldsGreenStatusEnum = {
     Green: 'GREEN',
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
 };
+/**
+ * AccessKeysApi - axios parameter creator
+ * @export
+ */
+const AccessKeysApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint: (accessKeyId_1, ...args_1) => __awaiter(this, [accessKeyId_1, ...args_1], void 0, function* (accessKeyId, options = {}) {
+            // verify required parameter 'accessKeyId' is not null or undefined
+            (0, common_1.assertParamExists)('deleteAccessKeyEndpoint', 'accessKeyId', accessKeyId);
+            const localVarPath = `/object-storage/access-keys/{access_key_id}`
+                .replace(`{${"access_key_id"}}`, encodeURIComponent(String(accessKeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint: (search_1, page_1, pageSize_1, ...args_1) => __awaiter(this, [search_1, page_1, pageSize_1, ...args_1], void 0, function* (search, page, pageSize, options = {}) {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.AccessKeysApiAxiosParamCreator = AccessKeysApiAxiosParamCreator;
+/**
+ * AccessKeysApi - functional programming interface
+ * @export
+ */
+const AccessKeysApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.AccessKeysApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint(body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createAccessKeyEndpoint(body, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccessKeysApi.createAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint(accessKeyId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteAccessKeyEndpoint(accessKeyId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccessKeysApi.deleteAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint(search, page, pageSize, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listAccessKeysEndpoint(search, page, pageSize, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccessKeysApi.listAccessKeysEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.AccessKeysApiFp = AccessKeysApiFp;
+/**
+ * AccessKeysApi - factory interface
+ * @export
+ */
+const AccessKeysApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.AccessKeysApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint(body, options) {
+            return localVarFp.createAccessKeyEndpoint(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint(accessKeyId, options) {
+            return localVarFp.deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint(search, page, pageSize, options) {
+            return localVarFp.listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.AccessKeysApiFactory = AccessKeysApiFactory;
+/**
+ * AccessKeysApi - object-oriented interface
+ * @export
+ * @class AccessKeysApi
+ * @extends {BaseAPI}
+ */
+class AccessKeysApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    createAccessKeyEndpoint(body, options) {
+        return (0, exports.AccessKeysApiFp)(this.configuration).createAccessKeyEndpoint(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    deleteAccessKeyEndpoint(accessKeyId, options) {
+        return (0, exports.AccessKeysApiFp)(this.configuration).deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    listAccessKeysEndpoint(search, page, pageSize, options) {
+        return (0, exports.AccessKeysApiFp)(this.configuration).listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.AccessKeysApi = AccessKeysApi;
 /**
  * AliveApi - axios parameter creator
  * @export
@@ -340,6 +603,8 @@ const ApiKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -4484,6 +4749,266 @@ class BillingApi extends base_1.BaseAPI {
     }
 }
 exports.BillingApi = BillingApi;
+/**
+ * BucketsApi - axios parameter creator
+ * @export
+ */
+const BucketsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint: (bucketName_1, region_1, ...args_1) => __awaiter(this, [bucketName_1, region_1, ...args_1], void 0, function* (bucketName, region, options = {}) {
+            // verify required parameter 'bucketName' is not null or undefined
+            (0, common_1.assertParamExists)('deleteBucketEndpoint', 'bucketName', bucketName);
+            // verify required parameter 'region' is not null or undefined
+            (0, common_1.assertParamExists)('deleteBucketEndpoint', 'region', region);
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint: (search_1, ...args_1) => __awaiter(this, [search_1, ...args_1], void 0, function* (search, options = {}) {
+            const localVarPath = `/object-storage/buckets`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint: (bucketName_1, region_1, ...args_1) => __awaiter(this, [bucketName_1, region_1, ...args_1], void 0, function* (bucketName, region, options = {}) {
+            // verify required parameter 'bucketName' is not null or undefined
+            (0, common_1.assertParamExists)('retrieveBucketEndpoint', 'bucketName', bucketName);
+            // verify required parameter 'region' is not null or undefined
+            (0, common_1.assertParamExists)('retrieveBucketEndpoint', 'region', region);
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.BucketsApiAxiosParamCreator = BucketsApiAxiosParamCreator;
+/**
+ * BucketsApi - functional programming interface
+ * @export
+ */
+const BucketsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.BucketsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint(bucketName, region, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteBucketEndpoint(bucketName, region, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BucketsApi.deleteBucketEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint(search, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listBucketsEndpoint(search, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BucketsApi.listBucketsEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint(bucketName, region, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveBucketEndpoint(bucketName, region, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['BucketsApi.retrieveBucketEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.BucketsApiFp = BucketsApiFp;
+/**
+ * BucketsApi - factory interface
+ * @export
+ */
+const BucketsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.BucketsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint(bucketName, region, options) {
+            return localVarFp.deleteBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint(search, options) {
+            return localVarFp.listBucketsEndpoint(search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint(bucketName, region, options) {
+            return localVarFp.retrieveBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.BucketsApiFactory = BucketsApiFactory;
+/**
+ * BucketsApi - object-oriented interface
+ * @export
+ * @class BucketsApi
+ * @extends {BaseAPI}
+ */
+class BucketsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    deleteBucketEndpoint(bucketName, region, options) {
+        return (0, exports.BucketsApiFp)(this.configuration).deleteBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    listBucketsEndpoint(search, options) {
+        return (0, exports.BucketsApiFp)(this.configuration).listBucketsEndpoint(search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    retrieveBucketEndpoint(bucketName, region, options) {
+        return (0, exports.BucketsApiFp)(this.configuration).retrieveBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.BucketsApi = BucketsApi;
 /**
  * CalculateApi - axios parameter creator
  * @export
@@ -9075,6 +9600,105 @@ class GpuApi extends base_1.BaseAPI {
 }
 exports.GpuApi = GpuApi;
 /**
+ * HealthApi - axios parameter creator
+ * @export
+ */
+const HealthApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/object-storage/healthz`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.HealthApiAxiosParamCreator = HealthApiAxiosParamCreator;
+/**
+ * HealthApi - functional programming interface
+ * @export
+ */
+const HealthApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.HealthApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.healthzEndpoint(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['HealthApi.healthzEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.HealthApiFp = HealthApiFp;
+/**
+ * HealthApi - factory interface
+ * @export
+ */
+const HealthApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.HealthApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint(options) {
+            return localVarFp.healthzEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.HealthApiFactory = HealthApiFactory;
+/**
+ * HealthApi - object-oriented interface
+ * @export
+ * @class HealthApi
+ * @extends {BaseAPI}
+ */
+class HealthApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HealthApi
+     */
+    healthzEndpoint(options) {
+        return (0, exports.HealthApiFp)(this.configuration).healthzEndpoint(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.HealthApi = HealthApi;
+/**
  * ImageApi - axios parameter creator
  * @export
  */
@@ -10316,6 +10940,8 @@ const PartnerConfigApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -10341,6 +10967,8 @@ const PartnerConfigApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
             if (domain !== undefined) {
                 localVarQueryParameter['domain'] = domain;
             }
@@ -11764,6 +12392,105 @@ class RegionApi extends base_1.BaseAPI {
     }
 }
 exports.RegionApi = RegionApi;
+/**
+ * RegionsApi - axios parameter creator
+ * @export
+ */
+const RegionsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/object-storage/regions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.RegionsApiAxiosParamCreator = RegionsApiAxiosParamCreator;
+/**
+ * RegionsApi - functional programming interface
+ * @export
+ */
+const RegionsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.RegionsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listRegionsEndpoint(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['RegionsApi.listRegionsEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.RegionsApiFp = RegionsApiFp;
+/**
+ * RegionsApi - factory interface
+ * @export
+ */
+const RegionsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.RegionsApiFp)(configuration);
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint(options) {
+            return localVarFp.listRegionsEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.RegionsApiFactory = RegionsApiFactory;
+/**
+ * RegionsApi - object-oriented interface
+ * @export
+ * @class RegionsApi
+ * @extends {BaseAPI}
+ */
+class RegionsApi extends base_1.BaseAPI {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    listRegionsEndpoint(options) {
+        return (0, exports.RegionsApiFp)(this.configuration).listRegionsEndpoint(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.RegionsApi = RegionsApi;
 /**
  * SecurityRulesApi - axios parameter creator
  * @export

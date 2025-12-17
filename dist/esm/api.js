@@ -115,11 +115,270 @@ export const KeypairEnvironmentFeaturesGreenStatusEnum = {
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
 };
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export const ObjectStorageRegionsEnum = {
+    Canada1: 'CANADA-1'
+};
 export const RegionFieldsGreenStatusEnum = {
     Green: 'GREEN',
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
 };
+/**
+ * AccessKeysApi - axios parameter creator
+ * @export
+ */
+export const AccessKeysApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint: (body_1, ...args_1) => __awaiter(this, [body_1, ...args_1], void 0, function* (body, options = {}) {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint: (accessKeyId_1, ...args_1) => __awaiter(this, [accessKeyId_1, ...args_1], void 0, function* (accessKeyId, options = {}) {
+            // verify required parameter 'accessKeyId' is not null or undefined
+            assertParamExists('deleteAccessKeyEndpoint', 'accessKeyId', accessKeyId);
+            const localVarPath = `/object-storage/access-keys/{access_key_id}`
+                .replace(`{${"access_key_id"}}`, encodeURIComponent(String(accessKeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint: (search_1, page_1, pageSize_1, ...args_1) => __awaiter(this, [search_1, page_1, pageSize_1, ...args_1], void 0, function* (search, page, pageSize, options = {}) {
+            const localVarPath = `/object-storage/access-keys`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * AccessKeysApi - functional programming interface
+ * @export
+ */
+export const AccessKeysApiFp = function (configuration) {
+    const localVarAxiosParamCreator = AccessKeysApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint(body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createAccessKeyEndpoint(body, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AccessKeysApi.createAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint(accessKeyId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteAccessKeyEndpoint(accessKeyId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AccessKeysApi.deleteAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint(search, page, pageSize, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listAccessKeysEndpoint(search, page, pageSize, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AccessKeysApi.listAccessKeysEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * AccessKeysApi - factory interface
+ * @export
+ */
+export const AccessKeysApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = AccessKeysApiFp(configuration);
+    return {
+        /**
+         *
+         * @summary Generate a new access key
+         * @param {ObjectStorageAccessKeyCreateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAccessKeyEndpoint(body, options) {
+            return localVarFp.createAccessKeyEndpoint(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Remove an existing access key
+         * @param {string} accessKeyId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteAccessKeyEndpoint(accessKeyId, options) {
+            return localVarFp.deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List access keys
+         * @param {string} [search]
+         * @param {string} [page]
+         * @param {string} [pageSize]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAccessKeysEndpoint(search, page, pageSize, options) {
+            return localVarFp.listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * AccessKeysApi - object-oriented interface
+ * @export
+ * @class AccessKeysApi
+ * @extends {BaseAPI}
+ */
+export class AccessKeysApi extends BaseAPI {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    createAccessKeyEndpoint(body, options) {
+        return AccessKeysApiFp(this.configuration).createAccessKeyEndpoint(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    deleteAccessKeyEndpoint(accessKeyId, options) {
+        return AccessKeysApiFp(this.configuration).deleteAccessKeyEndpoint(accessKeyId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    listAccessKeysEndpoint(search, page, pageSize, options) {
+        return AccessKeysApiFp(this.configuration).listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(this.axios, this.basePath));
+    }
+}
 /**
  * AliveApi - axios parameter creator
  * @export
@@ -329,6 +588,8 @@ export const ApiKeyApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             localVarHeaderParameter['Content-Type'] = 'application/json';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -4451,6 +4712,262 @@ export class BillingApi extends BaseAPI {
      */
     listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options) {
         return BillingApiFp(this.configuration).listSnapshotBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * BucketsApi - axios parameter creator
+ * @export
+ */
+export const BucketsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint: (bucketName_1, region_1, ...args_1) => __awaiter(this, [bucketName_1, region_1, ...args_1], void 0, function* (bucketName, region, options = {}) {
+            // verify required parameter 'bucketName' is not null or undefined
+            assertParamExists('deleteBucketEndpoint', 'bucketName', bucketName);
+            // verify required parameter 'region' is not null or undefined
+            assertParamExists('deleteBucketEndpoint', 'region', region);
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint: (search_1, ...args_1) => __awaiter(this, [search_1, ...args_1], void 0, function* (search, options = {}) {
+            const localVarPath = `/object-storage/buckets`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint: (bucketName_1, region_1, ...args_1) => __awaiter(this, [bucketName_1, region_1, ...args_1], void 0, function* (bucketName, region, options = {}) {
+            // verify required parameter 'bucketName' is not null or undefined
+            assertParamExists('retrieveBucketEndpoint', 'bucketName', bucketName);
+            // verify required parameter 'region' is not null or undefined
+            assertParamExists('retrieveBucketEndpoint', 'region', region);
+            const localVarPath = `/object-storage/buckets/{bucket_name}`
+                .replace(`{${"bucket_name"}}`, encodeURIComponent(String(bucketName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (region !== undefined) {
+                localVarQueryParameter['region'] = region;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * BucketsApi - functional programming interface
+ * @export
+ */
+export const BucketsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = BucketsApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint(bucketName, region, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.deleteBucketEndpoint(bucketName, region, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BucketsApi.deleteBucketEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint(search, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listBucketsEndpoint(search, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BucketsApi.listBucketsEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint(bucketName, region, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.retrieveBucketEndpoint(bucketName, region, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BucketsApi.retrieveBucketEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * BucketsApi - factory interface
+ * @export
+ */
+export const BucketsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = BucketsApiFp(configuration);
+    return {
+        /**
+         *
+         * @summary Delete a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteBucketEndpoint(bucketName, region, options) {
+            return localVarFp.deleteBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List buckets
+         * @param {string} [search]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBucketsEndpoint(search, options) {
+            return localVarFp.listBucketsEndpoint(search, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Retrieve a bucket
+         * @param {string} bucketName
+         * @param {string} region
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveBucketEndpoint(bucketName, region, options) {
+            return localVarFp.retrieveBucketEndpoint(bucketName, region, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * BucketsApi - object-oriented interface
+ * @export
+ * @class BucketsApi
+ * @extends {BaseAPI}
+ */
+export class BucketsApi extends BaseAPI {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    deleteBucketEndpoint(bucketName, region, options) {
+        return BucketsApiFp(this.configuration).deleteBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    listBucketsEndpoint(search, options) {
+        return BucketsApiFp(this.configuration).listBucketsEndpoint(search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    retrieveBucketEndpoint(bucketName, region, options) {
+        return BucketsApiFp(this.configuration).retrieveBucketEndpoint(bucketName, region, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -8980,6 +9497,101 @@ export class GpuApi extends BaseAPI {
     }
 }
 /**
+ * HealthApi - axios parameter creator
+ * @export
+ */
+export const HealthApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/object-storage/healthz`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * HealthApi - functional programming interface
+ * @export
+ */
+export const HealthApiFp = function (configuration) {
+    const localVarAxiosParamCreator = HealthApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.healthzEndpoint(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['HealthApi.healthzEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * HealthApi - factory interface
+ * @export
+ */
+export const HealthApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = HealthApiFp(configuration);
+    return {
+        /**
+         *
+         * @summary Healthcheck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthzEndpoint(options) {
+            return localVarFp.healthzEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * HealthApi - object-oriented interface
+ * @export
+ * @class HealthApi
+ * @extends {BaseAPI}
+ */
+export class HealthApi extends BaseAPI {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HealthApi
+     */
+    healthzEndpoint(options) {
+        return HealthApiFp(this.configuration).healthzEndpoint(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
  * ImageApi - axios parameter creator
  * @export
  */
@@ -10205,6 +10817,8 @@ export const PartnerConfigApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
@@ -10230,6 +10844,8 @@ export const PartnerConfigApiAxiosParamCreator = function (configuration) {
             const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
             const localVarHeaderParameter = {};
             const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
             if (domain !== undefined) {
                 localVarQueryParameter['domain'] = domain;
             }
@@ -11619,6 +12235,101 @@ export class RegionApi extends BaseAPI {
      */
     listRegions(options) {
         return RegionApiFp(this.configuration).listRegions(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * RegionsApi - axios parameter creator
+ * @export
+ */
+export const RegionsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/object-storage/regions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * RegionsApi - functional programming interface
+ * @export
+ */
+export const RegionsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = RegionsApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listRegionsEndpoint(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['RegionsApi.listRegionsEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * RegionsApi - factory interface
+ * @export
+ */
+export const RegionsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = RegionsApiFp(configuration);
+    return {
+        /**
+         *
+         * @summary Get a list of supported regions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listRegionsEndpoint(options) {
+            return localVarFp.listRegionsEndpoint(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * RegionsApi - object-oriented interface
+ * @export
+ * @class RegionsApi
+ * @extends {BaseAPI}
+ */
+export class RegionsApi extends BaseAPI {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    listRegionsEndpoint(options) {
+        return RegionsApiFp(this.configuration).listRegionsEndpoint(options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**

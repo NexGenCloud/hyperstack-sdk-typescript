@@ -5482,6 +5482,309 @@ export interface NewStockRetriveResponse {
 /**
  *
  * @export
+ * @interface ObjectStorageAccessKeyCreateRequest
+ */
+export interface ObjectStorageAccessKeyCreateRequest {
+    /**
+     *
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyCreateRequest
+     */
+    'description'?: object;
+    /**
+     *
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyCreateRequest
+     */
+    'region': ObjectStorageRegionsEnum;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageAccessKeyCreateResponse
+ */
+export interface ObjectStorageAccessKeyCreateResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'access_key': string;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'created_at': string;
+    /**
+     *
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'description'?: object;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'id': number;
+    /**
+     *
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'secret_key': string;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyCreateResponse
+     */
+    'user_id': number;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageAccessKeyListResponse
+ */
+export interface ObjectStorageAccessKeyListResponse {
+    /**
+     *
+     * @type {Array<ObjectStorageAccessKeyResponse>}
+     * @memberof ObjectStorageAccessKeyListResponse
+     */
+    'access_keys': Array<ObjectStorageAccessKeyResponse>;
+    /**
+     *
+     * @type {ObjectStoragePaginationMeta}
+     * @memberof ObjectStorageAccessKeyListResponse
+     */
+    'meta': ObjectStoragePaginationMeta;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageAccessKeyResponse
+ */
+export interface ObjectStorageAccessKeyResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'access_key': string;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'created_at': string;
+    /**
+     *
+     * @type {object}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'description'?: object;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'id': number;
+    /**
+     *
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStorageAccessKeyResponse
+     */
+    'user_id': number;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageBucketListResponse
+ */
+export interface ObjectStorageBucketListResponse {
+    /**
+     *
+     * @type {Array<ObjectStorageBucketResponse>}
+     * @memberof ObjectStorageBucketListResponse
+     */
+    'buckets': Array<ObjectStorageBucketResponse>;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageBucketResponse
+ */
+export interface ObjectStorageBucketResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'created_at': string;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'endpoint': string;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'name': string;
+    /**
+     * Number of objects
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'num_objects': number;
+    /**
+     *
+     * @type {ObjectStorageRegionsEnum}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'region': ObjectStorageRegionsEnum;
+    /**
+     * Accumulated size in bytes
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'size_bytes': number;
+    /**
+     * Size utilized in bytes
+     * @type {number}
+     * @memberof ObjectStorageBucketResponse
+     */
+    'size_bytes_actual': number;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageDeleteResponse
+ */
+export interface ObjectStorageDeleteResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageDeleteResponse
+     */
+    'message': string;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageErrorResponse
+ */
+export interface ObjectStorageErrorResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'error_reason': string;
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'message': string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ObjectStorageErrorResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageHealthResponse
+ */
+export interface ObjectStorageHealthResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageHealthResponse
+     */
+    'status': string;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStoragePaginationMeta
+ */
+export interface ObjectStoragePaginationMeta {
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'count': number;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'current_page': number;
+    /**
+     *
+     * @type {number}
+     * @memberof ObjectStoragePaginationMeta
+     */
+    'total_pages': number;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageRegionListResponse
+ */
+export interface ObjectStorageRegionListResponse {
+    /**
+     *
+     * @type {Array<ObjectStorageRegionResponse>}
+     * @memberof ObjectStorageRegionListResponse
+     */
+    'regions': Array<ObjectStorageRegionResponse>;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageRegionResponse
+ */
+export interface ObjectStorageRegionResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageRegionResponse
+     */
+    'name': string;
+}
+/**
+ *
+ * @export
+ * @enum {string}
+ */
+export declare const ObjectStorageRegionsEnum: {
+    readonly Canada1: "CANADA-1";
+};
+export type ObjectStorageRegionsEnum = typeof ObjectStorageRegionsEnum[keyof typeof ObjectStorageRegionsEnum];
+/**
+ *
+ * @export
  * @interface OrganizationFields
  */
 export interface OrganizationFields {
@@ -9574,6 +9877,139 @@ export interface WorkloadBillingHistoryResponse {
     'success'?: boolean;
 }
 /**
+ * AccessKeysApi - axios parameter creator
+ * @export
+ */
+export declare const AccessKeysApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccessKeyEndpoint: (body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccessKeyEndpoint: (accessKeyId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccessKeysEndpoint: (search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * AccessKeysApi - functional programming interface
+ * @export
+ */
+export declare const AccessKeysApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyCreateResponse>>;
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageDeleteResponse>>;
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyListResponse>>;
+};
+/**
+ * AccessKeysApi - factory interface
+ * @export
+ */
+export declare const AccessKeysApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyCreateResponse>;
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageDeleteResponse>;
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyListResponse>;
+};
+/**
+ * AccessKeysApi - object-oriented interface
+ * @export
+ * @class AccessKeysApi
+ * @extends {BaseAPI}
+ */
+export declare class AccessKeysApi extends BaseAPI {
+    /**
+     *
+     * @summary Generate a new access key
+     * @param {ObjectStorageAccessKeyCreateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyCreateResponse, any, {}>>;
+    /**
+     *
+     * @summary Remove an existing access key
+     * @param {string} accessKeyId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}>>;
+    /**
+     *
+     * @summary List access keys
+     * @param {string} [search]
+     * @param {string} [page]
+     * @param {string} [pageSize]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyListResponse, any, {}>>;
+}
+/**
  * AliveApi - axios parameter creator
  * @export
  */
@@ -11765,6 +12201,139 @@ export declare class BillingApi extends BaseAPI {
      * @memberof BillingApi
      */
     listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}>>;
+}
+/**
+ * BucketsApi - axios parameter creator
+ * @export
+ */
+export declare const BucketsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteBucketEndpoint: (bucketName: string, region: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBucketsEndpoint: (search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveBucketEndpoint: (bucketName: string, region: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * BucketsApi - functional programming interface
+ * @export
+ */
+export declare const BucketsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageDeleteResponse>>;
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageBucketListResponse>>;
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageBucketResponse>>;
+};
+/**
+ * BucketsApi - factory interface
+ * @export
+ */
+export declare const BucketsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageDeleteResponse>;
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageBucketListResponse>;
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageBucketResponse>;
+};
+/**
+ * BucketsApi - object-oriented interface
+ * @export
+ * @class BucketsApi
+ * @extends {BaseAPI}
+ */
+export declare class BucketsApi extends BaseAPI {
+    /**
+     *
+     * @summary Delete a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}>>;
+    /**
+     *
+     * @summary List buckets
+     * @param {string} [search]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketListResponse, any, {}>>;
+    /**
+     *
+     * @summary Retrieve a bucket
+     * @param {string} bucketName
+     * @param {string} region
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BucketsApi
+     */
+    retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketResponse, any, {}>>;
 }
 /**
  * CalculateApi - axios parameter creator
@@ -14119,6 +14688,61 @@ export declare class GpuApi extends BaseAPI {
     listGPUs(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GPUList, any, {}>>;
 }
 /**
+ * HealthApi - axios parameter creator
+ * @export
+ */
+export declare const HealthApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    healthzEndpoint: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * HealthApi - functional programming interface
+ * @export
+ */
+export declare const HealthApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    healthzEndpoint(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageHealthResponse>>;
+};
+/**
+ * HealthApi - factory interface
+ * @export
+ */
+export declare const HealthApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    healthzEndpoint(options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageHealthResponse>;
+};
+/**
+ * HealthApi - object-oriented interface
+ * @export
+ * @class HealthApi
+ * @extends {BaseAPI}
+ */
+export declare class HealthApi extends BaseAPI {
+    /**
+     *
+     * @summary Healthcheck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HealthApi
+     */
+    healthzEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageHealthResponse, any, {}>>;
+}
+/**
  * ImageApi - axios parameter creator
  * @export
  */
@@ -15506,6 +16130,61 @@ export declare class RegionApi extends BaseAPI {
      * @memberof RegionApi
      */
     listRegions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Regions, any, {}>>;
+}
+/**
+ * RegionsApi - axios parameter creator
+ * @export
+ */
+export declare const RegionsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listRegionsEndpoint: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * RegionsApi - functional programming interface
+ * @export
+ */
+export declare const RegionsApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listRegionsEndpoint(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageRegionListResponse>>;
+};
+/**
+ * RegionsApi - factory interface
+ * @export
+ */
+export declare const RegionsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listRegionsEndpoint(options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageRegionListResponse>;
+};
+/**
+ * RegionsApi - object-oriented interface
+ * @export
+ * @class RegionsApi
+ * @extends {BaseAPI}
+ */
+export declare class RegionsApi extends BaseAPI {
+    /**
+     *
+     * @summary Get a list of supported regions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    listRegionsEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageRegionListResponse, any, {}>>;
 }
 /**
  * SecurityRulesApi - axios parameter creator
