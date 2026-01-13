@@ -5621,6 +5621,12 @@ export interface ObjectStorageBucketListResponse {
      * @memberof ObjectStorageBucketListResponse
      */
     'buckets': Array<ObjectStorageBucketResponse>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof ObjectStorageBucketListResponse
+     */
+    'failed_regions'?: Array<string>;
 }
 /**
  *

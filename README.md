@@ -1,4 +1,4 @@
-## @nexgencloud/hyperstack-sdk-typescript@v1.46.4-alpha
+## @nexgencloud/hyperstack-sdk-typescript@v1.47.0-alpha
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @nexgencloud/hyperstack-sdk-typescript@v1.46.4-alpha --save
+npm install @nexgencloud/hyperstack-sdk-typescript@v1.47.0-alpha --save
 ```
 
 _unPublished (not recommended):_
