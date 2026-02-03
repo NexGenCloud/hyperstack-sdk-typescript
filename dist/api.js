@@ -14691,10 +14691,11 @@ const VirtualMachineApiAxiosParamCreator = function (configuration) {
          * @param {string} [search]
          * @param {string} [environment]
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVMs: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, options = {}) {
+        listVMs: (page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, exactEnvironmentMatch_1, ...args_1) => __awaiter(this, [page_1, pageSize_1, search_1, environment_1, excludeFirewalls_1, exactEnvironmentMatch_1, ...args_1], void 0, function* (page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options = {}) {
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -14721,6 +14722,9 @@ const VirtualMachineApiAxiosParamCreator = function (configuration) {
             }
             if (excludeFirewalls) {
                 localVarQueryParameter['exclude_firewalls'] = excludeFirewalls;
+            }
+            if (exactEnvironmentMatch !== undefined) {
+                localVarQueryParameter['exact_environment_match'] = exactEnvironmentMatch;
             }
             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -15148,13 +15152,14 @@ const VirtualMachineApiFp = function (configuration) {
          * @param {string} [search]
          * @param {string} [environment]
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
+        listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options) {
             return __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c;
-                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, options);
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options);
                 const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                 const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['VirtualMachineApi.listVMs']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -15411,11 +15416,12 @@ const VirtualMachineApiFactory = function (configuration, basePath, axios) {
          * @param {string} [search]
          * @param {string} [environment]
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
-            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
+        listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options) {
+            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options).then((request) => request(axios, basePath));
         },
         /**
          * Request console logs for a virtual machine
@@ -15652,12 +15658,13 @@ class VirtualMachineApi extends base_1.BaseAPI {
      * @param {string} [search]
      * @param {string} [environment]
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    listVMs(page, pageSize, search, environment, excludeFirewalls, options) {
-        return (0, exports.VirtualMachineApiFp)(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
+    listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options) {
+        return (0, exports.VirtualMachineApiFp)(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Request console logs for a virtual machine

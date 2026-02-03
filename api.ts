@@ -1575,6 +1575,43 @@ export interface CommonResponseModel {
 /**
  * 
  * @export
+ * @interface CompatibleFlavor
+ */
+export interface CompatibleFlavor {
+    /**
+     * JSON constraints object
+     * @type {object}
+     * @memberof CompatibleFlavor
+     */
+    'constraints'?: object;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompatibleFlavor
+     */
+    'flavor_id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'flavor_name'?: string;
+    /**
+     * Either \'hard\' or \'soft\'
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'link_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'reason'?: string;
+}
+/**
+ * 
+ * @export
  * @interface ComplianceFields
  */
 export interface ComplianceFields {
@@ -3722,6 +3759,31 @@ export interface FlavorObjectFields {
 /**
  * 
  * @export
+ * @interface FlavorRestrictions
+ */
+export interface FlavorRestrictions {
+    /**
+     * List of compatible flavors with their link metadata
+     * @type {Array<CompatibleFlavor>}
+     * @memberof FlavorRestrictions
+     */
+    'compatible_flavors'?: Array<CompatibleFlavor>;
+    /**
+     * Whether the image has any flavor restrictions
+     * @type {boolean}
+     * @memberof FlavorRestrictions
+     */
+    'has_flavor_restrictions'?: boolean;
+    /**
+     * Either \'hard\', \'soft\', or null if no restrictions
+     * @type {string}
+     * @memberof FlavorRestrictions
+     */
+    'restriction_type'?: string;
+}
+/**
+ * 
+ * @export
  * @interface GPUFields
  */
 export interface GPUFields {
@@ -4169,6 +4231,12 @@ export interface ImageFields {
      * @memberof ImageFields
      */
     'display_size'?: string;
+    /**
+     * Flavor compatibility restrictions for this image
+     * @type {FlavorRestrictions}
+     * @memberof ImageFields
+     */
+    'flavor_restrictions'?: FlavorRestrictions;
     /**
      * 
      * @type {number}
@@ -25485,10 +25553,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * @param {string} [search] 
          * @param {string} [environment] 
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVMs: async (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listVMs: async (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/core/virtual-machines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -25522,6 +25591,10 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
 
             if (excludeFirewalls) {
                 localVarQueryParameter['exclude_firewalls'] = excludeFirewalls;
+            }
+
+            if (exactEnvironmentMatch !== undefined) {
+                localVarQueryParameter['exact_environment_match'] = exactEnvironmentMatch;
             }
 
 
@@ -25943,11 +26016,12 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * @param {string} [search] 
          * @param {string} [environment] 
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, options);
+        async listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.listVMs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -26188,11 +26262,12 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * @param {string} [search] 
          * @param {string} [environment] 
          * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+         * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances> {
-            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(axios, basePath));
+        listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Instances> {
+            return localVarFp.listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options).then((request) => request(axios, basePath));
         },
         /**
          * Request console logs for a virtual machine
@@ -26443,12 +26518,13 @@ export class VirtualMachineApi extends BaseAPI {
      * @param {string} [search] 
      * @param {string} [environment] 
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, options).then((request) => request(this.axios, this.basePath));
+    public listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).listVMs(page, pageSize, search, environment, excludeFirewalls, exactEnvironmentMatch, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -1559,6 +1559,43 @@ export interface CommonResponseModel {
 /**
  *
  * @export
+ * @interface CompatibleFlavor
+ */
+export interface CompatibleFlavor {
+    /**
+     * JSON constraints object
+     * @type {object}
+     * @memberof CompatibleFlavor
+     */
+    'constraints'?: object;
+    /**
+     *
+     * @type {number}
+     * @memberof CompatibleFlavor
+     */
+    'flavor_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'flavor_name'?: string;
+    /**
+     * Either \'hard\' or \'soft\'
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'link_type'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CompatibleFlavor
+     */
+    'reason'?: string;
+}
+/**
+ *
+ * @export
  * @interface ComplianceFields
  */
 export interface ComplianceFields {
@@ -3690,6 +3727,31 @@ export interface FlavorObjectFields {
 /**
  *
  * @export
+ * @interface FlavorRestrictions
+ */
+export interface FlavorRestrictions {
+    /**
+     * List of compatible flavors with their link metadata
+     * @type {Array<CompatibleFlavor>}
+     * @memberof FlavorRestrictions
+     */
+    'compatible_flavors'?: Array<CompatibleFlavor>;
+    /**
+     * Whether the image has any flavor restrictions
+     * @type {boolean}
+     * @memberof FlavorRestrictions
+     */
+    'has_flavor_restrictions'?: boolean;
+    /**
+     * Either \'hard\', \'soft\', or null if no restrictions
+     * @type {string}
+     * @memberof FlavorRestrictions
+     */
+    'restriction_type'?: string;
+}
+/**
+ *
+ * @export
  * @interface GPUFields
  */
 export interface GPUFields {
@@ -4137,6 +4199,12 @@ export interface ImageFields {
      * @memberof ImageFields
      */
     'display_size'?: string;
+    /**
+     * Flavor compatibility restrictions for this image
+     * @type {FlavorRestrictions}
+     * @memberof ImageFields
+     */
+    'flavor_restrictions'?: FlavorRestrictions;
     /**
      *
      * @type {number}
@@ -17208,10 +17276,11 @@ export declare const VirtualMachineApiAxiosParamCreator: (configuration?: Config
      * @param {string} [search]
      * @param {string} [environment]
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVMs: (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    listVMs: (page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -17391,10 +17460,11 @@ export declare const VirtualMachineApiFp: (configuration?: Configuration) => {
      * @param {string} [search]
      * @param {string} [environment]
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
+    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instances>>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -17574,10 +17644,11 @@ export declare const VirtualMachineApiFactory: (configuration?: Configuration, b
      * @param {string} [search]
      * @param {string} [environment]
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
+    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Instances>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -17773,11 +17844,12 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @param {string} [search]
      * @param {string} [environment]
      * @param {Array<number>} [excludeFirewalls] Comma-separated list of Security Group IDs to ignore instances attached
+     * @param {boolean} [exactEnvironmentMatch] Flag to filter environment by exact match instead of partial match
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
+    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
