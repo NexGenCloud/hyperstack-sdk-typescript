@@ -9502,6 +9502,55 @@ export interface UsersInfoListResponse {
 /**
  * 
  * @export
+ * @interface VMQuota
+ */
+export interface VMQuota {
+    /**
+     * 
+     * @type {number}
+     * @memberof VMQuota
+     */
+    'available_vms'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof VMQuota
+     */
+    'cidr'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof VMQuota
+     */
+    'current_vms'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VMQuota
+     */
+    'max_vms'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof VMQuota
+     */
+    'message'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof VMQuota
+     */
+    'percentage_used'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VMQuota
+     */
+    'status'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface VNCURL
  */
 export interface VNCURL {
@@ -9941,6 +9990,24 @@ export interface Voucher {
      * @memberof Voucher
      */
     'id': number;
+    /**
+     * Max redemption count for a General Voucher
+     * @type {number}
+     * @memberof Voucher
+     */
+    'max_redemption_count'?: number;
+    /**
+     * Current redemption count for a General Voucher
+     * @type {number}
+     * @memberof Voucher
+     */
+    'redemption_count'?: number;
+    /**
+     * Remaining redemptions
+     * @type {number}
+     * @memberof Voucher
+     */
+    'remaining_redemptions'?: number;
     /**
      * Voucher status
      * @type {string}
@@ -18609,6 +18676,43 @@ export const EnvironmentApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
+         * Retrieves VM quota information for a specific environment, including current VM count, maximum VMs allowed, available VMs, and percentage used in an environment before reaching the subnet IP limit.
+         * @summary Get environment VM quota
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironmentVMQuota: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getEnvironmentVMQuota', 'id', id)
+            const localVarPath = `/core/environments/{id}/vm-quota`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -18762,6 +18866,19 @@ export const EnvironmentApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves VM quota information for a specific environment, including current VM count, maximum VMs allowed, available VMs, and percentage used in an environment before reaching the subnet IP limit.
+         * @summary Get environment VM quota
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEnvironmentVMQuota(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VMQuota>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnvironmentVMQuota(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['EnvironmentApi.getEnvironmentVMQuota']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
          * @summary List environments
          * @param {string} [page] Page Number
@@ -18839,6 +18956,16 @@ export const EnvironmentApiFactory = function (configuration?: Configuration, ba
          */
         getEnvironment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Environment> {
             return localVarFp.getEnvironment(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves VM quota information for a specific environment, including current VM count, maximum VMs allowed, available VMs, and percentage used in an environment before reaching the subnet IP limit.
+         * @summary Get environment VM quota
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnvironmentVMQuota(id: number, options?: RawAxiosRequestConfig): AxiosPromise<VMQuota> {
+            return localVarFp.getEnvironmentVMQuota(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
@@ -18919,6 +19046,18 @@ export class EnvironmentApi extends BaseAPI {
      */
     public getEnvironment(id: number, options?: RawAxiosRequestConfig) {
         return EnvironmentApiFp(this.configuration).getEnvironment(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves VM quota information for a specific environment, including current VM count, maximum VMs allowed, available VMs, and percentage used in an environment before reaching the subnet IP limit.
+     * @summary Get environment VM quota
+     * @param {number} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnvironmentApi
+     */
+    public getEnvironmentVMQuota(id: number, options?: RawAxiosRequestConfig) {
+        return EnvironmentApiFp(this.configuration).getEnvironmentVMQuota(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -25055,10 +25194,11 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
          * Check if a Virtual Machine name is available
          * @summary Fetch virtual machine name availability
          * @param {string} name 
+         * @param {string} [count] Nr of instances to handle (optional, default: 1)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkVMNameAvailability: async (name: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        checkVMNameAvailability: async (name: string, count?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('checkVMNameAvailability', 'name', name)
             const localVarPath = `/core/virtual-machines/name-availability/{name}`
@@ -25076,6 +25216,10 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication apiKey required
             await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+            if (count !== undefined) {
+                localVarQueryParameter['count'] = count;
+            }
 
 
     
@@ -25847,11 +25991,12 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
          * Check if a Virtual Machine name is available
          * @summary Fetch virtual machine name availability
          * @param {string} name 
+         * @param {string} [count] Nr of instances to handle (optional, default: 1)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.checkVMNameAvailability(name, options);
+        async checkVMNameAvailability(name: string, count?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameAvailableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.checkVMNameAvailability(name, count, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.checkVMNameAvailability']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -26129,11 +26274,12 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          * Check if a Virtual Machine name is available
          * @summary Fetch virtual machine name availability
          * @param {string} name 
+         * @param {string} [count] Nr of instances to handle (optional, default: 1)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel> {
-            return localVarFp.checkVMNameAvailability(name, options).then((request) => request(axios, basePath));
+        checkVMNameAvailability(name: string, count?: string, options?: RawAxiosRequestConfig): AxiosPromise<NameAvailableModel> {
+            return localVarFp.checkVMNameAvailability(name, count, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
@@ -26361,12 +26507,13 @@ export class VirtualMachineApi extends BaseAPI {
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
      * @param {string} name 
+     * @param {string} [count] Nr of instances to handle (optional, default: 1)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    public checkVMNameAvailability(name: string, options?: RawAxiosRequestConfig) {
-        return VirtualMachineApiFp(this.configuration).checkVMNameAvailability(name, options).then((request) => request(this.axios, this.basePath));
+    public checkVMNameAvailability(name: string, count?: string, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).checkVMNameAvailability(name, count, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
