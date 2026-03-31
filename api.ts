@@ -1239,6 +1239,18 @@ export interface ClusterNodeGroupFields {
     'created_at'?: string;
     /**
      * 
+     * @type {Array<number>}
+     * @memberof ClusterNodeGroupFields
+     */
+    'firewall_ids'?: Array<number>;
+    /**
+     * 
+     * @type {Array<ClusterNodeGroupFirewallFields>}
+     * @memberof ClusterNodeGroupFields
+     */
+    'firewalls'?: Array<ClusterNodeGroupFirewallFields>;
+    /**
+     * 
      * @type {ClusterFlavorFields}
      * @memberof ClusterNodeGroupFields
      */
@@ -1279,6 +1291,31 @@ export interface ClusterNodeGroupFields {
      * @memberof ClusterNodeGroupFields
      */
     'updated_at'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ClusterNodeGroupFirewallFields
+ */
+export interface ClusterNodeGroupFirewallFields {
+    /**
+     * 
+     * @type {number}
+     * @memberof ClusterNodeGroupFirewallFields
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClusterNodeGroupFirewallFields
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ClusterNodeGroupFirewallFields
+     */
+    'status'?: string;
 }
 /**
  * 
@@ -2060,6 +2097,12 @@ export interface CreateClusterNodeGroupPayload {
      * @memberof CreateClusterNodeGroupPayload
      */
     'count'?: number;
+    /**
+     * IDs of the firewalls to apply to all nodes in this node group
+     * @type {Array<number>}
+     * @memberof CreateClusterNodeGroupPayload
+     */
+    'firewall_ids'?: Array<number>;
     /**
      * 
      * @type {string}
@@ -9039,6 +9082,12 @@ export interface URIs {
  */
 export interface UpdateClusterNodeGroupPayload {
     /**
+     * IDs of the firewalls to apply to all nodes in this node group
+     * @type {Array<number>}
+     * @memberof UpdateClusterNodeGroupPayload
+     */
+    'firewall_ids'?: Array<number>;
+    /**
      * 
      * @type {number}
      * @memberof UpdateClusterNodeGroupPayload
@@ -11082,7 +11131,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
