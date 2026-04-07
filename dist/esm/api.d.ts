@@ -6959,6 +6959,12 @@ export interface RegionFields {
      */
     'description'?: string;
     /**
+     *
+     * @type {object}
+     * @memberof RegionFields
+     */
+    'features'?: object;
+    /**
      * Green status
      * @type {string}
      * @memberof RegionFields
