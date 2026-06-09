@@ -38,6 +38,13 @@ export const BetaAccessStatusItemStatusEnum = {
     Denied: 'denied',
     Revoked: 'revoked'
 };
+export const ConsentBlockTypeEnum = {
+    Text: 'text',
+    Warning: 'warning',
+    Info: 'info',
+    Success: 'success',
+    Failure: 'failure'
+};
 export const CreateClusterNodeFieldsRoleEnum = {
     Worker: 'worker',
     Master: 'master'
@@ -123,10 +130,31 @@ export const KeypairEnvironmentFeaturesGreenStatusEnum = {
 export const ObjectStorageRegionsEnum = {
     Canada1: 'CANADA-1'
 };
+export const RecordConsentRequestActionEnum = {
+    Granted: 'granted',
+    Revoked: 'revoked'
+};
+export const RecordConsentRequestConsentMethodEnum = {
+    WebCheckbox: 'web_checkbox',
+    Api: 'api',
+    AdminOverride: 'admin_override'
+};
+export const RecordConsentRequestConsentTypeEnum = {
+    AutoTopUp: 'auto_top_up'
+};
 export const RegionFieldsGreenStatusEnum = {
     Green: 'GREEN',
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
+};
+export const UpdateConsentRequestActionEnum = {
+    Granted: 'granted',
+    Revoked: 'revoked'
+};
+export const UpdateConsentRequestConsentMethodEnum = {
+    WebCheckbox: 'web_checkbox',
+    Api: 'api',
+    AdminOverride: 'admin_override'
 };
 /**
  * AccessKeysApi - axios parameter creator
@@ -13809,6 +13837,484 @@ export class UserApi extends BaseAPI {
      */
     updateUserBillingInfo(payload, options) {
         return UserApiFp(this.configuration).updateUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * UserConsentApi - axios parameter creator
+ * @export
+ */
+export const UserConsentApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('addANewConsentForAUser', 'payload', payload);
+            const localVarPath = `/auth/user-consent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/user-consent/templates`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            const localVarPath = `/auth/user-consent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (consentType !== undefined) {
+                localVarQueryParameter['consent_type'] = consentType;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            assertParamExists('getConsentTemplateByType', 'consentType', consentType);
+            const localVarPath = `/auth/user-consent/templates/{consent_type}`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType: (consentType_1, payload_1, ...args_1) => __awaiter(this, [consentType_1, payload_1, ...args_1], void 0, function* (consentType, payload, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            assertParamExists('updateAConsentActionByType', 'consentType', consentType);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('updateAConsentActionByType', 'payload', payload);
+            const localVarPath = `/auth/user-consent/{consent_type}`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * UserConsentApi - functional programming interface
+ * @export
+ */
+export const UserConsentApiFp = function (configuration) {
+    const localVarAxiosParamCreator = UserConsentApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addANewConsentForAUser(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentApi.addANewConsentForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllConsentTemplates(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentApi.getAllConsentTemplates']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllConsentsForAUser(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentApi.getAllConsentsForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getConsentTemplateByType(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentApi.getConsentTemplateByType']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType(consentType, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAConsentActionByType(consentType, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentApi.updateAConsentActionByType']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * UserConsentApi - factory interface
+ * @export
+ */
+export const UserConsentApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = UserConsentApiFp(configuration);
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser(payload, options) {
+            return localVarFp.addANewConsentForAUser(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates(options) {
+            return localVarFp.getAllConsentTemplates(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser(consentType, options) {
+            return localVarFp.getAllConsentsForAUser(consentType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType(consentType, options) {
+            return localVarFp.getConsentTemplateByType(consentType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType(consentType, payload, options) {
+            return localVarFp.updateAConsentActionByType(consentType, payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * UserConsentApi - object-oriented interface
+ * @export
+ * @class UserConsentApi
+ * @extends {BaseAPI}
+ */
+export class UserConsentApi extends BaseAPI {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    addANewConsentForAUser(payload, options) {
+        return UserConsentApiFp(this.configuration).addANewConsentForAUser(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentTemplates(options) {
+        return UserConsentApiFp(this.configuration).getAllConsentTemplates(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentsForAUser(consentType, options) {
+        return UserConsentApiFp(this.configuration).getAllConsentsForAUser(consentType, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getConsentTemplateByType(consentType, options) {
+        return UserConsentApiFp(this.configuration).getConsentTemplateByType(consentType, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    updateAConsentActionByType(consentType, payload, options) {
+        return UserConsentApiFp(this.configuration).updateAConsentActionByType(consentType, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * UserConsentEventsApi - axios parameter creator
+ * @export
+ */
+export const UserConsentEventsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            assertParamExists('getConsentAuditEvents', 'consentType', consentType);
+            const localVarPath = `/auth/user-consent-events/{consent_type}/events`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * UserConsentEventsApi - functional programming interface
+ * @export
+ */
+export const UserConsentEventsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = UserConsentEventsApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getConsentAuditEvents(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserConsentEventsApi.getConsentAuditEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * UserConsentEventsApi - factory interface
+ * @export
+ */
+export const UserConsentEventsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = UserConsentEventsApiFp(configuration);
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents(consentType, options) {
+            return localVarFp.getConsentAuditEvents(consentType, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * UserConsentEventsApi - object-oriented interface
+ * @export
+ * @class UserConsentEventsApi
+ * @extends {BaseAPI}
+ */
+export class UserConsentEventsApi extends BaseAPI {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentEventsApi
+     */
+    getConsentAuditEvents(consentType, options) {
+        return UserConsentEventsApiFp(this.configuration).getConsentAuditEvents(consentType, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**

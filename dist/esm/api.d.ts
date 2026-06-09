@@ -1781,6 +1781,103 @@ export interface ComplianceResponse {
 /**
  *
  * @export
+ * @interface ConsentActionResponse
+ */
+export interface ConsentActionResponse {
+    /**
+     *
+     * @type {UserConsent}
+     * @memberof ConsentActionResponse
+     */
+    'consent'?: UserConsent;
+    /**
+     *
+     * @type {string}
+     * @memberof ConsentActionResponse
+     */
+    'message'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ConsentBlock
+ */
+export interface ConsentBlock {
+    /**
+     * Block text, may contain ${variable} placeholders
+     * @type {string}
+     * @memberof ConsentBlock
+     */
+    'text'?: string;
+    /**
+     * Block display type
+     * @type {string}
+     * @memberof ConsentBlock
+     */
+    'type'?: ConsentBlockTypeEnum;
+}
+export declare const ConsentBlockTypeEnum: {
+    readonly Text: "text";
+    readonly Warning: "warning";
+    readonly Info: "info";
+    readonly Success: "success";
+    readonly Failure: "failure";
+};
+export type ConsentBlockTypeEnum = typeof ConsentBlockTypeEnum[keyof typeof ConsentBlockTypeEnum];
+/**
+ *
+ * @export
+ * @interface ConsentEventsResponse
+ */
+export interface ConsentEventsResponse {
+    /**
+     *
+     * @type {UserConsent}
+     * @memberof ConsentEventsResponse
+     */
+    'consent'?: UserConsent;
+    /**
+     *
+     * @type {Array<UserConsentEvent>}
+     * @memberof ConsentEventsResponse
+     */
+    'events'?: Array<UserConsentEvent>;
+}
+/**
+ *
+ * @export
+ * @interface ConsentTemplate
+ */
+export interface ConsentTemplate {
+    /**
+     *
+     * @type {Array<ConsentBlock>}
+     * @memberof ConsentTemplate
+     */
+    'blocks'?: Array<ConsentBlock>;
+    /**
+     * Template version identifier
+     * @type {string}
+     * @memberof ConsentTemplate
+     */
+    'version'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ConsentTemplatesResponse
+ */
+export interface ConsentTemplatesResponse {
+    /**
+     * Templates keyed by consent type
+     * @type {object}
+     * @memberof ConsentTemplatesResponse
+     */
+    'templates'?: object;
+}
+/**
+ *
+ * @export
  * @interface ContainerOverviewFields
  */
 export interface ContainerOverviewFields {
@@ -6930,6 +7027,58 @@ export interface RbacRoleFields {
 /**
  *
  * @export
+ * @interface RecordConsentRequest
+ */
+export interface RecordConsentRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof RecordConsentRequest
+     */
+    'action': RecordConsentRequestActionEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof RecordConsentRequest
+     */
+    'consent_method'?: RecordConsentRequestConsentMethodEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof RecordConsentRequest
+     */
+    'consent_type': RecordConsentRequestConsentTypeEnum;
+    /**
+     * Version identifier. Defaults to the current version for the consent type
+     * @type {string}
+     * @memberof RecordConsentRequest
+     */
+    'consent_version'?: string;
+    /**
+     * Consent-type-specific metadata
+     * @type {object}
+     * @memberof RecordConsentRequest
+     */
+    'metadata'?: object;
+}
+export declare const RecordConsentRequestActionEnum: {
+    readonly Granted: "granted";
+    readonly Revoked: "revoked";
+};
+export type RecordConsentRequestActionEnum = typeof RecordConsentRequestActionEnum[keyof typeof RecordConsentRequestActionEnum];
+export declare const RecordConsentRequestConsentMethodEnum: {
+    readonly WebCheckbox: "web_checkbox";
+    readonly Api: "api";
+    readonly AdminOverride: "admin_override";
+};
+export type RecordConsentRequestConsentMethodEnum = typeof RecordConsentRequestConsentMethodEnum[keyof typeof RecordConsentRequestConsentMethodEnum];
+export declare const RecordConsentRequestConsentTypeEnum: {
+    readonly AutoTopUp: "auto_top_up";
+};
+export type RecordConsentRequestConsentTypeEnum = typeof RecordConsentRequestConsentTypeEnum[keyof typeof RecordConsentRequestConsentTypeEnum];
+/**
+ *
+ * @export
  * @interface RedeemVoucherPayload
  */
 export interface RedeemVoucherPayload {
@@ -9061,6 +9210,48 @@ export interface UpdateClusterNodeGroupPayload {
 /**
  *
  * @export
+ * @interface UpdateConsentRequest
+ */
+export interface UpdateConsentRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateConsentRequest
+     */
+    'action': UpdateConsentRequestActionEnum;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateConsentRequest
+     */
+    'consent_method'?: UpdateConsentRequestConsentMethodEnum;
+    /**
+     * Version identifier. Defaults to the current version for the consent type
+     * @type {string}
+     * @memberof UpdateConsentRequest
+     */
+    'consent_version'?: string;
+    /**
+     * Consent-type-specific metadata
+     * @type {object}
+     * @memberof UpdateConsentRequest
+     */
+    'metadata'?: object;
+}
+export declare const UpdateConsentRequestActionEnum: {
+    readonly Granted: "granted";
+    readonly Revoked: "revoked";
+};
+export type UpdateConsentRequestActionEnum = typeof UpdateConsentRequestActionEnum[keyof typeof UpdateConsentRequestActionEnum];
+export declare const UpdateConsentRequestConsentMethodEnum: {
+    readonly WebCheckbox: "web_checkbox";
+    readonly Api: "api";
+    readonly AdminOverride: "admin_override";
+};
+export type UpdateConsentRequestConsentMethodEnum = typeof UpdateConsentRequestConsentMethodEnum[keyof typeof UpdateConsentRequestConsentMethodEnum];
+/**
+ *
+ * @export
  * @interface UpdateEnvironment
  */
 export interface UpdateEnvironment {
@@ -9222,6 +9413,129 @@ export interface UpdateVolumeResponse {
      * @memberof UpdateVolumeResponse
      */
     'volume'?: VolumeFields;
+}
+/**
+ *
+ * @export
+ * @interface UserConsent
+ */
+export interface UserConsent {
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'action'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'consent_method'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'consent_type'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsent
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'ip_address'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsent
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsent
+     */
+    'updated_at'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsent
+     */
+    'user_id'?: number;
+}
+/**
+ *
+ * @export
+ * @interface UserConsentEvent
+ */
+export interface UserConsentEvent {
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsentEvent
+     */
+    'action'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsentEvent
+     */
+    'consent_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsentEvent
+     */
+    'consent_method'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsentEvent
+     */
+    'created_at'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsentEvent
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UserConsentEvent
+     */
+    'ip_address'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof UserConsentEvent
+     */
+    'user_id'?: number;
+}
+/**
+ *
+ * @export
+ * @interface UserConsentsResponse
+ */
+export interface UserConsentsResponse {
+    /**
+     *
+     * @type {Array<UserConsent>}
+     * @memberof UserConsentsResponse
+     */
+    'consents'?: Array<UserConsent>;
 }
 /**
  *
@@ -17151,6 +17465,256 @@ export declare class UserApi extends BaseAPI {
      * @memberof UserApi
      */
     updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
+}
+/**
+ * UserConsentApi - axios parameter creator
+ * @export
+ */
+export declare const UserConsentApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addANewConsentForAUser: (payload: RecordConsentRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentTemplates: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentsForAUser: (consentType?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentTemplateByType: (consentType: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAConsentActionByType: (consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * UserConsentApi - functional programming interface
+ * @export
+ */
+export declare const UserConsentApiFp: (configuration?: Configuration) => {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addANewConsentForAUser(payload: RecordConsentRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsentActionResponse>>;
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentTemplates(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsentTemplatesResponse>>;
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentsForAUser(consentType?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserConsentsResponse>>;
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentTemplateByType(consentType: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsentTemplate>>;
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAConsentActionByType(consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsentActionResponse>>;
+};
+/**
+ * UserConsentApi - factory interface
+ * @export
+ */
+export declare const UserConsentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addANewConsentForAUser(payload: RecordConsentRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConsentActionResponse>;
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentTemplates(options?: RawAxiosRequestConfig): AxiosPromise<ConsentTemplatesResponse>;
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllConsentsForAUser(consentType?: string, options?: RawAxiosRequestConfig): AxiosPromise<UserConsentsResponse>;
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentTemplateByType(consentType: string, options?: RawAxiosRequestConfig): AxiosPromise<ConsentTemplate>;
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAConsentActionByType(consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig): AxiosPromise<ConsentActionResponse>;
+};
+/**
+ * UserConsentApi - object-oriented interface
+ * @export
+ * @class UserConsentApi
+ * @extends {BaseAPI}
+ */
+export declare class UserConsentApi extends BaseAPI {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    addANewConsentForAUser(payload: RecordConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}>>;
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentTemplates(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplatesResponse, any, {}>>;
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentsForAUser(consentType?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserConsentsResponse, any, {}>>;
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getConsentTemplateByType(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplate, any, {}>>;
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    updateAConsentActionByType(consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}>>;
+}
+/**
+ * UserConsentEventsApi - axios parameter creator
+ * @export
+ */
+export declare const UserConsentEventsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentAuditEvents: (consentType: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * UserConsentEventsApi - functional programming interface
+ * @export
+ */
+export declare const UserConsentEventsApiFp: (configuration?: Configuration) => {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentAuditEvents(consentType: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsentEventsResponse>>;
+};
+/**
+ * UserConsentEventsApi - factory interface
+ * @export
+ */
+export declare const UserConsentEventsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getConsentAuditEvents(consentType: string, options?: RawAxiosRequestConfig): AxiosPromise<ConsentEventsResponse>;
+};
+/**
+ * UserConsentEventsApi - object-oriented interface
+ * @export
+ * @class UserConsentEventsApi
+ * @extends {BaseAPI}
+ */
+export declare class UserConsentEventsApi extends BaseAPI {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentEventsApi
+     */
+    getConsentAuditEvents(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentEventsResponse, any, {}>>;
 }
 /**
  * UserDetailChoiceApi - axios parameter creator

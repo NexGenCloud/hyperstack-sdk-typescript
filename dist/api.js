@@ -22,11 +22,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = exports.BucketsApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.AccessKeysApi = exports.AccessKeysApiFactory = exports.AccessKeysApiFp = exports.AccessKeysApiAxiosParamCreator = exports.RegionFieldsGreenStatusEnum = exports.ObjectStorageRegionsEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
-exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = void 0;
-exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = void 0;
-exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = void 0;
-exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = void 0;
+exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = exports.BucketsApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.AccessKeysApi = exports.AccessKeysApiFactory = exports.AccessKeysApiFp = exports.AccessKeysApiAxiosParamCreator = exports.UpdateConsentRequestConsentMethodEnum = exports.UpdateConsentRequestActionEnum = exports.RegionFieldsGreenStatusEnum = exports.RecordConsentRequestConsentTypeEnum = exports.RecordConsentRequestConsentMethodEnum = exports.RecordConsentRequestActionEnum = exports.ObjectStorageRegionsEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.ConsentBlockTypeEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
+exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = void 0;
+exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = void 0;
+exports.UserConsentEventsApiFactory = exports.UserConsentEventsApiFp = exports.UserConsentEventsApiAxiosParamCreator = exports.UserConsentApi = exports.UserConsentApiFactory = exports.UserConsentApiFp = exports.UserConsentApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = void 0;
+exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserConsentEventsApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -44,6 +44,13 @@ exports.BetaAccessStatusItemStatusEnum = {
     Approved: 'approved',
     Denied: 'denied',
     Revoked: 'revoked'
+};
+exports.ConsentBlockTypeEnum = {
+    Text: 'text',
+    Warning: 'warning',
+    Info: 'info',
+    Success: 'success',
+    Failure: 'failure'
 };
 exports.CreateClusterNodeFieldsRoleEnum = {
     Worker: 'worker',
@@ -130,10 +137,31 @@ exports.KeypairEnvironmentFeaturesGreenStatusEnum = {
 exports.ObjectStorageRegionsEnum = {
     Canada1: 'CANADA-1'
 };
+exports.RecordConsentRequestActionEnum = {
+    Granted: 'granted',
+    Revoked: 'revoked'
+};
+exports.RecordConsentRequestConsentMethodEnum = {
+    WebCheckbox: 'web_checkbox',
+    Api: 'api',
+    AdminOverride: 'admin_override'
+};
+exports.RecordConsentRequestConsentTypeEnum = {
+    AutoTopUp: 'auto_top_up'
+};
 exports.RegionFieldsGreenStatusEnum = {
     Green: 'GREEN',
     PartiallyGreen: 'PARTIALLY_GREEN',
     NotGreen: 'NOT_GREEN'
+};
+exports.UpdateConsentRequestActionEnum = {
+    Granted: 'granted',
+    Revoked: 'revoked'
+};
+exports.UpdateConsentRequestConsentMethodEnum = {
+    WebCheckbox: 'web_checkbox',
+    Api: 'api',
+    AdminOverride: 'admin_override'
 };
 /**
  * AccessKeysApi - axios parameter creator
@@ -13994,6 +14022,492 @@ class UserApi extends base_1.BaseAPI {
     }
 }
 exports.UserApi = UserApi;
+/**
+ * UserConsentApi - axios parameter creator
+ * @export
+ */
+const UserConsentApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('addANewConsentForAUser', 'payload', payload);
+            const localVarPath = `/auth/user-consent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/user-consent/templates`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            const localVarPath = `/auth/user-consent`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            if (consentType !== undefined) {
+                localVarQueryParameter['consent_type'] = consentType;
+            }
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            (0, common_1.assertParamExists)('getConsentTemplateByType', 'consentType', consentType);
+            const localVarPath = `/auth/user-consent/templates/{consent_type}`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType: (consentType_1, payload_1, ...args_1) => __awaiter(this, [consentType_1, payload_1, ...args_1], void 0, function* (consentType, payload, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            (0, common_1.assertParamExists)('updateAConsentActionByType', 'consentType', consentType);
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('updateAConsentActionByType', 'payload', payload);
+            const localVarPath = `/auth/user-consent/{consent_type}`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.UserConsentApiAxiosParamCreator = UserConsentApiAxiosParamCreator;
+/**
+ * UserConsentApi - functional programming interface
+ * @export
+ */
+const UserConsentApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.UserConsentApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.addANewConsentForAUser(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentApi.addANewConsentForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllConsentTemplates(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentApi.getAllConsentTemplates']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllConsentsForAUser(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentApi.getAllConsentsForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getConsentTemplateByType(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentApi.getConsentTemplateByType']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType(consentType, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAConsentActionByType(consentType, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentApi.updateAConsentActionByType']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.UserConsentApiFp = UserConsentApiFp;
+/**
+ * UserConsentApi - factory interface
+ * @export
+ */
+const UserConsentApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.UserConsentApiFp)(configuration);
+    return {
+        /**
+         * Add a new consent given by the User
+         * @summary Add a new User consent
+         * @param {RecordConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addANewConsentForAUser(payload, options) {
+            return localVarFp.addANewConsentForAUser(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns current consent templates for all consent types
+         * @summary Get all consent templates
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentTemplates(options) {
+            return localVarFp.getAllConsentTemplates(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Fetch all the recorded consents given from a User
+         * @summary Get Consents for a User
+         * @param {string} [consentType] Filter by consent type
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllConsentsForAUser(consentType, options) {
+            return localVarFp.getAllConsentsForAUser(consentType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the current consent template for a specific consent type
+         * @summary Get consent template for a specific type
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentTemplateByType(consentType, options) {
+            return localVarFp.getConsentTemplateByType(consentType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Revoke or grant a consent to the User
+         * @summary Grant or revoke an existing consent
+         * @param {string} consentType
+         * @param {UpdateConsentRequest} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAConsentActionByType(consentType, payload, options) {
+            return localVarFp.updateAConsentActionByType(consentType, payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.UserConsentApiFactory = UserConsentApiFactory;
+/**
+ * UserConsentApi - object-oriented interface
+ * @export
+ * @class UserConsentApi
+ * @extends {BaseAPI}
+ */
+class UserConsentApi extends base_1.BaseAPI {
+    /**
+     * Add a new consent given by the User
+     * @summary Add a new User consent
+     * @param {RecordConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    addANewConsentForAUser(payload, options) {
+        return (0, exports.UserConsentApiFp)(this.configuration).addANewConsentForAUser(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns current consent templates for all consent types
+     * @summary Get all consent templates
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentTemplates(options) {
+        return (0, exports.UserConsentApiFp)(this.configuration).getAllConsentTemplates(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Fetch all the recorded consents given from a User
+     * @summary Get Consents for a User
+     * @param {string} [consentType] Filter by consent type
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getAllConsentsForAUser(consentType, options) {
+        return (0, exports.UserConsentApiFp)(this.configuration).getAllConsentsForAUser(consentType, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns the current consent template for a specific consent type
+     * @summary Get consent template for a specific type
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    getConsentTemplateByType(consentType, options) {
+        return (0, exports.UserConsentApiFp)(this.configuration).getConsentTemplateByType(consentType, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Revoke or grant a consent to the User
+     * @summary Grant or revoke an existing consent
+     * @param {string} consentType
+     * @param {UpdateConsentRequest} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentApi
+     */
+    updateAConsentActionByType(consentType, payload, options) {
+        return (0, exports.UserConsentApiFp)(this.configuration).updateAConsentActionByType(consentType, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.UserConsentApi = UserConsentApi;
+/**
+ * UserConsentEventsApi - axios parameter creator
+ * @export
+ */
+const UserConsentEventsApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents: (consentType_1, ...args_1) => __awaiter(this, [consentType_1, ...args_1], void 0, function* (consentType, options = {}) {
+            // verify required parameter 'consentType' is not null or undefined
+            (0, common_1.assertParamExists)('getConsentAuditEvents', 'consentType', consentType);
+            const localVarPath = `/auth/user-consent-events/{consent_type}/events`
+                .replace(`{${"consent_type"}}`, encodeURIComponent(String(consentType)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.UserConsentEventsApiAxiosParamCreator = UserConsentEventsApiAxiosParamCreator;
+/**
+ * UserConsentEventsApi - functional programming interface
+ * @export
+ */
+const UserConsentEventsApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.UserConsentEventsApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents(consentType, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getConsentAuditEvents(consentType, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['UserConsentEventsApi.getConsentAuditEvents']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.UserConsentEventsApiFp = UserConsentEventsApiFp;
+/**
+ * UserConsentEventsApi - factory interface
+ * @export
+ */
+const UserConsentEventsApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.UserConsentEventsApiFp)(configuration);
+    return {
+        /**
+         * Get all consent audit events
+         * @summary Get audit trail for a consent
+         * @param {string} consentType
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConsentAuditEvents(consentType, options) {
+            return localVarFp.getConsentAuditEvents(consentType, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.UserConsentEventsApiFactory = UserConsentEventsApiFactory;
+/**
+ * UserConsentEventsApi - object-oriented interface
+ * @export
+ * @class UserConsentEventsApi
+ * @extends {BaseAPI}
+ */
+class UserConsentEventsApi extends base_1.BaseAPI {
+    /**
+     * Get all consent audit events
+     * @summary Get audit trail for a consent
+     * @param {string} consentType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserConsentEventsApi
+     */
+    getConsentAuditEvents(consentType, options) {
+        return (0, exports.UserConsentEventsApiFp)(this.configuration).getConsentAuditEvents(consentType, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.UserConsentEventsApi = UserConsentEventsApi;
 /**
  * UserDetailChoiceApi - axios parameter creator
  * @export
