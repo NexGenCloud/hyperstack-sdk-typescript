@@ -441,6 +441,93 @@ export interface AuthUserInfoResponseModel {
 /**
  *
  * @export
+ * @interface AutoTopup
+ */
+export interface AutoTopup {
+    /**
+     *
+     * @type {number}
+     * @memberof AutoTopup
+     */
+    'id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof AutoTopup
+     */
+    'status'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof AutoTopup
+     */
+    'threshold_amount'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof AutoTopup
+     */
+    'topup_amount'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof AutoTopup
+     */
+    'updated_at'?: string;
+}
+/**
+ *
+ * @export
+ * @interface AutoTopupErrorResponse
+ */
+export interface AutoTopupErrorResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof AutoTopupErrorResponse
+     */
+    'error_reason'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof AutoTopupErrorResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AutoTopupErrorResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface AutoTopupStatusSchema
+ */
+export interface AutoTopupStatusSchema {
+    /**
+     * Auto top-up status: active, disabled, pending_setup, cancelled, or null
+     * @type {string}
+     * @memberof AutoTopupStatusSchema
+     */
+    'status'?: string;
+    /**
+     * Balance threshold that triggers auto top-up
+     * @type {number}
+     * @memberof AutoTopupStatusSchema
+     */
+    'threshold_amount'?: number;
+    /**
+     * Amount to top up when threshold is reached
+     * @type {number}
+     * @memberof AutoTopupStatusSchema
+     */
+    'topup_amount'?: number;
+}
+/**
+ *
+ * @export
  * @interface BetaAccessRequestFields
  */
 export interface BetaAccessRequestFields {
@@ -603,10 +690,10 @@ export interface BillingHistory {
     'attributes'?: Attributes;
     /**
      *
-     * @type {object}
+     * @type {Metrics}
      * @memberof BillingHistory
      */
-    'metrics'?: object;
+    'metrics'?: Metrics;
 }
 /**
  *
@@ -667,6 +754,37 @@ export interface BillingHistoryFineTuning {
      *
      * @type {number}
      * @memberof BillingHistoryFineTuning
+     */
+    'total_count'?: number;
+}
+/**
+ *
+ * @export
+ * @interface BillingHistoryImageGenerationDetails
+ */
+export interface BillingHistoryImageGenerationDetails {
+    /**
+     *
+     * @type {Array<BillingHistory>}
+     * @memberof BillingHistoryImageGenerationDetails
+     */
+    'billing_history'?: Array<BillingHistory>;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryImageGenerationDetails
+     */
+    'org_id'?: number;
+    /**
+     *
+     * @type {Pagination}
+     * @memberof BillingHistoryImageGenerationDetails
+     */
+    'pagination'?: Pagination;
+    /**
+     *
+     * @type {number}
+     * @memberof BillingHistoryImageGenerationDetails
      */
     'total_count'?: number;
 }
@@ -2136,6 +2254,50 @@ export interface ContractInstancesResponse {
 /**
  *
  * @export
+ * @interface CreateAutoTopupPayload
+ */
+export interface CreateAutoTopupPayload {
+    /**
+     *
+     * @type {number}
+     * @memberof CreateAutoTopupPayload
+     */
+    'threshold_amount': number;
+    /**
+     *
+     * @type {number}
+     * @memberof CreateAutoTopupPayload
+     */
+    'topup_amount': number;
+}
+/**
+ *
+ * @export
+ * @interface CreateAutoTopupResponse
+ */
+export interface CreateAutoTopupResponse {
+    /**
+     *
+     * @type {AutoTopup}
+     * @memberof CreateAutoTopupResponse
+     */
+    'auto_topup'?: AutoTopup;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateAutoTopupResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof CreateAutoTopupResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface CreateClusterNodeFields
  */
 export interface CreateClusterNodeFields {
@@ -3162,6 +3324,31 @@ export interface DetachVolumesPayload {
 /**
  *
  * @export
+ * @interface DisableAutoTopupResponse
+ */
+export interface DisableAutoTopupResponse {
+    /**
+     *
+     * @type {AutoTopup}
+     * @memberof DisableAutoTopupResponse
+     */
+    'auto_topup'?: AutoTopup;
+    /**
+     *
+     * @type {string}
+     * @memberof DisableAutoTopupResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisableAutoTopupResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface EditLabelOfAnExistingVMPayload
  */
 export interface EditLabelOfAnExistingVMPayload {
@@ -4048,6 +4235,31 @@ export interface GetApiKeysResponseModel {
 /**
  *
  * @export
+ * @interface GetAutoTopupResponse
+ */
+export interface GetAutoTopupResponse {
+    /**
+     *
+     * @type {AutoTopup}
+     * @memberof GetAutoTopupResponse
+     */
+    'auto_topup'?: AutoTopup;
+    /**
+     *
+     * @type {string}
+     * @memberof GetAutoTopupResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof GetAutoTopupResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface GetCreditAndThresholdInfo
  */
 export interface GetCreditAndThresholdInfo {
@@ -4393,6 +4605,31 @@ export interface ImageFields {
      * @memberof ImageFields
      */
     'version'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ImageGenerationBillingHistoryDetailsResponseSchema
+ */
+export interface ImageGenerationBillingHistoryDetailsResponseSchema {
+    /**
+     *
+     * @type {BillingHistoryImageGenerationDetails}
+     * @memberof ImageGenerationBillingHistoryDetailsResponseSchema
+     */
+    'billing_history_image_generation_details'?: BillingHistoryImageGenerationDetails;
+    /**
+     *
+     * @type {string}
+     * @memberof ImageGenerationBillingHistoryDetailsResponseSchema
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ImageGenerationBillingHistoryDetailsResponseSchema
+     */
+    'status'?: boolean;
 }
 /**
  *
@@ -5479,6 +5716,61 @@ export interface MetricItemFields {
 /**
  *
  * @export
+ * @interface Metrics
+ */
+export interface Metrics {
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'incurred_bill'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'input_tokens'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'input_tokens_incurred_bill'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'input_tokens_non_discounted_bill'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'non_discounted_bill'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'output_tokens'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'output_tokens_incurred_bill'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof Metrics
+     */
+    'output_tokens_non_discounted_bill'?: number;
+}
+/**
+ *
+ * @export
  * @interface MetricsFields
  */
 export interface MetricsFields {
@@ -6474,6 +6766,18 @@ export interface PaymentDetailsFields {
     'amount'?: number;
     /**
      *
+     * @type {number}
+     * @memberof PaymentDetailsFields
+     */
+    'attempt_number'?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof PaymentDetailsFields
+     */
+    'auto_topup_id'?: number;
+    /**
+     *
      * @type {string}
      * @memberof PaymentDetailsFields
      */
@@ -6504,6 +6808,12 @@ export interface PaymentDetailsFields {
     'invoice'?: string;
     /**
      *
+     * @type {number}
+     * @memberof PaymentDetailsFields
+     */
+    'max_attempts'?: number;
+    /**
+     *
      * @type {string}
      * @memberof PaymentDetailsFields
      */
@@ -6514,6 +6824,12 @@ export interface PaymentDetailsFields {
      * @memberof PaymentDetailsFields
      */
     'payment_id'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentDetailsFields
+     */
+    'payment_type'?: string;
     /**
      *
      * @type {string}
@@ -6547,10 +6863,10 @@ export interface PaymentDetailsFields {
 export interface PaymentDetailsResponse {
     /**
      *
-     * @type {PaymentDetailsFields}
+     * @type {Array<PaymentDetailsFields>}
      * @memberof PaymentDetailsResponse
      */
-    'data'?: PaymentDetailsFields;
+    'data'?: Array<PaymentDetailsFields>;
     /**
      *
      * @type {string}
@@ -9185,6 +9501,50 @@ export interface URIs {
 /**
  *
  * @export
+ * @interface UpdateAutoTopupPayload
+ */
+export interface UpdateAutoTopupPayload {
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateAutoTopupPayload
+     */
+    'threshold_amount': number;
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateAutoTopupPayload
+     */
+    'topup_amount': number;
+}
+/**
+ *
+ * @export
+ * @interface UpdateAutoTopupResponse
+ */
+export interface UpdateAutoTopupResponse {
+    /**
+     *
+     * @type {AutoTopup}
+     * @memberof UpdateAutoTopupResponse
+     */
+    'auto_topup'?: AutoTopup;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateAutoTopupResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof UpdateAutoTopupResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface UpdateClusterNodeGroupPayload
  */
 export interface UpdateClusterNodeGroupPayload {
@@ -11021,6 +11381,185 @@ export declare class AuthApi extends BaseAPI {
     retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}>>;
 }
 /**
+ * AutoTopupApi - axios parameter creator
+ * @export
+ */
+export declare const AutoTopupApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create an auto top up configuration and initiate Stripe setup
+     * @param {CreateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAutoTopUp: (payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Disable auto top up, preventing any future automatic charges
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableAutoTopUp: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieve the current auto top up configuration and transaction history
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUp: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * @summary Get auto top-up status and configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUpStatus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update an existing active auto top up configuration
+     * @param {UpdateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAutoTopUp: (payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * AutoTopupApi - functional programming interface
+ * @export
+ */
+export declare const AutoTopupApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Create an auto top up configuration and initiate Stripe setup
+     * @param {CreateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAutoTopUp(payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateAutoTopupResponse>>;
+    /**
+     *
+     * @summary Disable auto top up, preventing any future automatic charges
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableAutoTopUp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DisableAutoTopupResponse>>;
+    /**
+     *
+     * @summary Retrieve the current auto top up configuration and transaction history
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAutoTopupResponse>>;
+    /**
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * @summary Get auto top-up status and configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUpStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AutoTopupStatusSchema>>;
+    /**
+     *
+     * @summary Update an existing active auto top up configuration
+     * @param {UpdateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAutoTopUp(payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateAutoTopupResponse>>;
+};
+/**
+ * AutoTopupApi - factory interface
+ * @export
+ */
+export declare const AutoTopupApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Create an auto top up configuration and initiate Stripe setup
+     * @param {CreateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAutoTopUp(payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateAutoTopupResponse>;
+    /**
+     *
+     * @summary Disable auto top up, preventing any future automatic charges
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disableAutoTopUp(options?: RawAxiosRequestConfig): AxiosPromise<DisableAutoTopupResponse>;
+    /**
+     *
+     * @summary Retrieve the current auto top up configuration and transaction history
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUp(options?: RawAxiosRequestConfig): AxiosPromise<GetAutoTopupResponse>;
+    /**
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * @summary Get auto top-up status and configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAutoTopUpStatus(options?: RawAxiosRequestConfig): AxiosPromise<AutoTopupStatusSchema>;
+    /**
+     *
+     * @summary Update an existing active auto top up configuration
+     * @param {UpdateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAutoTopUp(payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig): AxiosPromise<UpdateAutoTopupResponse>;
+};
+/**
+ * AutoTopupApi - object-oriented interface
+ * @export
+ * @class AutoTopupApi
+ * @extends {BaseAPI}
+ */
+export declare class AutoTopupApi extends BaseAPI {
+    /**
+     *
+     * @summary Create an auto top up configuration and initiate Stripe setup
+     * @param {CreateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    createAutoTopUp(payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateAutoTopupResponse, any, {}>>;
+    /**
+     *
+     * @summary Disable auto top up, preventing any future automatic charges
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    disableAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DisableAutoTopupResponse, any, {}>>;
+    /**
+     *
+     * @summary Retrieve the current auto top up configuration and transaction history
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    getAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetAutoTopupResponse, any, {}>>;
+    /**
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * @summary Get auto top-up status and configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    getAutoTopUpStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AutoTopupStatusSchema, any, {}>>;
+    /**
+     *
+     * @summary Update an existing active auto top up configuration
+     * @param {UpdateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    updateAutoTopUp(payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateAutoTopupResponse, any, {}>>;
+}
+/**
  * BetaAccessApi - axios parameter creator
  * @export
  */
@@ -11239,6 +11778,37 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     getFineTuningBillingHistoryGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive billing history of image_generation for the specified billing cycle.
+     * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistory: (startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistoryGraph: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationHistoryForResource: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
@@ -11623,6 +12193,37 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      */
     getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
     /**
+     * User will receive billing history of image_generation for the specified billing cycle.
+     * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenBasedBillingHistoryResponse>>;
+    /**
+     * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>>;
+    /**
+     * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>>;
+    /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
      * @param {*} [options] Override http request option.
@@ -12005,6 +12606,37 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      * @throws {RequiredError}
      */
     getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
+    /**
+     * User will receive billing history of image_generation for the specified billing cycle.
+     * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): AxiosPromise<TokenBasedBillingHistoryResponse>;
+    /**
+     * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>;
+    /**
+     * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>;
     /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
@@ -12399,6 +13031,40 @@ export declare class BillingApi extends BaseAPI {
      * @memberof BillingApi
      */
     getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
+    /**
+     * User will receive billing history of image_generation for the specified billing cycle.
+     * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    /**
+     * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}>>;
+    /**
+     * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}>>;
     /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost

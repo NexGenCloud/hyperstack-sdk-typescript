@@ -1384,6 +1384,361 @@ export class AuthApi extends BaseAPI {
     }
 }
 /**
+ * AutoTopupApi - axios parameter creator
+ * @export
+ */
+export const AutoTopupApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         *
+         * @summary Create an auto top up configuration and initiate Stripe setup
+         * @param {CreateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAutoTopUp: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('createAutoTopUp', 'payload', payload);
+            const localVarPath = `/billing/auto-topup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Disable auto top up, preventing any future automatic charges
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        disableAutoTopUp: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/auto-topup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'DELETE' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Retrieve the current auto top up configuration and transaction history
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUp: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/auto-topup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+         * @summary Get auto top-up status and configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUpStatus: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/auto-topup/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
+         * @summary Update an existing active auto top up configuration
+         * @param {UpdateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAutoTopUp: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('updateAutoTopUp', 'payload', payload);
+            const localVarPath = `/billing/auto-topup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * AutoTopupApi - functional programming interface
+ * @export
+ */
+export const AutoTopupApiFp = function (configuration) {
+    const localVarAxiosParamCreator = AutoTopupApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @summary Create an auto top up configuration and initiate Stripe setup
+         * @param {CreateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAutoTopUp(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.createAutoTopUp(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AutoTopupApi.createAutoTopUp']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Disable auto top up, preventing any future automatic charges
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        disableAutoTopUp(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.disableAutoTopUp(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AutoTopupApi.disableAutoTopUp']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Retrieve the current auto top up configuration and transaction history
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUp(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAutoTopUp(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AutoTopupApi.getAutoTopUp']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+         * @summary Get auto top-up status and configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUpStatus(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAutoTopUpStatus(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AutoTopupApi.getAutoTopUpStatus']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
+         * @summary Update an existing active auto top up configuration
+         * @param {UpdateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAutoTopUp(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAutoTopUp(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AutoTopupApi.updateAutoTopUp']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * AutoTopupApi - factory interface
+ * @export
+ */
+export const AutoTopupApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = AutoTopupApiFp(configuration);
+    return {
+        /**
+         *
+         * @summary Create an auto top up configuration and initiate Stripe setup
+         * @param {CreateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createAutoTopUp(payload, options) {
+            return localVarFp.createAutoTopUp(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Disable auto top up, preventing any future automatic charges
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        disableAutoTopUp(options) {
+            return localVarFp.disableAutoTopUp(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Retrieve the current auto top up configuration and transaction history
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUp(options) {
+            return localVarFp.getAutoTopUp(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+         * @summary Get auto top-up status and configuration
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAutoTopUpStatus(options) {
+            return localVarFp.getAutoTopUpStatus(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Update an existing active auto top up configuration
+         * @param {UpdateAutoTopupPayload} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAutoTopUp(payload, options) {
+            return localVarFp.updateAutoTopUp(payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * AutoTopupApi - object-oriented interface
+ * @export
+ * @class AutoTopupApi
+ * @extends {BaseAPI}
+ */
+export class AutoTopupApi extends BaseAPI {
+    /**
+     *
+     * @summary Create an auto top up configuration and initiate Stripe setup
+     * @param {CreateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    createAutoTopUp(payload, options) {
+        return AutoTopupApiFp(this.configuration).createAutoTopUp(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Disable auto top up, preventing any future automatic charges
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    disableAutoTopUp(options) {
+        return AutoTopupApiFp(this.configuration).disableAutoTopUp(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Retrieve the current auto top up configuration and transaction history
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    getAutoTopUp(options) {
+        return AutoTopupApiFp(this.configuration).getAutoTopUp(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * @summary Get auto top-up status and configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    getAutoTopUpStatus(options) {
+        return AutoTopupApiFp(this.configuration).getAutoTopUpStatus(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Update an existing active auto top up configuration
+     * @param {UpdateAutoTopupPayload} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AutoTopupApi
+     */
+    updateAutoTopUp(payload, options) {
+        return AutoTopupApiFp(this.configuration).updateAutoTopUp(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
  * BetaAccessApi - axios parameter creator
  * @export
  */
@@ -1961,6 +2316,130 @@ export const BillingApiAxiosParamCreator = function (configuration) {
             // verify required parameter 'resourceId' is not null or undefined
             assertParamExists('getFineTuningBillingHistoryGraph', 'resourceId', resourceId);
             const localVarPath = `/billing/billing/history/fine_tuning/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive billing history of image_generation for the specified billing cycle.
+         * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistory: (startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1) => __awaiter(this, [startDate_1, endDate_1, search_1, perPage_1, page_1, ...args_1], void 0, function* (startDate, endDate, search, perPage, page, options = {}) {
+            const localVarPath = `/billing/billing/history/image_generation`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
+            }
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistoryGraph: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getImageGenerationBillingHistoryGraph', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/image_generation/{resource_id}/graph`
+                .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            if (startDate !== undefined) {
+                localVarQueryParameter['start_date'] = startDate;
+            }
+            if (endDate !== undefined) {
+                localVarQueryParameter['end_date'] = endDate;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationHistoryForResource: (resourceId_1, startDate_1, endDate_1, ...args_1) => __awaiter(this, [resourceId_1, startDate_1, endDate_1, ...args_1], void 0, function* (resourceId, startDate, endDate, options = {}) {
+            // verify required parameter 'resourceId' is not null or undefined
+            assertParamExists('getImageGenerationHistoryForResource', 'resourceId', resourceId);
+            const localVarPath = `/billing/billing/history/image_generation/{resource_id}`
                 .replace(`{${"resource_id"}}`, encodeURIComponent(String(resourceId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3277,6 +3756,61 @@ export const BillingApiFp = function (configuration) {
             });
         },
         /**
+         * User will receive billing history of image_generation for the specified billing cycle.
+         * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getImageGenerationBillingHistory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getImageGenerationBillingHistoryGraph']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationHistoryForResource(resourceId, startDate, endDate, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getImageGenerationHistoryForResource(resourceId, startDate, endDate, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['BillingApi.getImageGenerationHistoryForResource']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
          * @summary GET: Last Day Cost
          * @param {*} [options] Override http request option.
@@ -3905,6 +4439,43 @@ export const BillingApiFactory = function (configuration, basePath, axios) {
             return localVarFp.getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
         },
         /**
+         * User will receive billing history of image_generation for the specified billing cycle.
+         * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+         * @param {number} [perPage] Number of items to return per page
+         * @param {number} [page] Page number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options) {
+            return localVarFp.getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+         * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+         * @param {number} resourceId
+         * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+            return localVarFp.getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+         * @param {number} resourceId
+         * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+         * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getImageGenerationHistoryForResource(resourceId, startDate, endDate, options) {
+            return localVarFp.getImageGenerationHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
          * @summary GET: Last Day Cost
          * @param {*} [options] Override http request option.
@@ -4372,6 +4943,46 @@ export class BillingApi extends BaseAPI {
      */
     getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options) {
         return BillingApiFp(this.configuration).getFineTuningBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive billing history of image_generation for the specified billing cycle.
+     * @summary Retrieve Billing History of image generation for a specific Billing Cycle
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [search] Search by resource \&quot;Name\&quot; or \&quot;ID\&quot;
+     * @param {number} [perPage] Number of items to return per page
+     * @param {number} [page] Page number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options) {
+        return BillingApiFp(this.configuration).getImageGenerationBillingHistory(startDate, endDate, search, perPage, page, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
+     * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
+     * @param {number} resourceId
+     * @param {string} [startDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] Date should be formatted in YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getImageGenerationBillingHistoryGraph(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
+     * @param {number} resourceId
+     * @param {string} [startDate] YYYY-MM-DDTHH:MM:SS
+     * @param {string} [endDate] YYYY-MM-DDTHH:MM:SS
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BillingApi
+     */
+    getImageGenerationHistoryForResource(resourceId, startDate, endDate, options) {
+        return BillingApiFp(this.configuration).getImageGenerationHistoryForResource(resourceId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
