@@ -14256,6 +14256,33 @@ export const UserApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllowedCountryCodes: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/billing/user/countries`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -14340,6 +14367,21 @@ export const UserApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllowedCountryCodes(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getAllowedCountryCodes(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['UserApi.getAllowedCountryCodes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -14390,6 +14432,15 @@ export const UserApiFactory = function (configuration, basePath, axios) {
             return localVarFp.addUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllowedCountryCodes(options) {
+            return localVarFp.getAllowedCountryCodes(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -14427,6 +14478,16 @@ export class UserApi extends BaseAPI {
      */
     addUserBillingInfo(payload, options) {
         return UserApiFp(this.configuration).addUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    getAllowedCountryCodes(options) {
+        return UserApiFp(this.configuration).getAllowedCountryCodes(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve the billing details associated with your user.

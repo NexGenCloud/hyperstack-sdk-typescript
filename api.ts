@@ -83,6 +83,25 @@ export interface AllocatedGPUCountGraph {
 /**
  * 
  * @export
+ * @interface AllowedCountriesResponse
+ */
+export interface AllowedCountriesResponse {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof AllowedCountriesResponse
+     */
+    'countries'?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AllowedCountriesResponse
+     */
+    'status'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface ApiKeyFields
  */
 export interface ApiKeyFields {
@@ -26012,6 +26031,39 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllowedCountryCodes: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/billing/user/countries`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -26107,6 +26159,18 @@ export const UserApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllowedCountryCodes(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AllowedCountriesResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllowedCountryCodes(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.getAllowedCountryCodes']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -26152,6 +26216,15 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
             return localVarFp.addUserBillingInfo(payload, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+         * @summary GET: Retrieve allowed country codes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllowedCountryCodes(options?: RawAxiosRequestConfig): AxiosPromise<AllowedCountriesResponse> {
+            return localVarFp.getAllowedCountryCodes(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the billing details associated with your user.
          * @summary GET: Retrieve billing info
          * @param {*} [options] Override http request option.
@@ -26190,6 +26263,17 @@ export class UserApi extends BaseAPI {
      */
     public addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).addUserBillingInfo(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public getAllowedCountryCodes(options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).getAllowedCountryCodes(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

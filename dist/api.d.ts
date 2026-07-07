@@ -73,6 +73,25 @@ export interface AllocatedGPUCountGraph {
 /**
  *
  * @export
+ * @interface AllowedCountriesResponse
+ */
+export interface AllowedCountriesResponse {
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof AllowedCountriesResponse
+     */
+    'countries'?: Array<string>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof AllowedCountriesResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface ApiKeyFields
  */
 export interface ApiKeyFields {
@@ -18025,6 +18044,13 @@ export declare const UserApiAxiosParamCreator: (configuration?: Configuration) =
      */
     addUserBillingInfo: (payload: UserInfoPostPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllowedCountryCodes: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Retrieve the billing details associated with your user.
      * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
@@ -18054,6 +18080,13 @@ export declare const UserApiFp: (configuration?: Configuration) => {
      */
     addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddUserInfoSuccessResponseModel>>;
     /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllowedCountryCodes(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AllowedCountriesResponse>>;
+    /**
      * Retrieve the billing details associated with your user.
      * @summary GET: Retrieve billing info
      * @param {*} [options] Override http request option.
@@ -18082,6 +18115,13 @@ export declare const UserApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): AxiosPromise<AddUserInfoSuccessResponseModel>;
+    /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAllowedCountryCodes(options?: RawAxiosRequestConfig): AxiosPromise<AllowedCountriesResponse>;
     /**
      * Retrieve the billing details associated with your user.
      * @summary GET: Retrieve billing info
@@ -18114,6 +18154,14 @@ export declare class UserApi extends BaseAPI {
      * @memberof UserApi
      */
     addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
+    /**
+     * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
+     * @summary GET: Retrieve allowed country codes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    getAllowedCountryCodes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AllowedCountriesResponse, any, {}>>;
     /**
      * Retrieve the billing details associated with your user.
      * @summary GET: Retrieve billing info
