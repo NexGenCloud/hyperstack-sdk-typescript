@@ -3381,6 +3381,129 @@ export interface EditLabelOfAnExistingVMPayload {
 /**
  *
  * @export
+ * @interface EmailCategory
+ */
+export interface EmailCategory {
+    /**
+     *
+     * @type {Array<EmailCategoryChild>}
+     * @memberof EmailCategory
+     */
+    'childs'?: Array<EmailCategoryChild>;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategory
+     */
+    'description'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategory
+     */
+    'display_name'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategory
+     */
+    'icon'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof EmailCategory
+     */
+    'opted_in'?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof EmailCategory
+     */
+    'position'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof EmailCategory
+     */
+    'required'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategory
+     */
+    'slug'?: string;
+}
+/**
+ *
+ * @export
+ * @interface EmailCategoryChild
+ */
+export interface EmailCategoryChild {
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategoryChild
+     */
+    'description'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategoryChild
+     */
+    'display_name'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof EmailCategoryChild
+     */
+    'email_category_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategoryChild
+     */
+    'icon'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof EmailCategoryChild
+     */
+    'opted_in'?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof EmailCategoryChild
+     */
+    'position'?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof EmailCategoryChild
+     */
+    'required'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof EmailCategoryChild
+     */
+    'slug'?: string;
+}
+/**
+ *
+ * @export
+ * @interface EmailPreferencesResponse
+ */
+export interface EmailPreferencesResponse {
+    /**
+     *
+     * @type {Array<EmailCategory>}
+     * @memberof EmailPreferencesResponse
+     */
+    'email_categories'?: Array<EmailCategory>;
+}
+/**
+ *
+ * @export
  * @interface Environment
  */
 export interface Environment {
@@ -9353,6 +9476,31 @@ export interface SubscribeOrUnsubscribeUpdatePayload {
 /**
  *
  * @export
+ * @interface SupportedKeypairPublicKeyTypesResponse
+ */
+export interface SupportedKeypairPublicKeyTypesResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof SupportedKeypairPublicKeyTypesResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof SupportedKeypairPublicKeyTypesResponse
+     */
+    'status'?: boolean;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof SupportedKeypairPublicKeyTypesResponse
+     */
+    'supported_key_types'?: Array<string>;
+}
+/**
+ *
+ * @export
  * @interface Template
  */
 export interface Template {
@@ -9628,6 +9776,32 @@ export declare const UpdateConsentRequestConsentMethodEnum: {
     readonly AdminOverride: "admin_override";
 };
 export type UpdateConsentRequestConsentMethodEnum = typeof UpdateConsentRequestConsentMethodEnum[keyof typeof UpdateConsentRequestConsentMethodEnum];
+/**
+ *
+ * @export
+ * @interface UpdateEmailPreferenceInput
+ */
+export interface UpdateEmailPreferenceInput {
+    /**
+     * Set opted_in status
+     * @type {boolean}
+     * @memberof UpdateEmailPreferenceInput
+     */
+    'opted_in': boolean;
+}
+/**
+ *
+ * @export
+ * @interface UpdateEmailPreferenceResponse
+ */
+export interface UpdateEmailPreferenceResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateEmailPreferenceResponse
+     */
+    'message'?: string;
+}
 /**
  *
  * @export
@@ -10876,7 +11050,7 @@ export declare class AccessKeysApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccessKeysApi
      */
-    createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyCreateResponse, any, {}>>;
+    createAccessKeyEndpoint(body?: ObjectStorageAccessKeyCreateRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyCreateResponse, any, {}, any>>;
     /**
      *
      * @summary Remove an existing access key
@@ -10885,7 +11059,7 @@ export declare class AccessKeysApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccessKeysApi
      */
-    deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}>>;
+    deleteAccessKeyEndpoint(accessKeyId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}, any>>;
     /**
      *
      * @summary List access keys
@@ -10896,7 +11070,7 @@ export declare class AccessKeysApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccessKeysApi
      */
-    listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyListResponse, any, {}>>;
+    listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyListResponse, any, {}, any>>;
 }
 /**
  * AliveApi - axios parameter creator
@@ -10969,14 +11143,14 @@ export declare class AliveApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AliveApi
      */
-    getAlive(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    getAlive(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AliveApi
      */
-    getAliveDoc(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    getAliveDoc(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
 }
 /**
  * ApiKeyApi - axios parameter creator
@@ -11107,7 +11281,7 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    deleteAPIKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    deleteAPIKey(apiKeyId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Generates your API key, providing access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/generate-api-key).
      * @summary Generate API Key
@@ -11116,7 +11290,7 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    generateAPIKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}>>;
+    generateAPIKey(payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}, any>>;
     /**
      * Retrieves your API keys, granting access to the Infrahub APIs. For further details on API keys, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/api-key/retrieve-api-key).
      * @summary Retrieve API Keys
@@ -11124,7 +11298,7 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    getAPIKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetApiKeysResponseModel, any, {}>>;
+    getAPIKey(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetApiKeysResponseModel, any, {}, any>>;
     /**
      * Updates the name and optionally the description of a specified API key. Include the ID of the API key in the path and the new name and optional description in the body of the request.
      * @summary Update API Key
@@ -11134,7 +11308,7 @@ export declare class ApiKeyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ApiKeyApi
      */
-    updateAPIKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}>>;
+    updateAPIKey(apiKeyId: number, payload: GenerateUpdateApiKeyPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GenerateUpdateApiKeyResponseModel, any, {}, any>>;
 }
 /**
  * AssigningMemberRoleApi - axios parameter creator
@@ -11221,7 +11395,7 @@ export declare class AssigningMemberRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AssigningMemberRoleApi
      */
-    assignRBACRoleToUser(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
+    assignRBACRoleToUser(userId: number, payload: AssignRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}, any>>;
     /**
      * Removes an RBAC role from a user within your organization, revoking the resource permissions they had access to. Provide the user ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/manage-member-roles/revoke-rbac-role).
      * @summary Remove RBAC Role From User
@@ -11230,7 +11404,7 @@ export declare class AssigningMemberRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AssigningMemberRoleApi
      */
-    removeRBACRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    removeRBACRoleFromUser(userId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
 }
 /**
  * AuthApi - axios parameter creator
@@ -11366,14 +11540,14 @@ export declare class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthGetTokenResponseModel, any, {}>>;
+    changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthGetTokenResponseModel, any, {}, any>>;
     /**
      * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    disableMFA(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    disableMFA(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
@@ -11381,7 +11555,7 @@ export declare class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    getUserMFAStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MFAStatusResponse, any, {}>>;
+    getUserMFAStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MFAStatusResponse, any, {}, any>>;
     /**
      * Retrieve the organizations associated with a user by their user ID. This endpoint is useful for understanding the user\'s organizational affiliations.
      * @summary Get User Organizations
@@ -11389,7 +11563,7 @@ export declare class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    getUserOrganizations(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserOrganizationsResponse, any, {}>>;
+    getUserOrganizations(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserOrganizationsResponse, any, {}, any>>;
     /**
      * Retrieves detailed information about the currently authenticated user. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/auth).
      * @summary Retrieve Authenticated User Details
@@ -11397,7 +11571,7 @@ export declare class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}>>;
+    retrieveAuthenticatedUserDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthUserInfoResponseModel, any, {}, any>>;
 }
 /**
  * AutoTopupApi - axios parameter creator
@@ -11543,7 +11717,7 @@ export declare class AutoTopupApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AutoTopupApi
      */
-    createAutoTopUp(payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateAutoTopupResponse, any, {}>>;
+    createAutoTopUp(payload: CreateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateAutoTopupResponse, any, {}, any>>;
     /**
      *
      * @summary Disable auto top up, preventing any future automatic charges
@@ -11551,7 +11725,7 @@ export declare class AutoTopupApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AutoTopupApi
      */
-    disableAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DisableAutoTopupResponse, any, {}>>;
+    disableAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DisableAutoTopupResponse, any, {}, any>>;
     /**
      *
      * @summary Retrieve the current auto top up configuration and transaction history
@@ -11559,7 +11733,7 @@ export declare class AutoTopupApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AutoTopupApi
      */
-    getAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetAutoTopupResponse, any, {}>>;
+    getAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetAutoTopupResponse, any, {}, any>>;
     /**
      * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
      * @summary Get auto top-up status and configuration
@@ -11567,7 +11741,7 @@ export declare class AutoTopupApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AutoTopupApi
      */
-    getAutoTopUpStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AutoTopupStatusSchema, any, {}>>;
+    getAutoTopUpStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AutoTopupStatusSchema, any, {}, any>>;
     /**
      *
      * @summary Update an existing active auto top up configuration
@@ -11576,7 +11750,7 @@ export declare class AutoTopupApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AutoTopupApi
      */
-    updateAutoTopUp(payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateAutoTopupResponse, any, {}>>;
+    updateAutoTopUp(payload: UpdateAutoTopupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateAutoTopupResponse, any, {}, any>>;
 }
 /**
  * BetaAccessApi - axios parameter creator
@@ -11680,7 +11854,7 @@ export declare class BetaAccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BetaAccessApi
      */
-    createBetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessRequestResponseModel, any, {}>>;
+    createBetaAccessRequest(payload: BetaAccessRequestPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessRequestResponseModel, any, {}, any>>;
     /**
      * Check the status of a particular beta access requests.
      * @summary Check the status of beta access requests
@@ -11689,7 +11863,7 @@ export declare class BetaAccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BetaAccessApi
      */
-    getBetaAccessRequests(program: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}>>;
+    getBetaAccessRequests(program: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}, any>>;
     /**
      * Check the status of all beta access requests.
      * @summary Check the status of all beta access requests
@@ -11697,7 +11871,7 @@ export declare class BetaAccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BetaAccessApi
      */
-    getBetaAccessStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}>>;
+    getBetaAccessStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BetaAccessStatusResponseModel, any, {}, any>>;
 }
 /**
  * BillingApi - axios parameter creator
@@ -12958,7 +13132,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    bucketsBillingHistoryHourlyChart(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelGraphBillingDetailsBucket, any, {}>>;
+    bucketsBillingHistoryHourlyChart(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelGraphBillingDetailsBucket, any, {}, any>>;
     /**
      * Retrieve billing history of a specific Bucket for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
@@ -12969,7 +13143,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getBucketBillingHistory(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingDetailsResponseModel, any, {}>>;
+    getBucketBillingHistory(bucketId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of a specific Cluster for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'.
      * @summary Retrieve Billing History of a Specific Cluster for a specific Billing Cycle
@@ -12980,7 +13154,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getClusterBillingHistory(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingDetailsResponseModel, any, {}>>;
+    getClusterBillingHistory(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a Cluster for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a specific Cluster for a specific billing cycle
@@ -12991,7 +13165,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getClusterBillingHistoryGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterGraphBillingDetailsResponseModel, any, {}>>;
+    getClusterBillingHistoryGraph(clusterId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of data_synthesis for the specified billing cycle.
      * @summary Retrieve Billing History of data synthesis for a specific Billing Cycle
@@ -13004,7 +13178,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getDataSynthesisBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    getDataSynthesisBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a data synthesis job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
      * @summary Retrieve hourly cost datapoints of a Specific Data Synthesis for a specific
@@ -13015,7 +13189,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getDataSynthesisBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}>>;
+    getDataSynthesisBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * Retrieve billing history for a specific Data Synthesis resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
      * @param {number} resourceId
@@ -13025,7 +13199,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getDataSynthesisHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}>>;
+    getDataSynthesisHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DataSynthesisBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * User will receive billing history of fine_tuning for the specified billing cycle.
      * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
@@ -13038,7 +13212,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getFineTuningBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WorkloadBillingHistoryResponse, any, {}>>;
+    getFineTuningBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<WorkloadBillingHistoryResponse, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a Fine Tunings for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Fine Tuning for a specific billing cycle
@@ -13049,7 +13223,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
+    getFineTuningBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of image_generation for the specified billing cycle.
      * @summary Retrieve Billing History of image generation for a specific Billing Cycle
@@ -13062,7 +13236,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getImageGenerationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    getImageGenerationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for an image generation job for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
      * @summary Retrieve hourly cost datapoints of a Specific Image Generation for a specific
@@ -13073,7 +13247,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getImageGenerationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}>>;
+    getImageGenerationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * Retrieve billing history for a specific Image Generation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
      * @param {number} resourceId
@@ -13083,7 +13257,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}>>;
+    getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
@@ -13091,7 +13265,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getLastDayCost(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<LastDayCostResponse, any, {}>>;
+    getLastDayCost(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<LastDayCostResponse, any, {}, any>>;
     /**
      * User will receive billing history of model_evaluation for the specified billing cycle.
      * @summary Retrieve Billing History of model evaluation for a specific Billing Cycle
@@ -13104,7 +13278,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getModelEvaluationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    getModelEvaluationBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a model evaluation for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
      * @summary Retrieve hourly cost datapoints of a Specific Model Evaluation for a specific
@@ -13115,7 +13289,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getModelEvaluationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}>>;
+    getModelEvaluationBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * By default, you are subscribed to all the threshold values and you will be receiving the email notification for these default thresholds values. `false` indicates that the user will no longer receive notifications for this specific threshold, whereas `true` signifies that the user will receive notification emails.
      * @summary Update: Subscribe or Unsubscribe Notification Threshold
@@ -13125,7 +13299,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getNotificationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdUpdateResponse, any, {}>>;
+    getNotificationThreshold(thresholdId: number, payload: SubscribeOrUnsubscribeUpdatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdUpdateResponse, any, {}, any>>;
     /**
      * Retrieve billing history of a specific Fine tuning for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Fine Tuning for a specific Billing Cycle
@@ -13136,7 +13310,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getResourceFineTuningBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
+    getResourceFineTuningBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}, any>>;
     /**
      * Retrieve billing history for a specific Model Evaluation resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
      * @param {number} resourceId
@@ -13146,7 +13320,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getResourceModelEvaluationBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}>>;
+    getResourceModelEvaluationBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ModelEvaluationBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a serverless inference for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. billing cycle
      * @summary Retrieve hourly cost datapoints of a Specific Serverless Inference for a specific
@@ -13157,7 +13331,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getServerlessInferenceBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}>>;
+    getServerlessInferenceBillingHistoryGraph(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * Retrieve billing history for a specific Serverless Inference resource. Includes: \'resource_name\', \'infrahub_id\', \'base_model\', \'base_model_display_name\', \'lora_adapter\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'input_tokens\', \'output_tokens\', \'input_tokens_incurred_bill\', \'input_tokens_non_discounted_bill\', \'output_tokens_incurred_bill\', \'output_tokens_non_discounted_bill\'
      * @param {number} resourceId
@@ -13167,7 +13341,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getServerlessInferencesBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}>>;
+    getServerlessInferencesBillingHistory(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ServerlessInferencedBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
      * Retrieve billing history of a specific Snapshot for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Snapshot for a specific Billing Cycle
@@ -13178,7 +13352,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getSnapshotBillingHistory(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
+    getSnapshotBillingHistory(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a Snapshot for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Snapshot for a specific billing cycle
@@ -13189,7 +13363,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
+    getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
      * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
      * @summary GET: Billing usage
@@ -13199,7 +13373,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BillingMetricesResponse, any, {}>>;
+    getUsage(deleted?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<BillingMetricesResponse, any, {}, any>>;
     /**
      * User will receive billing history for the specified billing cycle. This data will include \'incurred_bill\', \'non_discounted_bill\', \'vm_cost\', \'volume_cost\'
      * @summary Retrieve Billing History for a specific Billing Cycle
@@ -13210,7 +13384,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getUserBillingHistory(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationLevelBillingHistoryResponseModel, any, {}>>;
+    getUserBillingHistory(startDate?: string, endDate?: string, graph?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationLevelBillingHistoryResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of a specific Virtual Machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'non_discounted_price_per_hour\', \'incurred_bill\', \'non_discounted_bill\', \'usage_time\', \'usage_time_ACTIVE\', \'usage_time_SHUTOFF\', \'usage_time_HIBERNATED\'
      * @summary Retrieve Billing History of a Specific Virtual Machine for a specific Billing Cycle
@@ -13221,7 +13395,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMBillingDetails(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVMBillingDetailsResponseModel, any, {}>>;
+    getVMBillingDetails(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVMBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive vm billing events history
      * @summary Retrieve VM billing events history
@@ -13232,7 +13406,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}>>;
+    getVMBillingEvents(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a VM for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Virtual Machine for a specific billing cycle
@@ -13243,7 +13417,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMBillingGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmGraphBillingDetailsResponseModel, any, {}>>;
+    getVMBillingGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of virtual machine for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Virtual Machine for a specific Billing Cycle
@@ -13256,7 +13430,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmBillingHistoryResponseModel, any, {}>>;
+    getVMBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVmBillingHistoryResponseModel, any, {}, any>>;
     /**
      * User will get total costs and non_discount costs of sub resources on a specific Virtual Machine for the specified billing cycle. on a Specific VM for the Specified Billing Cycle
      * @summary Retrieve Total Costs and Non Discount Costs for Sub Resources
@@ -13267,7 +13441,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMSubResourceCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesCostsResponseModel, any, {}>>;
+    getVMSubResourceCosts(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesCostsResponseModel, any, {}, any>>;
     /**
      * User will receive sub-resources historical cost datapoints for a VM sub resources for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints. Machine sub resources for a specific billing cycle
      * @summary Retrieve Sub-Resources Historical Cost datapoints of a Virtual
@@ -13278,7 +13452,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVMSubResourceGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesGraphResponseModel, any, {}>>;
+    getVMSubResourceGraph(vmId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SubResourcesGraphResponseModel, any, {}, any>>;
     /**
      * Retrieve billing history of a specific Volume for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'price_per_hour\', \'incurred_bill\', \'usage_time\', \'non_discounted_price_per_hour\', \'non_discounted_bill\'.
      * @summary Retrieve Billing History of a Specific Volume for a specific Billing Cycle
@@ -13289,7 +13463,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVolumeBillingDetails(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}>>;
+    getVolumeBillingDetails(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive volume billing events history
      * @summary Retrieve Volume billing events history
@@ -13300,7 +13474,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}>>;
+    getVolumeBillingEvents(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingEventsHistoryResponse, any, {}, any>>;
     /**
      * User will receive billing history of volumes for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Volume for a specific Billing Cycle
@@ -13313,7 +13487,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVolumeBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}>>;
+    getVolumeBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}, any>>;
     /**
      * User will receive hourly cost datapoints for a Volume for a specified billing cycle. This data will include \'incurred_bill\' graph datapoints.
      * @summary Retrieve hourly cost datapoints of a Specific Volume for a specific billing cycle
@@ -13324,7 +13498,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    getVolumeBillingHistoryGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}>>;
+    getVolumeBillingHistoryGraph(volumeId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of contracts for the specified billing cycle. This data will include \'description\', gpu_type\',\'infrahub_id\', \'status\', \'incurred_bill\', \'price_per_hour\'
      * @summary Retrieve Billing History of Contract for a specific Billing Cycle
@@ -13335,7 +13509,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listBillingContractHistory(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    listBillingContractHistory(startDate?: string, endDate?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      * User will receive billing history of buckets for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of a Bucket for a specific Billing Cycle
@@ -13348,7 +13522,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listBucketBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingHistoryResponseModel, any, {}>>;
+    listBucketBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelBucketBillingHistoryResponseModel, any, {}, any>>;
     /**
      * User will receive billing history of clusters for the specified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Clusters for a specific Billing Cycle
@@ -13361,7 +13535,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listClustersBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingHistoryResponseModel, any, {}>>;
+    listClustersBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelClusterBillingHistoryResponseModel, any, {}, any>>;
     /**
      * Retrieve all the notification thresholds for an organization.
      * @summary GET: All Thresholds for Organization
@@ -13369,7 +13543,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listOrgNotificationThresholds(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdsResponse, any, {}>>;
+    listOrgNotificationThresholds(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<OrganizationThresholdsResponse, any, {}, any>>;
     /**
      * User will receive billing history of serverless_inference for the specified billing cycle.
      * @summary Retrieve Billing History of serverless inference for a specific Billing Cycle
@@ -13382,7 +13556,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listServerlessInferenceBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}>>;
+    listServerlessInferenceBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<TokenBasedBillingHistoryResponse, any, {}, any>>;
     /**
      * User will receive billing history of snapshots for thespecified billing cycle. This data will include \'resource_name\', \'infrahub_id\', \'status\', \'incurred_bill\', \'usage_time\', \'price_per_hour\'
      * @summary Retrieve Billing History of Snapshot for a specific Billing Cycle
@@ -13395,7 +13569,7 @@ export declare class BillingApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BillingApi
      */
-    listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}>>;
+    listSnapshotBillingHistory(startDate?: string, endDate?: string, search?: string, perPage?: number, page?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeBillingHistoryResponseModel, any, {}, any>>;
 }
 /**
  * BucketsApi - axios parameter creator
@@ -13509,7 +13683,7 @@ export declare class BucketsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}>>;
+    deleteBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageDeleteResponse, any, {}, any>>;
     /**
      *
      * @summary List buckets
@@ -13518,7 +13692,7 @@ export declare class BucketsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketListResponse, any, {}>>;
+    listBucketsEndpoint(search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketListResponse, any, {}, any>>;
     /**
      *
      * @summary Retrieve a bucket
@@ -13528,7 +13702,7 @@ export declare class BucketsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof BucketsApi
      */
-    retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketResponse, any, {}>>;
+    retrieveBucketEndpoint(bucketName: string, region: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageBucketResponse, any, {}, any>>;
 }
 /**
  * CalculateApi - axios parameter creator
@@ -13591,7 +13765,7 @@ export declare class CalculateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CalculateApi
      */
-    calculateResourceBillingRate(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingResponseForCustomer, any, {}>>;
+    calculateResourceBillingRate(resourceType: string, id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceBillingResponseForCustomer, any, {}, any>>;
 }
 /**
  * CallbacksApi - axios parameter creator
@@ -13783,7 +13957,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    attachCallbackToVM(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
+    attachCallbackToVM(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}, any>>;
     /**
      * Creates a callback URL for a specified volume, enabling the posting of action events executed on the volume to the specified URL. Provide the callback URL in the request body and the ID of the volume to which it is being attached in the path. For more details on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/attach-callback-volume).
      * @summary Attach callback to volume
@@ -13793,7 +13967,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    attachCallbackToVolume(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
+    attachCallbackToVolume(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}, any>>;
     /**
      * Permanently deletes the callback URL associated with a specified virtual machine by providing the virtual machine ID in the request path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms/delete-callback-vm).
      * @summary Delete virtual machine callback
@@ -13802,7 +13976,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    deleteVMCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteVMCallback(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Permanently deletes the callback URL associated with a specified volume by providing the volume ID in the request path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/delete-callback-volume).
      * @summary Delete volume callback
@@ -13811,7 +13985,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    deleteVolumeCallback(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteVolumeCallback(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Updates the callback URL for a specified virtual machine. Provide the new callback URL in the request body, along with the ID of the associated virtual machine in the path. For additional information on virtual machine callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/callbacks-vms).
      * @summary Update virtual machine callback
@@ -13821,7 +13995,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    updateVMCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
+    updateVMCallback(vmId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}, any>>;
     /**
      * Updates the callback URL for a specified volume. Provide the new callback URL in the request body, along with the ID of the associated volume in the path. For additional information on volume callback URLs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/volumes/volume-callbacks/update-callback-volume/).
      * @summary Update volume callback
@@ -13831,7 +14005,7 @@ export declare class CallbacksApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CallbacksApi
      */
-    updateVolumeCallback(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}>>;
+    updateVolumeCallback(volumeId: number, payload: AttachCallbackPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachCallbackResponse, any, {}, any>>;
 }
 /**
  * ClusterEventsApi - axios parameter creator
@@ -13890,7 +14064,7 @@ export declare class ClusterEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClusterEventsApi
      */
-    listClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterEvents, any, {}>>;
+    listClusterEvents(clusterId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterEvents, any, {}, any>>;
 }
 /**
  * ClustersApi - axios parameter creator
@@ -14363,7 +14537,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}>>;
+    createCluster(payload: CreateClusterPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}, any>>;
     /**
      *
      * @summary Create Node
@@ -14373,7 +14547,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    createNode(clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}>>;
+    createNode(clusterId: number, payload: CreateClusterNodeFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}, any>>;
     /**
      *
      * @summary Create a node group in a cluster
@@ -14383,7 +14557,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    createNodeGroup(clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}>>;
+    createNodeGroup(clusterId: number, payload: CreateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}, any>>;
     /**
      *
      * @summary Delete a cluster
@@ -14392,7 +14566,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteCluster(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteCluster(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      *
      * @summary Delete Cluster Node
@@ -14402,7 +14576,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteClusterNode(clusterId: number, nodeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      *
      * @summary Delete Multiple Cluster Nodes
@@ -14412,7 +14586,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteClusterNodes(clusterId: number, payload: DeleteClusterNodesFields, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      *
      * @summary Delete a node group
@@ -14422,7 +14596,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    deleteNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if a Cluster name is available
      * @summary Fetch cluster name availability
@@ -14431,7 +14605,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    fetchClusterNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      *
      * @summary Get Cluster Master Flavors
@@ -14439,7 +14613,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    getClusterMasterFlavors(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MasterFlavorsResponse, any, {}>>;
+    getClusterMasterFlavors(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MasterFlavorsResponse, any, {}, any>>;
     /**
      *
      * @summary Get Cluster Nodes
@@ -14448,7 +14622,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    getClusterNodes(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}>>;
+    getClusterNodes(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodesListResponse, any, {}, any>>;
     /**
      * Lists available Kubernetes versions, optionally filtered by region.
      * @summary List Cluster Versions
@@ -14457,7 +14631,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    getClusterVersions(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterVersions, any, {}>>;
+    getClusterVersions(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterVersions, any, {}, any>>;
     /**
      *
      * @summary Retrieve a node group in a cluster
@@ -14467,7 +14641,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    getNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsGetResponse, any, {}>>;
+    getNodeGroup(clusterId: number, nodeGroupId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsGetResponse, any, {}, any>>;
     /**
      *
      * @summary Getting Cluster Detail
@@ -14476,7 +14650,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    gettingClusterDetail(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}>>;
+    gettingClusterDetail(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterResponse, any, {}, any>>;
     /**
      *
      * @summary List Clusters
@@ -14488,7 +14662,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    listClusters(page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterListResponse, any, {}>>;
+    listClusters(page?: number, pageSize?: number, environment?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterListResponse, any, {}, any>>;
     /**
      *
      * @summary List node groups for a cluster
@@ -14497,7 +14671,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    listNodeGroups(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsListResponse, any, {}>>;
+    listNodeGroups(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsListResponse, any, {}, any>>;
     /**
      *
      * @summary Reconcile a cluster
@@ -14506,7 +14680,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ManualReconciliationModel, any, {}>>;
+    reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ManualReconciliationModel, any, {}, any>>;
     /**
      *
      * @summary Update a node group in a cluster
@@ -14517,7 +14691,7 @@ export declare class ClustersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClustersApi
      */
-    updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}>>;
+    updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}, any>>;
 }
 /**
  * ComplianceApi - axios parameter creator
@@ -14648,7 +14822,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}>>;
+    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}, any>>;
     /**
      *
      * @summary Delete a compliance
@@ -14657,7 +14831,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
      * @summary Retrieve GPU compliance
@@ -14666,7 +14840,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    getCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ComplianceResponse, any, {}>>;
+    getCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ComplianceResponse, any, {}, any>>;
     /**
      *
      * @summary Update a compliance
@@ -14675,7 +14849,7 @@ export declare class ComplianceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ComplianceApi
      */
-    updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}>>;
+    updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}, any>>;
 }
 /**
  * CreditApi - axios parameter creator
@@ -14730,7 +14904,7 @@ export declare class CreditApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CreditApi
      */
-    getUserCredit(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCreditAndThresholdInfoInResponse, any, {}>>;
+    getUserCredit(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCreditAndThresholdInfoInResponse, any, {}, any>>;
 }
 /**
  * CustomerContractApi - axios parameter creator
@@ -14848,7 +15022,7 @@ export declare class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    getContractGPUAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractGPUAllocationGraphResponse, any, {}>>;
+    getContractGPUAllocationGraph(contractId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractGPUAllocationGraphResponse, any, {}, any>>;
     /**
      * Retrieves a list of contracts and their details, including the terms of each contract and the discounts applied to all resources under each contract. Pagination can be controlled using the `page` and `per_page` query parameters. For additional information about contracts, click [**here**](None/docs/billing-and-payment/contracts).
      * @summary List Contracts
@@ -14858,7 +15032,7 @@ export declare class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    listCustomerContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCustomerContractsListResponseModel, any, {}>>;
+    listCustomerContracts(page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetCustomerContractsListResponseModel, any, {}, any>>;
     /**
      * Retrieve details of a specific contract by providing the contract ID in the path. The endpoint returns the contract object along with its associated discount plans. For more information, [**click here**](None/docs/api-reference/pricebook-resources/retrieve-contract-details).
      * @summary Retrieve Contract Details
@@ -14867,7 +15041,7 @@ export declare class CustomerContractApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CustomerContractApi
      */
-    retrieveContract(contractId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CustomerContractDetailResponseModel, any, {}>>;
+    retrieveContract(contractId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CustomerContractDetailResponseModel, any, {}, any>>;
 }
 /**
  * DashboardApi - axios parameter creator
@@ -14922,7 +15096,7 @@ export declare class DashboardApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
-    getDashboard(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DashboardInfoResponse, any, {}>>;
+    getDashboard(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DashboardInfoResponse, any, {}, any>>;
 }
 /**
  * DeploymentApi - axios parameter creator
@@ -15050,7 +15224,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      *
      * @summary Details of Deployment by ID
@@ -15059,7 +15233,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    getDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}>>;
+    getDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}, any>>;
     /**
      *
      * @summary List Deployments
@@ -15067,7 +15241,7 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    listDeployments(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Deployments, any, {}>>;
+    listDeployments(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Deployments, any, {}, any>>;
     /**
      *
      * @summary Start Deployment
@@ -15076,7 +15250,132 @@ export declare class DeploymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DeploymentApi
      */
-    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}>>;
+    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}, any>>;
+}
+/**
+ * EmailOptInOutApi - axios parameter creator
+ * @export
+ */
+export declare const EmailOptInOutApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEmailPreferencesForAUser: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    toggleAllOptionalEmailPreferencesForTheUser: (payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateEmailPreferenceForACategoryBySlug: (slug: string, payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * EmailOptInOutApi - functional programming interface
+ * @export
+ */
+export declare const EmailOptInOutApiFp: (configuration?: Configuration) => {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEmailPreferencesForAUser(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EmailPreferencesResponse>>;
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    toggleAllOptionalEmailPreferencesForTheUser(payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateEmailPreferenceResponse>>;
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateEmailPreferenceForACategoryBySlug(slug: string, payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateEmailPreferenceResponse>>;
+};
+/**
+ * EmailOptInOutApi - factory interface
+ * @export
+ */
+export declare const EmailOptInOutApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getEmailPreferencesForAUser(options?: RawAxiosRequestConfig): AxiosPromise<EmailPreferencesResponse>;
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    toggleAllOptionalEmailPreferencesForTheUser(payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): AxiosPromise<UpdateEmailPreferenceResponse>;
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateEmailPreferenceForACategoryBySlug(slug: string, payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): AxiosPromise<UpdateEmailPreferenceResponse>;
+};
+/**
+ * EmailOptInOutApi - object-oriented interface
+ * @export
+ * @class EmailOptInOutApi
+ * @extends {BaseAPI}
+ */
+export declare class EmailOptInOutApi extends BaseAPI {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    getEmailPreferencesForAUser(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<EmailPreferencesResponse, any, {}, any>>;
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    toggleAllOptionalEmailPreferencesForTheUser(payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateEmailPreferenceResponse, any, {}, any>>;
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    updateEmailPreferenceForACategoryBySlug(slug: string, payload: UpdateEmailPreferenceInput, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateEmailPreferenceResponse, any, {}, any>>;
 }
 /**
  * EnvironmentApi - axios parameter creator
@@ -15288,7 +15587,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    createEnvironment(payload: CreateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
+    createEnvironment(payload: CreateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}, any>>;
     /**
      * Deletes an environment permanently. Provide the environment ID in the path to remove the specified environment.
      * @summary Delete environment
@@ -15297,7 +15596,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    deleteEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if a Environment name is available
      * @summary Fetch environment name availability
@@ -15306,7 +15605,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    fetchEnvironmentNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    fetchEnvironmentNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      * Retrieves details about a specific environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
      * @summary Retrieve environment
@@ -15315,7 +15614,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    getEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
+    getEnvironment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}, any>>;
     /**
      * Retrieves VM quota information for a specific environment, including current VM count, maximum VMs allowed, available VMs, and percentage used in an environment before reaching the subnet IP limit.
      * @summary Get environment VM quota
@@ -15324,7 +15623,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    getEnvironmentVMQuota(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VMQuota, any, {}>>;
+    getEnvironmentVMQuota(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VMQuota, any, {}, any>>;
     /**
      * Returns a list of your existing environments, providing the following details for each; environment ID, name, [**region**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/), and the date and time of creation. For more information on environments, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/).
      * @summary List environments
@@ -15335,7 +15634,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environments, any, {}>>;
+    listEnvironments(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environments, any, {}, any>>;
     /**
      * Updates the name of an existing environment. Provide the environment ID in the path and the new environment `name` in the request body to modify the specified environment.
      * @summary Update environment
@@ -15345,7 +15644,7 @@ export declare class EnvironmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof EnvironmentApi
      */
-    updateEnvironment(id: number, payload: UpdateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}>>;
+    updateEnvironment(id: number, payload: UpdateEnvironment, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Environment, any, {}, any>>;
 }
 /**
  * FIPExclusionsApi - axios parameter creator
@@ -15400,7 +15699,7 @@ export declare class FIPExclusionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FIPExclusionsApi
      */
-    checkIfOrgIsExcludedFromFloatingIPDetachment(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    checkIfOrgIsExcludedFromFloatingIPDetachment(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
 }
 /**
  * FirewallAttachmentApi - axios parameter creator
@@ -15463,7 +15762,7 @@ export declare class FirewallAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallAttachmentApi
      */
-    attachFirewallToVMs(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    attachFirewallToVMs(firewallId: number, payload: AttachFirewallWithVM, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
 }
 /**
  * FirewallsApi - axios parameter creator
@@ -15658,7 +15957,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    addRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any, {}>>;
+    addRuleToFirewall(firewallId: number, payload: CreateFirewallRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallRule, any, {}, any>>;
     /**
      * Creates a firewall to which firewall rules can be added. A firewall can be attached to one or more virtual machines to control inbound and outbound traffic. In the body of the request, include the name of the firewall, the ID of the environment within which the firewall will be created, and an optional description. To obtain the ID of the environment, make a request to the [**list environments**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/list-environments) endpoint.
      * @summary Create firewall
@@ -15667,7 +15966,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any, {}>>;
+    createFirewall(payload: CreateFirewallPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallResponse, any, {}, any>>;
     /**
      * Deletes a firewall by specifying the firewall ID in the path. If the firewall is currently attached to a virtual machine, it must be detached before deletion. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/delete-firewall).
      * @summary Delete firewall
@@ -15676,7 +15975,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteExistingFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Removes a firewall rule from firewall by providing the firewall ID and firewall rule ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/firewalls/remove-firewall-rule-from-firewall).
      * @summary Delete firewall rules from firewall
@@ -15686,7 +15985,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    deleteRuleFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteRuleFromFirewall(firewallId: number, firewallRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Retrieves the details of an existing firewall, including the security rules it contains and information about the virtual machines to which it is attached.
      * @summary Retrieve firewall details
@@ -15695,7 +15994,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    getFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any, {}>>;
+    getFirewall(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallDetailResponse, any, {}, any>>;
     /**
      * Retrieves a list of existing firewalls and their details, including the security rules they contain and information about the virtual machines to which they are attached. For more information about the firewalls features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/network-security/security-groups).
      * @summary List firewalls
@@ -15707,7 +16006,7 @@ export declare class FirewallsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FirewallsApi
      */
-    listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any, {}>>;
+    listExistingFirewalls(page?: number, pageSize?: number, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FirewallsListResponse, any, {}, any>>;
 }
 /**
  * FlavorApi - axios parameter creator
@@ -15766,7 +16065,7 @@ export declare class FlavorApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FlavorApi
      */
-    listFlavors(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FlavorListResponse, any, {}>>;
+    listFlavors(region?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<FlavorListResponse, any, {}, any>>;
 }
 /**
  * FloatingIpApi - axios parameter creator
@@ -15849,7 +16148,7 @@ export declare class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    attachPublicIPToVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    attachPublicIPToVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Removes a public IP address from an existing virtual machine, disabling internet accessibility to the VM. Include the virtual machine ID in the path to detach the public IP from the specified VM. For more information on public IP addresses, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/public-ip).
      * @summary Detach public IP from virtual machine
@@ -15858,7 +16157,7 @@ export declare class FloatingIpApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FloatingIpApi
      */
-    detachPublicIPFromVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    detachPublicIPFromVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
 }
 /**
  * GpuApi - axios parameter creator
@@ -15913,7 +16212,7 @@ export declare class GpuApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GpuApi
      */
-    listGPUs(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GPUList, any, {}>>;
+    listGPUs(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GPUList, any, {}, any>>;
 }
 /**
  * HealthApi - axios parameter creator
@@ -15968,7 +16267,7 @@ export declare class HealthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HealthApi
      */
-    healthzEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageHealthResponse, any, {}>>;
+    healthzEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageHealthResponse, any, {}, any>>;
 }
 /**
  * ImageApi - axios parameter creator
@@ -16114,7 +16413,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    deleteImage(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteImage(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if an Image name is available
      * @summary Fetch name availability for Images
@@ -16123,7 +16422,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    fetchImageNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    fetchImageNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      * Retrieve details of a specific image by providing the image ID.
      * @summary Get Private Image Details
@@ -16133,7 +16432,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    getImage(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Image, any, {}>>;
+    getImage(id: number, includeRelatedVms?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Image, any, {}, any>>;
     /**
      * Returns a list of all available operating system (OS) images, providing details about each image\'s corresponding virtual machine operating system. You can include the optional `region` parameter in the query string of the request to specifically return OS images from the designated region. Additionally, use the `include_public` parameter to specify whether to include public images in the response. For more information onOS images, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/images).
      * @summary List Images
@@ -16146,7 +16445,7 @@ export declare class ImageApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ImageApi
      */
-    listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Images, any, {}>>;
+    listImages(region?: string, includePublic?: boolean, search?: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Images, any, {}, any>>;
 }
 /**
  * InviteApi - axios parameter creator
@@ -16274,7 +16573,7 @@ export declare class InviteApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    acceptInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    acceptInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Deletes an invitation for a user to join your organization. For additional information on deleting an invitation, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/delete-invite).
      * @summary Accept Invite
@@ -16283,7 +16582,7 @@ export declare class InviteApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    deleteInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    deleteInvite(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Invites a user to join your organization. For additional information on inviting users to the organization, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/invite-member).
      * @summary Invite User to Organization
@@ -16292,7 +16591,7 @@ export declare class InviteApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InviteUserResponseModel, any, {}>>;
+    inviteUserToOrganization(payload: InviteUserPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InviteUserResponseModel, any, {}, any>>;
     /**
      * Retrieve a list of email invitations from your organization. For additional information on listing invited users, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/invites/list-invites).
      * @summary List Invites
@@ -16300,7 +16599,7 @@ export declare class InviteApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InviteApi
      */
-    listInvites(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInvitesResponseModel, any, {}>>;
+    listInvites(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInvitesResponseModel, any, {}, any>>;
 }
 /**
  * KeypairApi - axios parameter creator
@@ -16333,6 +16632,13 @@ export declare const KeypairApiAxiosParamCreator: (configuration?: Configuration
      * @throws {RequiredError}
      */
     listKeyPairs: (page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listSupportedKeyPairTypes: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
@@ -16375,6 +16681,13 @@ export declare const KeypairApiFp: (configuration?: Configuration) => {
      */
     listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Keypairs>>;
     /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listSupportedKeyPairTypes(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SupportedKeypairPublicKeyTypesResponse>>;
+    /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
@@ -16416,6 +16729,13 @@ export declare const KeypairApiFactory: (configuration?: Configuration, basePath
      */
     listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<Keypairs>;
     /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listSupportedKeyPairTypes(options?: RawAxiosRequestConfig): AxiosPromise<SupportedKeypairPublicKeyTypesResponse>;
+    /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
      * @param {number} id
@@ -16440,7 +16760,7 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    deleteKeyPair(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteKeyPair(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Imports a new key pair for secure shell (SSH) access to your resources. Provide the key name, environment name, and public key in the request body. For more details on importing SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/import-keypair).
      * @summary Import key pair
@@ -16449,7 +16769,7 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImportKeypairResponse, any, {}>>;
+    importKeyPair(payload: ImportKeypairPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImportKeypairResponse, any, {}, any>>;
     /**
      * Retrieves a list of your existing SSH key pairs, providing details for each. For more information on SSH key pairs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/keypairs/).
      * @summary List key pairs
@@ -16460,7 +16780,15 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Keypairs, any, {}>>;
+    listKeyPairs(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Keypairs, any, {}, any>>;
+    /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KeypairApi
+     */
+    listSupportedKeyPairTypes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SupportedKeypairPublicKeyTypesResponse, any, {}, any>>;
     /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
      * @summary Update key pair name
@@ -16470,7 +16798,7 @@ export declare class KeypairApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof KeypairApi
      */
-    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeypairNameResponse, any, {}>>;
+    updateKeyPairName(id: number, payload: UpdateKeypairName, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateKeypairNameResponse, any, {}, any>>;
 }
 /**
  * OrganizationApi - axios parameter creator
@@ -16574,7 +16902,7 @@ export declare class OrganizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RemoveMemberFromOrganizationResponseModel, any, {}>>;
+    removeOrganizationMember(payload: RemoveMemberPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RemoveMemberFromOrganizationResponseModel, any, {}, any>>;
     /**
      * Retrieves detailed information about your organization, including current credit, threshold, number of instances, and number of volumes. For additional information on organizations, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/retrieve-org-details).
      * @summary Retrieve Organization Information
@@ -16582,7 +16910,7 @@ export declare class OrganizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    retrieveOrganizationInformation(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetOrganizationResponseModel, any, {}>>;
+    retrieveOrganizationInformation(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetOrganizationResponseModel, any, {}, any>>;
     /**
      * Updates the name of the organization. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/organization/update-org-name).
      * @summary Update Organization Information
@@ -16591,7 +16919,7 @@ export declare class OrganizationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OrganizationApi
      */
-    updateOrganizationInformation(payload: UpdateOrganizationPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateOrganizationResponseModel, any, {}>>;
+    updateOrganizationInformation(payload: UpdateOrganizationPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateOrganizationResponseModel, any, {}, any>>;
 }
 /**
  * PartnerConfigApi - axios parameter creator
@@ -16667,7 +16995,7 @@ export declare class PartnerConfigApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PartnerConfigApi
      */
-    getPartnerConfig(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}>>;
+    getPartnerConfig(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}, any>>;
     /**
      * Fetch the partner config for a given domain.
      * @param {string} [domain] The domain to look up the partner config for.
@@ -16675,7 +17003,7 @@ export declare class PartnerConfigApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PartnerConfigApi
      */
-    getPartnerConfigByDomain(domain?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}>>;
+    getPartnerConfigByDomain(domain?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PartnerConfig, any, {}, any>>;
 }
 /**
  * PaymentApi - axios parameter creator
@@ -16779,7 +17107,7 @@ export declare class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
@@ -16788,7 +17116,7 @@ export declare class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentInitiateResponse, any, {}>>;
+    initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentInitiateResponse, any, {}, any>>;
     /**
      * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
@@ -16796,7 +17124,7 @@ export declare class PaymentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    listPaymentDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentDetailsResponse, any, {}>>;
+    listPaymentDetails(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentDetailsResponse, any, {}, any>>;
 }
 /**
  * PermissionApi - axios parameter creator
@@ -16851,7 +17179,7 @@ export declare class PermissionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PermissionApi
      */
-    listPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPermissionsResponseModel, any, {}>>;
+    listPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPermissionsResponseModel, any, {}, any>>;
 }
 /**
  * PolicyApi - axios parameter creator
@@ -16906,7 +17234,7 @@ export declare class PolicyApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PolicyApi
      */
-    listPolicies(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPoliciesResponseModel, any, {}>>;
+    listPolicies(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetPoliciesResponseModel, any, {}, any>>;
 }
 /**
  * PricebookApi - axios parameter creator
@@ -16957,7 +17285,7 @@ export declare class PricebookApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PricebookApi
      */
-    getPricebook(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PricebookModel[], any, {}>>;
+    getPricebook(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PricebookModel[], any, {}, any>>;
 }
 /**
  * ProfileApi - axios parameter creator
@@ -17085,7 +17413,7 @@ export declare class ProfileApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    createProfile(payload: CreateProfilePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}>>;
+    createProfile(payload: CreateProfilePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}, any>>;
     /**
      * Permanently deletes a provisioning profile. Supply the profile ID in the path to delete the specified profile.
      * @summary Delete profile
@@ -17094,7 +17422,7 @@ export declare class ProfileApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    deleteProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Retrieves details for an existing provisioning profile by supplying the profile ID in the request path. For more information about profiles, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles).
      * @summary Retrieve profile details
@@ -17103,7 +17431,7 @@ export declare class ProfileApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    getProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}>>;
+    getProfile(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateProfileResponse, any, {}, any>>;
     /**
      * Returns a list of your existing provisioning profiles, providing virtual machine configuration details for each. For additional information about profiles,[**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/provisioning-profiles#load-a-provisioning-profile).
      * @summary List profiles
@@ -17111,7 +17439,7 @@ export declare class ProfileApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProfileApi
      */
-    listProfiles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProfileListResponse, any, {}>>;
+    listProfiles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ProfileListResponse, any, {}, any>>;
 }
 /**
  * RbacRoleApi - axios parameter creator
@@ -17266,7 +17594,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    createRBACRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
+    createRBACRole(payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}, any>>;
     /**
      * Deletes an RBAC role by providing its ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/delete-rbac-role).
      * @summary Delete RBAC Role
@@ -17275,7 +17603,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    deleteRBACRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}>>;
+    deleteRBACRole(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Retrieves a list of RBAC roles that can be assigned to the users within an organization. For additional information on RBAC roles, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/list-rbac-roles).
      * @summary List RBAC Roles
@@ -17283,7 +17611,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    listRBACRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetRbacRolesResponseModel, any, {}>>;
+    listRBACRoles(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetRbacRolesResponseModel, any, {}, any>>;
     /**
      * Retrieves the details of a specified RBAC role by providing the RBAC role ID in the path. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/retrieve-rbac-details).
      * @summary Retrieve RBAC Role Details
@@ -17292,7 +17620,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    retrieveRBACRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModelFixed, any, {}>>;
+    retrieveRBACRoleDetails(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModelFixed, any, {}, any>>;
     /**
      * Updates an RBAC role by providing the role ID in the path and the modified role configuration in the request body, including its name, description, and list of permissions and policy IDs. For additional information, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/rbac/update-rbac-role).
      * @summary Update RBAC Role
@@ -17302,7 +17630,7 @@ export declare class RbacRoleApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RbacRoleApi
      */
-    updateRBACRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}>>;
+    updateRBACRole(id: number, payload: CreateUpdateRbacRolePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RbacRoleDetailResponseModel, any, {}, any>>;
 }
 /**
  * RegionApi - axios parameter creator
@@ -17357,7 +17685,7 @@ export declare class RegionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RegionApi
      */
-    listRegions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Regions, any, {}>>;
+    listRegions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Regions, any, {}, any>>;
 }
 /**
  * RegionsApi - axios parameter creator
@@ -17412,7 +17740,7 @@ export declare class RegionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RegionsApi
      */
-    listRegionsEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageRegionListResponse, any, {}>>;
+    listRegionsEndpoint(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageRegionListResponse, any, {}, any>>;
 }
 /**
  * SecurityRulesApi - axios parameter creator
@@ -17467,7 +17795,7 @@ export declare class SecurityRulesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SecurityRulesApi
      */
-    listFirewallRuleProtocols(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityRulesProtocolFields, any, {}>>;
+    listFirewallRuleProtocols(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityRulesProtocolFields, any, {}, any>>;
 }
 /**
  * SnapshotEventsApi - axios parameter creator
@@ -17526,7 +17854,7 @@ export declare class SnapshotEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotEventsApi
      */
-    listSnapshotEvents(snapshotId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}>>;
+    listSnapshotEvents(snapshotId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
 }
 /**
  * SnapshotsApi - axios parameter creator
@@ -17718,7 +18046,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    createCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateImage, any, {}>>;
+    createCustomImage(snapshotId: number, payload: CreateImagePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateImage, any, {}, any>>;
     /**
      * Delete a snapshot. Provide the snapshot ID in the path to delete the specified snapshot. If the snapshot is connected with an image, that image will also bedeleted and the deleted image ID will be returned in the success message response.
      * @summary Delete snapshot
@@ -17727,7 +18055,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if a Snapshot name is available
      * @summary Fetch snapshot name availability
@@ -17736,7 +18064,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    fetchSnapshotNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      * Retrieve a snapshot.
      * @summary Retrieve a snapshot
@@ -17745,7 +18073,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any, {}>>;
+    getSnapshot(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SnapshotRetrieve, any, {}, any>>;
     /**
      * Retrieves a list of snapshots, providing details such as snapshot name, timestamp, VM ID, and other relevant information.
      * @summary Retrieve list of snapshots with pagination
@@ -17756,7 +18084,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    listSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any, {}>>;
+    listSnapshots(page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Snapshots, any, {}, any>>;
     /**
      * Restore a snapshot.
      * @summary Restore a snapshot
@@ -17766,7 +18094,7 @@ export declare class SnapshotsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SnapshotsApi
      */
-    restoreSnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    restoreSnapshot(id: number, payload: SnapshotRestoreRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}, any>>;
 }
 /**
  * StockApi - axios parameter creator
@@ -17821,7 +18149,7 @@ export declare class StockApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof StockApi
      */
-    getGPUStock(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NewStockRetriveResponse, any, {}>>;
+    getGPUStock(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NewStockRetriveResponse, any, {}, any>>;
 }
 /**
  * TemplateApi - axios parameter creator
@@ -17991,7 +18319,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
+    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
     /**
      * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
      * @summary Delete template
@@ -18000,7 +18328,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
      * @summary Retrieve template details
@@ -18009,7 +18337,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    getTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
+    getTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
     /**
      * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
      * @summary List templates
@@ -18018,7 +18346,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Templates, any, {}>>;
+    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Templates, any, {}, any>>;
     /**
      * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
      * @summary Update template
@@ -18028,7 +18356,7 @@ export declare class TemplateApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TemplateApi
      */
-    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}>>;
+    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
 }
 /**
  * UserApi - axios parameter creator
@@ -18153,7 +18481,7 @@ export declare class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
+    addUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}, any>>;
     /**
      * Retrieve the list of allowed ISO 3166-1 alpha-2 country codes that can be used for billing information.
      * @summary GET: Retrieve allowed country codes
@@ -18161,7 +18489,7 @@ export declare class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    getAllowedCountryCodes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AllowedCountriesResponse, any, {}>>;
+    getAllowedCountryCodes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AllowedCountriesResponse, any, {}, any>>;
     /**
      * Retrieve the billing details associated with your user.
      * @summary GET: Retrieve billing info
@@ -18169,7 +18497,7 @@ export declare class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    getUserBillingInfo(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UsersInfoListResponse, any, {}>>;
+    getUserBillingInfo(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UsersInfoListResponse, any, {}, any>>;
     /**
      * Update the billing information for your user in the request body.
      * @summary PUT: Update billing info
@@ -18178,7 +18506,7 @@ export declare class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}>>;
+    updateUserBillingInfo(payload: UserInfoPostPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AddUserInfoSuccessResponseModel, any, {}, any>>;
 }
 /**
  * UserConsentApi - axios parameter creator
@@ -18333,7 +18661,7 @@ export declare class UserConsentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentApi
      */
-    addANewConsentForAUser(payload: RecordConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}>>;
+    addANewConsentForAUser(payload: RecordConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}, any>>;
     /**
      * Returns current consent templates for all consent types
      * @summary Get all consent templates
@@ -18341,7 +18669,7 @@ export declare class UserConsentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentApi
      */
-    getAllConsentTemplates(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplatesResponse, any, {}>>;
+    getAllConsentTemplates(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplatesResponse, any, {}, any>>;
     /**
      * Fetch all the recorded consents given from a User
      * @summary Get Consents for a User
@@ -18350,7 +18678,7 @@ export declare class UserConsentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentApi
      */
-    getAllConsentsForAUser(consentType?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserConsentsResponse, any, {}>>;
+    getAllConsentsForAUser(consentType?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserConsentsResponse, any, {}, any>>;
     /**
      * Returns the current consent template for a specific consent type
      * @summary Get consent template for a specific type
@@ -18359,7 +18687,7 @@ export declare class UserConsentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentApi
      */
-    getConsentTemplateByType(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplate, any, {}>>;
+    getConsentTemplateByType(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentTemplate, any, {}, any>>;
     /**
      * Revoke or grant a consent to the User
      * @summary Grant or revoke an existing consent
@@ -18369,7 +18697,7 @@ export declare class UserConsentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentApi
      */
-    updateAConsentActionByType(consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}>>;
+    updateAConsentActionByType(consentType: string, payload: UpdateConsentRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentActionResponse, any, {}, any>>;
 }
 /**
  * UserConsentEventsApi - axios parameter creator
@@ -18428,7 +18756,7 @@ export declare class UserConsentEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserConsentEventsApi
      */
-    getConsentAuditEvents(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentEventsResponse, any, {}>>;
+    getConsentAuditEvents(consentType: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ConsentEventsResponse, any, {}, any>>;
 }
 /**
  * UserDetailChoiceApi - axios parameter creator
@@ -18483,7 +18811,7 @@ export declare class UserDetailChoiceApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserDetailChoiceApi
      */
-    listDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserDefaultChoicesForUserResponse, any, {}>>;
+    listDefaultFlavorsAndImages(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UserDefaultChoicesForUserResponse, any, {}, any>>;
 }
 /**
  * UserPermissionApi - axios parameter creator
@@ -18562,7 +18890,7 @@ export declare class UserPermissionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserPermissionApi
      */
-    listMyUserPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}>>;
+    listMyUserPermissions(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}, any>>;
     /**
      * Retrieves a list of permissions granted to a specific user within your organization. Provide the ID of the user in the path. For additional information on user permissions, [click here](https://docs.hyperstack.cloud/docs/api-reference/auth-resources/permission/list-user-permissions).
      * @summary List User Permissions
@@ -18571,7 +18899,7 @@ export declare class UserPermissionApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserPermissionApi
      */
-    listUserPermissions(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}>>;
+    listUserPermissions(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetUserPermissionsResponseModel, any, {}, any>>;
 }
 /**
  * VirtualMachineApi - axios parameter creator
@@ -19144,7 +19472,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    addVMLabel(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    addVMLabel(vmId: number, payload: EditLabelOfAnExistingVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Attach firewalls to a virtual machine by providing the virtual machine ID in the path and the IDs of the firewalls in the request body; any firewalls not included will be detached.
      * @summary Attach firewalls to a virtual machine
@@ -19154,7 +19482,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    attachFirewallsToVM(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    attachFirewallsToVM(vmId: number, payload: AttachFirewallsToVMPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if a Virtual Machine name is available
      * @summary Fetch virtual machine name availability
@@ -19164,7 +19492,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    checkVMNameAvailability(name: string, count?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    checkVMNameAvailability(name: string, count?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      * Creates a firewall rule for a virtual machine. Include the virtual machine ID in the path, and provide the firewall rule configuration in the request body, as detailed below. For additional information on firewall rules, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vm-firewall-rules/add-firewall-rule-to-vm).
      * @summary Add firewall rule to virtual machine
@@ -19174,7 +19502,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    createFirewallRuleForVM(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityGroupRule, any, {}>>;
+    createFirewallRuleForVM(vmId: number, payload: CreateSecurityRulePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<SecurityGroupRule, any, {}, any>>;
     /**
      * Create snapshots of a virtual machine by providing the virtual machine ID in the path
      * @summary Create snapshot from a virtual machine
@@ -19184,7 +19512,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    createSnapshotForVM(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateSnapshotResponse, any, {}>>;
+    createSnapshotForVM(vmId: number, payload: CreateSnapshotPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateSnapshotResponse, any, {}, any>>;
     /**
      * Creates one or more virtual machines with the specified custom configuration and features provided in the request body. For more information about the virtual machine features offered by Infrahub, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/virtual-machine-features#create-a-virtual-machine-with-custom-features).
      * @summary Create virtual machines
@@ -19193,7 +19521,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    createVMs(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any, {}>>;
+    createVMs(payload: CreateInstancesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateInstancesResponse, any, {}, any>>;
     /**
      * Deletes a firewall rule associated with a virtual machine. Provide the virtual machine ID and the firewall rule ID in the path to remove the specified rule from the specified virtual machine.
      * @summary Delete firewall rule from virtual machine
@@ -19203,7 +19531,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteFirewallRuleForVM(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteFirewallRuleForVM(vmId: number, sgRuleId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Permanently deletes a virtual machine. Provide the virtual machine ID in the path to delete the specified virtual machine.
      * @summary Delete virtual machine
@@ -19212,7 +19540,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    deleteVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Retrieves a list of virtual machines associated with a contract, providing details such as virtual machine name, timestamp, flavor name, and other relevant information. Please provide the ID of the relevant contract in the path.
      * @summary Retrieve virtual machines associated with a contract
@@ -19224,7 +19552,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getContractVMs(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any, {}>>;
+    getContractVMs(contractId: number, page?: string, pageSize?: string, search?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ContractInstancesResponse, any, {}, any>>;
     /**
      * Retrieves the details of an existing virtual machine. Provide the virtual machine ID in the path, and Infrahub will return information about the corresponding VM.
      * @summary Retrieve virtual machine details
@@ -19233,7 +19561,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}>>;
+    getVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instance, any, {}, any>>;
     /**
      * Retrieve console logs for a virtual machine
      * @summary Get virtual machine logs
@@ -19243,7 +19571,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getVMLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInstanceLogsResponse, any, {}>>;
+    getVMLogs(vmId: number, requestId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetInstanceLogsResponse, any, {}, any>>;
     /**
      * Retrieves performance metrics data for a virtual machine. Provide the virtual machine ID in the path to retrieve the following data for the specified virtual machine: CPU usage, memory usage (RAM), `network.in`, `network.out`, `disk.read`, and `disk.write`. The optional `duration` parameter can be used to specify the period for retrieving performance metrics; the default value will retrieve all available data. To learn more about virtual machine performance metrics, [**click here**](https://docs.hyperstack.cloud/docs/virtual-machines/vm-performance-metrics-and-events-history#performance-metrics).
      * @summary Retrieve virtual machine performance metrics
@@ -19253,7 +19581,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    getVMMetrics(vmId: number, duration?: GetVMMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MetricsFields, any, {}>>;
+    getVMMetrics(vmId: number, duration?: GetVMMetricsDurationEnum, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<MetricsFields, any, {}, any>>;
     /**
      * Initiates a hard reboot for a virtual machine, simulating the process of unplugging and rebooting a physical machine. Provide the virtual machine ID in the path to execute a hard reboot for the specified virtual machine.
      * @summary Hard reboot virtual machine
@@ -19262,7 +19590,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    hardRebootVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    hardRebootVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Initiates the hibernation of a virtual machine, saving its current state to disk before powering off. Provide the virtual machine ID in the path to specify the virtual machine to be hibernated.
      * @summary Hibernate virtual machine
@@ -19272,7 +19600,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    hibernateVM(vmId: number, retainIp?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    hibernateVM(vmId: number, retainIp?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Returns a list of your existing virtual machines, providing configuration details for each. The list is sorted by creation date, with the oldest virtual machines displayed first.
      * @summary List virtual machines
@@ -19286,7 +19614,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}>>;
+    listVMs(page?: number, pageSize?: number, search?: string, environment?: string, excludeFirewalls?: Array<number>, exactEnvironmentMatch?: boolean, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Instances, any, {}, any>>;
     /**
      * Request console logs for a virtual machine
      * @summary Request virtual machine logs
@@ -19296,7 +19624,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    requestVMLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestInstanceLogsResponse, any, {}>>;
+    requestVMLogs(vmId: number, payload: RequestInstanceLogsPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestInstanceLogsResponse, any, {}, any>>;
     /**
      * Updates the hardware configuration for an existing virtual machine. Include the virtual machine ID in the path and provide the new configuration, referred to as a `flavor`, in the body of the request. For additional information resizing, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#modify-the-flavor-of-an-existing-virtual-machine).
      * @summary Resize virtual machine
@@ -19306,7 +19634,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    resizeVM(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    resizeVM(vmId: number, payload: InstanceResizePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Resumes a virtual machine from hibernation, bringing it back to an active state. Provide the virtual machine ID that you want to restore from hibernation.
      * @summary Restore virtual machine from hibernation
@@ -19315,7 +19643,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    restoreVMFromHibernation(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    restoreVMFromHibernation(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Initiates the startup of a virtual machine. Provide the virtual machine ID in the path to initiate the starting of the specified virtual machine.
      * @summary Start virtual machine
@@ -19324,7 +19652,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    startVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    startVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Shuts down a virtual machine. Provide the virtual machine ID in the path to initiate the shutdown process for the specified virtual machine.
      * @summary Stop virtual machine
@@ -19333,7 +19661,7 @@ export declare class VirtualMachineApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineApi
      */
-    stopVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    stopVM(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
 }
 /**
  * @export
@@ -19408,7 +19736,7 @@ export declare class VirtualMachineEventsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VirtualMachineEventsApi
      */
-    listVMEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InstanceEvents, any, {}>>;
+    listVMEvents(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<InstanceEvents, any, {}, any>>;
 }
 /**
  * VncUrlApi - axios parameter creator
@@ -19495,7 +19823,7 @@ export declare class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    getVNCURL(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any, {}>>;
+    getVNCURL(vmId: number, jobId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VNCURL, any, {}, any>>;
     /**
      * Retrieves the path of the VNC console for the given virtual machine ID by providing the virtual machine ID in the path. For more information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/core-resources/virtual-machines/vnc-console/retrieve-console-path).
      * @summary Request Instance Console
@@ -19504,7 +19832,7 @@ export declare class VncUrlApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VncUrlApi
      */
-    requestVMConsole(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any, {}>>;
+    requestVMConsole(vmId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RequestConsole, any, {}, any>>;
 }
 /**
  * VolumeApi - axios parameter creator
@@ -19716,7 +20044,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    createVolume(payload: CreateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}>>;
+    createVolume(payload: CreateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}, any>>;
     /**
      * Deletes a volume permanently. Provide the volume ID in the path to specify the volume to be deleted.
      * @summary Delete volume
@@ -19725,7 +20053,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    deleteVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}>>;
+    deleteVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
     /**
      * Check if a Volume name is available
      * @summary Fetch volume name availability
@@ -19734,7 +20062,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}>>;
+    fetchVolumeNameAvailability(name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NameAvailableModel, any, {}, any>>;
     /**
      * Fetch volume details for specific volume. This endpoint returns id, name, volume size, volume type, status, description, image_id, os_image, created_at, updated_at etc.
      * @summary Fetch Volume Details
@@ -19743,7 +20071,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    getVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}>>;
+    getVolume(volumeId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volume, any, {}, any>>;
     /**
      * Retrieves a list of available volume types that can be used in the creation of a new volume.
      * @summary List volume types
@@ -19751,7 +20079,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    listVolumeTypes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VolumeTypes, any, {}>>;
+    listVolumeTypes(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VolumeTypes, any, {}, any>>;
     /**
      * Returns a list of your existing volumes, providing details for each. For more information on volumes, [**click here**]({Config.INFRAHUB_DOCS_BASE}/docs/api-reference/core-resources/volumes/).
      * @summary List volumes
@@ -19763,7 +20091,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volumes, any, {}>>;
+    listVolumes(page?: string, pageSize?: string, search?: string, environment?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Volumes, any, {}, any>>;
     /**
      * Update volume properties. Currently supports updating the environment by providing \'environment_name\'. The volume must not be attached to any instance when changing environments, and the target environment must be in the same region.
      * @summary Update volume fields
@@ -19773,7 +20101,7 @@ export declare class VolumeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeApi
      */
-    updateVolume(volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateVolumeResponse, any, {}>>;
+    updateVolume(volumeId: number, payload: UpdateVolumePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<UpdateVolumeResponse, any, {}, any>>;
 }
 /**
  * VolumeAttachmentApi - axios parameter creator
@@ -19890,7 +20218,7 @@ export declare class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    attachVolumesToVM(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}>>;
+    attachVolumesToVM(vmId: number, payload: AttachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}, any>>;
     /**
      * Detaches one or more volumes attached to an existing virtual machine. Include the VM ID in the path and volume IDs in the request body to detach the specified volumes from the virtual machine.
      * @summary Detach volumes from virtual machine
@@ -19900,7 +20228,7 @@ export declare class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    detachVolumesFromVM(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DetachVolumes, any, {}>>;
+    detachVolumesFromVM(vmId: number, payload: DetachVolumesPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DetachVolumes, any, {}, any>>;
     /**
      *
      * @summary Update a volume attachment
@@ -19910,7 +20238,7 @@ export declare class VolumeAttachmentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VolumeAttachmentApi
      */
-    updateVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}>>;
+    updateVolumeAttachment(volumeAttachmentId: number, payload: UpdateVolumeAttachmentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AttachVolumes, any, {}, any>>;
 }
 /**
  * VouchersApi - axios parameter creator
@@ -19969,5 +20297,5 @@ export declare class VouchersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof VouchersApi
      */
-    redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherRedeemResponseSchema, any, {}>>;
+    redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherRedeemResponseSchema, any, {}, any>>;
 }

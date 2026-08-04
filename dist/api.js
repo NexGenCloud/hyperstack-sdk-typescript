@@ -23,10 +23,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BucketsApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFactory = exports.BillingApiFp = exports.BillingApiAxiosParamCreator = exports.BetaAccessApi = exports.BetaAccessApiFactory = exports.BetaAccessApiFp = exports.BetaAccessApiAxiosParamCreator = exports.AutoTopupApi = exports.AutoTopupApiFactory = exports.AutoTopupApiFp = exports.AutoTopupApiAxiosParamCreator = exports.AuthApi = exports.AuthApiFactory = exports.AuthApiFp = exports.AuthApiAxiosParamCreator = exports.AssigningMemberRoleApi = exports.AssigningMemberRoleApiFactory = exports.AssigningMemberRoleApiFp = exports.AssigningMemberRoleApiAxiosParamCreator = exports.ApiKeyApi = exports.ApiKeyApiFactory = exports.ApiKeyApiFp = exports.ApiKeyApiAxiosParamCreator = exports.AliveApi = exports.AliveApiFactory = exports.AliveApiFp = exports.AliveApiAxiosParamCreator = exports.AccessKeysApi = exports.AccessKeysApiFactory = exports.AccessKeysApiFp = exports.AccessKeysApiAxiosParamCreator = exports.UpdateConsentRequestConsentMethodEnum = exports.UpdateConsentRequestActionEnum = exports.RegionFieldsGreenStatusEnum = exports.RecordConsentRequestConsentTypeEnum = exports.RecordConsentRequestConsentMethodEnum = exports.RecordConsentRequestActionEnum = exports.ObjectStorageRegionsEnum = exports.KeypairEnvironmentFeaturesGreenStatusEnum = exports.EnvironmentFeaturesGreenStatusEnum = exports.CreateSecurityRulePayloadProtocolEnum = exports.CreateFirewallRulePayloadProtocolEnum = exports.CreateClusterPayloadDeploymentModeEnum = exports.CreateClusterNodeGroupPayloadRoleEnum = exports.CreateClusterNodeFieldsRoleEnum = exports.ConsentBlockTypeEnum = exports.BetaAccessStatusItemStatusEnum = exports.BetaAccessRequestFieldsStatusEnum = void 0;
-exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = void 0;
-exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = void 0;
-exports.UserConsentApiFactory = exports.UserConsentApiFp = exports.UserConsentApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = void 0;
-exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserConsentEventsApi = exports.UserConsentEventsApiFactory = exports.UserConsentEventsApiFp = exports.UserConsentEventsApiAxiosParamCreator = exports.UserConsentApi = void 0;
+exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.EmailOptInOutApi = exports.EmailOptInOutApiFactory = exports.EmailOptInOutApiFp = exports.EmailOptInOutApiAxiosParamCreator = exports.DeploymentApi = exports.DeploymentApiFactory = exports.DeploymentApiFp = exports.DeploymentApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ComplianceApi = exports.ComplianceApiFactory = exports.ComplianceApiFp = exports.ComplianceApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = void 0;
+exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = void 0;
+exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.TemplateApi = exports.TemplateApiFactory = exports.TemplateApiFp = exports.TemplateApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = void 0;
+exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserConsentEventsApi = exports.UserConsentEventsApiFactory = exports.UserConsentEventsApiFp = exports.UserConsentEventsApiAxiosParamCreator = exports.UserConsentApi = exports.UserConsentApiFactory = exports.UserConsentApiFp = exports.UserConsentApiAxiosParamCreator = exports.UserApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -8696,6 +8696,250 @@ class DeploymentApi extends base_1.BaseAPI {
 }
 exports.DeploymentApi = DeploymentApi;
 /**
+ * EmailOptInOutApi - axios parameter creator
+ * @export
+ */
+const EmailOptInOutApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/email/opt-out`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('toggleAllOptionalEmailPreferencesForTheUser', 'payload', payload);
+            const localVarPath = `/auth/email/opt-out`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug: (slug_1, payload_1, ...args_1) => __awaiter(this, [slug_1, payload_1, ...args_1], void 0, function* (slug, payload, options = {}) {
+            // verify required parameter 'slug' is not null or undefined
+            (0, common_1.assertParamExists)('updateEmailPreferenceForACategoryBySlug', 'slug', slug);
+            // verify required parameter 'payload' is not null or undefined
+            (0, common_1.assertParamExists)('updateEmailPreferenceForACategoryBySlug', 'payload', payload);
+            const localVarPath = `/auth/email/opt-out/{slug}`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(payload, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.EmailOptInOutApiAxiosParamCreator = EmailOptInOutApiAxiosParamCreator;
+/**
+ * EmailOptInOutApi - functional programming interface
+ * @export
+ */
+const EmailOptInOutApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.EmailOptInOutApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getEmailPreferencesForAUser(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['EmailOptInOutApi.getEmailPreferencesForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.toggleAllOptionalEmailPreferencesForTheUser(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['EmailOptInOutApi.toggleAllOptionalEmailPreferencesForTheUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEmailPreferenceForACategoryBySlug(slug, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['EmailOptInOutApi.updateEmailPreferenceForACategoryBySlug']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.EmailOptInOutApiFp = EmailOptInOutApiFp;
+/**
+ * EmailOptInOutApi - factory interface
+ * @export
+ */
+const EmailOptInOutApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.EmailOptInOutApiFp)(configuration);
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser(options) {
+            return localVarFp.getEmailPreferencesForAUser(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+            return localVarFp.toggleAllOptionalEmailPreferencesForTheUser(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+            return localVarFp.updateEmailPreferenceForACategoryBySlug(slug, payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.EmailOptInOutApiFactory = EmailOptInOutApiFactory;
+/**
+ * EmailOptInOutApi - object-oriented interface
+ * @export
+ * @class EmailOptInOutApi
+ * @extends {BaseAPI}
+ */
+class EmailOptInOutApi extends base_1.BaseAPI {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    getEmailPreferencesForAUser(options) {
+        return (0, exports.EmailOptInOutApiFp)(this.configuration).getEmailPreferencesForAUser(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+        return (0, exports.EmailOptInOutApiFp)(this.configuration).toggleAllOptionalEmailPreferencesForTheUser(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+        return (0, exports.EmailOptInOutApiFp)(this.configuration).updateEmailPreferenceForACategoryBySlug(slug, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.EmailOptInOutApi = EmailOptInOutApi;
+/**
  * EnvironmentApi - axios parameter creator
  * @export
  */
@@ -11167,6 +11411,33 @@ const KeypairApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/core/supported-keypairs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11263,6 +11534,21 @@ const KeypairApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listSupportedKeyPairTypes(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['KeypairApi.listSupportedKeyPairTypes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11322,6 +11608,15 @@ const KeypairApiFactory = function (configuration, basePath, axios) {
             return localVarFp.listKeyPairs(page, pageSize, search, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes(options) {
+            return localVarFp.listSupportedKeyPairTypes(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11376,6 +11671,16 @@ class KeypairApi extends base_1.BaseAPI {
      */
     listKeyPairs(page, pageSize, search, options) {
         return (0, exports.KeypairApiFp)(this.configuration).listKeyPairs(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KeypairApi
+     */
+    listSupportedKeyPairTypes(options) {
+        return (0, exports.KeypairApiFp)(this.configuration).listSupportedKeyPairTypes(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.

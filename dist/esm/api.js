@@ -8617,6 +8617,246 @@ export class DeploymentApi extends BaseAPI {
     }
 }
 /**
+ * EmailOptInOutApi - axios parameter creator
+ * @export
+ */
+export const EmailOptInOutApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/email/opt-out`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser: (payload_1, ...args_1) => __awaiter(this, [payload_1, ...args_1], void 0, function* (payload, options = {}) {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('toggleAllOptionalEmailPreferencesForTheUser', 'payload', payload);
+            const localVarPath = `/auth/email/opt-out`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug: (slug_1, payload_1, ...args_1) => __awaiter(this, [slug_1, payload_1, ...args_1], void 0, function* (slug, payload, options = {}) {
+            // verify required parameter 'slug' is not null or undefined
+            assertParamExists('updateEmailPreferenceForACategoryBySlug', 'slug', slug);
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('updateEmailPreferenceForACategoryBySlug', 'payload', payload);
+            const localVarPath = `/auth/email/opt-out/{slug}`
+                .replace(`{${"slug"}}`, encodeURIComponent(String(slug)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PUT' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * EmailOptInOutApi - functional programming interface
+ * @export
+ */
+export const EmailOptInOutApiFp = function (configuration) {
+    const localVarAxiosParamCreator = EmailOptInOutApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getEmailPreferencesForAUser(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EmailOptInOutApi.getEmailPreferencesForAUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.toggleAllOptionalEmailPreferencesForTheUser(payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EmailOptInOutApi.toggleAllOptionalEmailPreferencesForTheUser']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateEmailPreferenceForACategoryBySlug(slug, payload, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['EmailOptInOutApi.updateEmailPreferenceForACategoryBySlug']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * EmailOptInOutApi - factory interface
+ * @export
+ */
+export const EmailOptInOutApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = EmailOptInOutApiFp(configuration);
+    return {
+        /**
+         * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+         * @summary Get all email preferences for the authenticated user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEmailPreferencesForAUser(options) {
+            return localVarFp.getEmailPreferencesForAUser(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+         * @summary Toggle all optional email preferences for the authenticated user
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+            return localVarFp.toggleAllOptionalEmailPreferencesForTheUser(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+         * @summary Update email preference opted_in status for a category slug
+         * @param {string} slug
+         * @param {UpdateEmailPreferenceInput} payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+            return localVarFp.updateEmailPreferenceForACategoryBySlug(slug, payload, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * EmailOptInOutApi - object-oriented interface
+ * @export
+ * @class EmailOptInOutApi
+ * @extends {BaseAPI}
+ */
+export class EmailOptInOutApi extends BaseAPI {
+    /**
+     * Returns all email categories with the user\'s opt-in status. Categories without an explicit preference default to opted_in=true.
+     * @summary Get all email preferences for the authenticated user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    getEmailPreferencesForAUser(options) {
+        return EmailOptInOutApiFp(this.configuration).getEmailPreferencesForAUser(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Sets opted_in to the given value for every non-required, non-deleted email category. Required categories are not affected.
+     * @summary Toggle all optional email preferences for the authenticated user
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    toggleAllOptionalEmailPreferencesForTheUser(payload, options) {
+        return EmailOptInOutApiFp(this.configuration).toggleAllOptionalEmailPreferencesForTheUser(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Updates the opted_in status for the given email category slug. If the slug belongs to a parent category (email_category_id is null), all non-deleted child categories are updated. If the slug belongs to a child category, only that category is updated.
+     * @summary Update email preference opted_in status for a category slug
+     * @param {string} slug
+     * @param {UpdateEmailPreferenceInput} payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmailOptInOutApi
+     */
+    updateEmailPreferenceForACategoryBySlug(slug, payload, options) {
+        return EmailOptInOutApiFp(this.configuration).updateEmailPreferenceForACategoryBySlug(slug, payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
  * EnvironmentApi - axios parameter creator
  * @export
  */
@@ -11048,6 +11288,33 @@ export const KeypairApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/core/supported-keypairs`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11143,6 +11410,21 @@ export const KeypairApiFp = function (configuration) {
             });
         },
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.listSupportedKeyPairTypes(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['KeypairApi.listSupportedKeyPairTypes']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11201,6 +11483,15 @@ export const KeypairApiFactory = function (configuration, basePath, axios) {
             return localVarFp.listKeyPairs(page, pageSize, search, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the SSH public key types supported for import.
+         * @summary List supported key pair types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSupportedKeyPairTypes(options) {
+            return localVarFp.listSupportedKeyPairTypes(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
          * @summary Update key pair name
          * @param {number} id
@@ -11254,6 +11545,16 @@ export class KeypairApi extends BaseAPI {
      */
     listKeyPairs(page, pageSize, search, options) {
         return KeypairApiFp(this.configuration).listKeyPairs(page, pageSize, search, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Retrieves the SSH public key types supported for import.
+     * @summary List supported key pair types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KeypairApi
+     */
+    listSupportedKeyPairTypes(options) {
+        return KeypairApiFp(this.configuration).listSupportedKeyPairTypes(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Updates the name of a specified key pair. Provide the key pair ID in the path, and include the new `name` in the request body.
