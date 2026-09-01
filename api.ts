@@ -2697,6 +2697,12 @@ export interface CreateInstancesPayload {
      */
     'enable_port_randomization'?: boolean;
     /**
+     * When true, the Hyperstack VM Agent is opted in for this VM and metrics ingestion is allowed by the prom-gateway. The agent must still be installed on the VM (typically via user_data cloud-init).
+     * @type {boolean}
+     * @memberof CreateInstancesPayload
+     */
+    'enhanced_monitoring_enabled'?: boolean;
+    /**
      * The name of the [environment](https://docs.hyperstack.cloud/docs/api-reference/core-resources/environments/) in which the virtual machine is to be created.
      * @type {string}
      * @memberof CreateInstancesPayload
@@ -4997,6 +5003,19 @@ export interface Instance {
 /**
  * 
  * @export
+ * @interface InstanceEnhancedMetricsFields
+ */
+export interface InstanceEnhancedMetricsFields {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InstanceEnhancedMetricsFields
+     */
+    'enabled'?: boolean;
+}
+/**
+ * 
+ * @export
  * @interface InstanceEnvironmentFields
  */
 export interface InstanceEnvironmentFields {
@@ -5135,6 +5154,12 @@ export interface InstanceFields {
      * @memberof InstanceFields
      */
     'created_at'?: string;
+    /**
+     * 
+     * @type {InstanceEnhancedMetricsFields}
+     * @memberof InstanceFields
+     */
+    'enhanced_metrics'?: InstanceEnhancedMetricsFields;
     /**
      * 
      * @type {InstanceEnvironmentFields}
@@ -10199,6 +10224,63 @@ export interface UserDefaultChoicesForUserResponse {
      * @memberof UserDefaultChoicesForUserResponse
      */
     'user_default_choices'?: Array<UserDefaultChoiceForUserFields>;
+}
+/**
+ * 
+ * @export
+ * @interface UserEnhancedMetricsPayload
+ */
+export interface UserEnhancedMetricsPayload {
+    /**
+     * Set to true to opt this VM into Enhanced Metrics, false to opt out.
+     * @type {boolean}
+     * @memberof UserEnhancedMetricsPayload
+     */
+    'enabled': boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UserEnhancedMetricsResponse
+ */
+export interface UserEnhancedMetricsResponse {
+    /**
+     * One-liner the user can run inside the VM to install the agent when enabling. Omitted when disabling.
+     * @type {string}
+     * @memberof UserEnhancedMetricsResponse
+     */
+    'install_command'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserEnhancedMetricsResponse
+     */
+    'message'?: string;
+    /**
+     * 
+     * @type {UserEnhancedMetricsResponseFields}
+     * @memberof UserEnhancedMetricsResponse
+     */
+    'metrics'?: UserEnhancedMetricsResponseFields;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserEnhancedMetricsResponse
+     */
+    'status'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UserEnhancedMetricsResponseFields
+ */
+export interface UserEnhancedMetricsResponseFields {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserEnhancedMetricsResponseFields
+     */
+    'enabled'?: boolean;
 }
 /**
  * 
@@ -28446,6 +28528,49 @@ export const VirtualMachineApiAxiosParamCreator = function (configuration?: Conf
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Enable or disable the Hyperstack VM Agent (Enhanced Metrics) for an existing virtual machine. The agent itself must be installed/removed manually inside the VM — the response includes the install command when enabling.
+         * @summary Enable or disable Enhanced Metrics for a virtual machine
+         * @param {number} vmId 
+         * @param {UserEnhancedMetricsPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleEnhancedMetricsForAVM: async (vmId: number, payload: UserEnhancedMetricsPayload, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vmId' is not null or undefined
+            assertParamExists('toggleEnhancedMetricsForAVM', 'vmId', vmId)
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('toggleEnhancedMetricsForAVM', 'payload', payload)
+            const localVarPath = `/core/virtual-machines/{vm_id}/enhanced-metrics`
+                .replace(`{${"vm_id"}}`, encodeURIComponent(String(vmId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication apiKey required
+            await setApiKeyToObject(localVarHeaderParameter, "api_key", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -28735,6 +28860,20 @@ export const VirtualMachineApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.stopVM']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * Enable or disable the Hyperstack VM Agent (Enhanced Metrics) for an existing virtual machine. The agent itself must be installed/removed manually inside the VM — the response includes the install command when enabling.
+         * @summary Enable or disable Enhanced Metrics for a virtual machine
+         * @param {number} vmId 
+         * @param {UserEnhancedMetricsPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async toggleEnhancedMetricsForAVM(vmId: number, payload: UserEnhancedMetricsPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserEnhancedMetricsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.toggleEnhancedMetricsForAVM(vmId, payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VirtualMachineApi.toggleEnhancedMetricsForAVM']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -28963,6 +29102,17 @@ export const VirtualMachineApiFactory = function (configuration?: Configuration,
          */
         stopVM(vmId: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel> {
             return localVarFp.stopVM(vmId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Enable or disable the Hyperstack VM Agent (Enhanced Metrics) for an existing virtual machine. The agent itself must be installed/removed manually inside the VM — the response includes the install command when enabling.
+         * @summary Enable or disable Enhanced Metrics for a virtual machine
+         * @param {number} vmId 
+         * @param {UserEnhancedMetricsPayload} payload 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        toggleEnhancedMetricsForAVM(vmId: number, payload: UserEnhancedMetricsPayload, options?: RawAxiosRequestConfig): AxiosPromise<UserEnhancedMetricsResponse> {
+            return localVarFp.toggleEnhancedMetricsForAVM(vmId, payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -29231,6 +29381,19 @@ export class VirtualMachineApi extends BaseAPI {
      */
     public stopVM(vmId: number, options?: RawAxiosRequestConfig) {
         return VirtualMachineApiFp(this.configuration).stopVM(vmId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Enable or disable the Hyperstack VM Agent (Enhanced Metrics) for an existing virtual machine. The agent itself must be installed/removed manually inside the VM — the response includes the install command when enabling.
+     * @summary Enable or disable Enhanced Metrics for a virtual machine
+     * @param {number} vmId 
+     * @param {UserEnhancedMetricsPayload} payload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VirtualMachineApi
+     */
+    public toggleEnhancedMetricsForAVM(vmId: number, payload: UserEnhancedMetricsPayload, options?: RawAxiosRequestConfig) {
+        return VirtualMachineApiFp(this.configuration).toggleEnhancedMetricsForAVM(vmId, payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
