@@ -21,6 +21,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { RequiredError } from "./base";
+import { applyHyperstackHeaders } from "./hyperstackHeaders";
 /**
  *
  * @export
@@ -144,6 +145,7 @@ export const createRequestFunction = function (axiosArgs, globalAxios, BASE_PATH
     return (axios = globalAxios, basePath = BASE_PATH) => {
         var _a;
         const axiosRequestArgs = Object.assign(Object.assign({}, axiosArgs.options), { url: (axios.defaults.baseURL ? '' : (_a = configuration === null || configuration === void 0 ? void 0 : configuration.basePath) !== null && _a !== void 0 ? _a : basePath) + axiosArgs.url });
+        applyHyperstackHeaders(axiosRequestArgs);
         return axios.request(axiosRequestArgs);
     };
 };

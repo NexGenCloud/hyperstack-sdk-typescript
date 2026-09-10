@@ -16,7 +16,7 @@
 import type { Configuration } from "./configuration";
 import type { RequestArgs } from "./base";
 import type { AxiosInstance, AxiosResponse } from 'axios';
-import { RequiredError } from "./base";
+import { RequiredError } from "./base"; import { applyHyperstackHeaders } from "./hyperstackHeaders";
 
 /**
  *
@@ -144,7 +144,7 @@ export const toPathString = function (url: URL) {
  */
 export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxios: AxiosInstance, BASE_PATH: string, configuration?: Configuration) {
     return <T = unknown, R = AxiosResponse<T>>(axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH): Promise<R> => {
-        const axiosRequestArgs = {...axiosArgs.options, url: (axios.defaults.baseURL ? '' : configuration?.basePath ?? basePath) + axiosArgs.url};
+        const axiosRequestArgs = {...axiosArgs.options, url: (axios.defaults.baseURL ? '' : configuration?.basePath ?? basePath) + axiosArgs.url}; applyHyperstackHeaders(axiosRequestArgs);
         return axios.request<T, R>(axiosRequestArgs) as Promise<R>;
     };
 }

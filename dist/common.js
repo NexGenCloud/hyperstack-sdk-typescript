@@ -24,6 +24,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createRequestFunction = exports.toPathString = exports.serializeDataIfNeeded = exports.setSearchParams = exports.setOAuthToObject = exports.setBearerAuthToObject = exports.setBasicAuthToObject = exports.setApiKeyToObject = exports.assertParamExists = exports.DUMMY_BASE_URL = void 0;
 const base_1 = require("./base");
+const hyperstackHeaders_1 = require("./hyperstackHeaders");
 /**
  *
  * @export
@@ -155,6 +156,7 @@ const createRequestFunction = function (axiosArgs, globalAxios, BASE_PATH, confi
     return (axios = globalAxios, basePath = BASE_PATH) => {
         var _a;
         const axiosRequestArgs = Object.assign(Object.assign({}, axiosArgs.options), { url: (axios.defaults.baseURL ? '' : (_a = configuration === null || configuration === void 0 ? void 0 : configuration.basePath) !== null && _a !== void 0 ? _a : basePath) + axiosArgs.url });
+        (0, hyperstackHeaders_1.applyHyperstackHeaders)(axiosRequestArgs);
         return axios.request(axiosRequestArgs);
     };
 };

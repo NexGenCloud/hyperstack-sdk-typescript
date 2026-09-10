@@ -1770,6 +1770,43 @@ export interface CompatibleFlavor {
 /**
  *
  * @export
+ * @interface CompatibleImage
+ */
+export interface CompatibleImage {
+    /**
+     * JSON constraints object
+     * @type {object}
+     * @memberof CompatibleImage
+     */
+    'constraints'?: object;
+    /**
+     *
+     * @type {number}
+     * @memberof CompatibleImage
+     */
+    'image_id'?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CompatibleImage
+     */
+    'image_name'?: string;
+    /**
+     * Either \'hard\' or \'soft\'
+     * @type {string}
+     * @memberof CompatibleImage
+     */
+    'link_type'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof CompatibleImage
+     */
+    'reason'?: string;
+}
+/**
+ *
+ * @export
  * @interface ComplianceFields
  */
 export interface ComplianceFields {
@@ -4063,6 +4100,12 @@ export interface FlavorFields {
      */
     'id'?: number;
     /**
+     * Image compatibility restrictions for this flavor (flavor → image links)
+     * @type {ImageRestrictions}
+     * @memberof FlavorFields
+     */
+    'image_restrictions'?: ImageRestrictions;
+    /**
      *
      * @type {Array<LableResonse>}
      * @memberof FlavorFields
@@ -4809,6 +4852,31 @@ export interface ImageGetResponse {
      * @memberof ImageGetResponse
      */
     'type'?: string;
+}
+/**
+ *
+ * @export
+ * @interface ImageRestrictions
+ */
+export interface ImageRestrictions {
+    /**
+     * List of images this flavor is allowed to launch, with link metadata
+     * @type {Array<CompatibleImage>}
+     * @memberof ImageRestrictions
+     */
+    'compatible_images'?: Array<CompatibleImage>;
+    /**
+     * Whether the flavor is restricted to a set of images
+     * @type {boolean}
+     * @memberof ImageRestrictions
+     */
+    'has_image_restrictions'?: boolean;
+    /**
+     * Either \'hard\', \'soft\', or null if no restrictions
+     * @type {string}
+     * @memberof ImageRestrictions
+     */
+    'restriction_type'?: string;
 }
 /**
  *
