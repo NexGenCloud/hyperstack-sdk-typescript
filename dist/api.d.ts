@@ -1807,154 +1807,6 @@ export interface CompatibleImage {
 /**
  *
  * @export
- * @interface ComplianceFields
- */
-export interface ComplianceFields {
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof ComplianceFields
-     */
-    'cpu'?: Array<number>;
-    /**
-     *
-     * @type {string}
-     * @memberof ComplianceFields
-     */
-    'gpu_model'?: string;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof ComplianceFields
-     */
-    'hdd'?: Array<number>;
-    /**
-     *
-     * @type {Array<number>}
-     * @memberof ComplianceFields
-     */
-    'ram'?: Array<number>;
-}
-/**
- *
- * @export
- * @interface ComplianceModelFields
- */
-export interface ComplianceModelFields {
-    /**
-     *
-     * @type {number}
-     * @memberof ComplianceModelFields
-     */
-    'base_value'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ComplianceModelFields
-     */
-    'gpu_model'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ComplianceModelFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof ComplianceModelFields
-     */
-    'resource_type'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof ComplianceModelFields
-     */
-    'variation_max'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ComplianceModelFields
-     */
-    'variation_min'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ComplianceModelFields
-     */
-    'variation_unit'?: number;
-}
-/**
- *
- * @export
- * @interface CompliancePayload
- */
-export interface CompliancePayload {
-    /**
-     *
-     * @type {number}
-     * @memberof CompliancePayload
-     */
-    'base_value': number;
-    /**
-     *
-     * @type {string}
-     * @memberof CompliancePayload
-     */
-    'gpu_model': string;
-    /**
-     *
-     * @type {string}
-     * @memberof CompliancePayload
-     */
-    'resource_type': string;
-    /**
-     *
-     * @type {number}
-     * @memberof CompliancePayload
-     */
-    'variation_max': number;
-    /**
-     *
-     * @type {number}
-     * @memberof CompliancePayload
-     */
-    'variation_min': number;
-    /**
-     *
-     * @type {number}
-     * @memberof CompliancePayload
-     */
-    'variation_unit': number;
-}
-/**
- *
- * @export
- * @interface ComplianceResponse
- */
-export interface ComplianceResponse {
-    /**
-     *
-     * @type {ComplianceFields}
-     * @memberof ComplianceResponse
-     */
-    'compliance'?: ComplianceFields;
-    /**
-     *
-     * @type {string}
-     * @memberof ComplianceResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof ComplianceResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
  * @interface ConsentActionResponse
  */
 export interface ConsentActionResponse {
@@ -2048,43 +1900,6 @@ export interface ConsentTemplatesResponse {
      * @memberof ConsentTemplatesResponse
      */
     'templates'?: object;
-}
-/**
- *
- * @export
- * @interface ContainerOverviewFields
- */
-export interface ContainerOverviewFields {
-    /**
-     *
-     * @type {number}
-     * @memberof ContainerOverviewFields
-     */
-    'cost_per_hour'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContainerOverviewFields
-     */
-    'count'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContainerOverviewFields
-     */
-    'gpus'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContainerOverviewFields
-     */
-    'ram'?: number;
-    /**
-     *
-     * @type {number}
-     * @memberof ContainerOverviewFields
-     */
-    'vcpus'?: number;
 }
 /**
  *
@@ -2977,31 +2792,6 @@ export interface CreateSnapshotResponse {
 /**
  *
  * @export
- * @interface CreateUpdateComplianceResponse
- */
-export interface CreateUpdateComplianceResponse {
-    /**
-     *
-     * @type {ComplianceModelFields}
-     * @memberof CreateUpdateComplianceResponse
-     */
-    'compliance'?: ComplianceModelFields;
-    /**
-     *
-     * @type {string}
-     * @memberof CreateUpdateComplianceResponse
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof CreateUpdateComplianceResponse
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
  * @interface CreateUpdateRbacRolePayload
  */
 export interface CreateUpdateRbacRolePayload {
@@ -3227,123 +3017,6 @@ export interface DeleteClusterNodesFields {
      * @memberof DeleteClusterNodesFields
      */
     'ids'?: Array<number>;
-}
-/**
- *
- * @export
- * @interface DeploymentFields
- */
-export interface DeploymentFields {
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFields
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DeploymentFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFields
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFields
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFields
-     */
-    'template'?: string;
-}
-/**
- *
- * @export
- * @interface DeploymentFieldsForStartDeployments
- */
-export interface DeploymentFieldsForStartDeployments {
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'name'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'status'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'template'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DeploymentFieldsForStartDeployments
-     */
-    'variables'?: string;
-}
-/**
- *
- * @export
- * @interface Deployments
- */
-export interface Deployments {
-    /**
-     *
-     * @type {Array<DeploymentFields>}
-     * @memberof Deployments
-     */
-    'deployments'?: Array<DeploymentFields>;
-    /**
-     *
-     * @type {string}
-     * @memberof Deployments
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Deployments
-     */
-    'status'?: boolean;
 }
 /**
  *
@@ -5176,6 +4849,12 @@ export interface InstanceFields {
      */
     'callback_url'?: string;
     /**
+     * The COE cluster this VM is a node of, or null.
+     * @type {number}
+     * @memberof InstanceFields
+     */
+    'cluster_id'?: number;
+    /**
      *
      * @type {number}
      * @memberof InstanceFields
@@ -5187,6 +4866,12 @@ export interface InstanceFields {
      * @memberof InstanceFields
      */
     'created_at'?: string;
+    /**
+     * The dedicated inference endpoint this VM serves, or null.
+     * @type {number}
+     * @memberof InstanceFields
+     */
+    'dedicated_inference_id'?: number;
     /**
      *
      * @type {InstanceEnhancedMetricsFields}
@@ -6871,12 +6556,6 @@ export interface OrganizationUserResponseModel {
 export interface OverviewInfo {
     /**
      *
-     * @type {ContainerOverviewFields}
-     * @memberof OverviewInfo
-     */
-    'container'?: ContainerOverviewFields;
-    /**
-     *
      * @type {InstanceOverviewFields}
      * @memberof OverviewInfo
      */
@@ -7135,11 +6814,11 @@ export interface PaymentInitiateFields {
  */
 export interface PaymentInitiatePayload {
     /**
-     *
+     * The amount to pay, in dollars. Must be at least $5.00.
      * @type {number}
      * @memberof PaymentInitiatePayload
      */
-    'amount'?: number;
+    'amount': number;
 }
 /**
  *
@@ -9344,64 +9023,6 @@ export interface Snapshots {
 /**
  *
  * @export
- * @interface StartDeployment
- */
-export interface StartDeployment {
-    /**
-     *
-     * @type {DeploymentFieldsForStartDeployments}
-     * @memberof StartDeployment
-     */
-    'deployment'?: DeploymentFieldsForStartDeployments;
-    /**
-     *
-     * @type {string}
-     * @memberof StartDeployment
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof StartDeployment
-     */
-    'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface StartDeploymentPayload
- */
-export interface StartDeploymentPayload {
-    /**
-     *
-     * @type {string}
-     * @memberof StartDeploymentPayload
-     */
-    'description': string;
-    /**
-     *
-     * @type {string}
-     * @memberof StartDeploymentPayload
-     */
-    'name': string;
-    /**
-     *
-     * @type {number}
-     * @memberof StartDeploymentPayload
-     */
-    'template_id': number;
-    /**
-     *
-     * @type {{ [key: string]: string; }}
-     * @memberof StartDeploymentPayload
-     */
-    'variables'?: {
-        [key: string]: string;
-    };
-}
-/**
- *
- * @export
  * @interface SubResourceGraphBillingDetailsMetrics
  */
 export interface SubResourceGraphBillingDetailsMetrics {
@@ -9590,99 +9211,6 @@ export interface SupportedKeypairPublicKeyTypesResponse {
      * @memberof SupportedKeypairPublicKeyTypesResponse
      */
     'supported_key_types'?: Array<string>;
-}
-/**
- *
- * @export
- * @interface Template
- */
-export interface Template {
-    /**
-     *
-     * @type {string}
-     * @memberof Template
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Template
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {TemplateFields}
-     * @memberof Template
-     */
-    'template'?: TemplateFields;
-}
-/**
- *
- * @export
- * @interface TemplateFields
- */
-export interface TemplateFields {
-    /**
-     *
-     * @type {string}
-     * @memberof TemplateFields
-     */
-    'content'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof TemplateFields
-     */
-    'created_at'?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof TemplateFields
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {number}
-     * @memberof TemplateFields
-     */
-    'id'?: number;
-    /**
-     *
-     * @type {boolean}
-     * @memberof TemplateFields
-     */
-    'is_public'?: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof TemplateFields
-     */
-    'name'?: string;
-}
-/**
- *
- * @export
- * @interface Templates
- */
-export interface Templates {
-    /**
-     *
-     * @type {string}
-     * @memberof Templates
-     */
-    'message'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Templates
-     */
-    'status'?: boolean;
-    /**
-     *
-     * @type {Array<TemplateFields>}
-     * @memberof Templates
-     */
-    'templates'?: Array<TemplateFields>;
 }
 /**
  *
@@ -9977,31 +9505,6 @@ export interface UpdateOrganizationResponseModel {
      * @memberof UpdateOrganizationResponseModel
      */
     'status'?: boolean;
-}
-/**
- *
- * @export
- * @interface UpdateTemplate
- */
-export interface UpdateTemplate {
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTemplate
-     */
-    'description'?: string;
-    /**
-     *
-     * @type {boolean}
-     * @memberof UpdateTemplate
-     */
-    'is_public'?: boolean;
-    /**
-     *
-     * @type {string}
-     * @memberof UpdateTemplate
-     */
-    'name'?: string;
 }
 /**
  *
@@ -11569,12 +11072,6 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      */
     changeOrganizationForToken: (orgId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    disableMFA: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -11609,12 +11106,6 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthGetTokenResponseModel>>;
     /**
-     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    disableMFA(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseModel>>;
-    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -11648,12 +11139,6 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): AxiosPromise<AuthGetTokenResponseModel>;
-    /**
-     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    disableMFA(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseModel>;
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
@@ -11691,13 +11176,6 @@ export declare class AuthApi extends BaseAPI {
      * @memberof AuthApi
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthGetTokenResponseModel, any, {}, any>>;
-    /**
-     * Disable Multi-Factor Authentication (MFA) for the currently authenticated user. This endpoint is used to turn off MFA.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuthApi
-     */
-    disableMFA(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CommonResponseModel, any, {}, any>>;
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
@@ -14844,164 +14322,6 @@ export declare class ClustersApi extends BaseAPI {
     updateNodeGroup(clusterId: number, nodeGroupId: number, payload: UpdateClusterNodeGroupPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterNodeGroupsCreateResponse, any, {}, any>>;
 }
 /**
- * ComplianceApi - axios parameter creator
- * @export
- */
-export declare const ComplianceApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Create compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createCompliance: (payload: CompliancePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Delete a compliance
-     * @param {string} gpuModel
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteCompliance: (gpuModel: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
-     * @summary Retrieve GPU compliance
-     * @param {string} [gpu] This is for gpu model
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getCompliance: (gpu?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Update a compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateCompliance: (payload: CompliancePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * ComplianceApi - functional programming interface
- * @export
- */
-export declare const ComplianceApiFp: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Create compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateUpdateComplianceResponse>>;
-    /**
-     *
-     * @summary Delete a compliance
-     * @param {string} gpuModel
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
-     * @summary Retrieve GPU compliance
-     * @param {string} [gpu] This is for gpu model
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ComplianceResponse>>;
-    /**
-     *
-     * @summary Update a compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateUpdateComplianceResponse>>;
-};
-/**
- * ComplianceApi - factory interface
- * @export
- */
-export declare const ComplianceApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Create compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateUpdateComplianceResponse>;
-    /**
-     *
-     * @summary Delete a compliance
-     * @param {string} gpuModel
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
-     * @summary Retrieve GPU compliance
-     * @param {string} [gpu] This is for gpu model
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getCompliance(gpu?: string, options?: RawAxiosRequestConfig): AxiosPromise<ComplianceResponse>;
-    /**
-     *
-     * @summary Update a compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): AxiosPromise<CreateUpdateComplianceResponse>;
-};
-/**
- * ComplianceApi - object-oriented interface
- * @export
- * @class ComplianceApi
- * @extends {BaseAPI}
- */
-export declare class ComplianceApi extends BaseAPI {
-    /**
-     *
-     * @summary Create compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ComplianceApi
-     */
-    createCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}, any>>;
-    /**
-     *
-     * @summary Delete a compliance
-     * @param {string} gpuModel
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ComplianceApi
-     */
-    deleteCompliance(gpuModel: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
-    /**
-     * Returns a list of compliance objects each corresponding to available GPU models. These compliance objects contain minimum and maximum values for RAM in GB, number of vCPUs, and system disk capacity in GB. Use the optional `gpu` model parameter in the query string to filter responses by GPU model. For additional details on GPU compliance, [**click here**](https://docs.hyperstack.cloud/docs/hardware/flavors#adhering-to-gpu-compliance).
-     * @summary Retrieve GPU compliance
-     * @param {string} [gpu] This is for gpu model
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ComplianceApi
-     */
-    getCompliance(gpu?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ComplianceResponse, any, {}, any>>;
-    /**
-     *
-     * @summary Update a compliance
-     * @param {CompliancePayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ComplianceApi
-     */
-    updateCompliance(payload: CompliancePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<CreateUpdateComplianceResponse, any, {}, any>>;
-}
-/**
  * CreditApi - axios parameter creator
  * @export
  */
@@ -15199,7 +14519,7 @@ export declare class CustomerContractApi extends BaseAPI {
  */
 export declare const DashboardApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -15212,7 +14532,7 @@ export declare const DashboardApiAxiosParamCreator: (configuration?: Configurati
  */
 export declare const DashboardApiFp: (configuration?: Configuration) => {
     /**
-     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -15225,7 +14545,7 @@ export declare const DashboardApiFp: (configuration?: Configuration) => {
  */
 export declare const DashboardApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -15240,167 +14560,13 @@ export declare const DashboardApiFactory: (configuration?: Configuration, basePa
  */
 export declare class DashboardApi extends BaseAPI {
     /**
-     * Returns hardware and pricing overview for your active resources, includingvirtual machines, containers, and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
+     * Returns hardware and pricing overview for your active resources, includingvirtual machines and volumes. For more details on the Dashboard feature, [**click here**](https://docs.hyperstack.cloud/docs/resource-management/dashboard/).
      * @summary Retrieve Dashboard
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DashboardApi
      */
     getDashboard(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<DashboardInfoResponse, any, {}, any>>;
-}
-/**
- * DeploymentApi - axios parameter creator
- * @export
- */
-export declare const DeploymentApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Delete Deployment
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteDeployment: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Details of Deployment by ID
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getDeployment: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary List Deployments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listDeployments: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Start Deployment
-     * @param {StartDeploymentPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    startDeployment: (payload: StartDeploymentPayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * DeploymentApi - functional programming interface
- * @export
- */
-export declare const DeploymentApiFp: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Delete Deployment
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     *
-     * @summary Details of Deployment by ID
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getDeployment(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>>;
-    /**
-     *
-     * @summary List Deployments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listDeployments(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Deployments>>;
-    /**
-     *
-     * @summary Start Deployment
-     * @param {StartDeploymentPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StartDeployment>>;
-};
-/**
- * DeploymentApi - factory interface
- * @export
- */
-export declare const DeploymentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     *
-     * @summary Delete Deployment
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteDeployment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     *
-     * @summary Details of Deployment by ID
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getDeployment(id: number, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment>;
-    /**
-     *
-     * @summary List Deployments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listDeployments(options?: RawAxiosRequestConfig): AxiosPromise<Deployments>;
-    /**
-     *
-     * @summary Start Deployment
-     * @param {StartDeploymentPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): AxiosPromise<StartDeployment>;
-};
-/**
- * DeploymentApi - object-oriented interface
- * @export
- * @class DeploymentApi
- * @extends {BaseAPI}
- */
-export declare class DeploymentApi extends BaseAPI {
-    /**
-     *
-     * @summary Delete Deployment
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DeploymentApi
-     */
-    deleteDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
-    /**
-     *
-     * @summary Details of Deployment by ID
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DeploymentApi
-     */
-    getDeployment(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}, any>>;
-    /**
-     *
-     * @summary List Deployments
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DeploymentApi
-     */
-    listDeployments(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Deployments, any, {}, any>>;
-    /**
-     *
-     * @summary Start Deployment
-     * @param {StartDeploymentPayload} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DeploymentApi
-     */
-    startDeployment(payload: StartDeploymentPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<StartDeployment, any, {}, any>>;
 }
 /**
  * EmailOptInOutApi - axios parameter creator
@@ -18300,213 +17466,6 @@ export declare class StockApi extends BaseAPI {
      * @memberof StockApi
      */
     getGPUStock(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<NewStockRetriveResponse, any, {}, any>>;
-}
-/**
- * TemplateApi - axios parameter creator
- * @export
- */
-export declare const TemplateApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     * Creates a resource template for deployment.
-     * @summary Create template
-     * @param {File} content YAML file is required
-     * @param {string} description description is required
-     * @param {string} isPublic is_public is required
-     * @param {string} name name is required
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createTemplate: (content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
-     * @summary Delete template
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteTemplate: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTemplate: (id: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
-     * @summary List templates
-     * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listTemplates: (visibility?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
-     * @summary Update template
-     * @param {number} id
-     * @param {UpdateTemplate} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateTemplate: (id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * TemplateApi - functional programming interface
- * @export
- */
-export declare const TemplateApiFp: (configuration?: Configuration) => {
-    /**
-     * Creates a resource template for deployment.
-     * @summary Create template
-     * @param {File} content YAML file is required
-     * @param {string} description description is required
-     * @param {string} isPublic is_public is required
-     * @param {string} name name is required
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>>;
-    /**
-     * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
-     * @summary Delete template
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseModel>>;
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTemplate(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>>;
-    /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
-     * @summary List templates
-     * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Templates>>;
-    /**
-     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
-     * @summary Update template
-     * @param {number} id
-     * @param {UpdateTemplate} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Template>>;
-};
-/**
- * TemplateApi - factory interface
- * @export
- */
-export declare const TemplateApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
-    /**
-     * Creates a resource template for deployment.
-     * @summary Create template
-     * @param {File} content YAML file is required
-     * @param {string} description description is required
-     * @param {string} isPublic is_public is required
-     * @param {string} name name is required
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): AxiosPromise<Template>;
-    /**
-     * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
-     * @summary Delete template
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deleteTemplate(id: number, options?: RawAxiosRequestConfig): AxiosPromise<ResponseModel>;
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTemplate(id: number, options?: RawAxiosRequestConfig): AxiosPromise<Template>;
-    /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
-     * @summary List templates
-     * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): AxiosPromise<Templates>;
-    /**
-     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
-     * @summary Update template
-     * @param {number} id
-     * @param {UpdateTemplate} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): AxiosPromise<Template>;
-};
-/**
- * TemplateApi - object-oriented interface
- * @export
- * @class TemplateApi
- * @extends {BaseAPI}
- */
-export declare class TemplateApi extends BaseAPI {
-    /**
-     * Creates a resource template for deployment.
-     * @summary Create template
-     * @param {File} content YAML file is required
-     * @param {string} description description is required
-     * @param {string} isPublic is_public is required
-     * @param {string} name name is required
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    createTemplate(content: File, description: string, isPublic: string, name: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
-    /**
-     * Permanently deletes a template. Supply the template ID in the path to delete the specified template.
-     * @summary Delete template
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    deleteTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResponseModel, any, {}, any>>;
-    /**
-     * Retrieves the resource configuration details for a specified template.Provide the template ID in the path to retrieve details for the specified template.For additional information on template configuration details,[**click here**](https://docs.hyperstack.cloud/docs/api-references/).
-     * @summary Retrieve template details
-     * @param {number} id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    getTemplate(id: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
-    /**
-     * Returns a comprehensive list of templates, providing resource configuration details for each. Optionally, specify the `visibility` as `public` or `private` to retrieve templates with the desired visibility status. To learn more about the templates feature, [**click here**](https://docs.hyperstack.cloud/docs/features/templates#view-a-list-of-templates).
-     * @summary List templates
-     * @param {string} [visibility] Specify the &#x60;visibility&#x60; status as either &#x60;public&#x60; or &#x60;private&#x60; to filter and retrieve templates with the desired visibility.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    listTemplates(visibility?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Templates, any, {}, any>>;
-    /**
-     * Updates the details of a template. Modify the template name, description and/or`is_public` status to change the public/private visibility of the template.
-     * @summary Update template
-     * @param {number} id
-     * @param {UpdateTemplate} payload
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TemplateApi
-     */
-    updateTemplate(id: number, payload: UpdateTemplate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Template, any, {}, any>>;
 }
 /**
  * UserApi - axios parameter creator

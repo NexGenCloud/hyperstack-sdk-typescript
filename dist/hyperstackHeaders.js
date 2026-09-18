@@ -10,7 +10,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.applyHyperstackHeaders = exports.HYPERSTACK_USER_AGENT = exports.HYPERSTACK_CLIENT = exports.USER_AGENT_HEADER = exports.HYPERSTACK_CLIENT_HEADER = void 0;
 const SDK_NAME = 'hyperstack-typescript-sdk';
-const SDK_VERSION = 'v1.55.4-alpha';
+const SDK_VERSION = 'v1.55.6-alpha';
 exports.HYPERSTACK_CLIENT_HEADER = 'Hyperstack-Client';
 exports.USER_AGENT_HEADER = 'User-Agent';
 const FORCED = [exports.HYPERSTACK_CLIENT_HEADER.toLowerCase(), exports.USER_AGENT_HEADER.toLowerCase()];

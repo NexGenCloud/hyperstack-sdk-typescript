@@ -7,7 +7,7 @@
  * the generated SDK by the `add-hyperstack-headers` task. Do not edit in the SDK repo.
  */
 const SDK_NAME = 'hyperstack-typescript-sdk';
-const SDK_VERSION = 'v1.55.4-alpha';
+const SDK_VERSION = 'v1.55.6-alpha';
 export const HYPERSTACK_CLIENT_HEADER = 'Hyperstack-Client';
 export const USER_AGENT_HEADER = 'User-Agent';
 const FORCED = [HYPERSTACK_CLIENT_HEADER.toLowerCase(), USER_AGENT_HEADER.toLowerCase()];
