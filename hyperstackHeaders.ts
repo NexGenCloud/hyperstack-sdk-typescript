@@ -13,7 +13,7 @@
 declare const process: any;
 
 const SDK_NAME: string = 'hyperstack-typescript-sdk';
-const SDK_VERSION: string = 'v1.55.6-alpha';
+const SDK_VERSION: string = 'v1.55.7-alpha';
 
 export const HYPERSTACK_CLIENT_HEADER: string = 'Hyperstack-Client';
 export const USER_AGENT_HEADER: string = 'User-Agent';
