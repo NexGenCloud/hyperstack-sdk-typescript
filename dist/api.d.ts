@@ -6848,6 +6848,31 @@ export interface PaymentInitiateResponse {
 /**
  *
  * @export
+ * @interface PaymentReceiptResponse
+ */
+export interface PaymentReceiptResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentReceiptResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentReceiptResponse
+     */
+    'receipt_url'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof PaymentReceiptResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
  * @interface PermissionFields
  */
 export interface PermissionFields {
@@ -10731,7 +10756,7 @@ export declare class AccessKeysApi extends BaseAPI {
  */
 export declare const AliveApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -10750,7 +10775,7 @@ export declare const AliveApiAxiosParamCreator: (configuration?: Configuration) 
  */
 export declare const AliveApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -10769,7 +10794,7 @@ export declare const AliveApiFp: (configuration?: Configuration) => {
  */
 export declare const AliveApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -10790,7 +10815,7 @@ export declare const AliveApiFactory: (configuration?: Configuration, basePath?:
  */
 export declare class AliveApi extends BaseAPI {
     /**
-     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](None/docs/api-reference/billing-resources/alive/).
+     * Retrieve the billing status of your account to ensure that it is active. An active billing status ensures uninterrupted service. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/alive/).
      * @summary GET: Alive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11229,7 +11254,7 @@ export declare const AutoTopupApiAxiosParamCreator: (configuration?: Configurati
      */
     getAutoTopUp: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/).
      * @summary Get auto top-up status and configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11272,7 +11297,7 @@ export declare const AutoTopupApiFp: (configuration?: Configuration) => {
      */
     getAutoTopUp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAutoTopupResponse>>;
     /**
-     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/).
      * @summary Get auto top-up status and configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11315,7 +11340,7 @@ export declare const AutoTopupApiFactory: (configuration?: Configuration, basePa
      */
     getAutoTopUp(options?: RawAxiosRequestConfig): AxiosPromise<GetAutoTopupResponse>;
     /**
-     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/).
      * @summary Get auto top-up status and configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11363,7 +11388,7 @@ export declare class AutoTopupApi extends BaseAPI {
      */
     getAutoTopUp(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetAutoTopupResponse, any, {}, any>>;
     /**
-     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](None/docs/api-reference/billing-resources/).
+     * Retrieves the current auto top-up configuration and status for your organization. Returns the status (active, disabled, pending_setup, or null if never configured), along with the threshold and top-up amounts. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/).
      * @summary Get auto top-up status and configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11631,7 +11656,7 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      */
     getImageGenerationHistoryForResource: (resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -11727,7 +11752,7 @@ export declare const BillingApiAxiosParamCreator: (configuration?: Configuration
      */
     getSnapshotBillingHistoryGraph: (snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://docs.hyperstack.cloud/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
@@ -12045,7 +12070,7 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      */
     getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -12141,7 +12166,7 @@ export declare const BillingApiFp: (configuration?: Configuration) => {
      */
     getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://docs.hyperstack.cloud/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
@@ -12459,7 +12484,7 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      */
     getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ImageGenerationBillingHistoryDetailsResponseSchema>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -12555,7 +12580,7 @@ export declare const BillingApiFactory: (configuration?: Configuration, basePath
      */
     getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): AxiosPromise<ResourceLevelVolumeGraphBillingDetailsResponseModel>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://docs.hyperstack.cloud/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
@@ -12887,7 +12912,7 @@ export declare class BillingApi extends BaseAPI {
      */
     getImageGenerationHistoryForResource(resourceId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ImageGenerationBillingHistoryDetailsResponseSchema, any, {}, any>>;
     /**
-     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](None/docs/api-reference/billing-resources/last-day-usage/)
+     * Retrieve the previous day\'s costs for instances, volumes, and clusters. Returns a breakdown of  the costs and the total cost for the last day. For additional information on Retrieve Previous Day Usage Costs, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/last-day-usage/)
      * @summary GET: Last Day Cost
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -12993,7 +13018,7 @@ export declare class BillingApi extends BaseAPI {
      */
     getSnapshotBillingHistoryGraph(snapshotId: number, startDate?: string, endDate?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ResourceLevelVolumeGraphBillingDetailsResponseModel, any, {}, any>>;
     /**
-     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](None/docs/billing/pricebook/)
+     * Retrieve active billing metrics for the organization\'s resources, including pricing, uptime, and total cost. Returns usage details for each active resource by defualt(`deleted=false` will return active resources). Additionally, adding `deleted=true` in query parameter will return inactive resources. For additional information on view usage costs for all resources, [**click here**](https://docs.hyperstack.cloud/docs/billing/pricebook/)
      * @summary GET: Billing usage
      * @param {string} [deleted] &#x60;true&#x60; will return inactive resources and &#x60;false&#x60; will return active resources. By defualt(&#x60;deleted&#x3D;false&#x60;)
      * @param {string} [environment] Filter resources by environment ID or Name
@@ -14327,7 +14352,7 @@ export declare class ClustersApi extends BaseAPI {
  */
 export declare const CreditApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14340,7 +14365,7 @@ export declare const CreditApiAxiosParamCreator: (configuration?: Configuration)
  */
 export declare const CreditApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14353,7 +14378,7 @@ export declare const CreditApiFp: (configuration?: Configuration) => {
  */
 export declare const CreditApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -14368,7 +14393,7 @@ export declare const CreditApiFactory: (configuration?: Configuration, basePath?
  */
 export declare class CreditApi extends BaseAPI {
     /**
-     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](None/docs/api-reference/billing-resources/retrieve-credit-balance/).
+     * Retrieves the current credit balance for your [**organization**](/docs/rbac/organization). Ensuring a positive credit balance allows you to create resources. However, for prepaid accounts, if the credit balance falls below $0, all associated resources will be temporarily suspended until a [**payment**](/docs/api-reference/billing-resources/create-payment) is made. For additional information, [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-credit-balance/).
      * @summary GET: View credit and threshold
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -16327,7 +16352,7 @@ export declare class PartnerConfigApi extends BaseAPI {
  */
 export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
-     * Retrieve the payment receipt from Stripe for a specific payment
+     * Retrieve the URL of the Stripe-hosted invoice page for a specific payment. The hosted URL is refreshed by Stripe on every retrieval, so it never expires.
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId
      * @param {*} [options] Override http request option.
@@ -16335,7 +16360,7 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
      */
     getPaymentReceipt: (paymentId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
@@ -16343,7 +16368,7 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
      */
     initiatePayment: (payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -16356,15 +16381,15 @@ export declare const PaymentApiAxiosParamCreator: (configuration?: Configuration
  */
 export declare const PaymentApiFp: (configuration?: Configuration) => {
     /**
-     * Retrieve the payment receipt from Stripe for a specific payment
+     * Retrieve the URL of the Stripe-hosted invoice page for a specific payment. The hosted URL is refreshed by Stripe on every retrieval, so it never expires.
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentReceiptResponse>>;
     /**
-     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
@@ -16372,7 +16397,7 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
      */
     initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaymentInitiateResponse>>;
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -16385,15 +16410,15 @@ export declare const PaymentApiFp: (configuration?: Configuration) => {
  */
 export declare const PaymentApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
-     * Retrieve the payment receipt from Stripe for a specific payment
+     * Retrieve the URL of the Stripe-hosted invoice page for a specific payment. The hosted URL is refreshed by Stripe on every retrieval, so it never expires.
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): AxiosPromise<PaymentReceiptResponse>;
     /**
-     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
@@ -16401,7 +16426,7 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
      */
     initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): AxiosPromise<PaymentInitiateResponse>;
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -16416,16 +16441,16 @@ export declare const PaymentApiFactory: (configuration?: Configuration, basePath
  */
 export declare class PaymentApi extends BaseAPI {
     /**
-     * Retrieve the payment receipt from Stripe for a specific payment
+     * Retrieve the URL of the Stripe-hosted invoice page for a specific payment. The hosted URL is refreshed by Stripe on every retrieval, so it never expires.
      * @summary Retrieve Payment Receipt
      * @param {string} paymentId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PaymentApi
      */
-    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
+    getPaymentReceipt(paymentId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentReceiptResponse, any, {}, any>>;
     /**
-     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](None/docs/api-reference/billing-resources/create-payment).
+     * Creates a payment for a specified amount, adding credit to the balance of your [**organization**](/docs/rbac/organization). Include the `amount` in the body of the request to make a payment for the specified value in dollars. View a history of past payments by calling the [**Retrieve Payment History**](/docs/api-reference/billing-resources/retrieve-payment-history) API. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/create-payment).
      * @summary POST: Initiate payment
      * @param {PaymentInitiatePayload} payload
      * @param {*} [options] Override http request option.
@@ -16434,7 +16459,7 @@ export declare class PaymentApi extends BaseAPI {
      */
     initiatePayment(payload: PaymentInitiatePayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PaymentInitiateResponse, any, {}, any>>;
     /**
-     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](None/docs/api-reference/billing-resources/retrieve-payment-history/).
+     * Retrieves a list of all payments made within your [**organization**](/docs/rbac/organization) and their details, including the amount, payment status, and more. For additional information [**click here**](https://docs.hyperstack.cloud/docs/api-reference/billing-resources/retrieve-payment-history/).
      * @summary GET: View payment details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
