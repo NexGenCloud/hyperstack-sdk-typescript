@@ -26,7 +26,7 @@ exports.BucketsApiAxiosParamCreator = exports.BillingApi = exports.BillingApiFac
 exports.FirewallsApiFactory = exports.FirewallsApiFp = exports.FirewallsApiAxiosParamCreator = exports.FirewallAttachmentApi = exports.FirewallAttachmentApiFactory = exports.FirewallAttachmentApiFp = exports.FirewallAttachmentApiAxiosParamCreator = exports.FIPExclusionsApi = exports.FIPExclusionsApiFactory = exports.FIPExclusionsApiFp = exports.FIPExclusionsApiAxiosParamCreator = exports.EnvironmentApi = exports.EnvironmentApiFactory = exports.EnvironmentApiFp = exports.EnvironmentApiAxiosParamCreator = exports.EmailOptInOutApi = exports.EmailOptInOutApiFactory = exports.EmailOptInOutApiFp = exports.EmailOptInOutApiAxiosParamCreator = exports.DashboardApi = exports.DashboardApiFactory = exports.DashboardApiFp = exports.DashboardApiAxiosParamCreator = exports.CustomerContractApi = exports.CustomerContractApiFactory = exports.CustomerContractApiFp = exports.CustomerContractApiAxiosParamCreator = exports.CreditApi = exports.CreditApiFactory = exports.CreditApiFp = exports.CreditApiAxiosParamCreator = exports.ClustersApi = exports.ClustersApiFactory = exports.ClustersApiFp = exports.ClustersApiAxiosParamCreator = exports.ClusterEventsApi = exports.ClusterEventsApiFactory = exports.ClusterEventsApiFp = exports.ClusterEventsApiAxiosParamCreator = exports.CallbacksApi = exports.CallbacksApiFactory = exports.CallbacksApiFp = exports.CallbacksApiAxiosParamCreator = exports.CalculateApi = exports.CalculateApiFactory = exports.CalculateApiFp = exports.CalculateApiAxiosParamCreator = exports.BucketsApi = exports.BucketsApiFactory = exports.BucketsApiFp = void 0;
 exports.PricebookApiAxiosParamCreator = exports.PolicyApi = exports.PolicyApiFactory = exports.PolicyApiFp = exports.PolicyApiAxiosParamCreator = exports.PermissionApi = exports.PermissionApiFactory = exports.PermissionApiFp = exports.PermissionApiAxiosParamCreator = exports.PaymentApi = exports.PaymentApiFactory = exports.PaymentApiFp = exports.PaymentApiAxiosParamCreator = exports.PartnerConfigApi = exports.PartnerConfigApiFactory = exports.PartnerConfigApiFp = exports.PartnerConfigApiAxiosParamCreator = exports.OrganizationApi = exports.OrganizationApiFactory = exports.OrganizationApiFp = exports.OrganizationApiAxiosParamCreator = exports.KeypairApi = exports.KeypairApiFactory = exports.KeypairApiFp = exports.KeypairApiAxiosParamCreator = exports.InviteApi = exports.InviteApiFactory = exports.InviteApiFp = exports.InviteApiAxiosParamCreator = exports.ImageApi = exports.ImageApiFactory = exports.ImageApiFp = exports.ImageApiAxiosParamCreator = exports.HealthApi = exports.HealthApiFactory = exports.HealthApiFp = exports.HealthApiAxiosParamCreator = exports.GpuApi = exports.GpuApiFactory = exports.GpuApiFp = exports.GpuApiAxiosParamCreator = exports.FloatingIpApi = exports.FloatingIpApiFactory = exports.FloatingIpApiFp = exports.FloatingIpApiAxiosParamCreator = exports.FlavorApi = exports.FlavorApiFactory = exports.FlavorApiFp = exports.FlavorApiAxiosParamCreator = exports.FirewallsApi = void 0;
 exports.UserDetailChoiceApiFactory = exports.UserDetailChoiceApiFp = exports.UserDetailChoiceApiAxiosParamCreator = exports.UserConsentEventsApi = exports.UserConsentEventsApiFactory = exports.UserConsentEventsApiFp = exports.UserConsentEventsApiAxiosParamCreator = exports.UserConsentApi = exports.UserConsentApiFactory = exports.UserConsentApiFp = exports.UserConsentApiAxiosParamCreator = exports.UserApi = exports.UserApiFactory = exports.UserApiFp = exports.UserApiAxiosParamCreator = exports.StockApi = exports.StockApiFactory = exports.StockApiFp = exports.StockApiAxiosParamCreator = exports.SnapshotsApi = exports.SnapshotsApiFactory = exports.SnapshotsApiFp = exports.SnapshotsApiAxiosParamCreator = exports.SnapshotEventsApi = exports.SnapshotEventsApiFactory = exports.SnapshotEventsApiFp = exports.SnapshotEventsApiAxiosParamCreator = exports.SecurityRulesApi = exports.SecurityRulesApiFactory = exports.SecurityRulesApiFp = exports.SecurityRulesApiAxiosParamCreator = exports.RegionsApi = exports.RegionsApiFactory = exports.RegionsApiFp = exports.RegionsApiAxiosParamCreator = exports.RegionApi = exports.RegionApiFactory = exports.RegionApiFp = exports.RegionApiAxiosParamCreator = exports.RbacRoleApi = exports.RbacRoleApiFactory = exports.RbacRoleApiFp = exports.RbacRoleApiAxiosParamCreator = exports.ProfileApi = exports.ProfileApiFactory = exports.ProfileApiFp = exports.ProfileApiAxiosParamCreator = exports.PricebookApi = exports.PricebookApiFactory = exports.PricebookApiFp = void 0;
-exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = void 0;
+exports.ZendeskApi = exports.ZendeskApiFactory = exports.ZendeskApiFp = exports.ZendeskApiAxiosParamCreator = exports.VouchersApi = exports.VouchersApiFactory = exports.VouchersApiFp = exports.VouchersApiAxiosParamCreator = exports.VolumeAttachmentApi = exports.VolumeAttachmentApiFactory = exports.VolumeAttachmentApiFp = exports.VolumeAttachmentApiAxiosParamCreator = exports.VolumeApi = exports.VolumeApiFactory = exports.VolumeApiFp = exports.VolumeApiAxiosParamCreator = exports.VncUrlApi = exports.VncUrlApiFactory = exports.VncUrlApiFp = exports.VncUrlApiAxiosParamCreator = exports.VirtualMachineEventsApi = exports.VirtualMachineEventsApiFactory = exports.VirtualMachineEventsApiFp = exports.VirtualMachineEventsApiAxiosParamCreator = exports.GetVMMetricsDurationEnum = exports.VirtualMachineApi = exports.VirtualMachineApiFactory = exports.VirtualMachineApiFp = exports.VirtualMachineApiAxiosParamCreator = exports.UserPermissionApi = exports.UserPermissionApiFactory = exports.UserPermissionApiFp = exports.UserPermissionApiAxiosParamCreator = exports.UserDetailChoiceApi = void 0;
 const axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -269,6 +269,40 @@ const AccessKeysApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint: (accessKeyId_1, body_1, ...args_1) => __awaiter(this, [accessKeyId_1, body_1, ...args_1], void 0, function* (accessKeyId, body, options = {}) {
+            // verify required parameter 'accessKeyId' is not null or undefined
+            (0, common_1.assertParamExists)('updateAccessKeyEndpoint', 'accessKeyId', accessKeyId);
+            const localVarPath = `/object-storage/access-keys/{access_key_id}`
+                .replace(`{${"access_key_id"}}`, encodeURIComponent(String(accessKeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(body, localVarRequestOptions, configuration);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 exports.AccessKeysApiAxiosParamCreator = AccessKeysApiAxiosParamCreator;
@@ -329,6 +363,23 @@ const AccessKeysApiFp = function (configuration) {
                 return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint(accessKeyId, body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAccessKeyEndpoint(accessKeyId, body, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AccessKeysApi.updateAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
     };
 };
 exports.AccessKeysApiFp = AccessKeysApiFp;
@@ -370,6 +421,17 @@ const AccessKeysApiFactory = function (configuration, basePath, axios) {
          */
         listAccessKeysEndpoint(search, page, pageSize, options) {
             return localVarFp.listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint(accessKeyId, body, options) {
+            return localVarFp.updateAccessKeyEndpoint(accessKeyId, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -415,6 +477,18 @@ class AccessKeysApi extends base_1.BaseAPI {
      */
     listAccessKeysEndpoint(search, page, pageSize, options) {
         return (0, exports.AccessKeysApiFp)(this.configuration).listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    updateAccessKeyEndpoint(accessKeyId, body, options) {
+        return (0, exports.AccessKeysApiFp)(this.configuration).updateAccessKeyEndpoint(accessKeyId, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 exports.AccessKeysApi = AccessKeysApi;
@@ -6832,6 +6906,37 @@ const ClustersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            (0, common_1.assertParamExists)('restoreAHibernatedCluster', 'clusterId', clusterId);
+            const localVarPath = `/core/clusters/{cluster_id}/restore`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Update a node group in a cluster
          * @param {number} clusterId
          * @param {number} nodeGroupId
@@ -7146,6 +7251,22 @@ const ClustersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster(clusterId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreAHibernatedCluster(clusterId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ClustersApi.restoreAHibernatedCluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Update a node group in a cluster
          * @param {number} clusterId
          * @param {number} nodeGroupId
@@ -7339,6 +7460,16 @@ const ClustersApiFactory = function (configuration, basePath, axios) {
          */
         reconcileCluster(clusterId, options) {
             return localVarFp.reconcileCluster(clusterId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster(clusterId, options) {
+            return localVarFp.restoreAHibernatedCluster(clusterId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -7545,6 +7676,17 @@ class ClustersApi extends base_1.BaseAPI {
      */
     reconcileCluster(clusterId, options) {
         return (0, exports.ClustersApiFp)(this.configuration).reconcileCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    restoreAHibernatedCluster(clusterId, options) {
+        return (0, exports.ClustersApiFp)(this.configuration).restoreAHibernatedCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -17492,3 +17634,102 @@ class VouchersApi extends base_1.BaseAPI {
     }
 }
 exports.VouchersApi = VouchersApi;
+/**
+ * ZendeskApi - axios parameter creator
+ * @export
+ */
+const ZendeskApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/zendesk/messaging-token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+exports.ZendeskApiAxiosParamCreator = ZendeskApiAxiosParamCreator;
+/**
+ * ZendeskApi - functional programming interface
+ * @export
+ */
+const ZendeskApiFp = function (configuration) {
+    const localVarAxiosParamCreator = (0, exports.ZendeskApiAxiosParamCreator)(configuration);
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getZendeskMessagingToken(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ZendeskApi.getZendeskMessagingToken']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+exports.ZendeskApiFp = ZendeskApiFp;
+/**
+ * ZendeskApi - factory interface
+ * @export
+ */
+const ZendeskApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = (0, exports.ZendeskApiFp)(configuration);
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken(options) {
+            return localVarFp.getZendeskMessagingToken(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+exports.ZendeskApiFactory = ZendeskApiFactory;
+/**
+ * ZendeskApi - object-oriented interface
+ * @export
+ * @class ZendeskApi
+ * @extends {BaseAPI}
+ */
+class ZendeskApi extends base_1.BaseAPI {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ZendeskApi
+     */
+    getZendeskMessagingToken(options) {
+        return (0, exports.ZendeskApiFp)(this.configuration).getZendeskMessagingToken(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+exports.ZendeskApi = ZendeskApi;

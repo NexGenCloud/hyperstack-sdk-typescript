@@ -1110,6 +1110,12 @@ export interface ClusterFields {
     'environment_name'?: string;
     /**
      *
+     * @type {boolean}
+     * @memberof ClusterFields
+     */
+    'has_persistent_storage'?: boolean;
+    /**
+     *
      * @type {number}
      * @memberof ClusterFields
      */
@@ -1621,6 +1627,56 @@ export interface ClusterResponse {
      *
      * @type {boolean}
      * @memberof ClusterResponse
+     */
+    'status'?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface ClusterRestoreFailedNode
+ */
+export interface ClusterRestoreFailedNode {
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterRestoreFailedNode
+     */
+    'error'?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ClusterRestoreFailedNode
+     */
+    'id'?: number;
+}
+/**
+ *
+ * @export
+ * @interface ClusterRestoreResponse
+ */
+export interface ClusterRestoreResponse {
+    /**
+     *
+     * @type {Array<ClusterRestoreFailedNode>}
+     * @memberof ClusterRestoreResponse
+     */
+    'failed_nodes'?: Array<ClusterRestoreFailedNode>;
+    /**
+     *
+     * @type {string}
+     * @memberof ClusterRestoreResponse
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof ClusterRestoreResponse
+     */
+    'restoring_nodes'?: Array<number>;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ClusterRestoreResponse
      */
     'status'?: boolean;
 }
@@ -6028,6 +6084,19 @@ export interface ObjectStorageAccessKeyResponse {
      * @memberof ObjectStorageAccessKeyResponse
      */
     'user_id': number;
+}
+/**
+ *
+ * @export
+ * @interface ObjectStorageAccessKeyUpdateRequest
+ */
+export interface ObjectStorageAccessKeyUpdateRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof ObjectStorageAccessKeyUpdateRequest
+     */
+    'description': string;
 }
 /**
  *
@@ -10618,6 +10687,31 @@ export interface WorkloadBillingHistoryResponse {
     'success'?: boolean;
 }
 /**
+ *
+ * @export
+ * @interface ZendeskMessagingToken
+ */
+export interface ZendeskMessagingToken {
+    /**
+     *
+     * @type {string}
+     * @memberof ZendeskMessagingToken
+     */
+    'message'?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ZendeskMessagingToken
+     */
+    'status'?: boolean;
+    /**
+     * Signed HS256 JWT to pass to the Zendesk Web Widget loginUser API
+     * @type {string}
+     * @memberof ZendeskMessagingToken
+     */
+    'token'?: string;
+}
+/**
  * AccessKeysApi - axios parameter creator
  * @export
  */
@@ -10648,6 +10742,15 @@ export declare const AccessKeysApiAxiosParamCreator: (configuration?: Configurat
      * @throws {RequiredError}
      */
     listAccessKeysEndpoint: (search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccessKeyEndpoint: (accessKeyId: string, body?: ObjectStorageAccessKeyUpdateRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AccessKeysApi - functional programming interface
@@ -10680,6 +10783,15 @@ export declare const AccessKeysApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyListResponse>>;
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccessKeyEndpoint(accessKeyId: string, body?: ObjectStorageAccessKeyUpdateRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectStorageAccessKeyResponse>>;
 };
 /**
  * AccessKeysApi - factory interface
@@ -10712,6 +10824,15 @@ export declare const AccessKeysApiFactory: (configuration?: Configuration, baseP
      * @throws {RequiredError}
      */
     listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyListResponse>;
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccessKeyEndpoint(accessKeyId: string, body?: ObjectStorageAccessKeyUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ObjectStorageAccessKeyResponse>;
 };
 /**
  * AccessKeysApi - object-oriented interface
@@ -10749,6 +10870,16 @@ export declare class AccessKeysApi extends BaseAPI {
      * @memberof AccessKeysApi
      */
     listAccessKeysEndpoint(search?: string, page?: string, pageSize?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyListResponse, any, {}, any>>;
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    updateAccessKeyEndpoint(accessKeyId: string, body?: ObjectStorageAccessKeyUpdateRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ObjectStorageAccessKeyResponse, any, {}, any>>;
 }
 /**
  * AliveApi - axios parameter creator
@@ -13862,6 +13993,14 @@ export declare const ClustersApiAxiosParamCreator: (configuration?: Configuratio
     reconcileCluster: (clusterId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    restoreAHibernatedCluster: (clusterId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Update a node group in a cluster
      * @param {number} clusterId
      * @param {number} nodeGroupId
@@ -14014,6 +14153,14 @@ export declare const ClustersApiFp: (configuration?: Configuration) => {
     reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualReconciliationModel>>;
     /**
      *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    restoreAHibernatedCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ClusterRestoreResponse>>;
+    /**
+     *
      * @summary Update a node group in a cluster
      * @param {number} clusterId
      * @param {number} nodeGroupId
@@ -14164,6 +14311,14 @@ export declare const ClustersApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ManualReconciliationModel>;
+    /**
+     *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    restoreAHibernatedCluster(clusterId: number, options?: RawAxiosRequestConfig): AxiosPromise<ClusterRestoreResponse>;
     /**
      *
      * @summary Update a node group in a cluster
@@ -14334,6 +14489,15 @@ export declare class ClustersApi extends BaseAPI {
      * @memberof ClustersApi
      */
     reconcileCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ManualReconciliationModel, any, {}, any>>;
+    /**
+     *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    restoreAHibernatedCluster(clusterId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ClusterRestoreResponse, any, {}, any>>;
     /**
      *
      * @summary Update a node group in a cluster
@@ -19469,4 +19633,59 @@ export declare class VouchersApi extends BaseAPI {
      * @memberof VouchersApi
      */
     redeemAVoucher(payload: RedeemVoucherPayload, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<VoucherRedeemResponseSchema, any, {}, any>>;
+}
+/**
+ * ZendeskApi - axios parameter creator
+ * @export
+ */
+export declare const ZendeskApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getZendeskMessagingToken: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * ZendeskApi - functional programming interface
+ * @export
+ */
+export declare const ZendeskApiFp: (configuration?: Configuration) => {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getZendeskMessagingToken(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ZendeskMessagingToken>>;
+};
+/**
+ * ZendeskApi - factory interface
+ * @export
+ */
+export declare const ZendeskApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getZendeskMessagingToken(options?: RawAxiosRequestConfig): AxiosPromise<ZendeskMessagingToken>;
+};
+/**
+ * ZendeskApi - object-oriented interface
+ * @export
+ * @class ZendeskApi
+ * @extends {BaseAPI}
+ */
+export declare class ZendeskApi extends BaseAPI {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ZendeskApi
+     */
+    getZendeskMessagingToken(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ZendeskMessagingToken, any, {}, any>>;
 }

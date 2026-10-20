@@ -262,6 +262,40 @@ export const AccessKeysApiAxiosParamCreator = function (configuration) {
                 options: localVarRequestOptions,
             };
         }),
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint: (accessKeyId_1, body_1, ...args_1) => __awaiter(this, [accessKeyId_1, body_1, ...args_1], void 0, function* (accessKeyId, body, options = {}) {
+            // verify required parameter 'accessKeyId' is not null or undefined
+            assertParamExists('updateAccessKeyEndpoint', 'accessKeyId', accessKeyId);
+            const localVarPath = `/object-storage/access-keys/{access_key_id}`
+                .replace(`{${"access_key_id"}}`, encodeURIComponent(String(accessKeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'PATCH' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
     };
 };
 /**
@@ -321,6 +355,23 @@ export const AccessKeysApiFp = function (configuration) {
                 return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
             });
         },
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint(accessKeyId, body, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.updateAccessKeyEndpoint(accessKeyId, body, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['AccessKeysApi.updateAccessKeyEndpoint']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
     };
 };
 /**
@@ -361,6 +412,17 @@ export const AccessKeysApiFactory = function (configuration, basePath, axios) {
          */
         listAccessKeysEndpoint(search, page, pageSize, options) {
             return localVarFp.listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Rename an existing access key
+         * @param {string} accessKeyId
+         * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateAccessKeyEndpoint(accessKeyId, body, options) {
+            return localVarFp.updateAccessKeyEndpoint(accessKeyId, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -405,6 +467,18 @@ export class AccessKeysApi extends BaseAPI {
      */
     listAccessKeysEndpoint(search, page, pageSize, options) {
         return AccessKeysApiFp(this.configuration).listAccessKeysEndpoint(search, page, pageSize, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Rename an existing access key
+     * @param {string} accessKeyId
+     * @param {ObjectStorageAccessKeyUpdateRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessKeysApi
+     */
+    updateAccessKeyEndpoint(accessKeyId, body, options) {
+        return AccessKeysApiFp(this.configuration).updateAccessKeyEndpoint(accessKeyId, body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 /**
@@ -6777,6 +6851,37 @@ export const ClustersApiAxiosParamCreator = function (configuration) {
         }),
         /**
          *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster: (clusterId_1, ...args_1) => __awaiter(this, [clusterId_1, ...args_1], void 0, function* (clusterId, options = {}) {
+            // verify required parameter 'clusterId' is not null or undefined
+            assertParamExists('restoreAHibernatedCluster', 'clusterId', clusterId);
+            const localVarPath = `/core/clusters/{cluster_id}/restore`
+                .replace(`{${"cluster_id"}}`, encodeURIComponent(String(clusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'POST' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
+         *
          * @summary Update a node group in a cluster
          * @param {number} clusterId
          * @param {number} nodeGroupId
@@ -7090,6 +7195,22 @@ export const ClustersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster(clusterId, options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.restoreAHibernatedCluster(clusterId, options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ClustersApi.restoreAHibernatedCluster']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
+         *
          * @summary Update a node group in a cluster
          * @param {number} clusterId
          * @param {number} nodeGroupId
@@ -7282,6 +7403,16 @@ export const ClustersApiFactory = function (configuration, basePath, axios) {
          */
         reconcileCluster(clusterId, options) {
             return localVarFp.reconcileCluster(clusterId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+         * @param {number} clusterId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        restoreAHibernatedCluster(clusterId, options) {
+            return localVarFp.restoreAHibernatedCluster(clusterId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -7487,6 +7618,17 @@ export class ClustersApi extends BaseAPI {
      */
     reconcileCluster(clusterId, options) {
         return ClustersApiFp(this.configuration).reconcileCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Restore a hibernated cluster\'s nodes and reconcile the cluster
+     * @param {number} clusterId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClustersApi
+     */
+    restoreAHibernatedCluster(clusterId, options) {
+        return ClustersApiFp(this.configuration).restoreAHibernatedCluster(clusterId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *
@@ -17271,5 +17413,100 @@ export class VouchersApi extends BaseAPI {
      */
     redeemAVoucher(payload, options) {
         return VouchersApiFp(this.configuration).redeemAVoucher(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+/**
+ * ZendeskApi - axios parameter creator
+ * @export
+ */
+export const ZendeskApiAxiosParamCreator = function (configuration) {
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/zendesk/messaging-token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield setApiKeyToObject(localVarHeaderParameter, "api_key", configuration);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+    };
+};
+/**
+ * ZendeskApi - functional programming interface
+ * @export
+ */
+export const ZendeskApiFp = function (configuration) {
+    const localVarAxiosParamCreator = ZendeskApiAxiosParamCreator(configuration);
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.getZendeskMessagingToken(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = operationServerMap['ZendeskApi.getZendeskMessagingToken']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+    };
+};
+/**
+ * ZendeskApi - factory interface
+ * @export
+ */
+export const ZendeskApiFactory = function (configuration, basePath, axios) {
+    const localVarFp = ZendeskApiFp(configuration);
+    return {
+        /**
+         * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+         * @summary Retrieve a Zendesk messaging JWT for the current user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getZendeskMessagingToken(options) {
+            return localVarFp.getZendeskMessagingToken(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+/**
+ * ZendeskApi - object-oriented interface
+ * @export
+ * @class ZendeskApi
+ * @extends {BaseAPI}
+ */
+export class ZendeskApi extends BaseAPI {
+    /**
+     * Returns a short-lived signed JWT for the currently authenticated user, to be passed to the Zendesk Web Widget\'s loginUser API so chat tickets are attributed to the real user instead of an anonymous \'Web User\'.
+     * @summary Retrieve a Zendesk messaging JWT for the current user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ZendeskApi
+     */
+    getZendeskMessagingToken(options) {
+        return ZendeskApiFp(this.configuration).getZendeskMessagingToken(options).then((request) => request(this.axios, this.basePath));
     }
 }
