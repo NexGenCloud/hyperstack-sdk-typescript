@@ -1179,6 +1179,33 @@ const AuthApiAxiosParamCreator = function (configuration) {
             };
         }),
         /**
+         * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+         * @summary Check the authenticated access token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkAccessTokenStatus: (...args_1) => __awaiter(this, [...args_1], void 0, function* (options = {}) {
+            const localVarPath = `/auth/token/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = Object.assign(Object.assign({ method: 'GET' }, baseOptions), options);
+            const localVarHeaderParameter = {};
+            const localVarQueryParameter = {};
+            // authentication apiKey required
+            yield (0, common_1.setApiKeyToObject)(localVarHeaderParameter, "api_key", configuration);
+            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = Object.assign(Object.assign(Object.assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+            return {
+                url: (0, common_1.toPathString)(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        }),
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -1285,6 +1312,21 @@ const AuthApiFp = function (configuration) {
             });
         },
         /**
+         * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+         * @summary Check the authenticated access token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkAccessTokenStatus(options) {
+            return __awaiter(this, void 0, void 0, function* () {
+                var _a, _b, _c;
+                const localVarAxiosArgs = yield localVarAxiosParamCreator.checkAccessTokenStatus(options);
+                const localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                const localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['AuthApi.checkAccessTokenStatus']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                return (axios, basePath) => (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+            });
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -1349,6 +1391,15 @@ const AuthApiFactory = function (configuration, basePath, axios) {
             return localVarFp.changeOrganizationForToken(orgId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+         * @summary Check the authenticated access token
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        checkAccessTokenStatus(options) {
+            return localVarFp.checkAccessTokenStatus(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
          * @summary Get MFA status for authenticated user
          * @param {*} [options] Override http request option.
@@ -1394,6 +1445,16 @@ class AuthApi extends base_1.BaseAPI {
      */
     changeOrganizationForToken(orgId, options) {
         return (0, exports.AuthApiFp)(this.configuration).changeOrganizationForToken(orgId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+     * @summary Check the authenticated access token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    checkAccessTokenStatus(options) {
+        return (0, exports.AuthApiFp)(this.configuration).checkAccessTokenStatus(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.

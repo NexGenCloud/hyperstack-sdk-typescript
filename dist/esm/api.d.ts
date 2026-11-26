@@ -11228,6 +11228,13 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      */
     changeOrganizationForToken: (orgId: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
+     * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+     * @summary Check the authenticated access token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    checkAccessTokenStatus: (options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -11262,6 +11269,13 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthGetTokenResponseModel>>;
     /**
+     * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+     * @summary Check the authenticated access token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    checkAccessTokenStatus(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
      * @param {*} [options] Override http request option.
@@ -11295,6 +11309,13 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): AxiosPromise<AuthGetTokenResponseModel>;
+    /**
+     * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+     * @summary Check the authenticated access token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    checkAccessTokenStatus(options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
@@ -11332,6 +11353,14 @@ export declare class AuthApi extends BaseAPI {
      * @memberof AuthApi
      */
     changeOrganizationForToken(orgId: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<AuthGetTokenResponseModel, any, {}, any>>;
+    /**
+     * Returns active=true when the token is accepted, otherwise 401 with error_reason `token_revoked` (logged out, or issued before a password change / MFA disable / admin revoke) or `unauthorized` (expired, invalid, from another environment, or the user no longer exists). Only Bearer access tokens are accepted; API keys are rejected.
+     * @summary Check the authenticated access token
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    checkAccessTokenStatus(options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any, {}, any>>;
     /**
      * Retrieve the Multi-Factor Authentication (MFA) status for the currentlyauthenticated user. Includes whether MFA is enabled.
      * @summary Get MFA status for authenticated user
