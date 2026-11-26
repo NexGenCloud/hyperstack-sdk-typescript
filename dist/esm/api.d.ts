@@ -6870,11 +6870,35 @@ export interface PaymentDetailsResponse {
  */
 export interface PaymentInitiateFields {
     /**
+     * Whether the purchase is linked to a pending auto top up. If true, the checkout saves the card for off-session use (setup_future_usage=off_session).
+     * @type {boolean}
+     * @memberof PaymentInitiateFields
+     */
+    'auto_topup_linked'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentInitiateFields
+     */
+    'checkout_url'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentInitiateFields
+     */
+    'expires_at'?: string;
+    /**
      *
      * @type {string}
      * @memberof PaymentInitiateFields
      */
     'payment_id'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PaymentInitiateFields
+     */
+    'session_id'?: string;
 }
 /**
  *
@@ -9916,6 +9940,12 @@ export interface UserInfoPostPayload {
      * @type {string}
      * @memberof UserInfoPostPayload
      */
+    'city'?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserInfoPostPayload
+     */
     'company_name'?: string;
     /**
      *
@@ -10022,6 +10052,12 @@ export interface UsersInfoFields {
      * @memberof UsersInfoFields
      */
     'business'?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof UsersInfoFields
+     */
+    'city'?: string;
     /**
      *
      * @type {string}
